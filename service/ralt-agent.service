@@ -1,0 +1,12 @@
+[Unit]
+Description=ralt grpc agent
+After=syslog.target network.target auditd.service
+
+[Service]
+ExecStart=/opt/reyzar/ralt-agent/ralt-agent
+Type=simple
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

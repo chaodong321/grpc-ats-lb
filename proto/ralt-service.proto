@@ -1,0 +1,275 @@
+syntax = "proto3";
+
+package raltservice;
+
+service RaltService {
+	//system info
+	rpc getCpuUsage (GetCpuUsageReq) returns (GetCpuUsageRsp) {}
+	rpc getCpuTemp (GetCpuTempReq) returns (GetCpuTempRsp) {}
+	rpc getMemUsage (GetMemUsageReq) returns (GetMemUsageRsp) {}
+	rpc getNicInfo (GetNicInfoReq) returns (GetNicInfoRsp) {}
+
+	//ats info
+	//get stats field info
+	rpc getStatsFieldValue (StatsFieldName) returns (StatsFieldValue) {}
+	//home page
+	rpc getHomePageData (HomePageReq) returns (HomePageRsp) {}
+	//cache
+	rpc showCacheData (CacheLookUpReq) returns (CacheResult) {}
+	//flow statistic
+	rpc showFlowStatData (FlowStatLookUpReq) returns (FlowResult) {}
+	//log config
+	rpc showLogInfoData (LogInfoLookUpReq) returns (LogResult) {}
+	//ralt logs
+	rpc getRaltLogs (GetRaltLogsReq) returns (stream RaltLogs) {}
+	
+	//configure
+	//record.conf
+	rpc getRecordConfig (GetRecordCfgReq) returns (GetRecordCfgRsp) {}
+	rpc setRecordConfig (SetRecordCfgReq) returns (SetRecordCfgRsp) {}
+	//ralt.domain.conf
+	rpc getAllDomain (GetAllDomainReq) returns (stream Domain) {}
+	rpc updateDomain (stream Domain) returns (UpdateDomainRsp) {}		//add modify delete
+	rpc getDomain (GetDomainReq) returns (Domain) {}
+	rpc addDomain (Domain) returns (AddDomainRsp) {}
+	rpc deleteDomain (DeleteDomainReq) returns (DeleteDomainRsp) {}
+	//ralt.miscellaneous.conf
+	rpc getMisc (GetMiscReq) returns (GetMiscRsp) {}
+	rpc modMisc (Misc) returns (ModMiscOpRsp) {}
+	
+	
+	//ralt status: 
+	rpc getRaltStatus (RaltStatusReq) returns (stream RaltStatus) {}
+	//exec cmd
+	rpc execCmd (ExecCmdReq) returns (ExecCmdRsp) {}
+}
+
+//system info
+message GetCpuUsageReq{
+	string ip_addr = 1;
+}
+
+message GetCpuUsageRsp{
+	string cpu_usage = 1;
+}
+
+message GetCpuTempReq{
+	string ip_addr = 1;
+}
+
+message GetCpuTempRsp{
+	string cpu_temp = 1;
+}
+
+message GetMemUsageReq{
+	string ip_addr = 1;
+}
+
+message GetMemUsageRsp{
+	string mem_usage = 1;
+}
+
+message GetNicInfoReq{
+	string ip_addr = 1;
+}
+
+message GetNicInfoRsp{
+	string os_version = 1;
+	string nic_info = 2;
+}
+
+//ats info
+message StatsFieldName{
+	string ip_addr = 1;
+	string field_name = 2;
+}
+
+message StatsFieldValue{
+	string value = 1;
+}
+
+message HomePageReq {
+	uint32 type = 1;
+}
+
+message HomePageRsp {
+	uint32 domain_num = 1;
+	uint32 cluster_device = 2;
+	uint64 app_transfor_bytes = 3;
+	uint32 app_transfor_connections = 4;
+	uint32 cache_total_hits = 5;
+	uint64 cache_bytes_total = 6;
+	uint64 cache_bytes_used = 7;
+	uint32 cache_num_docs = 8;
+}
+
+message CacheLookUpReq {
+	string ip_addr = 1;
+}
+
+message FlowStatLookUpReq {
+	string ip_addr = 1;
+}
+
+message LogInfoLookUpReq {
+	string ip_addr = 1;
+}
+
+message CacheResult {
+	uint32 cache_total_hits = 1;
+	uint64 bytes_total = 2;
+	uint64 bytes_used = 3;
+	uint32 num_docs = 4;
+	float cache_hit_ratio = 5;
+}
+
+message FlowResult{
+	uint32 user_agent_current_connections_count = 1;
+	uint32 origin_server_current_connections_count = 2;
+	uint32 completed_requests = 3;
+	uint32 total_incoming_connections = 4;
+	uint32 incoming_requests = 5;
+	uint32 outgoing_requests = 6;
+	uint32 incoming_responses = 7;
+	uint32 total_client_connections = 8;
+	uint32 total_client_connections_ipv4 = 9;
+	uint32 total_client_connections_ipv6 = 10;
+	uint32 total_server_connections = 11;
+	uint64 user_agent_total_bytes = 12;
+	uint64 origin_server_total_bytes = 13;
+	float bandwidth_hit_ratio = 14;
+}
+
+message LogResult{
+	uint32 log_files_space_mb_used = 1;
+	uint32 max_space_mb_for_logs = 2;
+}
+
+//ralt logs
+message GetRaltLogsReq{
+	string ip_addr = 1;
+}
+
+message RaltLogs{
+	bytes logs = 1;
+}
+
+//record.conf
+enum RecordCfgType{
+	enum_logging_enabled = 0;       //取值：0-不启用日志； 1-开启错误； 2-开启事务日志； 3-错误日志和事务日志一起开启
+	enum_max_space_mb_for_logs = 1; //日志最大磁盘空间（单位为mb）
+	enum_rolling_enabled = 2;       //日志是否备份	0-不开启； 1-开启
+	enum_server_ports = 3;			//ralt服务端口，默认值 8080 8080:ipv6
+}
+
+message GetRecordCfgReq{
+	uint32 type = 1; //客户端类型，目前网管约定为1
+}
+
+message GetRecordCfgRsp {
+	uint32 logging_enabled = 1;
+	uint32 max_space_mb_for_logs = 2;
+	uint32 rolling_enabled = 3;
+	string server_ports = 4;
+}
+
+message SetRecordCfgReq {
+	RecordCfgType key = 1;
+	string value = 2;
+}
+
+message SetRecordCfgRsp{
+	uint32 result = 1;
+}
+
+//ralt.domain.conf
+enum DomainType{
+	enum_member_domain = 0;
+	enum_subs_domain = 1;
+}
+
+message GetAllDomainReq{
+	uint32 type = 1;
+}
+
+message Domain{
+	DomainType type = 1;
+	string domain_str = 2;
+	string append_or_replace_str = 3;
+	string port = 4;
+}
+
+message UpdateDomainRsp{
+	uint32 result = 1;
+}
+
+message GetDomainReq{
+	string domain_str = 1;
+}
+
+message AddDomainRsp{
+	uint32 result = 1;
+}
+
+message DeleteDomainReq{
+	string domain_str = 1;
+}
+
+message DeleteDomainRsp{
+	uint32 result = 1;
+}
+
+//ralt.miscellaneous.conf
+enum MiscKey{
+	enum_ralt_filter_type_default = 0;
+}
+
+enum MiscSwitch{
+	switch_off = 0;
+	switch_on = 1;
+}
+
+message GetMiscReq{
+	uint32 type = 1;
+}
+
+message GetMiscRsp{
+	MiscSwitch ralt_filter_type_default = 1;
+}
+
+message Misc{
+	MiscKey key = 1;
+	MiscSwitch value = 2;
+}
+
+message ModMiscOpRsp{
+	uint32 result = 1;
+}
+
+//ralt status
+message RaltStatusReq {
+	uint32 type = 1;
+}
+
+message RaltStatus {
+	string ip_addr = 1;
+	uint32 status = 2;
+}
+
+//exec cmd
+enum CommandType{
+	ralt_start = 0;
+	ralt_stop = 1;
+	ralt_restart = 2;
+	cache_clear = 3;
+	reload_config = 4;
+}
+
+message ExecCmdReq {
+	string ip_addr = 1;
+	CommandType cmd = 2;
+}
+
+message ExecCmdRsp {
+	uint32 result = 1;
+}
