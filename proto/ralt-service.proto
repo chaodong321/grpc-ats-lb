@@ -3,12 +3,6 @@ syntax = "proto3";
 package raltservice;
 
 service RaltService {
-	//system info
-	rpc getCpuUsage (GetCpuUsageReq) returns (GetCpuUsageRsp) {}
-	rpc getCpuTemp (GetCpuTempReq) returns (GetCpuTempRsp) {}
-	rpc getMemUsage (GetMemUsageReq) returns (GetMemUsageRsp) {}
-	rpc getNicInfo (GetNicInfoReq) returns (GetNicInfoRsp) {}
-
 	//ats info
 	//get stats field info
 	rpc getStatsFieldValue (StatsFieldName) returns (StatsFieldValue) {}
@@ -42,40 +36,6 @@ service RaltService {
 	rpc getRaltStatus (RaltStatusReq) returns (stream RaltStatus) {}
 	//exec cmd
 	rpc execCmd (ExecCmdReq) returns (ExecCmdRsp) {}
-}
-
-//system info
-message GetCpuUsageReq{
-	string ip_addr = 1;
-}
-
-message GetCpuUsageRsp{
-	string cpu_usage = 1;
-}
-
-message GetCpuTempReq{
-	string ip_addr = 1;
-}
-
-message GetCpuTempRsp{
-	string cpu_temp = 1;
-}
-
-message GetMemUsageReq{
-	string ip_addr = 1;
-}
-
-message GetMemUsageRsp{
-	string mem_usage = 1;
-}
-
-message GetNicInfoReq{
-	string ip_addr = 1;
-}
-
-message GetNicInfoRsp{
-	string os_version = 1;
-	string nic_info = 2;
 }
 
 //ats info
@@ -248,7 +208,7 @@ message ModMiscOpRsp{
 
 //ralt status
 message RaltStatusReq {
-	uint32 type = 1;
+	string ip_addr = 1;
 }
 
 message RaltStatus {

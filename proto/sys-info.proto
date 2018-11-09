@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+package sysinfo;
+
+service SysInfo {
+	rpc getCpuUsage (GetCpuUsageReq) returns (GetCpuUsageRsp) {}
+	rpc getCpuTemp (GetCpuTempReq) returns (GetCpuTempRsp) {}
+	rpc getMemUsage (GetMemUsageReq) returns (GetMemUsageRsp) {}
+	rpc getNicInfo (GetNicInfoReq) returns (GetNicInfoRsp) {}
+	rpc getHostName (GetHostNameReq) returns (GetHostNameRsp) {}
+	rpc getIpInfo (GetIpInfoReq) returns (GetIpInfoRsp) {}
+	rpc getCpuModel (GetCpuModelReq) returns (GetCpuModelRsp) {}
+	rpc getCpuCores (GetCpuCoresReq) returns (GetCpuCoresRsp) {}
+	rpc getMemTotal (GetMemTotalReq) returns (GetMemTotalRsp) {}
+	rpc getEthCtrlInfo (GetEthCtrlInfoReq) returns (GetEthCtrlInfoRsp) {}
+}
+
+//cpu usage
+message GetCpuUsageReq{
+	string ip_addr = 1;
+}
+
+message GetCpuUsageRsp{
+	string cpu_usage = 1;
+}
+
+//cpu temperature
+message GetCpuTempReq{
+	string ip_addr = 1;
+}
+
+message GetCpuTempRsp{
+	string cpu_temp = 1;
+}
+
+//memory usage
+message GetMemUsageReq{
+	string ip_addr = 1;
+}
+
+message GetMemUsageRsp{
+	string mem_usage = 1;
+}
+
+//network card info
+message GetNicInfoReq{
+	string ip_addr = 1;
+	bool is_depend_os_version = 2;
+}
+
+message GetNicInfoRsp{
+	string os_version = 1;
+	string nic_info = 2;
+}
+
+//host name
+message GetHostNameReq{
+	string ip_addr = 1;
+}
+
+message GetHostNameRsp{
+	string host_name = 1;
+}
+
+//ip info
+message GetIpInfoReq{
+	string ip_addr = 1;
+}
+
+message GetIpInfoRsp{
+	string ip_info = 1;
+}
+
+//cpu model
+message GetCpuModelReq{
+	string ip_addr = 1;
+}
+
+message GetCpuModelRsp{
+	string cpu_model = 1;
+}
+
+//cpu cores
+message GetCpuCoresReq{
+	string ip_addr = 1;
+}
+
+message GetCpuCoresRsp{
+	string cpu_cores = 1;
+}
+
+//mem total
+message GetMemTotalReq{
+	string ip_addr = 1;
+}
+
+message GetMemTotalRsp{
+	string mem_total = 1;
+}
+
+//ethernet controler info
+message GetEthCtrlInfoReq{
+	string ip_addr = 1;
+}
+
+message GetEthCtrlInfoRsp{
+	string eth_ctrl_info = 1;
+}
