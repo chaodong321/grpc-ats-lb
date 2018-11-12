@@ -36,16 +36,12 @@ namespace protobuf_sys_2dinfo_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[24];
+  static const ::google::protobuf::internal::ParseTable schema[22];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors();
-void InitDefaultsGetNameAndIpInfoReqImpl();
-void InitDefaultsGetNameAndIpInfoReq();
-void InitDefaultsGetNameAndIpInfoRspImpl();
-void InitDefaultsGetNameAndIpInfoRsp();
 void InitDefaultsGetDeviceInfoReqImpl();
 void InitDefaultsGetDeviceInfoReq();
 void InitDefaultsGetDeviceInfoRspImpl();
@@ -91,8 +87,6 @@ void InitDefaultsGetEthCtrlInfoReq();
 void InitDefaultsGetEthCtrlInfoRspImpl();
 void InitDefaultsGetEthCtrlInfoRsp();
 inline void InitDefaults() {
-  InitDefaultsGetNameAndIpInfoReq();
-  InitDefaultsGetNameAndIpInfoRsp();
   InitDefaultsGetDeviceInfoReq();
   InitDefaultsGetDeviceInfoRsp();
   InitDefaultsGetCpuUsageReq();
@@ -178,12 +172,6 @@ extern GetMemUsageReqDefaultTypeInternal _GetMemUsageReq_default_instance_;
 class GetMemUsageRsp;
 class GetMemUsageRspDefaultTypeInternal;
 extern GetMemUsageRspDefaultTypeInternal _GetMemUsageRsp_default_instance_;
-class GetNameAndIpInfoReq;
-class GetNameAndIpInfoReqDefaultTypeInternal;
-extern GetNameAndIpInfoReqDefaultTypeInternal _GetNameAndIpInfoReq_default_instance_;
-class GetNameAndIpInfoRsp;
-class GetNameAndIpInfoRspDefaultTypeInternal;
-extern GetNameAndIpInfoRspDefaultTypeInternal _GetNameAndIpInfoRsp_default_instance_;
 class GetNicInfoReq;
 class GetNicInfoReqDefaultTypeInternal;
 extern GetNicInfoReqDefaultTypeInternal _GetNicInfoReq_default_instance_;
@@ -194,235 +182,6 @@ extern GetNicInfoRspDefaultTypeInternal _GetNicInfoRsp_default_instance_;
 namespace sysinfo {
 
 // ===================================================================
-
-class GetNameAndIpInfoReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:sysinfo.GetNameAndIpInfoReq) */ {
- public:
-  GetNameAndIpInfoReq();
-  virtual ~GetNameAndIpInfoReq();
-
-  GetNameAndIpInfoReq(const GetNameAndIpInfoReq& from);
-
-  inline GetNameAndIpInfoReq& operator=(const GetNameAndIpInfoReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  GetNameAndIpInfoReq(GetNameAndIpInfoReq&& from) noexcept
-    : GetNameAndIpInfoReq() {
-    *this = ::std::move(from);
-  }
-
-  inline GetNameAndIpInfoReq& operator=(GetNameAndIpInfoReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const GetNameAndIpInfoReq& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const GetNameAndIpInfoReq* internal_default_instance() {
-    return reinterpret_cast<const GetNameAndIpInfoReq*>(
-               &_GetNameAndIpInfoReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    0;
-
-  void Swap(GetNameAndIpInfoReq* other);
-  friend void swap(GetNameAndIpInfoReq& a, GetNameAndIpInfoReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline GetNameAndIpInfoReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  GetNameAndIpInfoReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const GetNameAndIpInfoReq& from);
-  void MergeFrom(const GetNameAndIpInfoReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(GetNameAndIpInfoReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string ip_addr = 1;
-  void clear_ip_addr();
-  static const int kIpAddrFieldNumber = 1;
-  const ::std::string& ip_addr() const;
-  void set_ip_addr(const ::std::string& value);
-  #if LANG_CXX11
-  void set_ip_addr(::std::string&& value);
-  #endif
-  void set_ip_addr(const char* value);
-  void set_ip_addr(const char* value, size_t size);
-  ::std::string* mutable_ip_addr();
-  ::std::string* release_ip_addr();
-  void set_allocated_ip_addr(::std::string* ip_addr);
-
-  // @@protoc_insertion_point(class_scope:sysinfo.GetNameAndIpInfoReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
-  mutable int _cached_size_;
-  friend struct ::protobuf_sys_2dinfo_2eproto::TableStruct;
-  friend void ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNameAndIpInfoReqImpl();
-};
-// -------------------------------------------------------------------
-
-class GetNameAndIpInfoRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:sysinfo.GetNameAndIpInfoRsp) */ {
- public:
-  GetNameAndIpInfoRsp();
-  virtual ~GetNameAndIpInfoRsp();
-
-  GetNameAndIpInfoRsp(const GetNameAndIpInfoRsp& from);
-
-  inline GetNameAndIpInfoRsp& operator=(const GetNameAndIpInfoRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  GetNameAndIpInfoRsp(GetNameAndIpInfoRsp&& from) noexcept
-    : GetNameAndIpInfoRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline GetNameAndIpInfoRsp& operator=(GetNameAndIpInfoRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const GetNameAndIpInfoRsp& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const GetNameAndIpInfoRsp* internal_default_instance() {
-    return reinterpret_cast<const GetNameAndIpInfoRsp*>(
-               &_GetNameAndIpInfoRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(GetNameAndIpInfoRsp* other);
-  friend void swap(GetNameAndIpInfoRsp& a, GetNameAndIpInfoRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline GetNameAndIpInfoRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  GetNameAndIpInfoRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const GetNameAndIpInfoRsp& from);
-  void MergeFrom(const GetNameAndIpInfoRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(GetNameAndIpInfoRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string host_name = 1;
-  void clear_host_name();
-  static const int kHostNameFieldNumber = 1;
-  const ::std::string& host_name() const;
-  void set_host_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_host_name(::std::string&& value);
-  #endif
-  void set_host_name(const char* value);
-  void set_host_name(const char* value, size_t size);
-  ::std::string* mutable_host_name();
-  ::std::string* release_host_name();
-  void set_allocated_host_name(::std::string* host_name);
-
-  // string ip_info = 2;
-  void clear_ip_info();
-  static const int kIpInfoFieldNumber = 2;
-  const ::std::string& ip_info() const;
-  void set_ip_info(const ::std::string& value);
-  #if LANG_CXX11
-  void set_ip_info(::std::string&& value);
-  #endif
-  void set_ip_info(const char* value);
-  void set_ip_info(const char* value, size_t size);
-  ::std::string* mutable_ip_info();
-  ::std::string* release_ip_info();
-  void set_allocated_ip_info(::std::string* ip_info);
-
-  // @@protoc_insertion_point(class_scope:sysinfo.GetNameAndIpInfoRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr host_name_;
-  ::google::protobuf::internal::ArenaStringPtr ip_info_;
-  mutable int _cached_size_;
-  friend struct ::protobuf_sys_2dinfo_2eproto::TableStruct;
-  friend void ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNameAndIpInfoRspImpl();
-};
-// -------------------------------------------------------------------
 
 class GetDeviceInfoReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:sysinfo.GetDeviceInfoReq) */ {
  public:
@@ -459,7 +218,7 @@ class GetDeviceInfoReq : public ::google::protobuf::Message /* @@protoc_insertio
                &_GetDeviceInfoReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    0;
 
   void Swap(GetDeviceInfoReq* other);
   friend void swap(GetDeviceInfoReq& a, GetDeviceInfoReq& b) {
@@ -566,7 +325,7 @@ class GetDeviceInfoRsp : public ::google::protobuf::Message /* @@protoc_insertio
                &_GetDeviceInfoRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    1;
 
   void Swap(GetDeviceInfoRsp* other);
   friend void swap(GetDeviceInfoRsp& a, GetDeviceInfoRsp& b) {
@@ -718,7 +477,7 @@ class GetCpuUsageReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuUsageReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
+    2;
 
   void Swap(GetCpuUsageReq* other);
   friend void swap(GetCpuUsageReq& a, GetCpuUsageReq& b) {
@@ -825,7 +584,7 @@ class GetCpuUsageRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuUsageRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    5;
+    3;
 
   void Swap(GetCpuUsageRsp* other);
   friend void swap(GetCpuUsageRsp& a, GetCpuUsageRsp& b) {
@@ -932,7 +691,7 @@ class GetCpuTempReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetCpuTempReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
+    4;
 
   void Swap(GetCpuTempReq* other);
   friend void swap(GetCpuTempReq& a, GetCpuTempReq& b) {
@@ -1039,7 +798,7 @@ class GetCpuTempRsp : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetCpuTempRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    7;
+    5;
 
   void Swap(GetCpuTempRsp* other);
   friend void swap(GetCpuTempRsp& a, GetCpuTempRsp& b) {
@@ -1146,7 +905,7 @@ class GetMemUsageReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetMemUsageReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    8;
+    6;
 
   void Swap(GetMemUsageReq* other);
   friend void swap(GetMemUsageReq& a, GetMemUsageReq& b) {
@@ -1253,7 +1012,7 @@ class GetMemUsageRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetMemUsageRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
+    7;
 
   void Swap(GetMemUsageRsp* other);
   friend void swap(GetMemUsageRsp& a, GetMemUsageRsp& b) {
@@ -1360,7 +1119,7 @@ class GetNicInfoReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetNicInfoReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    10;
+    8;
 
   void Swap(GetNicInfoReq* other);
   friend void swap(GetNicInfoReq& a, GetNicInfoReq& b) {
@@ -1474,7 +1233,7 @@ class GetNicInfoRsp : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetNicInfoRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    11;
+    9;
 
   void Swap(GetNicInfoRsp* other);
   friend void swap(GetNicInfoRsp& a, GetNicInfoRsp& b) {
@@ -1596,7 +1355,7 @@ class GetHostNameReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetHostNameReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    12;
+    10;
 
   void Swap(GetHostNameReq* other);
   friend void swap(GetHostNameReq& a, GetHostNameReq& b) {
@@ -1703,7 +1462,7 @@ class GetHostNameRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetHostNameRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    13;
+    11;
 
   void Swap(GetHostNameRsp* other);
   friend void swap(GetHostNameRsp& a, GetHostNameRsp& b) {
@@ -1810,7 +1569,7 @@ class GetIpInfoReq : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetIpInfoReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    14;
+    12;
 
   void Swap(GetIpInfoReq* other);
   friend void swap(GetIpInfoReq& a, GetIpInfoReq& b) {
@@ -1917,7 +1676,7 @@ class GetIpInfoRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetIpInfoRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    15;
+    13;
 
   void Swap(GetIpInfoRsp* other);
   friend void swap(GetIpInfoRsp& a, GetIpInfoRsp& b) {
@@ -2024,7 +1783,7 @@ class GetCpuModelReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuModelReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    16;
+    14;
 
   void Swap(GetCpuModelReq* other);
   friend void swap(GetCpuModelReq& a, GetCpuModelReq& b) {
@@ -2131,7 +1890,7 @@ class GetCpuModelRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuModelRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    17;
+    15;
 
   void Swap(GetCpuModelRsp* other);
   friend void swap(GetCpuModelRsp& a, GetCpuModelRsp& b) {
@@ -2238,7 +1997,7 @@ class GetCpuCoresReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuCoresReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    18;
+    16;
 
   void Swap(GetCpuCoresReq* other);
   friend void swap(GetCpuCoresReq& a, GetCpuCoresReq& b) {
@@ -2345,7 +2104,7 @@ class GetCpuCoresRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuCoresRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    19;
+    17;
 
   void Swap(GetCpuCoresRsp* other);
   friend void swap(GetCpuCoresRsp& a, GetCpuCoresRsp& b) {
@@ -2452,7 +2211,7 @@ class GetMemTotalReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetMemTotalReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    20;
+    18;
 
   void Swap(GetMemTotalReq* other);
   friend void swap(GetMemTotalReq& a, GetMemTotalReq& b) {
@@ -2559,7 +2318,7 @@ class GetMemTotalRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetMemTotalRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    21;
+    19;
 
   void Swap(GetMemTotalRsp* other);
   friend void swap(GetMemTotalRsp& a, GetMemTotalRsp& b) {
@@ -2666,7 +2425,7 @@ class GetEthCtrlInfoReq : public ::google::protobuf::Message /* @@protoc_inserti
                &_GetEthCtrlInfoReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    22;
+    20;
 
   void Swap(GetEthCtrlInfoReq* other);
   friend void swap(GetEthCtrlInfoReq& a, GetEthCtrlInfoReq& b) {
@@ -2773,7 +2532,7 @@ class GetEthCtrlInfoRsp : public ::google::protobuf::Message /* @@protoc_inserti
                &_GetEthCtrlInfoRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    23;
+    21;
 
   void Swap(GetEthCtrlInfoRsp* other);
   friend void swap(GetEthCtrlInfoRsp& a, GetEthCtrlInfoRsp& b) {
@@ -2852,173 +2611,6 @@ class GetEthCtrlInfoRsp : public ::google::protobuf::Message /* @@protoc_inserti
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// GetNameAndIpInfoReq
-
-// string ip_addr = 1;
-inline void GetNameAndIpInfoReq::clear_ip_addr() {
-  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& GetNameAndIpInfoReq::ip_addr() const {
-  // @@protoc_insertion_point(field_get:sysinfo.GetNameAndIpInfoReq.ip_addr)
-  return ip_addr_.GetNoArena();
-}
-inline void GetNameAndIpInfoReq::set_ip_addr(const ::std::string& value) {
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:sysinfo.GetNameAndIpInfoReq.ip_addr)
-}
-#if LANG_CXX11
-inline void GetNameAndIpInfoReq::set_ip_addr(::std::string&& value) {
-  
-  ip_addr_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetNameAndIpInfoReq.ip_addr)
-}
-#endif
-inline void GetNameAndIpInfoReq::set_ip_addr(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:sysinfo.GetNameAndIpInfoReq.ip_addr)
-}
-inline void GetNameAndIpInfoReq::set_ip_addr(const char* value, size_t size) {
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetNameAndIpInfoReq.ip_addr)
-}
-inline ::std::string* GetNameAndIpInfoReq::mutable_ip_addr() {
-  
-  // @@protoc_insertion_point(field_mutable:sysinfo.GetNameAndIpInfoReq.ip_addr)
-  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* GetNameAndIpInfoReq::release_ip_addr() {
-  // @@protoc_insertion_point(field_release:sysinfo.GetNameAndIpInfoReq.ip_addr)
-  
-  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void GetNameAndIpInfoReq::set_allocated_ip_addr(::std::string* ip_addr) {
-  if (ip_addr != NULL) {
-    
-  } else {
-    
-  }
-  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
-  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetNameAndIpInfoReq.ip_addr)
-}
-
-// -------------------------------------------------------------------
-
-// GetNameAndIpInfoRsp
-
-// string host_name = 1;
-inline void GetNameAndIpInfoRsp::clear_host_name() {
-  host_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& GetNameAndIpInfoRsp::host_name() const {
-  // @@protoc_insertion_point(field_get:sysinfo.GetNameAndIpInfoRsp.host_name)
-  return host_name_.GetNoArena();
-}
-inline void GetNameAndIpInfoRsp::set_host_name(const ::std::string& value) {
-  
-  host_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:sysinfo.GetNameAndIpInfoRsp.host_name)
-}
-#if LANG_CXX11
-inline void GetNameAndIpInfoRsp::set_host_name(::std::string&& value) {
-  
-  host_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetNameAndIpInfoRsp.host_name)
-}
-#endif
-inline void GetNameAndIpInfoRsp::set_host_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  host_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:sysinfo.GetNameAndIpInfoRsp.host_name)
-}
-inline void GetNameAndIpInfoRsp::set_host_name(const char* value, size_t size) {
-  
-  host_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetNameAndIpInfoRsp.host_name)
-}
-inline ::std::string* GetNameAndIpInfoRsp::mutable_host_name() {
-  
-  // @@protoc_insertion_point(field_mutable:sysinfo.GetNameAndIpInfoRsp.host_name)
-  return host_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* GetNameAndIpInfoRsp::release_host_name() {
-  // @@protoc_insertion_point(field_release:sysinfo.GetNameAndIpInfoRsp.host_name)
-  
-  return host_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void GetNameAndIpInfoRsp::set_allocated_host_name(::std::string* host_name) {
-  if (host_name != NULL) {
-    
-  } else {
-    
-  }
-  host_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), host_name);
-  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetNameAndIpInfoRsp.host_name)
-}
-
-// string ip_info = 2;
-inline void GetNameAndIpInfoRsp::clear_ip_info() {
-  ip_info_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& GetNameAndIpInfoRsp::ip_info() const {
-  // @@protoc_insertion_point(field_get:sysinfo.GetNameAndIpInfoRsp.ip_info)
-  return ip_info_.GetNoArena();
-}
-inline void GetNameAndIpInfoRsp::set_ip_info(const ::std::string& value) {
-  
-  ip_info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:sysinfo.GetNameAndIpInfoRsp.ip_info)
-}
-#if LANG_CXX11
-inline void GetNameAndIpInfoRsp::set_ip_info(::std::string&& value) {
-  
-  ip_info_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetNameAndIpInfoRsp.ip_info)
-}
-#endif
-inline void GetNameAndIpInfoRsp::set_ip_info(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  ip_info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:sysinfo.GetNameAndIpInfoRsp.ip_info)
-}
-inline void GetNameAndIpInfoRsp::set_ip_info(const char* value, size_t size) {
-  
-  ip_info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetNameAndIpInfoRsp.ip_info)
-}
-inline ::std::string* GetNameAndIpInfoRsp::mutable_ip_info() {
-  
-  // @@protoc_insertion_point(field_mutable:sysinfo.GetNameAndIpInfoRsp.ip_info)
-  return ip_info_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* GetNameAndIpInfoRsp::release_ip_info() {
-  // @@protoc_insertion_point(field_release:sysinfo.GetNameAndIpInfoRsp.ip_info)
-  
-  return ip_info_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void GetNameAndIpInfoRsp::set_allocated_ip_info(::std::string* ip_info) {
-  if (ip_info != NULL) {
-    
-  } else {
-    
-  }
-  ip_info_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_info);
-  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetNameAndIpInfoRsp.ip_info)
-}
-
-// -------------------------------------------------------------------
-
 // GetDeviceInfoReq
 
 // string ip_addr = 1;
@@ -4500,10 +4092,6 @@ inline void GetEthCtrlInfoRsp::set_allocated_eth_ctrl_info(::std::string* eth_ct
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

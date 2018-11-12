@@ -19,15 +19,6 @@ using grpc::Status;
 
 using raltservice::RaltService;
 
-//system info
-using raltservice::GetCpuUsageReq;
-using raltservice::GetCpuUsageRsp;
-using raltservice::GetCpuTempReq;
-using raltservice::GetCpuTempRsp;
-using raltservice::GetMemUsageReq;
-using raltservice::GetMemUsageRsp;
-using raltservice::GetNicInfoReq;
-using raltservice::GetNicInfoRsp;
 //home page
 using raltservice::HomePageReq;
 using raltservice::HomePageRsp;
@@ -76,20 +67,7 @@ using raltservice::ExecCmdRsp;
 using namespace std;
 
 class RaltServiceImpl final : public RaltService::Service {
-public:
-	//system info
-	Status getCpuUsage (ServerContext* context, const GetCpuUsageReq* request,
-                  GetCpuUsageRsp* reply) override;
-	
-	Status getCpuTemp (ServerContext* context, const GetCpuTempReq* request,
-                  GetCpuTempRsp* reply) override;
-	
-	Status getMemUsage (ServerContext* context, const GetMemUsageReq* request,
-                  GetMemUsageRsp* reply) override;
-	
-	Status getNicInfo (ServerContext* context, const GetNicInfoReq* request,
-                  GetNicInfoRsp* reply) override;
-	
+public:	
 	//stats
 	Status getStatsFieldValue (ServerContext* context, const StatsFieldName* request,
                   StatsFieldValue* reply) override;

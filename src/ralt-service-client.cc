@@ -19,8 +19,6 @@ using grpc::Status;
 
 using sysinfo::SysInfo;
 //system info
-using sysinfo::GetNameAndIpInfoReq;
-using sysinfo::GetNameAndIpInfoRsp;
 using sysinfo::GetDeviceInfoReq;
 using sysinfo::GetDeviceInfoRsp;
 using sysinfo::GetCpuUsageReq;
@@ -96,23 +94,6 @@ class RaltServiceClient {
 	public:
 		RaltServiceClient(std::shared_ptr<Channel> channel)
 			: stub_ralt(RaltService::NewStub(channel)), stub_sys(SysInfo::NewStub(channel)) {}
-
-		void getNameAndIpInfo(){
-			ClientContext context;
-
-			// The actual RPC.
-			GetNameAndIpInfoReq request;
-			// Container for the data we expect from the server.
-			GetNameAndIpInfoRsp reply;
-			Status status = stub_sys->getNameAndIpInfo(&context, request, &reply);
-			// Act upon its cacheStatus.
-			if (status.ok()) {
-				std::cout << "host name: " << std::endl << reply.host_name() << std::endl;
-				std::cout << "ip info: " << std::endl << reply.ip_info() << std::endl;
-			} else {
-				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-			}
-		}
 
 		void getDeviceInfo(){
 			ClientContext context;
@@ -632,8 +613,7 @@ int main(int argc, char** argv) {
 	//client.getRaltStatus();
 	//client.execCmd();
 
-	client.getNameAndIpInfo();
-	//client.getDeviceInfo();
+	client.getDeviceInfo();
 	//client.getCpuUsage();
 	//client.getCpuTemp();
 	//client.getMemUsage();

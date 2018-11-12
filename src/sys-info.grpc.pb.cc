@@ -16,7 +16,6 @@
 namespace sysinfo {
 
 static const char* SysInfo_method_names[] = {
-  "/sysinfo.SysInfo/getNameAndIpInfo",
   "/sysinfo.SysInfo/getDeviceInfo",
   "/sysinfo.SysInfo/getCpuUsage",
   "/sysinfo.SysInfo/getCpuTemp",
@@ -36,31 +35,18 @@ std::unique_ptr< SysInfo::Stub> SysInfo::NewStub(const std::shared_ptr< ::grpc::
 }
 
 SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
-  : channel_(channel), rpcmethod_getNameAndIpInfo_(SysInfo_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getDeviceInfo_(SysInfo_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getCpuUsage_(SysInfo_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getCpuTemp_(SysInfo_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getMemUsage_(SysInfo_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getNicInfo_(SysInfo_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getHostName_(SysInfo_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getIpInfo_(SysInfo_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getCpuModel_(SysInfo_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getCpuCores_(SysInfo_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getMemTotal_(SysInfo_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getEthCtrlInfo_(SysInfo_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_getDeviceInfo_(SysInfo_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getCpuUsage_(SysInfo_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getCpuTemp_(SysInfo_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getMemUsage_(SysInfo_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getNicInfo_(SysInfo_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getHostName_(SysInfo_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getIpInfo_(SysInfo_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getCpuModel_(SysInfo_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getCpuCores_(SysInfo_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getMemTotal_(SysInfo_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getEthCtrlInfo_(SysInfo_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
-
-::grpc::Status SysInfo::Stub::getNameAndIpInfo(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::sysinfo::GetNameAndIpInfoRsp* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getNameAndIpInfo_, context, request, response);
-}
-
-::grpc::ClientAsyncResponseReader< ::sysinfo::GetNameAndIpInfoRsp>* SysInfo::Stub::AsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetNameAndIpInfoRsp>::Create(channel_.get(), cq, rpcmethod_getNameAndIpInfo_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::sysinfo::GetNameAndIpInfoRsp>* SysInfo::Stub::PrepareAsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetNameAndIpInfoRsp>::Create(channel_.get(), cq, rpcmethod_getNameAndIpInfo_, context, request, false);
-}
 
 ::grpc::Status SysInfo::Stub::getDeviceInfo(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::sysinfo::GetDeviceInfoRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getDeviceInfo_, context, request, response);
@@ -198,73 +184,61 @@ SysInfo::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SysInfo_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetNameAndIpInfoReq, ::sysinfo::GetNameAndIpInfoRsp>(
-          std::mem_fn(&SysInfo::Service::getNameAndIpInfo), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[1],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetDeviceInfoReq, ::sysinfo::GetDeviceInfoRsp>(
           std::mem_fn(&SysInfo::Service::getDeviceInfo), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[2],
+      SysInfo_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetCpuUsageReq, ::sysinfo::GetCpuUsageRsp>(
           std::mem_fn(&SysInfo::Service::getCpuUsage), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[3],
+      SysInfo_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetCpuTempReq, ::sysinfo::GetCpuTempRsp>(
           std::mem_fn(&SysInfo::Service::getCpuTemp), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[4],
+      SysInfo_method_names[3],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetMemUsageReq, ::sysinfo::GetMemUsageRsp>(
           std::mem_fn(&SysInfo::Service::getMemUsage), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[5],
+      SysInfo_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetNicInfoReq, ::sysinfo::GetNicInfoRsp>(
           std::mem_fn(&SysInfo::Service::getNicInfo), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[6],
+      SysInfo_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetHostNameReq, ::sysinfo::GetHostNameRsp>(
           std::mem_fn(&SysInfo::Service::getHostName), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[7],
+      SysInfo_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetIpInfoReq, ::sysinfo::GetIpInfoRsp>(
           std::mem_fn(&SysInfo::Service::getIpInfo), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[8],
+      SysInfo_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetCpuModelReq, ::sysinfo::GetCpuModelRsp>(
           std::mem_fn(&SysInfo::Service::getCpuModel), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[9],
+      SysInfo_method_names[8],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetCpuCoresReq, ::sysinfo::GetCpuCoresRsp>(
           std::mem_fn(&SysInfo::Service::getCpuCores), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[10],
+      SysInfo_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetMemTotalReq, ::sysinfo::GetMemTotalRsp>(
           std::mem_fn(&SysInfo::Service::getMemTotal), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SysInfo_method_names[11],
+      SysInfo_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SysInfo::Service, ::sysinfo::GetEthCtrlInfoReq, ::sysinfo::GetEthCtrlInfoRsp>(
           std::mem_fn(&SysInfo::Service::getEthCtrlInfo), this)));
 }
 
 SysInfo::Service::~Service() {
-}
-
-::grpc::Status SysInfo::Service::getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
 ::grpc::Status SysInfo::Service::getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) {

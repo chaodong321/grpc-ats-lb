@@ -5,21 +5,17 @@
 #include "ralt-service.pb.h"
 #include "ralt-service.grpc.pb.h"
 
-#include <grpcpp/impl/codegen/async_stream.h>
-#include <grpcpp/impl/codegen/async_unary_call.h>
-#include <grpcpp/impl/codegen/channel_interface.h>
-#include <grpcpp/impl/codegen/client_unary_call.h>
-#include <grpcpp/impl/codegen/method_handler_impl.h>
-#include <grpcpp/impl/codegen/rpc_service_method.h>
-#include <grpcpp/impl/codegen/service_type.h>
-#include <grpcpp/impl/codegen/sync_stream.h>
+#include <grpc++/impl/codegen/async_stream.h>
+#include <grpc++/impl/codegen/async_unary_call.h>
+#include <grpc++/impl/codegen/channel_interface.h>
+#include <grpc++/impl/codegen/client_unary_call.h>
+#include <grpc++/impl/codegen/method_handler_impl.h>
+#include <grpc++/impl/codegen/rpc_service_method.h>
+#include <grpc++/impl/codegen/service_type.h>
+#include <grpc++/impl/codegen/sync_stream.h>
 namespace raltservice {
 
 static const char* RaltService_method_names[] = {
-  "/raltservice.RaltService/getCpuUsage",
-  "/raltservice.RaltService/getCpuTemp",
-  "/raltservice.RaltService/getMemUsage",
-  "/raltservice.RaltService/getNicInfo",
   "/raltservice.RaltService/getStatsFieldValue",
   "/raltservice.RaltService/getHomePageData",
   "/raltservice.RaltService/showCacheData",
@@ -40,82 +36,29 @@ static const char* RaltService_method_names[] = {
 };
 
 std::unique_ptr< RaltService::Stub> RaltService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
-  (void)options;
   std::unique_ptr< RaltService::Stub> stub(new RaltService::Stub(channel));
   return stub;
 }
 
 RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
-  : channel_(channel), rpcmethod_getCpuUsage_(RaltService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getCpuTemp_(RaltService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getMemUsage_(RaltService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getNicInfo_(RaltService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getStatsFieldValue_(RaltService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getHomePageData_(RaltService_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_showCacheData_(RaltService_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_showFlowStatData_(RaltService_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_showLogInfoData_(RaltService_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getRaltLogs_(RaltService_method_names[9], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_getRecordConfig_(RaltService_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_setRecordConfig_(RaltService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getAllDomain_(RaltService_method_names[12], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_updateDomain_(RaltService_method_names[13], ::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
-  , rpcmethod_getDomain_(RaltService_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_addDomain_(RaltService_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_deleteDomain_(RaltService_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getMisc_(RaltService_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_modMisc_(RaltService_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getRaltStatus_(RaltService_method_names[19], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_execCmd_(RaltService_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_getStatsFieldValue_(RaltService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getHomePageData_(RaltService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_showCacheData_(RaltService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_showFlowStatData_(RaltService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_showLogInfoData_(RaltService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getRaltLogs_(RaltService_method_names[5], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_getRecordConfig_(RaltService_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_setRecordConfig_(RaltService_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getAllDomain_(RaltService_method_names[8], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_updateDomain_(RaltService_method_names[9], ::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
+  , rpcmethod_getDomain_(RaltService_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_addDomain_(RaltService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_deleteDomain_(RaltService_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getMisc_(RaltService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_modMisc_(RaltService_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getRaltStatus_(RaltService_method_names[15], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_execCmd_(RaltService_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
-
-::grpc::Status RaltService::Stub::getCpuUsage(::grpc::ClientContext* context, const ::raltservice::GetCpuUsageReq& request, ::raltservice::GetCpuUsageRsp* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getCpuUsage_, context, request, response);
-}
-
-::grpc::ClientAsyncResponseReader< ::raltservice::GetCpuUsageRsp>* RaltService::Stub::AsyncgetCpuUsageRaw(::grpc::ClientContext* context, const ::raltservice::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetCpuUsageRsp>::Create(channel_.get(), cq, rpcmethod_getCpuUsage_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::raltservice::GetCpuUsageRsp>* RaltService::Stub::PrepareAsyncgetCpuUsageRaw(::grpc::ClientContext* context, const ::raltservice::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetCpuUsageRsp>::Create(channel_.get(), cq, rpcmethod_getCpuUsage_, context, request, false);
-}
-
-::grpc::Status RaltService::Stub::getCpuTemp(::grpc::ClientContext* context, const ::raltservice::GetCpuTempReq& request, ::raltservice::GetCpuTempRsp* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getCpuTemp_, context, request, response);
-}
-
-::grpc::ClientAsyncResponseReader< ::raltservice::GetCpuTempRsp>* RaltService::Stub::AsyncgetCpuTempRaw(::grpc::ClientContext* context, const ::raltservice::GetCpuTempReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetCpuTempRsp>::Create(channel_.get(), cq, rpcmethod_getCpuTemp_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::raltservice::GetCpuTempRsp>* RaltService::Stub::PrepareAsyncgetCpuTempRaw(::grpc::ClientContext* context, const ::raltservice::GetCpuTempReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetCpuTempRsp>::Create(channel_.get(), cq, rpcmethod_getCpuTemp_, context, request, false);
-}
-
-::grpc::Status RaltService::Stub::getMemUsage(::grpc::ClientContext* context, const ::raltservice::GetMemUsageReq& request, ::raltservice::GetMemUsageRsp* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getMemUsage_, context, request, response);
-}
-
-::grpc::ClientAsyncResponseReader< ::raltservice::GetMemUsageRsp>* RaltService::Stub::AsyncgetMemUsageRaw(::grpc::ClientContext* context, const ::raltservice::GetMemUsageReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetMemUsageRsp>::Create(channel_.get(), cq, rpcmethod_getMemUsage_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::raltservice::GetMemUsageRsp>* RaltService::Stub::PrepareAsyncgetMemUsageRaw(::grpc::ClientContext* context, const ::raltservice::GetMemUsageReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetMemUsageRsp>::Create(channel_.get(), cq, rpcmethod_getMemUsage_, context, request, false);
-}
-
-::grpc::Status RaltService::Stub::getNicInfo(::grpc::ClientContext* context, const ::raltservice::GetNicInfoReq& request, ::raltservice::GetNicInfoRsp* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getNicInfo_, context, request, response);
-}
-
-::grpc::ClientAsyncResponseReader< ::raltservice::GetNicInfoRsp>* RaltService::Stub::AsyncgetNicInfoRaw(::grpc::ClientContext* context, const ::raltservice::GetNicInfoReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetNicInfoRsp>::Create(channel_.get(), cq, rpcmethod_getNicInfo_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::raltservice::GetNicInfoRsp>* RaltService::Stub::PrepareAsyncgetNicInfoRaw(::grpc::ClientContext* context, const ::raltservice::GetNicInfoReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetNicInfoRsp>::Create(channel_.get(), cq, rpcmethod_getNicInfo_, context, request, false);
-}
 
 ::grpc::Status RaltService::Stub::getStatsFieldValue(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::raltservice::StatsFieldValue* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getStatsFieldValue_, context, request, response);
@@ -325,139 +268,91 @@ RaltService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RaltService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetCpuUsageReq, ::raltservice::GetCpuUsageRsp>(
-          std::mem_fn(&RaltService::Service::getCpuUsage), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[1],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetCpuTempReq, ::raltservice::GetCpuTempRsp>(
-          std::mem_fn(&RaltService::Service::getCpuTemp), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[2],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetMemUsageReq, ::raltservice::GetMemUsageRsp>(
-          std::mem_fn(&RaltService::Service::getMemUsage), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[3],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetNicInfoReq, ::raltservice::GetNicInfoRsp>(
-          std::mem_fn(&RaltService::Service::getNicInfo), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[4],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::StatsFieldName, ::raltservice::StatsFieldValue>(
           std::mem_fn(&RaltService::Service::getStatsFieldValue), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[5],
+      RaltService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::HomePageReq, ::raltservice::HomePageRsp>(
           std::mem_fn(&RaltService::Service::getHomePageData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[6],
+      RaltService_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::CacheLookUpReq, ::raltservice::CacheResult>(
           std::mem_fn(&RaltService::Service::showCacheData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[7],
+      RaltService_method_names[3],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::FlowStatLookUpReq, ::raltservice::FlowResult>(
           std::mem_fn(&RaltService::Service::showFlowStatData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[8],
+      RaltService_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::LogInfoLookUpReq, ::raltservice::LogResult>(
           std::mem_fn(&RaltService::Service::showLogInfoData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[9],
+      RaltService_method_names[5],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< RaltService::Service, ::raltservice::GetRaltLogsReq, ::raltservice::RaltLogs>(
           std::mem_fn(&RaltService::Service::getRaltLogs), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[10],
+      RaltService_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetRecordCfgReq, ::raltservice::GetRecordCfgRsp>(
           std::mem_fn(&RaltService::Service::getRecordConfig), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[11],
+      RaltService_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::SetRecordCfgReq, ::raltservice::SetRecordCfgRsp>(
           std::mem_fn(&RaltService::Service::setRecordConfig), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[12],
+      RaltService_method_names[8],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< RaltService::Service, ::raltservice::GetAllDomainReq, ::raltservice::Domain>(
           std::mem_fn(&RaltService::Service::getAllDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[13],
+      RaltService_method_names[9],
       ::grpc::internal::RpcMethod::CLIENT_STREAMING,
       new ::grpc::internal::ClientStreamingHandler< RaltService::Service, ::raltservice::Domain, ::raltservice::UpdateDomainRsp>(
           std::mem_fn(&RaltService::Service::updateDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[14],
+      RaltService_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetDomainReq, ::raltservice::Domain>(
           std::mem_fn(&RaltService::Service::getDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[15],
+      RaltService_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::Domain, ::raltservice::AddDomainRsp>(
           std::mem_fn(&RaltService::Service::addDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[16],
+      RaltService_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::DeleteDomainReq, ::raltservice::DeleteDomainRsp>(
           std::mem_fn(&RaltService::Service::deleteDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[17],
+      RaltService_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetMiscReq, ::raltservice::GetMiscRsp>(
           std::mem_fn(&RaltService::Service::getMisc), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[18],
+      RaltService_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::Misc, ::raltservice::ModMiscOpRsp>(
           std::mem_fn(&RaltService::Service::modMisc), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[19],
+      RaltService_method_names[15],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< RaltService::Service, ::raltservice::RaltStatusReq, ::raltservice::RaltStatus>(
           std::mem_fn(&RaltService::Service::getRaltStatus), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[20],
+      RaltService_method_names[16],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::ExecCmdReq, ::raltservice::ExecCmdRsp>(
           std::mem_fn(&RaltService::Service::execCmd), this)));
 }
 
 RaltService::Service::~Service() {
-}
-
-::grpc::Status RaltService::Service::getCpuUsage(::grpc::ServerContext* context, const ::raltservice::GetCpuUsageReq* request, ::raltservice::GetCpuUsageRsp* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status RaltService::Service::getCpuTemp(::grpc::ServerContext* context, const ::raltservice::GetCpuTempReq* request, ::raltservice::GetCpuTempRsp* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status RaltService::Service::getMemUsage(::grpc::ServerContext* context, const ::raltservice::GetMemUsageReq* request, ::raltservice::GetMemUsageRsp* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status RaltService::Service::getNicInfo(::grpc::ServerContext* context, const ::raltservice::GetNicInfoReq* request, ::raltservice::GetNicInfoRsp* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
 ::grpc::Status RaltService::Service::getStatsFieldValue(::grpc::ServerContext* context, const ::raltservice::StatsFieldName* request, ::raltservice::StatsFieldValue* response) {

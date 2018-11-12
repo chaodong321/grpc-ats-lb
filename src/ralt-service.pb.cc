@@ -7,6 +7,7 @@
 
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/stubs/port.h>
+#include <google/protobuf/stubs/once.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
@@ -18,48 +19,7 @@
 #include "third_party/protobuf/version.h"
 #endif
 // @@protoc_insertion_point(includes)
-
 namespace raltservice {
-class GetCpuUsageReqDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetCpuUsageReq>
-      _instance;
-} _GetCpuUsageReq_default_instance_;
-class GetCpuUsageRspDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetCpuUsageRsp>
-      _instance;
-} _GetCpuUsageRsp_default_instance_;
-class GetCpuTempReqDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetCpuTempReq>
-      _instance;
-} _GetCpuTempReq_default_instance_;
-class GetCpuTempRspDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetCpuTempRsp>
-      _instance;
-} _GetCpuTempRsp_default_instance_;
-class GetMemUsageReqDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetMemUsageReq>
-      _instance;
-} _GetMemUsageReq_default_instance_;
-class GetMemUsageRspDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetMemUsageRsp>
-      _instance;
-} _GetMemUsageRsp_default_instance_;
-class GetNicInfoReqDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetNicInfoReq>
-      _instance;
-} _GetNicInfoReq_default_instance_;
-class GetNicInfoRspDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetNicInfoRsp>
-      _instance;
-} _GetNicInfoRsp_default_instance_;
 class StatsFieldNameDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<StatsFieldName>
@@ -217,121 +177,14 @@ class ExecCmdRspDefaultTypeInternal {
 } _ExecCmdRsp_default_instance_;
 }  // namespace raltservice
 namespace protobuf_ralt_2dservice_2eproto {
-static void InitDefaultsGetCpuUsageReq() {
+void InitDefaultsStatsFieldNameImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  {
-    void* ptr = &::raltservice::_GetCpuUsageReq_default_instance_;
-    new (ptr) ::raltservice::GetCpuUsageReq();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::raltservice::GetCpuUsageReq::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuUsageReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuUsageReq}, {}};
-
-static void InitDefaultsGetCpuUsageRsp() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::raltservice::_GetCpuUsageRsp_default_instance_;
-    new (ptr) ::raltservice::GetCpuUsageRsp();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::raltservice::GetCpuUsageRsp::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuUsageRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuUsageRsp}, {}};
-
-static void InitDefaultsGetCpuTempReq() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::raltservice::_GetCpuTempReq_default_instance_;
-    new (ptr) ::raltservice::GetCpuTempReq();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::raltservice::GetCpuTempReq::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuTempReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuTempReq}, {}};
-
-static void InitDefaultsGetCpuTempRsp() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::raltservice::_GetCpuTempRsp_default_instance_;
-    new (ptr) ::raltservice::GetCpuTempRsp();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::raltservice::GetCpuTempRsp::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuTempRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuTempRsp}, {}};
-
-static void InitDefaultsGetMemUsageReq() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::raltservice::_GetMemUsageReq_default_instance_;
-    new (ptr) ::raltservice::GetMemUsageReq();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::raltservice::GetMemUsageReq::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_GetMemUsageReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetMemUsageReq}, {}};
-
-static void InitDefaultsGetMemUsageRsp() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::raltservice::_GetMemUsageRsp_default_instance_;
-    new (ptr) ::raltservice::GetMemUsageRsp();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::raltservice::GetMemUsageRsp::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_GetMemUsageRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetMemUsageRsp}, {}};
-
-static void InitDefaultsGetNicInfoReq() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::raltservice::_GetNicInfoReq_default_instance_;
-    new (ptr) ::raltservice::GetNicInfoReq();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::raltservice::GetNicInfoReq::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_GetNicInfoReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetNicInfoReq}, {}};
-
-static void InitDefaultsGetNicInfoRsp() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::raltservice::_GetNicInfoRsp_default_instance_;
-    new (ptr) ::raltservice::GetNicInfoRsp();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::raltservice::GetNicInfoRsp::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_GetNicInfoRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetNicInfoRsp}, {}};
-
-static void InitDefaultsStatsFieldName() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_StatsFieldName_default_instance_;
     new (ptr) ::raltservice::StatsFieldName();
@@ -340,12 +193,19 @@ static void InitDefaultsStatsFieldName() {
   ::raltservice::StatsFieldName::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_StatsFieldName =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsStatsFieldName}, {}};
+void InitDefaultsStatsFieldName() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsStatsFieldNameImpl);
+}
 
-static void InitDefaultsStatsFieldValue() {
+void InitDefaultsStatsFieldValueImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_StatsFieldValue_default_instance_;
     new (ptr) ::raltservice::StatsFieldValue();
@@ -354,12 +214,19 @@ static void InitDefaultsStatsFieldValue() {
   ::raltservice::StatsFieldValue::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_StatsFieldValue =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsStatsFieldValue}, {}};
+void InitDefaultsStatsFieldValue() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsStatsFieldValueImpl);
+}
 
-static void InitDefaultsHomePageReq() {
+void InitDefaultsHomePageReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_HomePageReq_default_instance_;
     new (ptr) ::raltservice::HomePageReq();
@@ -368,12 +235,19 @@ static void InitDefaultsHomePageReq() {
   ::raltservice::HomePageReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_HomePageReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsHomePageReq}, {}};
+void InitDefaultsHomePageReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsHomePageReqImpl);
+}
 
-static void InitDefaultsHomePageRsp() {
+void InitDefaultsHomePageRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_HomePageRsp_default_instance_;
     new (ptr) ::raltservice::HomePageRsp();
@@ -382,12 +256,19 @@ static void InitDefaultsHomePageRsp() {
   ::raltservice::HomePageRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_HomePageRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsHomePageRsp}, {}};
+void InitDefaultsHomePageRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsHomePageRspImpl);
+}
 
-static void InitDefaultsCacheLookUpReq() {
+void InitDefaultsCacheLookUpReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_CacheLookUpReq_default_instance_;
     new (ptr) ::raltservice::CacheLookUpReq();
@@ -396,12 +277,19 @@ static void InitDefaultsCacheLookUpReq() {
   ::raltservice::CacheLookUpReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_CacheLookUpReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCacheLookUpReq}, {}};
+void InitDefaultsCacheLookUpReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsCacheLookUpReqImpl);
+}
 
-static void InitDefaultsFlowStatLookUpReq() {
+void InitDefaultsFlowStatLookUpReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_FlowStatLookUpReq_default_instance_;
     new (ptr) ::raltservice::FlowStatLookUpReq();
@@ -410,12 +298,19 @@ static void InitDefaultsFlowStatLookUpReq() {
   ::raltservice::FlowStatLookUpReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_FlowStatLookUpReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsFlowStatLookUpReq}, {}};
+void InitDefaultsFlowStatLookUpReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsFlowStatLookUpReqImpl);
+}
 
-static void InitDefaultsLogInfoLookUpReq() {
+void InitDefaultsLogInfoLookUpReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_LogInfoLookUpReq_default_instance_;
     new (ptr) ::raltservice::LogInfoLookUpReq();
@@ -424,12 +319,19 @@ static void InitDefaultsLogInfoLookUpReq() {
   ::raltservice::LogInfoLookUpReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_LogInfoLookUpReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLogInfoLookUpReq}, {}};
+void InitDefaultsLogInfoLookUpReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsLogInfoLookUpReqImpl);
+}
 
-static void InitDefaultsCacheResult() {
+void InitDefaultsCacheResultImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_CacheResult_default_instance_;
     new (ptr) ::raltservice::CacheResult();
@@ -438,12 +340,19 @@ static void InitDefaultsCacheResult() {
   ::raltservice::CacheResult::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_CacheResult =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCacheResult}, {}};
+void InitDefaultsCacheResult() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsCacheResultImpl);
+}
 
-static void InitDefaultsFlowResult() {
+void InitDefaultsFlowResultImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_FlowResult_default_instance_;
     new (ptr) ::raltservice::FlowResult();
@@ -452,12 +361,19 @@ static void InitDefaultsFlowResult() {
   ::raltservice::FlowResult::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_FlowResult =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsFlowResult}, {}};
+void InitDefaultsFlowResult() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsFlowResultImpl);
+}
 
-static void InitDefaultsLogResult() {
+void InitDefaultsLogResultImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_LogResult_default_instance_;
     new (ptr) ::raltservice::LogResult();
@@ -466,12 +382,19 @@ static void InitDefaultsLogResult() {
   ::raltservice::LogResult::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_LogResult =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLogResult}, {}};
+void InitDefaultsLogResult() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsLogResultImpl);
+}
 
-static void InitDefaultsGetRaltLogsReq() {
+void InitDefaultsGetRaltLogsReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_GetRaltLogsReq_default_instance_;
     new (ptr) ::raltservice::GetRaltLogsReq();
@@ -480,12 +403,19 @@ static void InitDefaultsGetRaltLogsReq() {
   ::raltservice::GetRaltLogsReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_GetRaltLogsReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetRaltLogsReq}, {}};
+void InitDefaultsGetRaltLogsReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetRaltLogsReqImpl);
+}
 
-static void InitDefaultsRaltLogs() {
+void InitDefaultsRaltLogsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_RaltLogs_default_instance_;
     new (ptr) ::raltservice::RaltLogs();
@@ -494,12 +424,19 @@ static void InitDefaultsRaltLogs() {
   ::raltservice::RaltLogs::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_RaltLogs =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRaltLogs}, {}};
+void InitDefaultsRaltLogs() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsRaltLogsImpl);
+}
 
-static void InitDefaultsGetRecordCfgReq() {
+void InitDefaultsGetRecordCfgReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_GetRecordCfgReq_default_instance_;
     new (ptr) ::raltservice::GetRecordCfgReq();
@@ -508,12 +445,19 @@ static void InitDefaultsGetRecordCfgReq() {
   ::raltservice::GetRecordCfgReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_GetRecordCfgReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetRecordCfgReq}, {}};
+void InitDefaultsGetRecordCfgReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetRecordCfgReqImpl);
+}
 
-static void InitDefaultsGetRecordCfgRsp() {
+void InitDefaultsGetRecordCfgRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_GetRecordCfgRsp_default_instance_;
     new (ptr) ::raltservice::GetRecordCfgRsp();
@@ -522,12 +466,19 @@ static void InitDefaultsGetRecordCfgRsp() {
   ::raltservice::GetRecordCfgRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_GetRecordCfgRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetRecordCfgRsp}, {}};
+void InitDefaultsGetRecordCfgRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetRecordCfgRspImpl);
+}
 
-static void InitDefaultsSetRecordCfgReq() {
+void InitDefaultsSetRecordCfgReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_SetRecordCfgReq_default_instance_;
     new (ptr) ::raltservice::SetRecordCfgReq();
@@ -536,12 +487,19 @@ static void InitDefaultsSetRecordCfgReq() {
   ::raltservice::SetRecordCfgReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_SetRecordCfgReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSetRecordCfgReq}, {}};
+void InitDefaultsSetRecordCfgReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsSetRecordCfgReqImpl);
+}
 
-static void InitDefaultsSetRecordCfgRsp() {
+void InitDefaultsSetRecordCfgRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_SetRecordCfgRsp_default_instance_;
     new (ptr) ::raltservice::SetRecordCfgRsp();
@@ -550,12 +508,19 @@ static void InitDefaultsSetRecordCfgRsp() {
   ::raltservice::SetRecordCfgRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_SetRecordCfgRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSetRecordCfgRsp}, {}};
+void InitDefaultsSetRecordCfgRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsSetRecordCfgRspImpl);
+}
 
-static void InitDefaultsGetAllDomainReq() {
+void InitDefaultsGetAllDomainReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_GetAllDomainReq_default_instance_;
     new (ptr) ::raltservice::GetAllDomainReq();
@@ -564,12 +529,19 @@ static void InitDefaultsGetAllDomainReq() {
   ::raltservice::GetAllDomainReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_GetAllDomainReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetAllDomainReq}, {}};
+void InitDefaultsGetAllDomainReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetAllDomainReqImpl);
+}
 
-static void InitDefaultsDomain() {
+void InitDefaultsDomainImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_Domain_default_instance_;
     new (ptr) ::raltservice::Domain();
@@ -578,12 +550,19 @@ static void InitDefaultsDomain() {
   ::raltservice::Domain::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Domain =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDomain}, {}};
+void InitDefaultsDomain() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsDomainImpl);
+}
 
-static void InitDefaultsUpdateDomainRsp() {
+void InitDefaultsUpdateDomainRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_UpdateDomainRsp_default_instance_;
     new (ptr) ::raltservice::UpdateDomainRsp();
@@ -592,12 +571,19 @@ static void InitDefaultsUpdateDomainRsp() {
   ::raltservice::UpdateDomainRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_UpdateDomainRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsUpdateDomainRsp}, {}};
+void InitDefaultsUpdateDomainRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsUpdateDomainRspImpl);
+}
 
-static void InitDefaultsGetDomainReq() {
+void InitDefaultsGetDomainReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_GetDomainReq_default_instance_;
     new (ptr) ::raltservice::GetDomainReq();
@@ -606,12 +592,19 @@ static void InitDefaultsGetDomainReq() {
   ::raltservice::GetDomainReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_GetDomainReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetDomainReq}, {}};
+void InitDefaultsGetDomainReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetDomainReqImpl);
+}
 
-static void InitDefaultsAddDomainRsp() {
+void InitDefaultsAddDomainRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_AddDomainRsp_default_instance_;
     new (ptr) ::raltservice::AddDomainRsp();
@@ -620,12 +613,19 @@ static void InitDefaultsAddDomainRsp() {
   ::raltservice::AddDomainRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_AddDomainRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAddDomainRsp}, {}};
+void InitDefaultsAddDomainRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsAddDomainRspImpl);
+}
 
-static void InitDefaultsDeleteDomainReq() {
+void InitDefaultsDeleteDomainReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_DeleteDomainReq_default_instance_;
     new (ptr) ::raltservice::DeleteDomainReq();
@@ -634,12 +634,19 @@ static void InitDefaultsDeleteDomainReq() {
   ::raltservice::DeleteDomainReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_DeleteDomainReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDeleteDomainReq}, {}};
+void InitDefaultsDeleteDomainReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsDeleteDomainReqImpl);
+}
 
-static void InitDefaultsDeleteDomainRsp() {
+void InitDefaultsDeleteDomainRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_DeleteDomainRsp_default_instance_;
     new (ptr) ::raltservice::DeleteDomainRsp();
@@ -648,12 +655,19 @@ static void InitDefaultsDeleteDomainRsp() {
   ::raltservice::DeleteDomainRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_DeleteDomainRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDeleteDomainRsp}, {}};
+void InitDefaultsDeleteDomainRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsDeleteDomainRspImpl);
+}
 
-static void InitDefaultsGetMiscReq() {
+void InitDefaultsGetMiscReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_GetMiscReq_default_instance_;
     new (ptr) ::raltservice::GetMiscReq();
@@ -662,12 +676,19 @@ static void InitDefaultsGetMiscReq() {
   ::raltservice::GetMiscReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_GetMiscReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetMiscReq}, {}};
+void InitDefaultsGetMiscReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetMiscReqImpl);
+}
 
-static void InitDefaultsGetMiscRsp() {
+void InitDefaultsGetMiscRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_GetMiscRsp_default_instance_;
     new (ptr) ::raltservice::GetMiscRsp();
@@ -676,12 +697,19 @@ static void InitDefaultsGetMiscRsp() {
   ::raltservice::GetMiscRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_GetMiscRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetMiscRsp}, {}};
+void InitDefaultsGetMiscRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetMiscRspImpl);
+}
 
-static void InitDefaultsMisc() {
+void InitDefaultsMiscImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_Misc_default_instance_;
     new (ptr) ::raltservice::Misc();
@@ -690,12 +718,19 @@ static void InitDefaultsMisc() {
   ::raltservice::Misc::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Misc =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMisc}, {}};
+void InitDefaultsMisc() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsMiscImpl);
+}
 
-static void InitDefaultsModMiscOpRsp() {
+void InitDefaultsModMiscOpRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_ModMiscOpRsp_default_instance_;
     new (ptr) ::raltservice::ModMiscOpRsp();
@@ -704,12 +739,19 @@ static void InitDefaultsModMiscOpRsp() {
   ::raltservice::ModMiscOpRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ModMiscOpRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsModMiscOpRsp}, {}};
+void InitDefaultsModMiscOpRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsModMiscOpRspImpl);
+}
 
-static void InitDefaultsRaltStatusReq() {
+void InitDefaultsRaltStatusReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_RaltStatusReq_default_instance_;
     new (ptr) ::raltservice::RaltStatusReq();
@@ -718,12 +760,19 @@ static void InitDefaultsRaltStatusReq() {
   ::raltservice::RaltStatusReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_RaltStatusReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRaltStatusReq}, {}};
+void InitDefaultsRaltStatusReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsRaltStatusReqImpl);
+}
 
-static void InitDefaultsRaltStatus() {
+void InitDefaultsRaltStatusImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_RaltStatus_default_instance_;
     new (ptr) ::raltservice::RaltStatus();
@@ -732,12 +781,19 @@ static void InitDefaultsRaltStatus() {
   ::raltservice::RaltStatus::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_RaltStatus =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRaltStatus}, {}};
+void InitDefaultsRaltStatus() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsRaltStatusImpl);
+}
 
-static void InitDefaultsExecCmdReq() {
+void InitDefaultsExecCmdReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_ExecCmdReq_default_instance_;
     new (ptr) ::raltservice::ExecCmdReq();
@@ -746,12 +802,19 @@ static void InitDefaultsExecCmdReq() {
   ::raltservice::ExecCmdReq::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ExecCmdReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsExecCmdReq}, {}};
+void InitDefaultsExecCmdReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsExecCmdReqImpl);
+}
 
-static void InitDefaultsExecCmdRsp() {
+void InitDefaultsExecCmdRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::raltservice::_ExecCmdRsp_default_instance_;
     new (ptr) ::raltservice::ExecCmdRsp();
@@ -760,104 +823,15 @@ static void InitDefaultsExecCmdRsp() {
   ::raltservice::ExecCmdRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ExecCmdRsp =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsExecCmdRsp}, {}};
-
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuUsageReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuUsageRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuTempReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuTempRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetMemUsageReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetMemUsageRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetNicInfoReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetNicInfoRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StatsFieldName.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StatsFieldValue.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_HomePageReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_HomePageRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CacheLookUpReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_FlowStatLookUpReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_LogInfoLookUpReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CacheResult.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_FlowResult.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_LogResult.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetRaltLogsReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_RaltLogs.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetRecordCfgReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetRecordCfgRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SetRecordCfgReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SetRecordCfgRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetAllDomainReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Domain.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_UpdateDomainRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetDomainReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_AddDomainRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_DeleteDomainReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_DeleteDomainRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetMiscReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetMiscRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Misc.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ModMiscOpRsp.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_RaltStatusReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_RaltStatus.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ExecCmdReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ExecCmdRsp.base);
+void InitDefaultsExecCmdRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsExecCmdRspImpl);
 }
 
-::google::protobuf::Metadata file_level_metadata[39];
+::google::protobuf::Metadata file_level_metadata[31];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[5];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetCpuUsageReq, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetCpuUsageReq, ip_addr_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetCpuUsageRsp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetCpuUsageRsp, cpu_usage_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetCpuTempReq, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetCpuTempReq, ip_addr_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetCpuTempRsp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetCpuTempRsp, cpu_temp_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetMemUsageReq, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetMemUsageReq, ip_addr_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetMemUsageRsp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetMemUsageRsp, mem_usage_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetNicInfoReq, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetNicInfoReq, ip_addr_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetNicInfoRsp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetNicInfoRsp, os_version_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetNicInfoRsp, nic_info_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::StatsFieldName, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1059,7 +1033,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::RaltStatusReq, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::RaltStatusReq, ip_addr_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::RaltStatus, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1082,56 +1056,40 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::ExecCmdRsp, result_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::raltservice::GetCpuUsageReq)},
-  { 6, -1, sizeof(::raltservice::GetCpuUsageRsp)},
-  { 12, -1, sizeof(::raltservice::GetCpuTempReq)},
-  { 18, -1, sizeof(::raltservice::GetCpuTempRsp)},
-  { 24, -1, sizeof(::raltservice::GetMemUsageReq)},
-  { 30, -1, sizeof(::raltservice::GetMemUsageRsp)},
-  { 36, -1, sizeof(::raltservice::GetNicInfoReq)},
-  { 42, -1, sizeof(::raltservice::GetNicInfoRsp)},
-  { 49, -1, sizeof(::raltservice::StatsFieldName)},
-  { 56, -1, sizeof(::raltservice::StatsFieldValue)},
-  { 62, -1, sizeof(::raltservice::HomePageReq)},
-  { 68, -1, sizeof(::raltservice::HomePageRsp)},
-  { 81, -1, sizeof(::raltservice::CacheLookUpReq)},
-  { 87, -1, sizeof(::raltservice::FlowStatLookUpReq)},
-  { 93, -1, sizeof(::raltservice::LogInfoLookUpReq)},
-  { 99, -1, sizeof(::raltservice::CacheResult)},
-  { 109, -1, sizeof(::raltservice::FlowResult)},
-  { 128, -1, sizeof(::raltservice::LogResult)},
-  { 135, -1, sizeof(::raltservice::GetRaltLogsReq)},
-  { 141, -1, sizeof(::raltservice::RaltLogs)},
-  { 147, -1, sizeof(::raltservice::GetRecordCfgReq)},
-  { 153, -1, sizeof(::raltservice::GetRecordCfgRsp)},
-  { 162, -1, sizeof(::raltservice::SetRecordCfgReq)},
-  { 169, -1, sizeof(::raltservice::SetRecordCfgRsp)},
-  { 175, -1, sizeof(::raltservice::GetAllDomainReq)},
-  { 181, -1, sizeof(::raltservice::Domain)},
-  { 190, -1, sizeof(::raltservice::UpdateDomainRsp)},
-  { 196, -1, sizeof(::raltservice::GetDomainReq)},
-  { 202, -1, sizeof(::raltservice::AddDomainRsp)},
-  { 208, -1, sizeof(::raltservice::DeleteDomainReq)},
-  { 214, -1, sizeof(::raltservice::DeleteDomainRsp)},
-  { 220, -1, sizeof(::raltservice::GetMiscReq)},
-  { 226, -1, sizeof(::raltservice::GetMiscRsp)},
-  { 232, -1, sizeof(::raltservice::Misc)},
-  { 239, -1, sizeof(::raltservice::ModMiscOpRsp)},
-  { 245, -1, sizeof(::raltservice::RaltStatusReq)},
-  { 251, -1, sizeof(::raltservice::RaltStatus)},
-  { 258, -1, sizeof(::raltservice::ExecCmdReq)},
-  { 265, -1, sizeof(::raltservice::ExecCmdRsp)},
+  { 0, -1, sizeof(::raltservice::StatsFieldName)},
+  { 7, -1, sizeof(::raltservice::StatsFieldValue)},
+  { 13, -1, sizeof(::raltservice::HomePageReq)},
+  { 19, -1, sizeof(::raltservice::HomePageRsp)},
+  { 32, -1, sizeof(::raltservice::CacheLookUpReq)},
+  { 38, -1, sizeof(::raltservice::FlowStatLookUpReq)},
+  { 44, -1, sizeof(::raltservice::LogInfoLookUpReq)},
+  { 50, -1, sizeof(::raltservice::CacheResult)},
+  { 60, -1, sizeof(::raltservice::FlowResult)},
+  { 79, -1, sizeof(::raltservice::LogResult)},
+  { 86, -1, sizeof(::raltservice::GetRaltLogsReq)},
+  { 92, -1, sizeof(::raltservice::RaltLogs)},
+  { 98, -1, sizeof(::raltservice::GetRecordCfgReq)},
+  { 104, -1, sizeof(::raltservice::GetRecordCfgRsp)},
+  { 113, -1, sizeof(::raltservice::SetRecordCfgReq)},
+  { 120, -1, sizeof(::raltservice::SetRecordCfgRsp)},
+  { 126, -1, sizeof(::raltservice::GetAllDomainReq)},
+  { 132, -1, sizeof(::raltservice::Domain)},
+  { 141, -1, sizeof(::raltservice::UpdateDomainRsp)},
+  { 147, -1, sizeof(::raltservice::GetDomainReq)},
+  { 153, -1, sizeof(::raltservice::AddDomainRsp)},
+  { 159, -1, sizeof(::raltservice::DeleteDomainReq)},
+  { 165, -1, sizeof(::raltservice::DeleteDomainRsp)},
+  { 171, -1, sizeof(::raltservice::GetMiscReq)},
+  { 177, -1, sizeof(::raltservice::GetMiscRsp)},
+  { 183, -1, sizeof(::raltservice::Misc)},
+  { 190, -1, sizeof(::raltservice::ModMiscOpRsp)},
+  { 196, -1, sizeof(::raltservice::RaltStatusReq)},
+  { 202, -1, sizeof(::raltservice::RaltStatus)},
+  { 209, -1, sizeof(::raltservice::ExecCmdReq)},
+  { 216, -1, sizeof(::raltservice::ExecCmdRsp)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetCpuUsageReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetCpuUsageRsp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetCpuTempReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetCpuTempRsp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetMemUsageReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetMemUsageRsp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetNicInfoReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetNicInfoRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_StatsFieldName_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_StatsFieldValue_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_HomePageReq_default_instance_),
@@ -1167,147 +1125,133 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 
 void protobuf_AssignDescriptors() {
   AddDescriptors();
+  ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
-      "ralt-service.proto", schemas, file_default_instances, TableStruct::offsets,
+      "ralt-service.proto", schemas, file_default_instances, TableStruct::offsets, factory,
       file_level_metadata, file_level_enum_descriptors, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &protobuf_AssignDescriptors);
 }
 
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 39);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 31);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\022ralt-service.proto\022\013raltservice\"!\n\016Get"
-      "CpuUsageReq\022\017\n\007ip_addr\030\001 \001(\t\"#\n\016GetCpuUs"
-      "ageRsp\022\021\n\tcpu_usage\030\001 \001(\t\" \n\rGetCpuTempR"
-      "eq\022\017\n\007ip_addr\030\001 \001(\t\"!\n\rGetCpuTempRsp\022\020\n\010"
-      "cpu_temp\030\001 \001(\t\"!\n\016GetMemUsageReq\022\017\n\007ip_a"
-      "ddr\030\001 \001(\t\"#\n\016GetMemUsageRsp\022\021\n\tmem_usage"
-      "\030\001 \001(\t\" \n\rGetNicInfoReq\022\017\n\007ip_addr\030\001 \001(\t"
-      "\"5\n\rGetNicInfoRsp\022\022\n\nos_version\030\001 \001(\t\022\020\n"
-      "\010nic_info\030\002 \001(\t\"5\n\016StatsFieldName\022\017\n\007ip_"
-      "addr\030\001 \001(\t\022\022\n\nfield_name\030\002 \001(\t\" \n\017StatsF"
-      "ieldValue\022\r\n\005value\030\001 \001(\t\"\033\n\013HomePageReq\022"
-      "\014\n\004type\030\001 \001(\r\"\336\001\n\013HomePageRsp\022\022\n\ndomain_"
-      "num\030\001 \001(\r\022\026\n\016cluster_device\030\002 \001(\r\022\032\n\022app"
-      "_transfor_bytes\030\003 \001(\004\022 \n\030app_transfor_co"
-      "nnections\030\004 \001(\r\022\030\n\020cache_total_hits\030\005 \001("
-      "\r\022\031\n\021cache_bytes_total\030\006 \001(\004\022\030\n\020cache_by"
-      "tes_used\030\007 \001(\004\022\026\n\016cache_num_docs\030\010 \001(\r\"!"
-      "\n\016CacheLookUpReq\022\017\n\007ip_addr\030\001 \001(\t\"$\n\021Flo"
-      "wStatLookUpReq\022\017\n\007ip_addr\030\001 \001(\t\"#\n\020LogIn"
-      "foLookUpReq\022\017\n\007ip_addr\030\001 \001(\t\"{\n\013CacheRes"
-      "ult\022\030\n\020cache_total_hits\030\001 \001(\r\022\023\n\013bytes_t"
-      "otal\030\002 \001(\004\022\022\n\nbytes_used\030\003 \001(\004\022\020\n\010num_do"
-      "cs\030\004 \001(\r\022\027\n\017cache_hit_ratio\030\005 \001(\002\"\357\003\n\nFl"
-      "owResult\022,\n$user_agent_current_connectio"
-      "ns_count\030\001 \001(\r\022/\n\'origin_server_current_"
-      "connections_count\030\002 \001(\r\022\032\n\022completed_req"
-      "uests\030\003 \001(\r\022\"\n\032total_incoming_connection"
-      "s\030\004 \001(\r\022\031\n\021incoming_requests\030\005 \001(\r\022\031\n\021ou"
-      "tgoing_requests\030\006 \001(\r\022\032\n\022incoming_respon"
-      "ses\030\007 \001(\r\022 \n\030total_client_connections\030\010 "
-      "\001(\r\022%\n\035total_client_connections_ipv4\030\t \001"
-      "(\r\022%\n\035total_client_connections_ipv6\030\n \001("
-      "\r\022 \n\030total_server_connections\030\013 \001(\r\022\036\n\026u"
-      "ser_agent_total_bytes\030\014 \001(\004\022!\n\031origin_se"
-      "rver_total_bytes\030\r \001(\004\022\033\n\023bandwidth_hit_"
-      "ratio\030\016 \001(\002\"K\n\tLogResult\022\037\n\027log_files_sp"
-      "ace_mb_used\030\001 \001(\r\022\035\n\025max_space_mb_for_lo"
-      "gs\030\002 \001(\r\"!\n\016GetRaltLogsReq\022\017\n\007ip_addr\030\001 "
-      "\001(\t\"\030\n\010RaltLogs\022\014\n\004logs\030\001 \001(\014\"\037\n\017GetReco"
-      "rdCfgReq\022\014\n\004type\030\001 \001(\r\"x\n\017GetRecordCfgRs"
-      "p\022\027\n\017logging_enabled\030\001 \001(\r\022\035\n\025max_space_"
-      "mb_for_logs\030\002 \001(\r\022\027\n\017rolling_enabled\030\003 \001"
-      "(\r\022\024\n\014server_ports\030\004 \001(\t\"I\n\017SetRecordCfg"
-      "Req\022\'\n\003key\030\001 \001(\0162\032.raltservice.RecordCfg"
-      "Type\022\r\n\005value\030\002 \001(\t\"!\n\017SetRecordCfgRsp\022\016"
-      "\n\006result\030\001 \001(\r\"\037\n\017GetAllDomainReq\022\014\n\004typ"
-      "e\030\001 \001(\r\"p\n\006Domain\022%\n\004type\030\001 \001(\0162\027.raltse"
-      "rvice.DomainType\022\022\n\ndomain_str\030\002 \001(\t\022\035\n\025"
-      "append_or_replace_str\030\003 \001(\t\022\014\n\004port\030\004 \001("
-      "\t\"!\n\017UpdateDomainRsp\022\016\n\006result\030\001 \001(\r\"\"\n\014"
-      "GetDomainReq\022\022\n\ndomain_str\030\001 \001(\t\"\036\n\014AddD"
-      "omainRsp\022\016\n\006result\030\001 \001(\r\"%\n\017DeleteDomain"
-      "Req\022\022\n\ndomain_str\030\001 \001(\t\"!\n\017DeleteDomainR"
-      "sp\022\016\n\006result\030\001 \001(\r\"\032\n\nGetMiscReq\022\014\n\004type"
-      "\030\001 \001(\r\"G\n\nGetMiscRsp\0229\n\030ralt_filter_type"
-      "_default\030\001 \001(\0162\027.raltservice.MiscSwitch\""
-      "Q\n\004Misc\022!\n\003key\030\001 \001(\0162\024.raltservice.MiscK"
-      "ey\022&\n\005value\030\002 \001(\0162\027.raltservice.MiscSwit"
-      "ch\"\036\n\014ModMiscOpRsp\022\016\n\006result\030\001 \001(\r\"\035\n\rRa"
-      "ltStatusReq\022\014\n\004type\030\001 \001(\r\"-\n\nRaltStatus\022"
-      "\017\n\007ip_addr\030\001 \001(\t\022\016\n\006status\030\002 \001(\r\"D\n\nExec"
-      "CmdReq\022\017\n\007ip_addr\030\001 \001(\t\022%\n\003cmd\030\002 \001(\0162\030.r"
-      "altservice.CommandType\"\034\n\nExecCmdRsp\022\016\n\006"
-      "result\030\001 \001(\r*z\n\rRecordCfgType\022\030\n\024enum_lo"
-      "gging_enabled\020\000\022\036\n\032enum_max_space_mb_for"
-      "_logs\020\001\022\030\n\024enum_rolling_enabled\020\002\022\025\n\021enu"
-      "m_server_ports\020\003*:\n\nDomainType\022\026\n\022enum_m"
-      "ember_domain\020\000\022\024\n\020enum_subs_domain\020\001*,\n\007"
-      "MiscKey\022!\n\035enum_ralt_filter_type_default"
-      "\020\000*+\n\nMiscSwitch\022\016\n\nswitch_off\020\000\022\r\n\tswit"
-      "ch_on\020\001*b\n\013CommandType\022\016\n\nralt_start\020\000\022\r"
-      "\n\tralt_stop\020\001\022\020\n\014ralt_restart\020\002\022\017\n\013cache"
-      "_clear\020\003\022\021\n\rreload_config\020\0042\372\013\n\013RaltServ"
-      "ice\022I\n\013getCpuUsage\022\033.raltservice.GetCpuU"
-      "sageReq\032\033.raltservice.GetCpuUsageRsp\"\000\022F"
-      "\n\ngetCpuTemp\022\032.raltservice.GetCpuTempReq"
-      "\032\032.raltservice.GetCpuTempRsp\"\000\022I\n\013getMem"
-      "Usage\022\033.raltservice.GetMemUsageReq\032\033.ral"
-      "tservice.GetMemUsageRsp\"\000\022F\n\ngetNicInfo\022"
-      "\032.raltservice.GetNicInfoReq\032\032.raltservic"
-      "e.GetNicInfoRsp\"\000\022Q\n\022getStatsFieldValue\022"
-      "\033.raltservice.StatsFieldName\032\034.raltservi"
-      "ce.StatsFieldValue\"\000\022G\n\017getHomePageData\022"
-      "\030.raltservice.HomePageReq\032\030.raltservice."
-      "HomePageRsp\"\000\022H\n\rshowCacheData\022\033.raltser"
-      "vice.CacheLookUpReq\032\030.raltservice.CacheR"
-      "esult\"\000\022M\n\020showFlowStatData\022\036.raltservic"
-      "e.FlowStatLookUpReq\032\027.raltservice.FlowRe"
-      "sult\"\000\022J\n\017showLogInfoData\022\035.raltservice."
-      "LogInfoLookUpReq\032\026.raltservice.LogResult"
-      "\"\000\022E\n\013getRaltLogs\022\033.raltservice.GetRaltL"
-      "ogsReq\032\025.raltservice.RaltLogs\"\0000\001\022O\n\017get"
-      "RecordConfig\022\034.raltservice.GetRecordCfgR"
-      "eq\032\034.raltservice.GetRecordCfgRsp\"\000\022O\n\017se"
-      "tRecordConfig\022\034.raltservice.SetRecordCfg"
-      "Req\032\034.raltservice.SetRecordCfgRsp\"\000\022E\n\014g"
-      "etAllDomain\022\034.raltservice.GetAllDomainRe"
-      "q\032\023.raltservice.Domain\"\0000\001\022E\n\014updateDoma"
-      "in\022\023.raltservice.Domain\032\034.raltservice.Up"
-      "dateDomainRsp\"\000(\001\022=\n\tgetDomain\022\031.raltser"
-      "vice.GetDomainReq\032\023.raltservice.Domain\"\000"
-      "\022=\n\taddDomain\022\023.raltservice.Domain\032\031.ral"
-      "tservice.AddDomainRsp\"\000\022L\n\014deleteDomain\022"
-      "\034.raltservice.DeleteDomainReq\032\034.raltserv"
-      "ice.DeleteDomainRsp\"\000\022=\n\007getMisc\022\027.ralts"
-      "ervice.GetMiscReq\032\027.raltservice.GetMiscR"
-      "sp\"\000\0229\n\007modMisc\022\021.raltservice.Misc\032\031.ral"
-      "tservice.ModMiscOpRsp\"\000\022H\n\rgetRaltStatus"
-      "\022\032.raltservice.RaltStatusReq\032\027.raltservi"
-      "ce.RaltStatus\"\0000\001\022=\n\007execCmd\022\027.raltservi"
-      "ce.ExecCmdReq\032\027.raltservice.ExecCmdRsp\"\000"
-      "b\006proto3"
+      "\n\022ralt-service.proto\022\013raltservice\"5\n\016Sta"
+      "tsFieldName\022\017\n\007ip_addr\030\001 \001(\t\022\022\n\nfield_na"
+      "me\030\002 \001(\t\" \n\017StatsFieldValue\022\r\n\005value\030\001 \001"
+      "(\t\"\033\n\013HomePageReq\022\014\n\004type\030\001 \001(\r\"\336\001\n\013Home"
+      "PageRsp\022\022\n\ndomain_num\030\001 \001(\r\022\026\n\016cluster_d"
+      "evice\030\002 \001(\r\022\032\n\022app_transfor_bytes\030\003 \001(\004\022"
+      " \n\030app_transfor_connections\030\004 \001(\r\022\030\n\020cac"
+      "he_total_hits\030\005 \001(\r\022\031\n\021cache_bytes_total"
+      "\030\006 \001(\004\022\030\n\020cache_bytes_used\030\007 \001(\004\022\026\n\016cach"
+      "e_num_docs\030\010 \001(\r\"!\n\016CacheLookUpReq\022\017\n\007ip"
+      "_addr\030\001 \001(\t\"$\n\021FlowStatLookUpReq\022\017\n\007ip_a"
+      "ddr\030\001 \001(\t\"#\n\020LogInfoLookUpReq\022\017\n\007ip_addr"
+      "\030\001 \001(\t\"{\n\013CacheResult\022\030\n\020cache_total_hit"
+      "s\030\001 \001(\r\022\023\n\013bytes_total\030\002 \001(\004\022\022\n\nbytes_us"
+      "ed\030\003 \001(\004\022\020\n\010num_docs\030\004 \001(\r\022\027\n\017cache_hit_"
+      "ratio\030\005 \001(\002\"\357\003\n\nFlowResult\022,\n$user_agent"
+      "_current_connections_count\030\001 \001(\r\022/\n\'orig"
+      "in_server_current_connections_count\030\002 \001("
+      "\r\022\032\n\022completed_requests\030\003 \001(\r\022\"\n\032total_i"
+      "ncoming_connections\030\004 \001(\r\022\031\n\021incoming_re"
+      "quests\030\005 \001(\r\022\031\n\021outgoing_requests\030\006 \001(\r\022"
+      "\032\n\022incoming_responses\030\007 \001(\r\022 \n\030total_cli"
+      "ent_connections\030\010 \001(\r\022%\n\035total_client_co"
+      "nnections_ipv4\030\t \001(\r\022%\n\035total_client_con"
+      "nections_ipv6\030\n \001(\r\022 \n\030total_server_conn"
+      "ections\030\013 \001(\r\022\036\n\026user_agent_total_bytes\030"
+      "\014 \001(\004\022!\n\031origin_server_total_bytes\030\r \001(\004"
+      "\022\033\n\023bandwidth_hit_ratio\030\016 \001(\002\"K\n\tLogResu"
+      "lt\022\037\n\027log_files_space_mb_used\030\001 \001(\r\022\035\n\025m"
+      "ax_space_mb_for_logs\030\002 \001(\r\"!\n\016GetRaltLog"
+      "sReq\022\017\n\007ip_addr\030\001 \001(\t\"\030\n\010RaltLogs\022\014\n\004log"
+      "s\030\001 \001(\014\"\037\n\017GetRecordCfgReq\022\014\n\004type\030\001 \001(\r"
+      "\"x\n\017GetRecordCfgRsp\022\027\n\017logging_enabled\030\001"
+      " \001(\r\022\035\n\025max_space_mb_for_logs\030\002 \001(\r\022\027\n\017r"
+      "olling_enabled\030\003 \001(\r\022\024\n\014server_ports\030\004 \001"
+      "(\t\"I\n\017SetRecordCfgReq\022\'\n\003key\030\001 \001(\0162\032.ral"
+      "tservice.RecordCfgType\022\r\n\005value\030\002 \001(\t\"!\n"
+      "\017SetRecordCfgRsp\022\016\n\006result\030\001 \001(\r\"\037\n\017GetA"
+      "llDomainReq\022\014\n\004type\030\001 \001(\r\"p\n\006Domain\022%\n\004t"
+      "ype\030\001 \001(\0162\027.raltservice.DomainType\022\022\n\ndo"
+      "main_str\030\002 \001(\t\022\035\n\025append_or_replace_str\030"
+      "\003 \001(\t\022\014\n\004port\030\004 \001(\t\"!\n\017UpdateDomainRsp\022\016"
+      "\n\006result\030\001 \001(\r\"\"\n\014GetDomainReq\022\022\n\ndomain"
+      "_str\030\001 \001(\t\"\036\n\014AddDomainRsp\022\016\n\006result\030\001 \001"
+      "(\r\"%\n\017DeleteDomainReq\022\022\n\ndomain_str\030\001 \001("
+      "\t\"!\n\017DeleteDomainRsp\022\016\n\006result\030\001 \001(\r\"\032\n\n"
+      "GetMiscReq\022\014\n\004type\030\001 \001(\r\"G\n\nGetMiscRsp\0229"
+      "\n\030ralt_filter_type_default\030\001 \001(\0162\027.ralts"
+      "ervice.MiscSwitch\"Q\n\004Misc\022!\n\003key\030\001 \001(\0162\024"
+      ".raltservice.MiscKey\022&\n\005value\030\002 \001(\0162\027.ra"
+      "ltservice.MiscSwitch\"\036\n\014ModMiscOpRsp\022\016\n\006"
+      "result\030\001 \001(\r\" \n\rRaltStatusReq\022\017\n\007ip_addr"
+      "\030\001 \001(\t\"-\n\nRaltStatus\022\017\n\007ip_addr\030\001 \001(\t\022\016\n"
+      "\006status\030\002 \001(\r\"D\n\nExecCmdReq\022\017\n\007ip_addr\030\001"
+      " \001(\t\022%\n\003cmd\030\002 \001(\0162\030.raltservice.CommandT"
+      "ype\"\034\n\nExecCmdRsp\022\016\n\006result\030\001 \001(\r*z\n\rRec"
+      "ordCfgType\022\030\n\024enum_logging_enabled\020\000\022\036\n\032"
+      "enum_max_space_mb_for_logs\020\001\022\030\n\024enum_rol"
+      "ling_enabled\020\002\022\025\n\021enum_server_ports\020\003*:\n"
+      "\nDomainType\022\026\n\022enum_member_domain\020\000\022\024\n\020e"
+      "num_subs_domain\020\001*,\n\007MiscKey\022!\n\035enum_ral"
+      "t_filter_type_default\020\000*+\n\nMiscSwitch\022\016\n"
+      "\nswitch_off\020\000\022\r\n\tswitch_on\020\001*b\n\013CommandT"
+      "ype\022\016\n\nralt_start\020\000\022\r\n\tralt_stop\020\001\022\020\n\014ra"
+      "lt_restart\020\002\022\017\n\013cache_clear\020\003\022\021\n\rreload_"
+      "config\020\0042\324\t\n\013RaltService\022Q\n\022getStatsFiel"
+      "dValue\022\033.raltservice.StatsFieldName\032\034.ra"
+      "ltservice.StatsFieldValue\"\000\022G\n\017getHomePa"
+      "geData\022\030.raltservice.HomePageReq\032\030.ralts"
+      "ervice.HomePageRsp\"\000\022H\n\rshowCacheData\022\033."
+      "raltservice.CacheLookUpReq\032\030.raltservice"
+      ".CacheResult\"\000\022M\n\020showFlowStatData\022\036.ral"
+      "tservice.FlowStatLookUpReq\032\027.raltservice"
+      ".FlowResult\"\000\022J\n\017showLogInfoData\022\035.ralts"
+      "ervice.LogInfoLookUpReq\032\026.raltservice.Lo"
+      "gResult\"\000\022E\n\013getRaltLogs\022\033.raltservice.G"
+      "etRaltLogsReq\032\025.raltservice.RaltLogs\"\0000\001"
+      "\022O\n\017getRecordConfig\022\034.raltservice.GetRec"
+      "ordCfgReq\032\034.raltservice.GetRecordCfgRsp\""
+      "\000\022O\n\017setRecordConfig\022\034.raltservice.SetRe"
+      "cordCfgReq\032\034.raltservice.SetRecordCfgRsp"
+      "\"\000\022E\n\014getAllDomain\022\034.raltservice.GetAllD"
+      "omainReq\032\023.raltservice.Domain\"\0000\001\022E\n\014upd"
+      "ateDomain\022\023.raltservice.Domain\032\034.raltser"
+      "vice.UpdateDomainRsp\"\000(\001\022=\n\tgetDomain\022\031."
+      "raltservice.GetDomainReq\032\023.raltservice.D"
+      "omain\"\000\022=\n\taddDomain\022\023.raltservice.Domai"
+      "n\032\031.raltservice.AddDomainRsp\"\000\022L\n\014delete"
+      "Domain\022\034.raltservice.DeleteDomainReq\032\034.r"
+      "altservice.DeleteDomainRsp\"\000\022=\n\007getMisc\022"
+      "\027.raltservice.GetMiscReq\032\027.raltservice.G"
+      "etMiscRsp\"\000\0229\n\007modMisc\022\021.raltservice.Mis"
+      "c\032\031.raltservice.ModMiscOpRsp\"\000\022H\n\rgetRal"
+      "tStatus\022\032.raltservice.RaltStatusReq\032\027.ra"
+      "ltservice.RaltStatus\"\0000\001\022=\n\007execCmd\022\027.ra"
+      "ltservice.ExecCmdReq\032\027.raltservice.ExecC"
+      "mdRsp\"\000b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 4448);
+      descriptor, 3855);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ralt-service.proto", &protobuf_RegisterTypes);
 }
 
 void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &AddDescriptorsImpl);
 }
 // Force AddDescriptors() to be called at dynamic initialization time.
 struct StaticDescriptorInitializer {
@@ -1394,2000 +1338,6 @@ bool CommandType_IsValid(int value) {
 
 // ===================================================================
 
-void GetCpuUsageReq::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetCpuUsageReq::kIpAddrFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetCpuUsageReq::GetCpuUsageReq()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetCpuUsageReq.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetCpuUsageReq)
-}
-GetCpuUsageReq::GetCpuUsageReq(const GetCpuUsageReq& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.ip_addr().size() > 0) {
-    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
-  }
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetCpuUsageReq)
-}
-
-void GetCpuUsageReq::SharedCtor() {
-  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-GetCpuUsageReq::~GetCpuUsageReq() {
-  // @@protoc_insertion_point(destructor:raltservice.GetCpuUsageReq)
-  SharedDtor();
-}
-
-void GetCpuUsageReq::SharedDtor() {
-  ip_addr_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetCpuUsageReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* GetCpuUsageReq::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetCpuUsageReq& GetCpuUsageReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetCpuUsageReq.base);
-  return *internal_default_instance();
-}
-
-
-void GetCpuUsageReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetCpuUsageReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool GetCpuUsageReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetCpuUsageReq)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string ip_addr = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_ip_addr()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetCpuUsageReq.ip_addr"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetCpuUsageReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetCpuUsageReq)
-  return false;
-#undef DO_
-}
-
-void GetCpuUsageReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetCpuUsageReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetCpuUsageReq.ip_addr");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->ip_addr(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetCpuUsageReq)
-}
-
-::google::protobuf::uint8* GetCpuUsageReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetCpuUsageReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetCpuUsageReq.ip_addr");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->ip_addr(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetCpuUsageReq)
-  return target;
-}
-
-size_t GetCpuUsageReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetCpuUsageReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->ip_addr());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void GetCpuUsageReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetCpuUsageReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetCpuUsageReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetCpuUsageReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetCpuUsageReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetCpuUsageReq)
-    MergeFrom(*source);
-  }
-}
-
-void GetCpuUsageReq::MergeFrom(const GetCpuUsageReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetCpuUsageReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.ip_addr().size() > 0) {
-
-    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
-  }
-}
-
-void GetCpuUsageReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetCpuUsageReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetCpuUsageReq::CopyFrom(const GetCpuUsageReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetCpuUsageReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetCpuUsageReq::IsInitialized() const {
-  return true;
-}
-
-void GetCpuUsageReq::Swap(GetCpuUsageReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetCpuUsageReq::InternalSwap(GetCpuUsageReq* other) {
-  using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata GetCpuUsageReq::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void GetCpuUsageRsp::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetCpuUsageRsp::kCpuUsageFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetCpuUsageRsp::GetCpuUsageRsp()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetCpuUsageRsp.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetCpuUsageRsp)
-}
-GetCpuUsageRsp::GetCpuUsageRsp(const GetCpuUsageRsp& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  cpu_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.cpu_usage().size() > 0) {
-    cpu_usage_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpu_usage_);
-  }
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetCpuUsageRsp)
-}
-
-void GetCpuUsageRsp::SharedCtor() {
-  cpu_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-GetCpuUsageRsp::~GetCpuUsageRsp() {
-  // @@protoc_insertion_point(destructor:raltservice.GetCpuUsageRsp)
-  SharedDtor();
-}
-
-void GetCpuUsageRsp::SharedDtor() {
-  cpu_usage_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetCpuUsageRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* GetCpuUsageRsp::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetCpuUsageRsp& GetCpuUsageRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetCpuUsageRsp.base);
-  return *internal_default_instance();
-}
-
-
-void GetCpuUsageRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetCpuUsageRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cpu_usage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool GetCpuUsageRsp::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetCpuUsageRsp)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string cpu_usage = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_cpu_usage()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->cpu_usage().data(), static_cast<int>(this->cpu_usage().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetCpuUsageRsp.cpu_usage"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetCpuUsageRsp)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetCpuUsageRsp)
-  return false;
-#undef DO_
-}
-
-void GetCpuUsageRsp::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetCpuUsageRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string cpu_usage = 1;
-  if (this->cpu_usage().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->cpu_usage().data(), static_cast<int>(this->cpu_usage().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetCpuUsageRsp.cpu_usage");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->cpu_usage(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetCpuUsageRsp)
-}
-
-::google::protobuf::uint8* GetCpuUsageRsp::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetCpuUsageRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string cpu_usage = 1;
-  if (this->cpu_usage().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->cpu_usage().data(), static_cast<int>(this->cpu_usage().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetCpuUsageRsp.cpu_usage");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->cpu_usage(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetCpuUsageRsp)
-  return target;
-}
-
-size_t GetCpuUsageRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetCpuUsageRsp)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string cpu_usage = 1;
-  if (this->cpu_usage().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->cpu_usage());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void GetCpuUsageRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetCpuUsageRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetCpuUsageRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetCpuUsageRsp>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetCpuUsageRsp)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetCpuUsageRsp)
-    MergeFrom(*source);
-  }
-}
-
-void GetCpuUsageRsp::MergeFrom(const GetCpuUsageRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetCpuUsageRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.cpu_usage().size() > 0) {
-
-    cpu_usage_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpu_usage_);
-  }
-}
-
-void GetCpuUsageRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetCpuUsageRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetCpuUsageRsp::CopyFrom(const GetCpuUsageRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetCpuUsageRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetCpuUsageRsp::IsInitialized() const {
-  return true;
-}
-
-void GetCpuUsageRsp::Swap(GetCpuUsageRsp* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetCpuUsageRsp::InternalSwap(GetCpuUsageRsp* other) {
-  using std::swap;
-  cpu_usage_.Swap(&other->cpu_usage_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata GetCpuUsageRsp::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void GetCpuTempReq::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetCpuTempReq::kIpAddrFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetCpuTempReq::GetCpuTempReq()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetCpuTempReq.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetCpuTempReq)
-}
-GetCpuTempReq::GetCpuTempReq(const GetCpuTempReq& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.ip_addr().size() > 0) {
-    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
-  }
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetCpuTempReq)
-}
-
-void GetCpuTempReq::SharedCtor() {
-  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-GetCpuTempReq::~GetCpuTempReq() {
-  // @@protoc_insertion_point(destructor:raltservice.GetCpuTempReq)
-  SharedDtor();
-}
-
-void GetCpuTempReq::SharedDtor() {
-  ip_addr_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetCpuTempReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* GetCpuTempReq::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetCpuTempReq& GetCpuTempReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetCpuTempReq.base);
-  return *internal_default_instance();
-}
-
-
-void GetCpuTempReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetCpuTempReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool GetCpuTempReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetCpuTempReq)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string ip_addr = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_ip_addr()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetCpuTempReq.ip_addr"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetCpuTempReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetCpuTempReq)
-  return false;
-#undef DO_
-}
-
-void GetCpuTempReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetCpuTempReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetCpuTempReq.ip_addr");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->ip_addr(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetCpuTempReq)
-}
-
-::google::protobuf::uint8* GetCpuTempReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetCpuTempReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetCpuTempReq.ip_addr");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->ip_addr(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetCpuTempReq)
-  return target;
-}
-
-size_t GetCpuTempReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetCpuTempReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->ip_addr());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void GetCpuTempReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetCpuTempReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetCpuTempReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetCpuTempReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetCpuTempReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetCpuTempReq)
-    MergeFrom(*source);
-  }
-}
-
-void GetCpuTempReq::MergeFrom(const GetCpuTempReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetCpuTempReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.ip_addr().size() > 0) {
-
-    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
-  }
-}
-
-void GetCpuTempReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetCpuTempReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetCpuTempReq::CopyFrom(const GetCpuTempReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetCpuTempReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetCpuTempReq::IsInitialized() const {
-  return true;
-}
-
-void GetCpuTempReq::Swap(GetCpuTempReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetCpuTempReq::InternalSwap(GetCpuTempReq* other) {
-  using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata GetCpuTempReq::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void GetCpuTempRsp::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetCpuTempRsp::kCpuTempFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetCpuTempRsp::GetCpuTempRsp()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetCpuTempRsp.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetCpuTempRsp)
-}
-GetCpuTempRsp::GetCpuTempRsp(const GetCpuTempRsp& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  cpu_temp_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.cpu_temp().size() > 0) {
-    cpu_temp_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpu_temp_);
-  }
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetCpuTempRsp)
-}
-
-void GetCpuTempRsp::SharedCtor() {
-  cpu_temp_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-GetCpuTempRsp::~GetCpuTempRsp() {
-  // @@protoc_insertion_point(destructor:raltservice.GetCpuTempRsp)
-  SharedDtor();
-}
-
-void GetCpuTempRsp::SharedDtor() {
-  cpu_temp_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetCpuTempRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* GetCpuTempRsp::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetCpuTempRsp& GetCpuTempRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetCpuTempRsp.base);
-  return *internal_default_instance();
-}
-
-
-void GetCpuTempRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetCpuTempRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cpu_temp_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool GetCpuTempRsp::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetCpuTempRsp)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string cpu_temp = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_cpu_temp()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->cpu_temp().data(), static_cast<int>(this->cpu_temp().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetCpuTempRsp.cpu_temp"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetCpuTempRsp)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetCpuTempRsp)
-  return false;
-#undef DO_
-}
-
-void GetCpuTempRsp::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetCpuTempRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string cpu_temp = 1;
-  if (this->cpu_temp().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->cpu_temp().data(), static_cast<int>(this->cpu_temp().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetCpuTempRsp.cpu_temp");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->cpu_temp(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetCpuTempRsp)
-}
-
-::google::protobuf::uint8* GetCpuTempRsp::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetCpuTempRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string cpu_temp = 1;
-  if (this->cpu_temp().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->cpu_temp().data(), static_cast<int>(this->cpu_temp().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetCpuTempRsp.cpu_temp");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->cpu_temp(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetCpuTempRsp)
-  return target;
-}
-
-size_t GetCpuTempRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetCpuTempRsp)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string cpu_temp = 1;
-  if (this->cpu_temp().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->cpu_temp());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void GetCpuTempRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetCpuTempRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetCpuTempRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetCpuTempRsp>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetCpuTempRsp)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetCpuTempRsp)
-    MergeFrom(*source);
-  }
-}
-
-void GetCpuTempRsp::MergeFrom(const GetCpuTempRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetCpuTempRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.cpu_temp().size() > 0) {
-
-    cpu_temp_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpu_temp_);
-  }
-}
-
-void GetCpuTempRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetCpuTempRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetCpuTempRsp::CopyFrom(const GetCpuTempRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetCpuTempRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetCpuTempRsp::IsInitialized() const {
-  return true;
-}
-
-void GetCpuTempRsp::Swap(GetCpuTempRsp* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetCpuTempRsp::InternalSwap(GetCpuTempRsp* other) {
-  using std::swap;
-  cpu_temp_.Swap(&other->cpu_temp_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata GetCpuTempRsp::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void GetMemUsageReq::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetMemUsageReq::kIpAddrFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetMemUsageReq::GetMemUsageReq()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetMemUsageReq.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetMemUsageReq)
-}
-GetMemUsageReq::GetMemUsageReq(const GetMemUsageReq& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.ip_addr().size() > 0) {
-    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
-  }
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetMemUsageReq)
-}
-
-void GetMemUsageReq::SharedCtor() {
-  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-GetMemUsageReq::~GetMemUsageReq() {
-  // @@protoc_insertion_point(destructor:raltservice.GetMemUsageReq)
-  SharedDtor();
-}
-
-void GetMemUsageReq::SharedDtor() {
-  ip_addr_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetMemUsageReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* GetMemUsageReq::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetMemUsageReq& GetMemUsageReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetMemUsageReq.base);
-  return *internal_default_instance();
-}
-
-
-void GetMemUsageReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetMemUsageReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool GetMemUsageReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetMemUsageReq)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string ip_addr = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_ip_addr()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetMemUsageReq.ip_addr"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetMemUsageReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetMemUsageReq)
-  return false;
-#undef DO_
-}
-
-void GetMemUsageReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetMemUsageReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetMemUsageReq.ip_addr");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->ip_addr(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetMemUsageReq)
-}
-
-::google::protobuf::uint8* GetMemUsageReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetMemUsageReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetMemUsageReq.ip_addr");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->ip_addr(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetMemUsageReq)
-  return target;
-}
-
-size_t GetMemUsageReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetMemUsageReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->ip_addr());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void GetMemUsageReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetMemUsageReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetMemUsageReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetMemUsageReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetMemUsageReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetMemUsageReq)
-    MergeFrom(*source);
-  }
-}
-
-void GetMemUsageReq::MergeFrom(const GetMemUsageReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetMemUsageReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.ip_addr().size() > 0) {
-
-    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
-  }
-}
-
-void GetMemUsageReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetMemUsageReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetMemUsageReq::CopyFrom(const GetMemUsageReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetMemUsageReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetMemUsageReq::IsInitialized() const {
-  return true;
-}
-
-void GetMemUsageReq::Swap(GetMemUsageReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetMemUsageReq::InternalSwap(GetMemUsageReq* other) {
-  using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata GetMemUsageReq::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void GetMemUsageRsp::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetMemUsageRsp::kMemUsageFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetMemUsageRsp::GetMemUsageRsp()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetMemUsageRsp.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetMemUsageRsp)
-}
-GetMemUsageRsp::GetMemUsageRsp(const GetMemUsageRsp& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  mem_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.mem_usage().size() > 0) {
-    mem_usage_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.mem_usage_);
-  }
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetMemUsageRsp)
-}
-
-void GetMemUsageRsp::SharedCtor() {
-  mem_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-GetMemUsageRsp::~GetMemUsageRsp() {
-  // @@protoc_insertion_point(destructor:raltservice.GetMemUsageRsp)
-  SharedDtor();
-}
-
-void GetMemUsageRsp::SharedDtor() {
-  mem_usage_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetMemUsageRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* GetMemUsageRsp::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetMemUsageRsp& GetMemUsageRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetMemUsageRsp.base);
-  return *internal_default_instance();
-}
-
-
-void GetMemUsageRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetMemUsageRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  mem_usage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool GetMemUsageRsp::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetMemUsageRsp)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string mem_usage = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_mem_usage()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->mem_usage().data(), static_cast<int>(this->mem_usage().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetMemUsageRsp.mem_usage"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetMemUsageRsp)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetMemUsageRsp)
-  return false;
-#undef DO_
-}
-
-void GetMemUsageRsp::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetMemUsageRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string mem_usage = 1;
-  if (this->mem_usage().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->mem_usage().data(), static_cast<int>(this->mem_usage().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetMemUsageRsp.mem_usage");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->mem_usage(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetMemUsageRsp)
-}
-
-::google::protobuf::uint8* GetMemUsageRsp::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetMemUsageRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string mem_usage = 1;
-  if (this->mem_usage().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->mem_usage().data(), static_cast<int>(this->mem_usage().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetMemUsageRsp.mem_usage");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->mem_usage(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetMemUsageRsp)
-  return target;
-}
-
-size_t GetMemUsageRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetMemUsageRsp)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string mem_usage = 1;
-  if (this->mem_usage().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->mem_usage());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void GetMemUsageRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetMemUsageRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetMemUsageRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetMemUsageRsp>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetMemUsageRsp)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetMemUsageRsp)
-    MergeFrom(*source);
-  }
-}
-
-void GetMemUsageRsp::MergeFrom(const GetMemUsageRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetMemUsageRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.mem_usage().size() > 0) {
-
-    mem_usage_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.mem_usage_);
-  }
-}
-
-void GetMemUsageRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetMemUsageRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetMemUsageRsp::CopyFrom(const GetMemUsageRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetMemUsageRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetMemUsageRsp::IsInitialized() const {
-  return true;
-}
-
-void GetMemUsageRsp::Swap(GetMemUsageRsp* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetMemUsageRsp::InternalSwap(GetMemUsageRsp* other) {
-  using std::swap;
-  mem_usage_.Swap(&other->mem_usage_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata GetMemUsageRsp::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void GetNicInfoReq::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetNicInfoReq::kIpAddrFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetNicInfoReq::GetNicInfoReq()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetNicInfoReq.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetNicInfoReq)
-}
-GetNicInfoReq::GetNicInfoReq(const GetNicInfoReq& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.ip_addr().size() > 0) {
-    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
-  }
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetNicInfoReq)
-}
-
-void GetNicInfoReq::SharedCtor() {
-  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-GetNicInfoReq::~GetNicInfoReq() {
-  // @@protoc_insertion_point(destructor:raltservice.GetNicInfoReq)
-  SharedDtor();
-}
-
-void GetNicInfoReq::SharedDtor() {
-  ip_addr_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetNicInfoReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* GetNicInfoReq::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetNicInfoReq& GetNicInfoReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetNicInfoReq.base);
-  return *internal_default_instance();
-}
-
-
-void GetNicInfoReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetNicInfoReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool GetNicInfoReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetNicInfoReq)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string ip_addr = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_ip_addr()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetNicInfoReq.ip_addr"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetNicInfoReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetNicInfoReq)
-  return false;
-#undef DO_
-}
-
-void GetNicInfoReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetNicInfoReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetNicInfoReq.ip_addr");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->ip_addr(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetNicInfoReq)
-}
-
-::google::protobuf::uint8* GetNicInfoReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetNicInfoReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetNicInfoReq.ip_addr");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->ip_addr(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetNicInfoReq)
-  return target;
-}
-
-size_t GetNicInfoReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetNicInfoReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string ip_addr = 1;
-  if (this->ip_addr().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->ip_addr());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void GetNicInfoReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetNicInfoReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetNicInfoReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetNicInfoReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetNicInfoReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetNicInfoReq)
-    MergeFrom(*source);
-  }
-}
-
-void GetNicInfoReq::MergeFrom(const GetNicInfoReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetNicInfoReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.ip_addr().size() > 0) {
-
-    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
-  }
-}
-
-void GetNicInfoReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetNicInfoReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetNicInfoReq::CopyFrom(const GetNicInfoReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetNicInfoReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetNicInfoReq::IsInitialized() const {
-  return true;
-}
-
-void GetNicInfoReq::Swap(GetNicInfoReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetNicInfoReq::InternalSwap(GetNicInfoReq* other) {
-  using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata GetNicInfoReq::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void GetNicInfoRsp::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetNicInfoRsp::kOsVersionFieldNumber;
-const int GetNicInfoRsp::kNicInfoFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetNicInfoRsp::GetNicInfoRsp()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetNicInfoRsp.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetNicInfoRsp)
-}
-GetNicInfoRsp::GetNicInfoRsp(const GetNicInfoRsp& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  os_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.os_version().size() > 0) {
-    os_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.os_version_);
-  }
-  nic_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.nic_info().size() > 0) {
-    nic_info_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.nic_info_);
-  }
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetNicInfoRsp)
-}
-
-void GetNicInfoRsp::SharedCtor() {
-  os_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  nic_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-GetNicInfoRsp::~GetNicInfoRsp() {
-  // @@protoc_insertion_point(destructor:raltservice.GetNicInfoRsp)
-  SharedDtor();
-}
-
-void GetNicInfoRsp::SharedDtor() {
-  os_version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  nic_info_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetNicInfoRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* GetNicInfoRsp::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetNicInfoRsp& GetNicInfoRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetNicInfoRsp.base);
-  return *internal_default_instance();
-}
-
-
-void GetNicInfoRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetNicInfoRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  os_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  nic_info_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool GetNicInfoRsp::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetNicInfoRsp)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string os_version = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_os_version()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->os_version().data(), static_cast<int>(this->os_version().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetNicInfoRsp.os_version"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string nic_info = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_nic_info()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->nic_info().data(), static_cast<int>(this->nic_info().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "raltservice.GetNicInfoRsp.nic_info"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetNicInfoRsp)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetNicInfoRsp)
-  return false;
-#undef DO_
-}
-
-void GetNicInfoRsp::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetNicInfoRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string os_version = 1;
-  if (this->os_version().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->os_version().data(), static_cast<int>(this->os_version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetNicInfoRsp.os_version");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->os_version(), output);
-  }
-
-  // string nic_info = 2;
-  if (this->nic_info().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->nic_info().data(), static_cast<int>(this->nic_info().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetNicInfoRsp.nic_info");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->nic_info(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetNicInfoRsp)
-}
-
-::google::protobuf::uint8* GetNicInfoRsp::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetNicInfoRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string os_version = 1;
-  if (this->os_version().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->os_version().data(), static_cast<int>(this->os_version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetNicInfoRsp.os_version");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->os_version(), target);
-  }
-
-  // string nic_info = 2;
-  if (this->nic_info().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->nic_info().data(), static_cast<int>(this->nic_info().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "raltservice.GetNicInfoRsp.nic_info");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->nic_info(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetNicInfoRsp)
-  return target;
-}
-
-size_t GetNicInfoRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetNicInfoRsp)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string os_version = 1;
-  if (this->os_version().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->os_version());
-  }
-
-  // string nic_info = 2;
-  if (this->nic_info().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->nic_info());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void GetNicInfoRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetNicInfoRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetNicInfoRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetNicInfoRsp>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetNicInfoRsp)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetNicInfoRsp)
-    MergeFrom(*source);
-  }
-}
-
-void GetNicInfoRsp::MergeFrom(const GetNicInfoRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetNicInfoRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.os_version().size() > 0) {
-
-    os_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.os_version_);
-  }
-  if (from.nic_info().size() > 0) {
-
-    nic_info_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.nic_info_);
-  }
-}
-
-void GetNicInfoRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetNicInfoRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetNicInfoRsp::CopyFrom(const GetNicInfoRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetNicInfoRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetNicInfoRsp::IsInitialized() const {
-  return true;
-}
-
-void GetNicInfoRsp::Swap(GetNicInfoRsp* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetNicInfoRsp::InternalSwap(GetNicInfoRsp* other) {
-  using std::swap;
-  os_version_.Swap(&other->os_version_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  nic_info_.Swap(&other->nic_info_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata GetNicInfoRsp::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
 void StatsFieldName::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -3397,14 +1347,16 @@ const int StatsFieldName::kFieldNameFieldNumber;
 
 StatsFieldName::StatsFieldName()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_StatsFieldName.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsStatsFieldName();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.StatsFieldName)
 }
 StatsFieldName::StatsFieldName(const StatsFieldName& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -3420,6 +1372,7 @@ StatsFieldName::StatsFieldName(const StatsFieldName& from)
 void StatsFieldName::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   field_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 StatsFieldName::~StatsFieldName() {
@@ -3433,7 +1386,9 @@ void StatsFieldName::SharedDtor() {
 }
 
 void StatsFieldName::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* StatsFieldName::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -3441,10 +1396,17 @@ const ::google::protobuf::Descriptor* StatsFieldName::descriptor() {
 }
 
 const StatsFieldName& StatsFieldName::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_StatsFieldName.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsStatsFieldName();
   return *internal_default_instance();
 }
 
+StatsFieldName* StatsFieldName::New(::google::protobuf::Arena* arena) const {
+  StatsFieldName* n = new StatsFieldName;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void StatsFieldName::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.StatsFieldName)
@@ -3463,7 +1425,7 @@ bool StatsFieldName::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.StatsFieldName)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -3613,7 +1575,9 @@ size_t StatsFieldName::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -3673,11 +1637,10 @@ void StatsFieldName::Swap(StatsFieldName* other) {
 }
 void StatsFieldName::InternalSwap(StatsFieldName* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  field_name_.Swap(&other->field_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  ip_addr_.Swap(&other->ip_addr_);
+  field_name_.Swap(&other->field_name_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata StatsFieldName::GetMetadata() const {
@@ -3696,14 +1659,16 @@ const int StatsFieldValue::kValueFieldNumber;
 
 StatsFieldValue::StatsFieldValue()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_StatsFieldValue.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsStatsFieldValue();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.StatsFieldValue)
 }
 StatsFieldValue::StatsFieldValue(const StatsFieldValue& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.value().size() > 0) {
@@ -3714,6 +1679,7 @@ StatsFieldValue::StatsFieldValue(const StatsFieldValue& from)
 
 void StatsFieldValue::SharedCtor() {
   value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 StatsFieldValue::~StatsFieldValue() {
@@ -3726,7 +1692,9 @@ void StatsFieldValue::SharedDtor() {
 }
 
 void StatsFieldValue::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* StatsFieldValue::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -3734,10 +1702,17 @@ const ::google::protobuf::Descriptor* StatsFieldValue::descriptor() {
 }
 
 const StatsFieldValue& StatsFieldValue::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_StatsFieldValue.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsStatsFieldValue();
   return *internal_default_instance();
 }
 
+StatsFieldValue* StatsFieldValue::New(::google::protobuf::Arena* arena) const {
+  StatsFieldValue* n = new StatsFieldValue;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void StatsFieldValue::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.StatsFieldValue)
@@ -3755,7 +1730,7 @@ bool StatsFieldValue::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.StatsFieldValue)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -3861,7 +1836,9 @@ size_t StatsFieldValue::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -3917,9 +1894,9 @@ void StatsFieldValue::Swap(StatsFieldValue* other) {
 }
 void StatsFieldValue::InternalSwap(StatsFieldValue* other) {
   using std::swap;
-  value_.Swap(&other->value_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  value_.Swap(&other->value_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata StatsFieldValue::GetMetadata() const {
@@ -3938,14 +1915,16 @@ const int HomePageReq::kTypeFieldNumber;
 
 HomePageReq::HomePageReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_HomePageReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsHomePageReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.HomePageReq)
 }
 HomePageReq::HomePageReq(const HomePageReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:raltservice.HomePageReq)
@@ -3953,6 +1932,7 @@ HomePageReq::HomePageReq(const HomePageReq& from)
 
 void HomePageReq::SharedCtor() {
   type_ = 0u;
+  _cached_size_ = 0;
 }
 
 HomePageReq::~HomePageReq() {
@@ -3964,7 +1944,9 @@ void HomePageReq::SharedDtor() {
 }
 
 void HomePageReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* HomePageReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -3972,10 +1954,17 @@ const ::google::protobuf::Descriptor* HomePageReq::descriptor() {
 }
 
 const HomePageReq& HomePageReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_HomePageReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsHomePageReq();
   return *internal_default_instance();
 }
 
+HomePageReq* HomePageReq::New(::google::protobuf::Arena* arena) const {
+  HomePageReq* n = new HomePageReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void HomePageReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.HomePageReq)
@@ -3993,7 +1982,7 @@ bool HomePageReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.HomePageReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -4086,7 +2075,9 @@ size_t HomePageReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -4143,6 +2134,7 @@ void HomePageReq::InternalSwap(HomePageReq* other) {
   using std::swap;
   swap(type_, other->type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata HomePageReq::GetMetadata() const {
@@ -4168,14 +2160,16 @@ const int HomePageRsp::kCacheNumDocsFieldNumber;
 
 HomePageRsp::HomePageRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_HomePageRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsHomePageRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.HomePageRsp)
 }
 HomePageRsp::HomePageRsp(const HomePageRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&domain_num_, &from.domain_num_,
     static_cast<size_t>(reinterpret_cast<char*>(&cache_num_docs_) -
@@ -4187,6 +2181,7 @@ void HomePageRsp::SharedCtor() {
   ::memset(&domain_num_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&cache_num_docs_) -
       reinterpret_cast<char*>(&domain_num_)) + sizeof(cache_num_docs_));
+  _cached_size_ = 0;
 }
 
 HomePageRsp::~HomePageRsp() {
@@ -4198,7 +2193,9 @@ void HomePageRsp::SharedDtor() {
 }
 
 void HomePageRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* HomePageRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -4206,10 +2203,17 @@ const ::google::protobuf::Descriptor* HomePageRsp::descriptor() {
 }
 
 const HomePageRsp& HomePageRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_HomePageRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsHomePageRsp();
   return *internal_default_instance();
 }
 
+HomePageRsp* HomePageRsp::New(::google::protobuf::Arena* arena) const {
+  HomePageRsp* n = new HomePageRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void HomePageRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.HomePageRsp)
@@ -4229,7 +2233,7 @@ bool HomePageRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.HomePageRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -4539,7 +2543,9 @@ size_t HomePageRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -4624,6 +2630,7 @@ void HomePageRsp::InternalSwap(HomePageRsp* other) {
   swap(cache_bytes_used_, other->cache_bytes_used_);
   swap(cache_num_docs_, other->cache_num_docs_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata HomePageRsp::GetMetadata() const {
@@ -4642,14 +2649,16 @@ const int CacheLookUpReq::kIpAddrFieldNumber;
 
 CacheLookUpReq::CacheLookUpReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_CacheLookUpReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsCacheLookUpReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.CacheLookUpReq)
 }
 CacheLookUpReq::CacheLookUpReq(const CacheLookUpReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -4660,6 +2669,7 @@ CacheLookUpReq::CacheLookUpReq(const CacheLookUpReq& from)
 
 void CacheLookUpReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 CacheLookUpReq::~CacheLookUpReq() {
@@ -4672,7 +2682,9 @@ void CacheLookUpReq::SharedDtor() {
 }
 
 void CacheLookUpReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* CacheLookUpReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -4680,10 +2692,17 @@ const ::google::protobuf::Descriptor* CacheLookUpReq::descriptor() {
 }
 
 const CacheLookUpReq& CacheLookUpReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_CacheLookUpReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsCacheLookUpReq();
   return *internal_default_instance();
 }
 
+CacheLookUpReq* CacheLookUpReq::New(::google::protobuf::Arena* arena) const {
+  CacheLookUpReq* n = new CacheLookUpReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void CacheLookUpReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.CacheLookUpReq)
@@ -4701,7 +2720,7 @@ bool CacheLookUpReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.CacheLookUpReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -4807,7 +2826,9 @@ size_t CacheLookUpReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -4863,9 +2884,9 @@ void CacheLookUpReq::Swap(CacheLookUpReq* other) {
 }
 void CacheLookUpReq::InternalSwap(CacheLookUpReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  ip_addr_.Swap(&other->ip_addr_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata CacheLookUpReq::GetMetadata() const {
@@ -4884,14 +2905,16 @@ const int FlowStatLookUpReq::kIpAddrFieldNumber;
 
 FlowStatLookUpReq::FlowStatLookUpReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_FlowStatLookUpReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsFlowStatLookUpReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.FlowStatLookUpReq)
 }
 FlowStatLookUpReq::FlowStatLookUpReq(const FlowStatLookUpReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -4902,6 +2925,7 @@ FlowStatLookUpReq::FlowStatLookUpReq(const FlowStatLookUpReq& from)
 
 void FlowStatLookUpReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 FlowStatLookUpReq::~FlowStatLookUpReq() {
@@ -4914,7 +2938,9 @@ void FlowStatLookUpReq::SharedDtor() {
 }
 
 void FlowStatLookUpReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* FlowStatLookUpReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -4922,10 +2948,17 @@ const ::google::protobuf::Descriptor* FlowStatLookUpReq::descriptor() {
 }
 
 const FlowStatLookUpReq& FlowStatLookUpReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_FlowStatLookUpReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsFlowStatLookUpReq();
   return *internal_default_instance();
 }
 
+FlowStatLookUpReq* FlowStatLookUpReq::New(::google::protobuf::Arena* arena) const {
+  FlowStatLookUpReq* n = new FlowStatLookUpReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void FlowStatLookUpReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.FlowStatLookUpReq)
@@ -4943,7 +2976,7 @@ bool FlowStatLookUpReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.FlowStatLookUpReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -5049,7 +3082,9 @@ size_t FlowStatLookUpReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -5105,9 +3140,9 @@ void FlowStatLookUpReq::Swap(FlowStatLookUpReq* other) {
 }
 void FlowStatLookUpReq::InternalSwap(FlowStatLookUpReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  ip_addr_.Swap(&other->ip_addr_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata FlowStatLookUpReq::GetMetadata() const {
@@ -5126,14 +3161,16 @@ const int LogInfoLookUpReq::kIpAddrFieldNumber;
 
 LogInfoLookUpReq::LogInfoLookUpReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_LogInfoLookUpReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsLogInfoLookUpReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.LogInfoLookUpReq)
 }
 LogInfoLookUpReq::LogInfoLookUpReq(const LogInfoLookUpReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -5144,6 +3181,7 @@ LogInfoLookUpReq::LogInfoLookUpReq(const LogInfoLookUpReq& from)
 
 void LogInfoLookUpReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 LogInfoLookUpReq::~LogInfoLookUpReq() {
@@ -5156,7 +3194,9 @@ void LogInfoLookUpReq::SharedDtor() {
 }
 
 void LogInfoLookUpReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* LogInfoLookUpReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -5164,10 +3204,17 @@ const ::google::protobuf::Descriptor* LogInfoLookUpReq::descriptor() {
 }
 
 const LogInfoLookUpReq& LogInfoLookUpReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_LogInfoLookUpReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsLogInfoLookUpReq();
   return *internal_default_instance();
 }
 
+LogInfoLookUpReq* LogInfoLookUpReq::New(::google::protobuf::Arena* arena) const {
+  LogInfoLookUpReq* n = new LogInfoLookUpReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void LogInfoLookUpReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.LogInfoLookUpReq)
@@ -5185,7 +3232,7 @@ bool LogInfoLookUpReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.LogInfoLookUpReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -5291,7 +3338,9 @@ size_t LogInfoLookUpReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -5347,9 +3396,9 @@ void LogInfoLookUpReq::Swap(LogInfoLookUpReq* other) {
 }
 void LogInfoLookUpReq::InternalSwap(LogInfoLookUpReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  ip_addr_.Swap(&other->ip_addr_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata LogInfoLookUpReq::GetMetadata() const {
@@ -5372,14 +3421,16 @@ const int CacheResult::kCacheHitRatioFieldNumber;
 
 CacheResult::CacheResult()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_CacheResult.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsCacheResult();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.CacheResult)
 }
 CacheResult::CacheResult(const CacheResult& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&bytes_total_, &from.bytes_total_,
     static_cast<size_t>(reinterpret_cast<char*>(&cache_hit_ratio_) -
@@ -5391,6 +3442,7 @@ void CacheResult::SharedCtor() {
   ::memset(&bytes_total_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&cache_hit_ratio_) -
       reinterpret_cast<char*>(&bytes_total_)) + sizeof(cache_hit_ratio_));
+  _cached_size_ = 0;
 }
 
 CacheResult::~CacheResult() {
@@ -5402,7 +3454,9 @@ void CacheResult::SharedDtor() {
 }
 
 void CacheResult::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* CacheResult::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -5410,10 +3464,17 @@ const ::google::protobuf::Descriptor* CacheResult::descriptor() {
 }
 
 const CacheResult& CacheResult::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_CacheResult.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsCacheResult();
   return *internal_default_instance();
 }
 
+CacheResult* CacheResult::New(::google::protobuf::Arena* arena) const {
+  CacheResult* n = new CacheResult;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void CacheResult::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.CacheResult)
@@ -5433,7 +3494,7 @@ bool CacheResult::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.CacheResult)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -5648,7 +3709,9 @@ size_t CacheResult::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -5721,6 +3784,7 @@ void CacheResult::InternalSwap(CacheResult* other) {
   swap(bytes_used_, other->bytes_used_);
   swap(cache_hit_ratio_, other->cache_hit_ratio_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata CacheResult::GetMetadata() const {
@@ -5752,14 +3816,16 @@ const int FlowResult::kBandwidthHitRatioFieldNumber;
 
 FlowResult::FlowResult()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_FlowResult.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsFlowResult();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.FlowResult)
 }
 FlowResult::FlowResult(const FlowResult& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&user_agent_current_connections_count_, &from.user_agent_current_connections_count_,
     static_cast<size_t>(reinterpret_cast<char*>(&origin_server_total_bytes_) -
@@ -5771,6 +3837,7 @@ void FlowResult::SharedCtor() {
   ::memset(&user_agent_current_connections_count_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&origin_server_total_bytes_) -
       reinterpret_cast<char*>(&user_agent_current_connections_count_)) + sizeof(origin_server_total_bytes_));
+  _cached_size_ = 0;
 }
 
 FlowResult::~FlowResult() {
@@ -5782,7 +3849,9 @@ void FlowResult::SharedDtor() {
 }
 
 void FlowResult::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* FlowResult::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -5790,10 +3859,17 @@ const ::google::protobuf::Descriptor* FlowResult::descriptor() {
 }
 
 const FlowResult& FlowResult::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_FlowResult.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsFlowResult();
   return *internal_default_instance();
 }
 
+FlowResult* FlowResult::New(::google::protobuf::Arena* arena) const {
+  FlowResult* n = new FlowResult;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void FlowResult::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.FlowResult)
@@ -5813,7 +3889,7 @@ bool FlowResult::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.FlowResult)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -6307,7 +4383,9 @@ size_t FlowResult::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -6416,6 +4494,7 @@ void FlowResult::InternalSwap(FlowResult* other) {
   swap(bandwidth_hit_ratio_, other->bandwidth_hit_ratio_);
   swap(origin_server_total_bytes_, other->origin_server_total_bytes_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata FlowResult::GetMetadata() const {
@@ -6435,14 +4514,16 @@ const int LogResult::kMaxSpaceMbForLogsFieldNumber;
 
 LogResult::LogResult()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_LogResult.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsLogResult();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.LogResult)
 }
 LogResult::LogResult(const LogResult& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&log_files_space_mb_used_, &from.log_files_space_mb_used_,
     static_cast<size_t>(reinterpret_cast<char*>(&max_space_mb_for_logs_) -
@@ -6454,6 +4535,7 @@ void LogResult::SharedCtor() {
   ::memset(&log_files_space_mb_used_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&max_space_mb_for_logs_) -
       reinterpret_cast<char*>(&log_files_space_mb_used_)) + sizeof(max_space_mb_for_logs_));
+  _cached_size_ = 0;
 }
 
 LogResult::~LogResult() {
@@ -6465,7 +4547,9 @@ void LogResult::SharedDtor() {
 }
 
 void LogResult::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* LogResult::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -6473,10 +4557,17 @@ const ::google::protobuf::Descriptor* LogResult::descriptor() {
 }
 
 const LogResult& LogResult::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_LogResult.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsLogResult();
   return *internal_default_instance();
 }
 
+LogResult* LogResult::New(::google::protobuf::Arena* arena) const {
+  LogResult* n = new LogResult;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void LogResult::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.LogResult)
@@ -6496,7 +4587,7 @@ bool LogResult::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.LogResult)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -6620,7 +4711,9 @@ size_t LogResult::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -6681,6 +4774,7 @@ void LogResult::InternalSwap(LogResult* other) {
   swap(log_files_space_mb_used_, other->log_files_space_mb_used_);
   swap(max_space_mb_for_logs_, other->max_space_mb_for_logs_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata LogResult::GetMetadata() const {
@@ -6699,14 +4793,16 @@ const int GetRaltLogsReq::kIpAddrFieldNumber;
 
 GetRaltLogsReq::GetRaltLogsReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetRaltLogsReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRaltLogsReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.GetRaltLogsReq)
 }
 GetRaltLogsReq::GetRaltLogsReq(const GetRaltLogsReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -6717,6 +4813,7 @@ GetRaltLogsReq::GetRaltLogsReq(const GetRaltLogsReq& from)
 
 void GetRaltLogsReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 GetRaltLogsReq::~GetRaltLogsReq() {
@@ -6729,7 +4826,9 @@ void GetRaltLogsReq::SharedDtor() {
 }
 
 void GetRaltLogsReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* GetRaltLogsReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -6737,10 +4836,17 @@ const ::google::protobuf::Descriptor* GetRaltLogsReq::descriptor() {
 }
 
 const GetRaltLogsReq& GetRaltLogsReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetRaltLogsReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRaltLogsReq();
   return *internal_default_instance();
 }
 
+GetRaltLogsReq* GetRaltLogsReq::New(::google::protobuf::Arena* arena) const {
+  GetRaltLogsReq* n = new GetRaltLogsReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void GetRaltLogsReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.GetRaltLogsReq)
@@ -6758,7 +4864,7 @@ bool GetRaltLogsReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.GetRaltLogsReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -6864,7 +4970,9 @@ size_t GetRaltLogsReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -6920,9 +5028,9 @@ void GetRaltLogsReq::Swap(GetRaltLogsReq* other) {
 }
 void GetRaltLogsReq::InternalSwap(GetRaltLogsReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  ip_addr_.Swap(&other->ip_addr_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetRaltLogsReq::GetMetadata() const {
@@ -6941,14 +5049,16 @@ const int RaltLogs::kLogsFieldNumber;
 
 RaltLogs::RaltLogs()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_RaltLogs.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsRaltLogs();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.RaltLogs)
 }
 RaltLogs::RaltLogs(const RaltLogs& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   logs_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.logs().size() > 0) {
@@ -6959,6 +5069,7 @@ RaltLogs::RaltLogs(const RaltLogs& from)
 
 void RaltLogs::SharedCtor() {
   logs_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 RaltLogs::~RaltLogs() {
@@ -6971,7 +5082,9 @@ void RaltLogs::SharedDtor() {
 }
 
 void RaltLogs::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* RaltLogs::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -6979,10 +5092,17 @@ const ::google::protobuf::Descriptor* RaltLogs::descriptor() {
 }
 
 const RaltLogs& RaltLogs::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_RaltLogs.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsRaltLogs();
   return *internal_default_instance();
 }
 
+RaltLogs* RaltLogs::New(::google::protobuf::Arena* arena) const {
+  RaltLogs* n = new RaltLogs;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void RaltLogs::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.RaltLogs)
@@ -7000,7 +5120,7 @@ bool RaltLogs::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.RaltLogs)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -7094,7 +5214,9 @@ size_t RaltLogs::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -7150,9 +5272,9 @@ void RaltLogs::Swap(RaltLogs* other) {
 }
 void RaltLogs::InternalSwap(RaltLogs* other) {
   using std::swap;
-  logs_.Swap(&other->logs_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  logs_.Swap(&other->logs_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata RaltLogs::GetMetadata() const {
@@ -7171,14 +5293,16 @@ const int GetRecordCfgReq::kTypeFieldNumber;
 
 GetRecordCfgReq::GetRecordCfgReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetRecordCfgReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRecordCfgReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.GetRecordCfgReq)
 }
 GetRecordCfgReq::GetRecordCfgReq(const GetRecordCfgReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:raltservice.GetRecordCfgReq)
@@ -7186,6 +5310,7 @@ GetRecordCfgReq::GetRecordCfgReq(const GetRecordCfgReq& from)
 
 void GetRecordCfgReq::SharedCtor() {
   type_ = 0u;
+  _cached_size_ = 0;
 }
 
 GetRecordCfgReq::~GetRecordCfgReq() {
@@ -7197,7 +5322,9 @@ void GetRecordCfgReq::SharedDtor() {
 }
 
 void GetRecordCfgReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* GetRecordCfgReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -7205,10 +5332,17 @@ const ::google::protobuf::Descriptor* GetRecordCfgReq::descriptor() {
 }
 
 const GetRecordCfgReq& GetRecordCfgReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetRecordCfgReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRecordCfgReq();
   return *internal_default_instance();
 }
 
+GetRecordCfgReq* GetRecordCfgReq::New(::google::protobuf::Arena* arena) const {
+  GetRecordCfgReq* n = new GetRecordCfgReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void GetRecordCfgReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.GetRecordCfgReq)
@@ -7226,7 +5360,7 @@ bool GetRecordCfgReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.GetRecordCfgReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -7319,7 +5453,9 @@ size_t GetRecordCfgReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -7376,6 +5512,7 @@ void GetRecordCfgReq::InternalSwap(GetRecordCfgReq* other) {
   using std::swap;
   swap(type_, other->type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetRecordCfgReq::GetMetadata() const {
@@ -7397,14 +5534,16 @@ const int GetRecordCfgRsp::kServerPortsFieldNumber;
 
 GetRecordCfgRsp::GetRecordCfgRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetRecordCfgRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRecordCfgRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.GetRecordCfgRsp)
 }
 GetRecordCfgRsp::GetRecordCfgRsp(const GetRecordCfgRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   server_ports_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.server_ports().size() > 0) {
@@ -7421,6 +5560,7 @@ void GetRecordCfgRsp::SharedCtor() {
   ::memset(&logging_enabled_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&rolling_enabled_) -
       reinterpret_cast<char*>(&logging_enabled_)) + sizeof(rolling_enabled_));
+  _cached_size_ = 0;
 }
 
 GetRecordCfgRsp::~GetRecordCfgRsp() {
@@ -7433,7 +5573,9 @@ void GetRecordCfgRsp::SharedDtor() {
 }
 
 void GetRecordCfgRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* GetRecordCfgRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -7441,10 +5583,17 @@ const ::google::protobuf::Descriptor* GetRecordCfgRsp::descriptor() {
 }
 
 const GetRecordCfgRsp& GetRecordCfgRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetRecordCfgRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRecordCfgRsp();
   return *internal_default_instance();
 }
 
+GetRecordCfgRsp* GetRecordCfgRsp::New(::google::protobuf::Arena* arena) const {
+  GetRecordCfgRsp* n = new GetRecordCfgRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void GetRecordCfgRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.GetRecordCfgRsp)
@@ -7465,7 +5614,7 @@ bool GetRecordCfgRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.GetRecordCfgRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -7664,7 +5813,9 @@ size_t GetRecordCfgRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -7729,12 +5880,12 @@ void GetRecordCfgRsp::Swap(GetRecordCfgRsp* other) {
 }
 void GetRecordCfgRsp::InternalSwap(GetRecordCfgRsp* other) {
   using std::swap;
-  server_ports_.Swap(&other->server_ports_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  server_ports_.Swap(&other->server_ports_);
   swap(logging_enabled_, other->logging_enabled_);
   swap(max_space_mb_for_logs_, other->max_space_mb_for_logs_);
   swap(rolling_enabled_, other->rolling_enabled_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetRecordCfgRsp::GetMetadata() const {
@@ -7754,14 +5905,16 @@ const int SetRecordCfgReq::kValueFieldNumber;
 
 SetRecordCfgReq::SetRecordCfgReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_SetRecordCfgReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetRecordCfgReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.SetRecordCfgReq)
 }
 SetRecordCfgReq::SetRecordCfgReq(const SetRecordCfgReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.value().size() > 0) {
@@ -7774,6 +5927,7 @@ SetRecordCfgReq::SetRecordCfgReq(const SetRecordCfgReq& from)
 void SetRecordCfgReq::SharedCtor() {
   value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   key_ = 0;
+  _cached_size_ = 0;
 }
 
 SetRecordCfgReq::~SetRecordCfgReq() {
@@ -7786,7 +5940,9 @@ void SetRecordCfgReq::SharedDtor() {
 }
 
 void SetRecordCfgReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* SetRecordCfgReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -7794,10 +5950,17 @@ const ::google::protobuf::Descriptor* SetRecordCfgReq::descriptor() {
 }
 
 const SetRecordCfgReq& SetRecordCfgReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_SetRecordCfgReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetRecordCfgReq();
   return *internal_default_instance();
 }
 
+SetRecordCfgReq* SetRecordCfgReq::New(::google::protobuf::Arena* arena) const {
+  SetRecordCfgReq* n = new SetRecordCfgReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void SetRecordCfgReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.SetRecordCfgReq)
@@ -7816,7 +5979,7 @@ bool SetRecordCfgReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.SetRecordCfgReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -7955,7 +6118,9 @@ size_t SetRecordCfgReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -8014,10 +6179,10 @@ void SetRecordCfgReq::Swap(SetRecordCfgReq* other) {
 }
 void SetRecordCfgReq::InternalSwap(SetRecordCfgReq* other) {
   using std::swap;
-  value_.Swap(&other->value_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  value_.Swap(&other->value_);
   swap(key_, other->key_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata SetRecordCfgReq::GetMetadata() const {
@@ -8036,14 +6201,16 @@ const int SetRecordCfgRsp::kResultFieldNumber;
 
 SetRecordCfgRsp::SetRecordCfgRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_SetRecordCfgRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetRecordCfgRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.SetRecordCfgRsp)
 }
 SetRecordCfgRsp::SetRecordCfgRsp(const SetRecordCfgRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:raltservice.SetRecordCfgRsp)
@@ -8051,6 +6218,7 @@ SetRecordCfgRsp::SetRecordCfgRsp(const SetRecordCfgRsp& from)
 
 void SetRecordCfgRsp::SharedCtor() {
   result_ = 0u;
+  _cached_size_ = 0;
 }
 
 SetRecordCfgRsp::~SetRecordCfgRsp() {
@@ -8062,7 +6230,9 @@ void SetRecordCfgRsp::SharedDtor() {
 }
 
 void SetRecordCfgRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* SetRecordCfgRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -8070,10 +6240,17 @@ const ::google::protobuf::Descriptor* SetRecordCfgRsp::descriptor() {
 }
 
 const SetRecordCfgRsp& SetRecordCfgRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_SetRecordCfgRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetRecordCfgRsp();
   return *internal_default_instance();
 }
 
+SetRecordCfgRsp* SetRecordCfgRsp::New(::google::protobuf::Arena* arena) const {
+  SetRecordCfgRsp* n = new SetRecordCfgRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void SetRecordCfgRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.SetRecordCfgRsp)
@@ -8091,7 +6268,7 @@ bool SetRecordCfgRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.SetRecordCfgRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -8184,7 +6361,9 @@ size_t SetRecordCfgRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -8241,6 +6420,7 @@ void SetRecordCfgRsp::InternalSwap(SetRecordCfgRsp* other) {
   using std::swap;
   swap(result_, other->result_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata SetRecordCfgRsp::GetMetadata() const {
@@ -8259,14 +6439,16 @@ const int GetAllDomainReq::kTypeFieldNumber;
 
 GetAllDomainReq::GetAllDomainReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetAllDomainReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.GetAllDomainReq)
 }
 GetAllDomainReq::GetAllDomainReq(const GetAllDomainReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:raltservice.GetAllDomainReq)
@@ -8274,6 +6456,7 @@ GetAllDomainReq::GetAllDomainReq(const GetAllDomainReq& from)
 
 void GetAllDomainReq::SharedCtor() {
   type_ = 0u;
+  _cached_size_ = 0;
 }
 
 GetAllDomainReq::~GetAllDomainReq() {
@@ -8285,7 +6468,9 @@ void GetAllDomainReq::SharedDtor() {
 }
 
 void GetAllDomainReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* GetAllDomainReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -8293,10 +6478,17 @@ const ::google::protobuf::Descriptor* GetAllDomainReq::descriptor() {
 }
 
 const GetAllDomainReq& GetAllDomainReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetAllDomainReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainReq();
   return *internal_default_instance();
 }
 
+GetAllDomainReq* GetAllDomainReq::New(::google::protobuf::Arena* arena) const {
+  GetAllDomainReq* n = new GetAllDomainReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void GetAllDomainReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.GetAllDomainReq)
@@ -8314,7 +6506,7 @@ bool GetAllDomainReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.GetAllDomainReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -8407,7 +6599,9 @@ size_t GetAllDomainReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -8464,6 +6658,7 @@ void GetAllDomainReq::InternalSwap(GetAllDomainReq* other) {
   using std::swap;
   swap(type_, other->type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetAllDomainReq::GetMetadata() const {
@@ -8485,14 +6680,16 @@ const int Domain::kPortFieldNumber;
 
 Domain::Domain()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_Domain.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsDomain();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.Domain)
 }
 Domain::Domain(const Domain& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   domain_str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.domain_str().size() > 0) {
@@ -8515,6 +6712,7 @@ void Domain::SharedCtor() {
   append_or_replace_str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   port_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   type_ = 0;
+  _cached_size_ = 0;
 }
 
 Domain::~Domain() {
@@ -8529,7 +6727,9 @@ void Domain::SharedDtor() {
 }
 
 void Domain::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* Domain::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -8537,10 +6737,17 @@ const ::google::protobuf::Descriptor* Domain::descriptor() {
 }
 
 const Domain& Domain::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_Domain.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsDomain();
   return *internal_default_instance();
 }
 
+Domain* Domain::New(::google::protobuf::Arena* arena) const {
+  Domain* n = new Domain;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void Domain::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.Domain)
@@ -8561,7 +6768,7 @@ bool Domain::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.Domain)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -8788,7 +6995,9 @@ size_t Domain::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -8855,14 +7064,12 @@ void Domain::Swap(Domain* other) {
 }
 void Domain::InternalSwap(Domain* other) {
   using std::swap;
-  domain_str_.Swap(&other->domain_str_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  append_or_replace_str_.Swap(&other->append_or_replace_str_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  port_.Swap(&other->port_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  domain_str_.Swap(&other->domain_str_);
+  append_or_replace_str_.Swap(&other->append_or_replace_str_);
+  port_.Swap(&other->port_);
   swap(type_, other->type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata Domain::GetMetadata() const {
@@ -8881,14 +7088,16 @@ const int UpdateDomainRsp::kResultFieldNumber;
 
 UpdateDomainRsp::UpdateDomainRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_UpdateDomainRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsUpdateDomainRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.UpdateDomainRsp)
 }
 UpdateDomainRsp::UpdateDomainRsp(const UpdateDomainRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:raltservice.UpdateDomainRsp)
@@ -8896,6 +7105,7 @@ UpdateDomainRsp::UpdateDomainRsp(const UpdateDomainRsp& from)
 
 void UpdateDomainRsp::SharedCtor() {
   result_ = 0u;
+  _cached_size_ = 0;
 }
 
 UpdateDomainRsp::~UpdateDomainRsp() {
@@ -8907,7 +7117,9 @@ void UpdateDomainRsp::SharedDtor() {
 }
 
 void UpdateDomainRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* UpdateDomainRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -8915,10 +7127,17 @@ const ::google::protobuf::Descriptor* UpdateDomainRsp::descriptor() {
 }
 
 const UpdateDomainRsp& UpdateDomainRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_UpdateDomainRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsUpdateDomainRsp();
   return *internal_default_instance();
 }
 
+UpdateDomainRsp* UpdateDomainRsp::New(::google::protobuf::Arena* arena) const {
+  UpdateDomainRsp* n = new UpdateDomainRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void UpdateDomainRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.UpdateDomainRsp)
@@ -8936,7 +7155,7 @@ bool UpdateDomainRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.UpdateDomainRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -9029,7 +7248,9 @@ size_t UpdateDomainRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -9086,6 +7307,7 @@ void UpdateDomainRsp::InternalSwap(UpdateDomainRsp* other) {
   using std::swap;
   swap(result_, other->result_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata UpdateDomainRsp::GetMetadata() const {
@@ -9104,14 +7326,16 @@ const int GetDomainReq::kDomainStrFieldNumber;
 
 GetDomainReq::GetDomainReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetDomainReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetDomainReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.GetDomainReq)
 }
 GetDomainReq::GetDomainReq(const GetDomainReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   domain_str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.domain_str().size() > 0) {
@@ -9122,6 +7346,7 @@ GetDomainReq::GetDomainReq(const GetDomainReq& from)
 
 void GetDomainReq::SharedCtor() {
   domain_str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 GetDomainReq::~GetDomainReq() {
@@ -9134,7 +7359,9 @@ void GetDomainReq::SharedDtor() {
 }
 
 void GetDomainReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* GetDomainReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -9142,10 +7369,17 @@ const ::google::protobuf::Descriptor* GetDomainReq::descriptor() {
 }
 
 const GetDomainReq& GetDomainReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetDomainReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetDomainReq();
   return *internal_default_instance();
 }
 
+GetDomainReq* GetDomainReq::New(::google::protobuf::Arena* arena) const {
+  GetDomainReq* n = new GetDomainReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void GetDomainReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.GetDomainReq)
@@ -9163,7 +7397,7 @@ bool GetDomainReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.GetDomainReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -9269,7 +7503,9 @@ size_t GetDomainReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -9325,9 +7561,9 @@ void GetDomainReq::Swap(GetDomainReq* other) {
 }
 void GetDomainReq::InternalSwap(GetDomainReq* other) {
   using std::swap;
-  domain_str_.Swap(&other->domain_str_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  domain_str_.Swap(&other->domain_str_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetDomainReq::GetMetadata() const {
@@ -9346,14 +7582,16 @@ const int AddDomainRsp::kResultFieldNumber;
 
 AddDomainRsp::AddDomainRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_AddDomainRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsAddDomainRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.AddDomainRsp)
 }
 AddDomainRsp::AddDomainRsp(const AddDomainRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:raltservice.AddDomainRsp)
@@ -9361,6 +7599,7 @@ AddDomainRsp::AddDomainRsp(const AddDomainRsp& from)
 
 void AddDomainRsp::SharedCtor() {
   result_ = 0u;
+  _cached_size_ = 0;
 }
 
 AddDomainRsp::~AddDomainRsp() {
@@ -9372,7 +7611,9 @@ void AddDomainRsp::SharedDtor() {
 }
 
 void AddDomainRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* AddDomainRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -9380,10 +7621,17 @@ const ::google::protobuf::Descriptor* AddDomainRsp::descriptor() {
 }
 
 const AddDomainRsp& AddDomainRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_AddDomainRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsAddDomainRsp();
   return *internal_default_instance();
 }
 
+AddDomainRsp* AddDomainRsp::New(::google::protobuf::Arena* arena) const {
+  AddDomainRsp* n = new AddDomainRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void AddDomainRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.AddDomainRsp)
@@ -9401,7 +7649,7 @@ bool AddDomainRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.AddDomainRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -9494,7 +7742,9 @@ size_t AddDomainRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -9551,6 +7801,7 @@ void AddDomainRsp::InternalSwap(AddDomainRsp* other) {
   using std::swap;
   swap(result_, other->result_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata AddDomainRsp::GetMetadata() const {
@@ -9569,14 +7820,16 @@ const int DeleteDomainReq::kDomainStrFieldNumber;
 
 DeleteDomainReq::DeleteDomainReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_DeleteDomainReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsDeleteDomainReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.DeleteDomainReq)
 }
 DeleteDomainReq::DeleteDomainReq(const DeleteDomainReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   domain_str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.domain_str().size() > 0) {
@@ -9587,6 +7840,7 @@ DeleteDomainReq::DeleteDomainReq(const DeleteDomainReq& from)
 
 void DeleteDomainReq::SharedCtor() {
   domain_str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 DeleteDomainReq::~DeleteDomainReq() {
@@ -9599,7 +7853,9 @@ void DeleteDomainReq::SharedDtor() {
 }
 
 void DeleteDomainReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* DeleteDomainReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -9607,10 +7863,17 @@ const ::google::protobuf::Descriptor* DeleteDomainReq::descriptor() {
 }
 
 const DeleteDomainReq& DeleteDomainReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_DeleteDomainReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsDeleteDomainReq();
   return *internal_default_instance();
 }
 
+DeleteDomainReq* DeleteDomainReq::New(::google::protobuf::Arena* arena) const {
+  DeleteDomainReq* n = new DeleteDomainReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void DeleteDomainReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.DeleteDomainReq)
@@ -9628,7 +7891,7 @@ bool DeleteDomainReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.DeleteDomainReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -9734,7 +7997,9 @@ size_t DeleteDomainReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -9790,9 +8055,9 @@ void DeleteDomainReq::Swap(DeleteDomainReq* other) {
 }
 void DeleteDomainReq::InternalSwap(DeleteDomainReq* other) {
   using std::swap;
-  domain_str_.Swap(&other->domain_str_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  domain_str_.Swap(&other->domain_str_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata DeleteDomainReq::GetMetadata() const {
@@ -9811,14 +8076,16 @@ const int DeleteDomainRsp::kResultFieldNumber;
 
 DeleteDomainRsp::DeleteDomainRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_DeleteDomainRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsDeleteDomainRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.DeleteDomainRsp)
 }
 DeleteDomainRsp::DeleteDomainRsp(const DeleteDomainRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:raltservice.DeleteDomainRsp)
@@ -9826,6 +8093,7 @@ DeleteDomainRsp::DeleteDomainRsp(const DeleteDomainRsp& from)
 
 void DeleteDomainRsp::SharedCtor() {
   result_ = 0u;
+  _cached_size_ = 0;
 }
 
 DeleteDomainRsp::~DeleteDomainRsp() {
@@ -9837,7 +8105,9 @@ void DeleteDomainRsp::SharedDtor() {
 }
 
 void DeleteDomainRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* DeleteDomainRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -9845,10 +8115,17 @@ const ::google::protobuf::Descriptor* DeleteDomainRsp::descriptor() {
 }
 
 const DeleteDomainRsp& DeleteDomainRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_DeleteDomainRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsDeleteDomainRsp();
   return *internal_default_instance();
 }
 
+DeleteDomainRsp* DeleteDomainRsp::New(::google::protobuf::Arena* arena) const {
+  DeleteDomainRsp* n = new DeleteDomainRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void DeleteDomainRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.DeleteDomainRsp)
@@ -9866,7 +8143,7 @@ bool DeleteDomainRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.DeleteDomainRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -9959,7 +8236,9 @@ size_t DeleteDomainRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -10016,6 +8295,7 @@ void DeleteDomainRsp::InternalSwap(DeleteDomainRsp* other) {
   using std::swap;
   swap(result_, other->result_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata DeleteDomainRsp::GetMetadata() const {
@@ -10034,14 +8314,16 @@ const int GetMiscReq::kTypeFieldNumber;
 
 GetMiscReq::GetMiscReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetMiscReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetMiscReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.GetMiscReq)
 }
 GetMiscReq::GetMiscReq(const GetMiscReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:raltservice.GetMiscReq)
@@ -10049,6 +8331,7 @@ GetMiscReq::GetMiscReq(const GetMiscReq& from)
 
 void GetMiscReq::SharedCtor() {
   type_ = 0u;
+  _cached_size_ = 0;
 }
 
 GetMiscReq::~GetMiscReq() {
@@ -10060,7 +8343,9 @@ void GetMiscReq::SharedDtor() {
 }
 
 void GetMiscReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* GetMiscReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -10068,10 +8353,17 @@ const ::google::protobuf::Descriptor* GetMiscReq::descriptor() {
 }
 
 const GetMiscReq& GetMiscReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetMiscReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetMiscReq();
   return *internal_default_instance();
 }
 
+GetMiscReq* GetMiscReq::New(::google::protobuf::Arena* arena) const {
+  GetMiscReq* n = new GetMiscReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void GetMiscReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.GetMiscReq)
@@ -10089,7 +8381,7 @@ bool GetMiscReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.GetMiscReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -10182,7 +8474,9 @@ size_t GetMiscReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -10239,6 +8533,7 @@ void GetMiscReq::InternalSwap(GetMiscReq* other) {
   using std::swap;
   swap(type_, other->type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetMiscReq::GetMetadata() const {
@@ -10257,14 +8552,16 @@ const int GetMiscRsp::kRaltFilterTypeDefaultFieldNumber;
 
 GetMiscRsp::GetMiscRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_GetMiscRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetMiscRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.GetMiscRsp)
 }
 GetMiscRsp::GetMiscRsp(const GetMiscRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ralt_filter_type_default_ = from.ralt_filter_type_default_;
   // @@protoc_insertion_point(copy_constructor:raltservice.GetMiscRsp)
@@ -10272,6 +8569,7 @@ GetMiscRsp::GetMiscRsp(const GetMiscRsp& from)
 
 void GetMiscRsp::SharedCtor() {
   ralt_filter_type_default_ = 0;
+  _cached_size_ = 0;
 }
 
 GetMiscRsp::~GetMiscRsp() {
@@ -10283,7 +8581,9 @@ void GetMiscRsp::SharedDtor() {
 }
 
 void GetMiscRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* GetMiscRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -10291,10 +8591,17 @@ const ::google::protobuf::Descriptor* GetMiscRsp::descriptor() {
 }
 
 const GetMiscRsp& GetMiscRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_GetMiscRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetMiscRsp();
   return *internal_default_instance();
 }
 
+GetMiscRsp* GetMiscRsp::New(::google::protobuf::Arena* arena) const {
+  GetMiscRsp* n = new GetMiscRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void GetMiscRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.GetMiscRsp)
@@ -10312,7 +8619,7 @@ bool GetMiscRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.GetMiscRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -10407,7 +8714,9 @@ size_t GetMiscRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -10464,6 +8773,7 @@ void GetMiscRsp::InternalSwap(GetMiscRsp* other) {
   using std::swap;
   swap(ralt_filter_type_default_, other->ralt_filter_type_default_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetMiscRsp::GetMetadata() const {
@@ -10483,14 +8793,16 @@ const int Misc::kValueFieldNumber;
 
 Misc::Misc()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_Misc.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsMisc();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.Misc)
 }
 Misc::Misc(const Misc& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&key_, &from.key_,
     static_cast<size_t>(reinterpret_cast<char*>(&value_) -
@@ -10502,6 +8814,7 @@ void Misc::SharedCtor() {
   ::memset(&key_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&value_) -
       reinterpret_cast<char*>(&key_)) + sizeof(value_));
+  _cached_size_ = 0;
 }
 
 Misc::~Misc() {
@@ -10513,7 +8826,9 @@ void Misc::SharedDtor() {
 }
 
 void Misc::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* Misc::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -10521,10 +8836,17 @@ const ::google::protobuf::Descriptor* Misc::descriptor() {
 }
 
 const Misc& Misc::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_Misc.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsMisc();
   return *internal_default_instance();
 }
 
+Misc* Misc::New(::google::protobuf::Arena* arena) const {
+  Misc* n = new Misc;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void Misc::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.Misc)
@@ -10544,7 +8866,7 @@ bool Misc::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.Misc)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -10672,7 +8994,9 @@ size_t Misc::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -10733,6 +9057,7 @@ void Misc::InternalSwap(Misc* other) {
   swap(key_, other->key_);
   swap(value_, other->value_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata Misc::GetMetadata() const {
@@ -10751,14 +9076,16 @@ const int ModMiscOpRsp::kResultFieldNumber;
 
 ModMiscOpRsp::ModMiscOpRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_ModMiscOpRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsModMiscOpRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.ModMiscOpRsp)
 }
 ModMiscOpRsp::ModMiscOpRsp(const ModMiscOpRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:raltservice.ModMiscOpRsp)
@@ -10766,6 +9093,7 @@ ModMiscOpRsp::ModMiscOpRsp(const ModMiscOpRsp& from)
 
 void ModMiscOpRsp::SharedCtor() {
   result_ = 0u;
+  _cached_size_ = 0;
 }
 
 ModMiscOpRsp::~ModMiscOpRsp() {
@@ -10777,7 +9105,9 @@ void ModMiscOpRsp::SharedDtor() {
 }
 
 void ModMiscOpRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* ModMiscOpRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -10785,10 +9115,17 @@ const ::google::protobuf::Descriptor* ModMiscOpRsp::descriptor() {
 }
 
 const ModMiscOpRsp& ModMiscOpRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_ModMiscOpRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsModMiscOpRsp();
   return *internal_default_instance();
 }
 
+ModMiscOpRsp* ModMiscOpRsp::New(::google::protobuf::Arena* arena) const {
+  ModMiscOpRsp* n = new ModMiscOpRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void ModMiscOpRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.ModMiscOpRsp)
@@ -10806,7 +9143,7 @@ bool ModMiscOpRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.ModMiscOpRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -10899,7 +9236,9 @@ size_t ModMiscOpRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -10956,6 +9295,7 @@ void ModMiscOpRsp::InternalSwap(ModMiscOpRsp* other) {
   using std::swap;
   swap(result_, other->result_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata ModMiscOpRsp::GetMetadata() const {
@@ -10969,26 +9309,32 @@ void ModMiscOpRsp::InternalSwap(ModMiscOpRsp* other) {
 void RaltStatusReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int RaltStatusReq::kTypeFieldNumber;
+const int RaltStatusReq::kIpAddrFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 RaltStatusReq::RaltStatusReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_RaltStatusReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsRaltStatusReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.RaltStatusReq)
 }
 RaltStatusReq::RaltStatusReq(const RaltStatusReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  type_ = from.type_;
+  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.ip_addr().size() > 0) {
+    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
+  }
   // @@protoc_insertion_point(copy_constructor:raltservice.RaltStatusReq)
 }
 
 void RaltStatusReq::SharedCtor() {
-  type_ = 0u;
+  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 RaltStatusReq::~RaltStatusReq() {
@@ -10997,10 +9343,13 @@ RaltStatusReq::~RaltStatusReq() {
 }
 
 void RaltStatusReq::SharedDtor() {
+  ip_addr_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void RaltStatusReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* RaltStatusReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -11008,10 +9357,17 @@ const ::google::protobuf::Descriptor* RaltStatusReq::descriptor() {
 }
 
 const RaltStatusReq& RaltStatusReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_RaltStatusReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsRaltStatusReq();
   return *internal_default_instance();
 }
 
+RaltStatusReq* RaltStatusReq::New(::google::protobuf::Arena* arena) const {
+  RaltStatusReq* n = new RaltStatusReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void RaltStatusReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.RaltStatusReq)
@@ -11019,7 +9375,7 @@ void RaltStatusReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  type_ = 0u;
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -11029,18 +9385,20 @@ bool RaltStatusReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.RaltStatusReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 type = 1;
+      // string ip_addr = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &type_)));
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_ip_addr()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "raltservice.RaltStatusReq.ip_addr"));
         } else {
           goto handle_unusual;
         }
@@ -11073,9 +9431,14 @@ void RaltStatusReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 type = 1;
-  if (this->type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->type(), output);
+  // string ip_addr = 1;
+  if (this->ip_addr().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "raltservice.RaltStatusReq.ip_addr");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->ip_addr(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -11092,9 +9455,15 @@ void RaltStatusReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 type = 1;
-  if (this->type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->type(), target);
+  // string ip_addr = 1;
+  if (this->ip_addr().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "raltservice.RaltStatusReq.ip_addr");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->ip_addr(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -11114,15 +9483,17 @@ size_t RaltStatusReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // uint32 type = 1;
-  if (this->type() != 0) {
+  // string ip_addr = 1;
+  if (this->ip_addr().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->type());
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->ip_addr());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -11148,8 +9519,9 @@ void RaltStatusReq::MergeFrom(const RaltStatusReq& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.type() != 0) {
-    set_type(from.type());
+  if (from.ip_addr().size() > 0) {
+
+    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
   }
 }
 
@@ -11177,8 +9549,9 @@ void RaltStatusReq::Swap(RaltStatusReq* other) {
 }
 void RaltStatusReq::InternalSwap(RaltStatusReq* other) {
   using std::swap;
-  swap(type_, other->type_);
+  ip_addr_.Swap(&other->ip_addr_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata RaltStatusReq::GetMetadata() const {
@@ -11198,14 +9571,16 @@ const int RaltStatus::kStatusFieldNumber;
 
 RaltStatus::RaltStatus()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_RaltStatus.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsRaltStatus();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.RaltStatus)
 }
 RaltStatus::RaltStatus(const RaltStatus& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -11218,6 +9593,7 @@ RaltStatus::RaltStatus(const RaltStatus& from)
 void RaltStatus::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   status_ = 0u;
+  _cached_size_ = 0;
 }
 
 RaltStatus::~RaltStatus() {
@@ -11230,7 +9606,9 @@ void RaltStatus::SharedDtor() {
 }
 
 void RaltStatus::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* RaltStatus::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -11238,10 +9616,17 @@ const ::google::protobuf::Descriptor* RaltStatus::descriptor() {
 }
 
 const RaltStatus& RaltStatus::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_RaltStatus.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsRaltStatus();
   return *internal_default_instance();
 }
 
+RaltStatus* RaltStatus::New(::google::protobuf::Arena* arena) const {
+  RaltStatus* n = new RaltStatus;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void RaltStatus::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.RaltStatus)
@@ -11260,7 +9645,7 @@ bool RaltStatus::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.RaltStatus)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -11397,7 +9782,9 @@ size_t RaltStatus::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -11456,10 +9843,10 @@ void RaltStatus::Swap(RaltStatus* other) {
 }
 void RaltStatus::InternalSwap(RaltStatus* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  ip_addr_.Swap(&other->ip_addr_);
   swap(status_, other->status_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata RaltStatus::GetMetadata() const {
@@ -11479,14 +9866,16 @@ const int ExecCmdReq::kCmdFieldNumber;
 
 ExecCmdReq::ExecCmdReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_ExecCmdReq.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsExecCmdReq();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.ExecCmdReq)
 }
 ExecCmdReq::ExecCmdReq(const ExecCmdReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -11499,6 +9888,7 @@ ExecCmdReq::ExecCmdReq(const ExecCmdReq& from)
 void ExecCmdReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   cmd_ = 0;
+  _cached_size_ = 0;
 }
 
 ExecCmdReq::~ExecCmdReq() {
@@ -11511,7 +9901,9 @@ void ExecCmdReq::SharedDtor() {
 }
 
 void ExecCmdReq::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* ExecCmdReq::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -11519,10 +9911,17 @@ const ::google::protobuf::Descriptor* ExecCmdReq::descriptor() {
 }
 
 const ExecCmdReq& ExecCmdReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_ExecCmdReq.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsExecCmdReq();
   return *internal_default_instance();
 }
 
+ExecCmdReq* ExecCmdReq::New(::google::protobuf::Arena* arena) const {
+  ExecCmdReq* n = new ExecCmdReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void ExecCmdReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.ExecCmdReq)
@@ -11541,7 +9940,7 @@ bool ExecCmdReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.ExecCmdReq)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -11680,7 +10079,9 @@ size_t ExecCmdReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -11739,10 +10140,10 @@ void ExecCmdReq::Swap(ExecCmdReq* other) {
 }
 void ExecCmdReq::InternalSwap(ExecCmdReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  ip_addr_.Swap(&other->ip_addr_);
   swap(cmd_, other->cmd_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata ExecCmdReq::GetMetadata() const {
@@ -11761,14 +10162,16 @@ const int ExecCmdRsp::kResultFieldNumber;
 
 ExecCmdRsp::ExecCmdRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ralt_2dservice_2eproto::scc_info_ExecCmdRsp.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsExecCmdRsp();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:raltservice.ExecCmdRsp)
 }
 ExecCmdRsp::ExecCmdRsp(const ExecCmdRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:raltservice.ExecCmdRsp)
@@ -11776,6 +10179,7 @@ ExecCmdRsp::ExecCmdRsp(const ExecCmdRsp& from)
 
 void ExecCmdRsp::SharedCtor() {
   result_ = 0u;
+  _cached_size_ = 0;
 }
 
 ExecCmdRsp::~ExecCmdRsp() {
@@ -11787,7 +10191,9 @@ void ExecCmdRsp::SharedDtor() {
 }
 
 void ExecCmdRsp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* ExecCmdRsp::descriptor() {
   ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
@@ -11795,10 +10201,17 @@ const ::google::protobuf::Descriptor* ExecCmdRsp::descriptor() {
 }
 
 const ExecCmdRsp& ExecCmdRsp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ralt_2dservice_2eproto::scc_info_ExecCmdRsp.base);
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsExecCmdRsp();
   return *internal_default_instance();
 }
 
+ExecCmdRsp* ExecCmdRsp::New(::google::protobuf::Arena* arena) const {
+  ExecCmdRsp* n = new ExecCmdRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
 
 void ExecCmdRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:raltservice.ExecCmdRsp)
@@ -11816,7 +10229,7 @@ bool ExecCmdRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:raltservice.ExecCmdRsp)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -11909,7 +10322,9 @@ size_t ExecCmdRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -11966,6 +10381,7 @@ void ExecCmdRsp::InternalSwap(ExecCmdRsp* other) {
   using std::swap;
   swap(result_, other->result_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata ExecCmdRsp::GetMetadata() const {
@@ -11976,126 +10392,5 @@ void ExecCmdRsp::InternalSwap(ExecCmdRsp* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace raltservice
-namespace google {
-namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetCpuUsageReq* Arena::CreateMaybeMessage< ::raltservice::GetCpuUsageReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetCpuUsageReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetCpuUsageRsp* Arena::CreateMaybeMessage< ::raltservice::GetCpuUsageRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetCpuUsageRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetCpuTempReq* Arena::CreateMaybeMessage< ::raltservice::GetCpuTempReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetCpuTempReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetCpuTempRsp* Arena::CreateMaybeMessage< ::raltservice::GetCpuTempRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetCpuTempRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetMemUsageReq* Arena::CreateMaybeMessage< ::raltservice::GetMemUsageReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetMemUsageReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetMemUsageRsp* Arena::CreateMaybeMessage< ::raltservice::GetMemUsageRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetMemUsageRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetNicInfoReq* Arena::CreateMaybeMessage< ::raltservice::GetNicInfoReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetNicInfoReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetNicInfoRsp* Arena::CreateMaybeMessage< ::raltservice::GetNicInfoRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetNicInfoRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::StatsFieldName* Arena::CreateMaybeMessage< ::raltservice::StatsFieldName >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::StatsFieldName >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::StatsFieldValue* Arena::CreateMaybeMessage< ::raltservice::StatsFieldValue >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::StatsFieldValue >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::HomePageReq* Arena::CreateMaybeMessage< ::raltservice::HomePageReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::HomePageReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::HomePageRsp* Arena::CreateMaybeMessage< ::raltservice::HomePageRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::HomePageRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::CacheLookUpReq* Arena::CreateMaybeMessage< ::raltservice::CacheLookUpReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::CacheLookUpReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::FlowStatLookUpReq* Arena::CreateMaybeMessage< ::raltservice::FlowStatLookUpReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::FlowStatLookUpReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::LogInfoLookUpReq* Arena::CreateMaybeMessage< ::raltservice::LogInfoLookUpReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::LogInfoLookUpReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::CacheResult* Arena::CreateMaybeMessage< ::raltservice::CacheResult >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::CacheResult >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::FlowResult* Arena::CreateMaybeMessage< ::raltservice::FlowResult >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::FlowResult >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::LogResult* Arena::CreateMaybeMessage< ::raltservice::LogResult >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::LogResult >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetRaltLogsReq* Arena::CreateMaybeMessage< ::raltservice::GetRaltLogsReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetRaltLogsReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::RaltLogs* Arena::CreateMaybeMessage< ::raltservice::RaltLogs >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::RaltLogs >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetRecordCfgReq* Arena::CreateMaybeMessage< ::raltservice::GetRecordCfgReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetRecordCfgReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetRecordCfgRsp* Arena::CreateMaybeMessage< ::raltservice::GetRecordCfgRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetRecordCfgRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::SetRecordCfgReq* Arena::CreateMaybeMessage< ::raltservice::SetRecordCfgReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::SetRecordCfgReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::SetRecordCfgRsp* Arena::CreateMaybeMessage< ::raltservice::SetRecordCfgRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::SetRecordCfgRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetAllDomainReq* Arena::CreateMaybeMessage< ::raltservice::GetAllDomainReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetAllDomainReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::Domain* Arena::CreateMaybeMessage< ::raltservice::Domain >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::Domain >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::UpdateDomainRsp* Arena::CreateMaybeMessage< ::raltservice::UpdateDomainRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::UpdateDomainRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetDomainReq* Arena::CreateMaybeMessage< ::raltservice::GetDomainReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetDomainReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::AddDomainRsp* Arena::CreateMaybeMessage< ::raltservice::AddDomainRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::AddDomainRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::DeleteDomainReq* Arena::CreateMaybeMessage< ::raltservice::DeleteDomainReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::DeleteDomainReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::DeleteDomainRsp* Arena::CreateMaybeMessage< ::raltservice::DeleteDomainRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::DeleteDomainRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetMiscReq* Arena::CreateMaybeMessage< ::raltservice::GetMiscReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetMiscReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::GetMiscRsp* Arena::CreateMaybeMessage< ::raltservice::GetMiscRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::GetMiscRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::Misc* Arena::CreateMaybeMessage< ::raltservice::Misc >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::Misc >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::ModMiscOpRsp* Arena::CreateMaybeMessage< ::raltservice::ModMiscOpRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::ModMiscOpRsp >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::RaltStatusReq* Arena::CreateMaybeMessage< ::raltservice::RaltStatusReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::RaltStatusReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::RaltStatus* Arena::CreateMaybeMessage< ::raltservice::RaltStatus >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::RaltStatus >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::ExecCmdReq* Arena::CreateMaybeMessage< ::raltservice::ExecCmdReq >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::ExecCmdReq >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::raltservice::ExecCmdRsp* Arena::CreateMaybeMessage< ::raltservice::ExecCmdRsp >(Arena* arena) {
-  return Arena::CreateInternal< ::raltservice::ExecCmdRsp >(arena);
-}
-}  // namespace protobuf
-}  // namespace google
 
 // @@protoc_insertion_point(global_scope)

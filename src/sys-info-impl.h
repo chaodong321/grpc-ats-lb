@@ -20,8 +20,6 @@ using grpc::Status;
 using sysinfo::SysInfo;
 
 //system info
-using sysinfo::GetNameAndIpInfoReq;
-using sysinfo::GetNameAndIpInfoRsp;
 using sysinfo::GetDeviceInfoReq;
 using sysinfo::GetDeviceInfoRsp;
 using sysinfo::GetCpuUsageReq;
@@ -50,9 +48,6 @@ using namespace std;
 
 class SysInfoImpl final : public SysInfo::Service {
 public:
-
-	Status getNameAndIpInfo (ServerContext* context, const GetNameAndIpInfoReq* request,
-                  GetNameAndIpInfoRsp* reply) override;
 
 	Status getDeviceInfo (ServerContext* context, const GetDeviceInfoReq* request,
                   GetDeviceInfoRsp* reply) override;

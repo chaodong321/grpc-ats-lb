@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "ralt-service-impl.h"
+#include "sys-info-impl.h"
 #include "util-pidfile.h"
 #include "util-daemon.h"
 #include "util-log.h"
@@ -31,11 +32,13 @@ int MayDaemonize()
 
 void RunServer() {
   std::string server_address("0.0.0.0:50052");
-  RaltServiceImpl service;
+  RaltServiceImpl ralt_service;
+  SysInfoImpl sys_info_service;
 
   ServerBuilder builder;
   builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
-  builder.RegisterService(&service);
+  builder.RegisterService(&ralt_service);
+  builder.RegisterService(&sys_info_service);
   std::unique_ptr<Server> server(builder.BuildAndStart());
   LOG_INFO("ralt server listening on: %s", server_address.c_str());
 

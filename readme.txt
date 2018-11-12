@@ -7,4 +7,4 @@ src：c++接口实现
 
 【注意事项】
 1、编译环境前需安装proto3.0版本grpc
-2、若grpc安装后库路径不在/lib或/usr/lib中，则需添加共享库搜索路径，最典型为/usr/local/lib
+2、若grpc安装后库路径不在/lib或/usr/lib中，则需添加共享库搜索路径(例：/usr/local/lib）
