@@ -4,6 +4,7 @@ package sysinfo;
 
 service SysInfo {
 
+	rpc getNameAndIpInfo(GetNameAndIpInfoReq) returns (GetNameAndIpInfoRsp) {}
 	rpc getDeviceInfo (GetDeviceInfoReq) returns (GetDeviceInfoRsp) {}
 	
 	rpc getCpuUsage (GetCpuUsageReq) returns (GetCpuUsageRsp) {}
@@ -16,6 +17,16 @@ service SysInfo {
 	rpc getCpuCores (GetCpuCoresReq) returns (GetCpuCoresRsp) {}
 	rpc getMemTotal (GetMemTotalReq) returns (GetMemTotalRsp) {}
 	rpc getEthCtrlInfo (GetEthCtrlInfoReq) returns (GetEthCtrlInfoRsp) {}
+}
+
+//host name and ip info
+message GetNameAndIpInfoReq{
+	string ip_addr = 1;
+}
+
+message GetNameAndIpInfoRsp{
+	string host_name = 1;
+	string ip_info = 2;
 }
 
 //device info
