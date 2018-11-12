@@ -3,6 +3,9 @@ syntax = "proto3";
 package sysinfo;
 
 service SysInfo {
+
+	rpc getDeviceInfo (GetDeviceInfoReq) returns (GetDeviceInfoRsp) {}
+	
 	rpc getCpuUsage (GetCpuUsageReq) returns (GetCpuUsageRsp) {}
 	rpc getCpuTemp (GetCpuTempReq) returns (GetCpuTempRsp) {}
 	rpc getMemUsage (GetMemUsageReq) returns (GetMemUsageRsp) {}
@@ -13,6 +16,18 @@ service SysInfo {
 	rpc getCpuCores (GetCpuCoresReq) returns (GetCpuCoresRsp) {}
 	rpc getMemTotal (GetMemTotalReq) returns (GetMemTotalRsp) {}
 	rpc getEthCtrlInfo (GetEthCtrlInfoReq) returns (GetEthCtrlInfoRsp) {}
+}
+
+//device info
+message GetDeviceInfoReq{
+	string ip_addr = 1;
+}
+
+message GetDeviceInfoRsp{
+	string cpu_model = 1;
+	string cpu_cores = 2;
+	string mem_total = 3;
+	string eth_ctrl_info = 4;
 }
 
 //cpu usage

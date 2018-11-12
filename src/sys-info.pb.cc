@@ -20,6 +20,16 @@
 #endif
 // @@protoc_insertion_point(includes)
 namespace sysinfo {
+class GetDeviceInfoReqDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<GetDeviceInfoReq>
+      _instance;
+} _GetDeviceInfoReq_default_instance_;
+class GetDeviceInfoRspDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<GetDeviceInfoRsp>
+      _instance;
+} _GetDeviceInfoRsp_default_instance_;
 class GetCpuUsageReqDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<GetCpuUsageReq>
@@ -122,6 +132,48 @@ class GetEthCtrlInfoRspDefaultTypeInternal {
 } _GetEthCtrlInfoRsp_default_instance_;
 }  // namespace sysinfo
 namespace protobuf_sys_2dinfo_2eproto {
+void InitDefaultsGetDeviceInfoReqImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  {
+    void* ptr = &::sysinfo::_GetDeviceInfoReq_default_instance_;
+    new (ptr) ::sysinfo::GetDeviceInfoReq();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::sysinfo::GetDeviceInfoReq::InitAsDefaultInstance();
+}
+
+void InitDefaultsGetDeviceInfoReq() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetDeviceInfoReqImpl);
+}
+
+void InitDefaultsGetDeviceInfoRspImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  {
+    void* ptr = &::sysinfo::_GetDeviceInfoRsp_default_instance_;
+    new (ptr) ::sysinfo::GetDeviceInfoRsp();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::sysinfo::GetDeviceInfoRsp::InitAsDefaultInstance();
+}
+
+void InitDefaultsGetDeviceInfoRsp() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetDeviceInfoRspImpl);
+}
+
 void InitDefaultsGetCpuUsageReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -542,9 +594,24 @@ void InitDefaultsGetEthCtrlInfoRsp() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetEthCtrlInfoRspImpl);
 }
 
-::google::protobuf::Metadata file_level_metadata[20];
+::google::protobuf::Metadata file_level_metadata[22];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetDeviceInfoReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetDeviceInfoReq, ip_addr_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetDeviceInfoRsp, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetDeviceInfoRsp, cpu_model_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetDeviceInfoRsp, cpu_cores_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetDeviceInfoRsp, mem_total_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetDeviceInfoRsp, eth_ctrl_info_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetCpuUsageReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -669,29 +736,33 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::sysinfo::GetEthCtrlInfoRsp, eth_ctrl_info_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::sysinfo::GetCpuUsageReq)},
-  { 6, -1, sizeof(::sysinfo::GetCpuUsageRsp)},
-  { 12, -1, sizeof(::sysinfo::GetCpuTempReq)},
-  { 18, -1, sizeof(::sysinfo::GetCpuTempRsp)},
-  { 24, -1, sizeof(::sysinfo::GetMemUsageReq)},
-  { 30, -1, sizeof(::sysinfo::GetMemUsageRsp)},
-  { 36, -1, sizeof(::sysinfo::GetNicInfoReq)},
-  { 43, -1, sizeof(::sysinfo::GetNicInfoRsp)},
-  { 50, -1, sizeof(::sysinfo::GetHostNameReq)},
-  { 56, -1, sizeof(::sysinfo::GetHostNameRsp)},
-  { 62, -1, sizeof(::sysinfo::GetIpInfoReq)},
-  { 68, -1, sizeof(::sysinfo::GetIpInfoRsp)},
-  { 74, -1, sizeof(::sysinfo::GetCpuModelReq)},
-  { 80, -1, sizeof(::sysinfo::GetCpuModelRsp)},
-  { 86, -1, sizeof(::sysinfo::GetCpuCoresReq)},
-  { 92, -1, sizeof(::sysinfo::GetCpuCoresRsp)},
-  { 98, -1, sizeof(::sysinfo::GetMemTotalReq)},
-  { 104, -1, sizeof(::sysinfo::GetMemTotalRsp)},
-  { 110, -1, sizeof(::sysinfo::GetEthCtrlInfoReq)},
-  { 116, -1, sizeof(::sysinfo::GetEthCtrlInfoRsp)},
+  { 0, -1, sizeof(::sysinfo::GetDeviceInfoReq)},
+  { 6, -1, sizeof(::sysinfo::GetDeviceInfoRsp)},
+  { 15, -1, sizeof(::sysinfo::GetCpuUsageReq)},
+  { 21, -1, sizeof(::sysinfo::GetCpuUsageRsp)},
+  { 27, -1, sizeof(::sysinfo::GetCpuTempReq)},
+  { 33, -1, sizeof(::sysinfo::GetCpuTempRsp)},
+  { 39, -1, sizeof(::sysinfo::GetMemUsageReq)},
+  { 45, -1, sizeof(::sysinfo::GetMemUsageRsp)},
+  { 51, -1, sizeof(::sysinfo::GetNicInfoReq)},
+  { 58, -1, sizeof(::sysinfo::GetNicInfoRsp)},
+  { 65, -1, sizeof(::sysinfo::GetHostNameReq)},
+  { 71, -1, sizeof(::sysinfo::GetHostNameRsp)},
+  { 77, -1, sizeof(::sysinfo::GetIpInfoReq)},
+  { 83, -1, sizeof(::sysinfo::GetIpInfoRsp)},
+  { 89, -1, sizeof(::sysinfo::GetCpuModelReq)},
+  { 95, -1, sizeof(::sysinfo::GetCpuModelRsp)},
+  { 101, -1, sizeof(::sysinfo::GetCpuCoresReq)},
+  { 107, -1, sizeof(::sysinfo::GetCpuCoresRsp)},
+  { 113, -1, sizeof(::sysinfo::GetMemTotalReq)},
+  { 119, -1, sizeof(::sysinfo::GetMemTotalRsp)},
+  { 125, -1, sizeof(::sysinfo::GetEthCtrlInfoReq)},
+  { 131, -1, sizeof(::sysinfo::GetEthCtrlInfoRsp)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::google::protobuf::Message*>(&::sysinfo::_GetDeviceInfoReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::sysinfo::_GetDeviceInfoRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::sysinfo::_GetCpuUsageReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::sysinfo::_GetCpuUsageRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::sysinfo::_GetCpuTempReq_default_instance_),
@@ -730,52 +801,58 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 20);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 22);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\016sys-info.proto\022\007sysinfo\"!\n\016GetCpuUsage"
-      "Req\022\017\n\007ip_addr\030\001 \001(\t\"#\n\016GetCpuUsageRsp\022\021"
-      "\n\tcpu_usage\030\001 \001(\t\" \n\rGetCpuTempReq\022\017\n\007ip"
-      "_addr\030\001 \001(\t\"!\n\rGetCpuTempRsp\022\020\n\010cpu_temp"
-      "\030\001 \001(\t\"!\n\016GetMemUsageReq\022\017\n\007ip_addr\030\001 \001("
-      "\t\"#\n\016GetMemUsageRsp\022\021\n\tmem_usage\030\001 \001(\t\">"
-      "\n\rGetNicInfoReq\022\017\n\007ip_addr\030\001 \001(\t\022\034\n\024is_d"
-      "epend_os_version\030\002 \001(\010\"5\n\rGetNicInfoRsp\022"
-      "\022\n\nos_version\030\001 \001(\t\022\020\n\010nic_info\030\002 \001(\t\"!\n"
-      "\016GetHostNameReq\022\017\n\007ip_addr\030\001 \001(\t\"#\n\016GetH"
-      "ostNameRsp\022\021\n\thost_name\030\001 \001(\t\"\037\n\014GetIpIn"
-      "foReq\022\017\n\007ip_addr\030\001 \001(\t\"\037\n\014GetIpInfoRsp\022\017"
-      "\n\007ip_info\030\001 \001(\t\"!\n\016GetCpuModelReq\022\017\n\007ip_"
-      "addr\030\001 \001(\t\"#\n\016GetCpuModelRsp\022\021\n\tcpu_mode"
-      "l\030\001 \001(\t\"!\n\016GetCpuCoresReq\022\017\n\007ip_addr\030\001 \001"
-      "(\t\"#\n\016GetCpuCoresRsp\022\021\n\tcpu_cores\030\001 \001(\t\""
-      "!\n\016GetMemTotalReq\022\017\n\007ip_addr\030\001 \001(\t\"#\n\016Ge"
-      "tMemTotalRsp\022\021\n\tmem_total\030\001 \001(\t\"$\n\021GetEt"
-      "hCtrlInfoReq\022\017\n\007ip_addr\030\001 \001(\t\"*\n\021GetEthC"
-      "trlInfoRsp\022\025\n\reth_ctrl_info\030\001 \001(\t2\244\005\n\007Sy"
-      "sInfo\022A\n\013getCpuUsage\022\027.sysinfo.GetCpuUsa"
-      "geReq\032\027.sysinfo.GetCpuUsageRsp\"\000\022>\n\ngetC"
-      "puTemp\022\026.sysinfo.GetCpuTempReq\032\026.sysinfo"
-      ".GetCpuTempRsp\"\000\022A\n\013getMemUsage\022\027.sysinf"
-      "o.GetMemUsageReq\032\027.sysinfo.GetMemUsageRs"
-      "p\"\000\022>\n\ngetNicInfo\022\026.sysinfo.GetNicInfoRe"
-      "q\032\026.sysinfo.GetNicInfoRsp\"\000\022A\n\013getHostNa"
-      "me\022\027.sysinfo.GetHostNameReq\032\027.sysinfo.Ge"
-      "tHostNameRsp\"\000\022;\n\tgetIpInfo\022\025.sysinfo.Ge"
-      "tIpInfoReq\032\025.sysinfo.GetIpInfoRsp\"\000\022A\n\013g"
-      "etCpuModel\022\027.sysinfo.GetCpuModelReq\032\027.sy"
-      "sinfo.GetCpuModelRsp\"\000\022A\n\013getCpuCores\022\027."
-      "sysinfo.GetCpuCoresReq\032\027.sysinfo.GetCpuC"
-      "oresRsp\"\000\022A\n\013getMemTotal\022\027.sysinfo.GetMe"
-      "mTotalReq\032\027.sysinfo.GetMemTotalRsp\"\000\022J\n\016"
-      "getEthCtrlInfo\022\032.sysinfo.GetEthCtrlInfoR"
-      "eq\032\032.sysinfo.GetEthCtrlInfoRsp\"\000b\006proto3"
+      "\n\016sys-info.proto\022\007sysinfo\"#\n\020GetDeviceIn"
+      "foReq\022\017\n\007ip_addr\030\001 \001(\t\"b\n\020GetDeviceInfoR"
+      "sp\022\021\n\tcpu_model\030\001 \001(\t\022\021\n\tcpu_cores\030\002 \001(\t"
+      "\022\021\n\tmem_total\030\003 \001(\t\022\025\n\reth_ctrl_info\030\004 \001"
+      "(\t\"!\n\016GetCpuUsageReq\022\017\n\007ip_addr\030\001 \001(\t\"#\n"
+      "\016GetCpuUsageRsp\022\021\n\tcpu_usage\030\001 \001(\t\" \n\rGe"
+      "tCpuTempReq\022\017\n\007ip_addr\030\001 \001(\t\"!\n\rGetCpuTe"
+      "mpRsp\022\020\n\010cpu_temp\030\001 \001(\t\"!\n\016GetMemUsageRe"
+      "q\022\017\n\007ip_addr\030\001 \001(\t\"#\n\016GetMemUsageRsp\022\021\n\t"
+      "mem_usage\030\001 \001(\t\">\n\rGetNicInfoReq\022\017\n\007ip_a"
+      "ddr\030\001 \001(\t\022\034\n\024is_depend_os_version\030\002 \001(\010\""
+      "5\n\rGetNicInfoRsp\022\022\n\nos_version\030\001 \001(\t\022\020\n\010"
+      "nic_info\030\002 \001(\t\"!\n\016GetHostNameReq\022\017\n\007ip_a"
+      "ddr\030\001 \001(\t\"#\n\016GetHostNameRsp\022\021\n\thost_name"
+      "\030\001 \001(\t\"\037\n\014GetIpInfoReq\022\017\n\007ip_addr\030\001 \001(\t\""
+      "\037\n\014GetIpInfoRsp\022\017\n\007ip_info\030\001 \001(\t\"!\n\016GetC"
+      "puModelReq\022\017\n\007ip_addr\030\001 \001(\t\"#\n\016GetCpuMod"
+      "elRsp\022\021\n\tcpu_model\030\001 \001(\t\"!\n\016GetCpuCoresR"
+      "eq\022\017\n\007ip_addr\030\001 \001(\t\"#\n\016GetCpuCoresRsp\022\021\n"
+      "\tcpu_cores\030\001 \001(\t\"!\n\016GetMemTotalReq\022\017\n\007ip"
+      "_addr\030\001 \001(\t\"#\n\016GetMemTotalRsp\022\021\n\tmem_tot"
+      "al\030\001 \001(\t\"$\n\021GetEthCtrlInfoReq\022\017\n\007ip_addr"
+      "\030\001 \001(\t\"*\n\021GetEthCtrlInfoRsp\022\025\n\reth_ctrl_"
+      "info\030\001 \001(\t2\355\005\n\007SysInfo\022G\n\rgetDeviceInfo\022"
+      "\031.sysinfo.GetDeviceInfoReq\032\031.sysinfo.Get"
+      "DeviceInfoRsp\"\000\022A\n\013getCpuUsage\022\027.sysinfo"
+      ".GetCpuUsageReq\032\027.sysinfo.GetCpuUsageRsp"
+      "\"\000\022>\n\ngetCpuTemp\022\026.sysinfo.GetCpuTempReq"
+      "\032\026.sysinfo.GetCpuTempRsp\"\000\022A\n\013getMemUsag"
+      "e\022\027.sysinfo.GetMemUsageReq\032\027.sysinfo.Get"
+      "MemUsageRsp\"\000\022>\n\ngetNicInfo\022\026.sysinfo.Ge"
+      "tNicInfoReq\032\026.sysinfo.GetNicInfoRsp\"\000\022A\n"
+      "\013getHostName\022\027.sysinfo.GetHostNameReq\032\027."
+      "sysinfo.GetHostNameRsp\"\000\022;\n\tgetIpInfo\022\025."
+      "sysinfo.GetIpInfoReq\032\025.sysinfo.GetIpInfo"
+      "Rsp\"\000\022A\n\013getCpuModel\022\027.sysinfo.GetCpuMod"
+      "elReq\032\027.sysinfo.GetCpuModelRsp\"\000\022A\n\013getC"
+      "puCores\022\027.sysinfo.GetCpuCoresReq\032\027.sysin"
+      "fo.GetCpuCoresRsp\"\000\022A\n\013getMemTotal\022\027.sys"
+      "info.GetMemTotalReq\032\027.sysinfo.GetMemTota"
+      "lRsp\"\000\022J\n\016getEthCtrlInfo\022\032.sysinfo.GetEt"
+      "hCtrlInfoReq\032\032.sysinfo.GetEthCtrlInfoRsp"
+      "\"\000b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1480);
+      descriptor, 1690);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "sys-info.proto", &protobuf_RegisterTypes);
 }
@@ -792,6 +869,689 @@ struct StaticDescriptorInitializer {
 } static_descriptor_initializer;
 }  // namespace protobuf_sys_2dinfo_2eproto
 namespace sysinfo {
+
+// ===================================================================
+
+void GetDeviceInfoReq::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int GetDeviceInfoReq::kIpAddrFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+GetDeviceInfoReq::GetDeviceInfoReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceInfoReq();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:sysinfo.GetDeviceInfoReq)
+}
+GetDeviceInfoReq::GetDeviceInfoReq(const GetDeviceInfoReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.ip_addr().size() > 0) {
+    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sysinfo.GetDeviceInfoReq)
+}
+
+void GetDeviceInfoReq::SharedCtor() {
+  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
+}
+
+GetDeviceInfoReq::~GetDeviceInfoReq() {
+  // @@protoc_insertion_point(destructor:sysinfo.GetDeviceInfoReq)
+  SharedDtor();
+}
+
+void GetDeviceInfoReq::SharedDtor() {
+  ip_addr_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void GetDeviceInfoReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetDeviceInfoReq::descriptor() {
+  ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sys_2dinfo_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const GetDeviceInfoReq& GetDeviceInfoReq::default_instance() {
+  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceInfoReq();
+  return *internal_default_instance();
+}
+
+GetDeviceInfoReq* GetDeviceInfoReq::New(::google::protobuf::Arena* arena) const {
+  GetDeviceInfoReq* n = new GetDeviceInfoReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetDeviceInfoReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:sysinfo.GetDeviceInfoReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+bool GetDeviceInfoReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:sysinfo.GetDeviceInfoReq)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string ip_addr = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_ip_addr()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "sysinfo.GetDeviceInfoReq.ip_addr"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:sysinfo.GetDeviceInfoReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:sysinfo.GetDeviceInfoReq)
+  return false;
+#undef DO_
+}
+
+void GetDeviceInfoReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:sysinfo.GetDeviceInfoReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string ip_addr = 1;
+  if (this->ip_addr().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoReq.ip_addr");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->ip_addr(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:sysinfo.GetDeviceInfoReq)
+}
+
+::google::protobuf::uint8* GetDeviceInfoReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:sysinfo.GetDeviceInfoReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string ip_addr = 1;
+  if (this->ip_addr().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip_addr().data(), static_cast<int>(this->ip_addr().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoReq.ip_addr");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->ip_addr(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sysinfo.GetDeviceInfoReq)
+  return target;
+}
+
+size_t GetDeviceInfoReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sysinfo.GetDeviceInfoReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string ip_addr = 1;
+  if (this->ip_addr().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->ip_addr());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetDeviceInfoReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:sysinfo.GetDeviceInfoReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetDeviceInfoReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetDeviceInfoReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:sysinfo.GetDeviceInfoReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:sysinfo.GetDeviceInfoReq)
+    MergeFrom(*source);
+  }
+}
+
+void GetDeviceInfoReq::MergeFrom(const GetDeviceInfoReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:sysinfo.GetDeviceInfoReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.ip_addr().size() > 0) {
+
+    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
+  }
+}
+
+void GetDeviceInfoReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:sysinfo.GetDeviceInfoReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetDeviceInfoReq::CopyFrom(const GetDeviceInfoReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sysinfo.GetDeviceInfoReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetDeviceInfoReq::IsInitialized() const {
+  return true;
+}
+
+void GetDeviceInfoReq::Swap(GetDeviceInfoReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetDeviceInfoReq::InternalSwap(GetDeviceInfoReq* other) {
+  using std::swap;
+  ip_addr_.Swap(&other->ip_addr_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetDeviceInfoReq::GetMetadata() const {
+  protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sys_2dinfo_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void GetDeviceInfoRsp::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int GetDeviceInfoRsp::kCpuModelFieldNumber;
+const int GetDeviceInfoRsp::kCpuCoresFieldNumber;
+const int GetDeviceInfoRsp::kMemTotalFieldNumber;
+const int GetDeviceInfoRsp::kEthCtrlInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+GetDeviceInfoRsp::GetDeviceInfoRsp()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceInfoRsp();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:sysinfo.GetDeviceInfoRsp)
+}
+GetDeviceInfoRsp::GetDeviceInfoRsp(const GetDeviceInfoRsp& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  cpu_model_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.cpu_model().size() > 0) {
+    cpu_model_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpu_model_);
+  }
+  cpu_cores_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.cpu_cores().size() > 0) {
+    cpu_cores_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpu_cores_);
+  }
+  mem_total_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.mem_total().size() > 0) {
+    mem_total_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.mem_total_);
+  }
+  eth_ctrl_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.eth_ctrl_info().size() > 0) {
+    eth_ctrl_info_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.eth_ctrl_info_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sysinfo.GetDeviceInfoRsp)
+}
+
+void GetDeviceInfoRsp::SharedCtor() {
+  cpu_model_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cpu_cores_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  mem_total_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  eth_ctrl_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
+}
+
+GetDeviceInfoRsp::~GetDeviceInfoRsp() {
+  // @@protoc_insertion_point(destructor:sysinfo.GetDeviceInfoRsp)
+  SharedDtor();
+}
+
+void GetDeviceInfoRsp::SharedDtor() {
+  cpu_model_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cpu_cores_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  mem_total_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  eth_ctrl_info_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void GetDeviceInfoRsp::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetDeviceInfoRsp::descriptor() {
+  ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sys_2dinfo_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const GetDeviceInfoRsp& GetDeviceInfoRsp::default_instance() {
+  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceInfoRsp();
+  return *internal_default_instance();
+}
+
+GetDeviceInfoRsp* GetDeviceInfoRsp::New(::google::protobuf::Arena* arena) const {
+  GetDeviceInfoRsp* n = new GetDeviceInfoRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetDeviceInfoRsp::Clear() {
+// @@protoc_insertion_point(message_clear_start:sysinfo.GetDeviceInfoRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cpu_model_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cpu_cores_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  mem_total_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  eth_ctrl_info_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+bool GetDeviceInfoRsp::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:sysinfo.GetDeviceInfoRsp)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string cpu_model = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_cpu_model()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->cpu_model().data(), static_cast<int>(this->cpu_model().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "sysinfo.GetDeviceInfoRsp.cpu_model"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string cpu_cores = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_cpu_cores()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->cpu_cores().data(), static_cast<int>(this->cpu_cores().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "sysinfo.GetDeviceInfoRsp.cpu_cores"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string mem_total = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_mem_total()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->mem_total().data(), static_cast<int>(this->mem_total().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "sysinfo.GetDeviceInfoRsp.mem_total"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string eth_ctrl_info = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_eth_ctrl_info()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->eth_ctrl_info().data(), static_cast<int>(this->eth_ctrl_info().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "sysinfo.GetDeviceInfoRsp.eth_ctrl_info"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:sysinfo.GetDeviceInfoRsp)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:sysinfo.GetDeviceInfoRsp)
+  return false;
+#undef DO_
+}
+
+void GetDeviceInfoRsp::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:sysinfo.GetDeviceInfoRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string cpu_model = 1;
+  if (this->cpu_model().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->cpu_model().data(), static_cast<int>(this->cpu_model().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoRsp.cpu_model");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->cpu_model(), output);
+  }
+
+  // string cpu_cores = 2;
+  if (this->cpu_cores().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->cpu_cores().data(), static_cast<int>(this->cpu_cores().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoRsp.cpu_cores");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->cpu_cores(), output);
+  }
+
+  // string mem_total = 3;
+  if (this->mem_total().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->mem_total().data(), static_cast<int>(this->mem_total().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoRsp.mem_total");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->mem_total(), output);
+  }
+
+  // string eth_ctrl_info = 4;
+  if (this->eth_ctrl_info().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->eth_ctrl_info().data(), static_cast<int>(this->eth_ctrl_info().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoRsp.eth_ctrl_info");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->eth_ctrl_info(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:sysinfo.GetDeviceInfoRsp)
+}
+
+::google::protobuf::uint8* GetDeviceInfoRsp::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:sysinfo.GetDeviceInfoRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string cpu_model = 1;
+  if (this->cpu_model().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->cpu_model().data(), static_cast<int>(this->cpu_model().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoRsp.cpu_model");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->cpu_model(), target);
+  }
+
+  // string cpu_cores = 2;
+  if (this->cpu_cores().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->cpu_cores().data(), static_cast<int>(this->cpu_cores().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoRsp.cpu_cores");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->cpu_cores(), target);
+  }
+
+  // string mem_total = 3;
+  if (this->mem_total().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->mem_total().data(), static_cast<int>(this->mem_total().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoRsp.mem_total");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->mem_total(), target);
+  }
+
+  // string eth_ctrl_info = 4;
+  if (this->eth_ctrl_info().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->eth_ctrl_info().data(), static_cast<int>(this->eth_ctrl_info().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "sysinfo.GetDeviceInfoRsp.eth_ctrl_info");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->eth_ctrl_info(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sysinfo.GetDeviceInfoRsp)
+  return target;
+}
+
+size_t GetDeviceInfoRsp::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sysinfo.GetDeviceInfoRsp)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string cpu_model = 1;
+  if (this->cpu_model().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->cpu_model());
+  }
+
+  // string cpu_cores = 2;
+  if (this->cpu_cores().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->cpu_cores());
+  }
+
+  // string mem_total = 3;
+  if (this->mem_total().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->mem_total());
+  }
+
+  // string eth_ctrl_info = 4;
+  if (this->eth_ctrl_info().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->eth_ctrl_info());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetDeviceInfoRsp::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:sysinfo.GetDeviceInfoRsp)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetDeviceInfoRsp* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetDeviceInfoRsp>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:sysinfo.GetDeviceInfoRsp)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:sysinfo.GetDeviceInfoRsp)
+    MergeFrom(*source);
+  }
+}
+
+void GetDeviceInfoRsp::MergeFrom(const GetDeviceInfoRsp& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:sysinfo.GetDeviceInfoRsp)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.cpu_model().size() > 0) {
+
+    cpu_model_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpu_model_);
+  }
+  if (from.cpu_cores().size() > 0) {
+
+    cpu_cores_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpu_cores_);
+  }
+  if (from.mem_total().size() > 0) {
+
+    mem_total_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.mem_total_);
+  }
+  if (from.eth_ctrl_info().size() > 0) {
+
+    eth_ctrl_info_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.eth_ctrl_info_);
+  }
+}
+
+void GetDeviceInfoRsp::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:sysinfo.GetDeviceInfoRsp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetDeviceInfoRsp::CopyFrom(const GetDeviceInfoRsp& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sysinfo.GetDeviceInfoRsp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetDeviceInfoRsp::IsInitialized() const {
+  return true;
+}
+
+void GetDeviceInfoRsp::Swap(GetDeviceInfoRsp* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetDeviceInfoRsp::InternalSwap(GetDeviceInfoRsp* other) {
+  using std::swap;
+  cpu_model_.Swap(&other->cpu_model_);
+  cpu_cores_.Swap(&other->cpu_cores_);
+  mem_total_.Swap(&other->mem_total_);
+  eth_ctrl_info_.Swap(&other->eth_ctrl_info_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetDeviceInfoRsp::GetMetadata() const {
+  protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sys_2dinfo_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
 
 // ===================================================================
 

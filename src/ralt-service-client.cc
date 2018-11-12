@@ -1,4 +1,5 @@
 #include "ralt-service.grpc.pb.h"
+#include "sys-info.grpc.pb.h"
 #include <iostream>
 #include <memory>
 #include <string>
@@ -16,17 +17,34 @@ using grpc::ClientReader;
 using grpc::ClientWriter;
 using grpc::Status;
 
+using sysinfo::SysInfo;
+//system info
+using sysinfo::GetDeviceInfoReq;
+using sysinfo::GetDeviceInfoRsp;
+using sysinfo::GetCpuUsageReq;
+using sysinfo::GetCpuUsageRsp;
+using sysinfo::GetCpuTempReq;
+using sysinfo::GetCpuTempRsp;
+using sysinfo::GetMemUsageReq;
+using sysinfo::GetMemUsageRsp;
+using sysinfo::GetNicInfoReq;
+using sysinfo::GetNicInfoRsp;
+using sysinfo::GetHostNameReq;
+using sysinfo::GetHostNameRsp;
+using sysinfo::GetIpInfoReq;
+using sysinfo::GetIpInfoRsp;
+using sysinfo::GetCpuModelReq;
+using sysinfo::GetCpuModelRsp;
+using sysinfo::GetCpuCoresReq;
+using sysinfo::GetCpuCoresRsp;
+using sysinfo::GetMemTotalReq;
+using sysinfo::GetMemTotalRsp;
+using sysinfo::GetEthCtrlInfoReq;
+using sysinfo::GetEthCtrlInfoRsp;
+
+//ralt
 using raltservice::RaltService;
 
-//system info
-using raltservice::GetCpuUsageReq;
-using raltservice::GetCpuUsageRsp;
-using raltservice::GetCpuTempReq;
-using raltservice::GetCpuTempRsp;
-using raltservice::GetMemUsageReq;
-using raltservice::GetMemUsageRsp;
-using raltservice::GetNicInfoReq;
-using raltservice::GetNicInfoRsp;
 //home page
 using raltservice::HomePageReq;
 using raltservice::HomePageRsp;
@@ -72,13 +90,190 @@ using raltservice::CommandType;
 using raltservice::ExecCmdReq;
 using raltservice::ExecCmdRsp;
 
-
-
-
 class RaltServiceClient {
 	public:
 		RaltServiceClient(std::shared_ptr<Channel> channel)
-			: stub_(RaltService::NewStub(channel)) {}
+			: stub_ralt(RaltService::NewStub(channel)), stub_sys(SysInfo::NewStub(channel)) {}
+
+		void getDeviceInfo(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetDeviceInfoReq request;
+			// Container for the data we expect from the server.
+			GetDeviceInfoRsp reply;
+			Status status = stub_sys->getDeviceInfo(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "cpu model: " << std::endl << reply.cpu_model() << std::endl;
+				std::cout << "cpu cores: " << std::endl << reply.cpu_cores() << std::endl;
+				std::cout << "mem total: " << std::endl << reply.mem_total() << std::endl;
+				std::cout << "ethernet controler: " << std::endl << reply.eth_ctrl_info() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+		
+		void getCpuUsage(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetCpuUsageReq request;
+			// Container for the data we expect from the server.
+			GetCpuUsageRsp reply;
+			Status status = stub_sys->getCpuUsage(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "cpu usage: " << std::endl << reply.cpu_usage() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getCpuTemp(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetCpuTempReq request;
+			// Container for the data we expect from the server.
+			GetCpuTempRsp reply;
+			Status status = stub_sys->getCpuTemp(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "cpu temp: " << std::endl << reply.cpu_temp() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getMemUsage(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetMemUsageReq request;
+			// Container for the data we expect from the server.
+			GetMemUsageRsp reply;
+			Status status = stub_sys->getMemUsage(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "mem usage: " << std::endl << reply.mem_usage() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getNicInfo(bool bDependOsVersion){
+			ClientContext context;
+			
+			// The actual RPC.
+			GetNicInfoReq request;
+			request.set_is_depend_os_version(bDependOsVersion);
+			// Container for the data we expect from the server.
+			GetNicInfoRsp reply;
+			Status status = stub_sys->getNicInfo(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "nic info: " << std::endl << reply.nic_info() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getHostName(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetHostNameReq request;
+			// Container for the data we expect from the server.
+			GetHostNameRsp reply;
+			Status status = stub_sys->getHostName(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "host name: " << std::endl << reply.host_name() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getIpInfo(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetIpInfoReq request;
+			// Container for the data we expect from the server.
+			GetIpInfoRsp reply;
+			Status status = stub_sys->getIpInfo(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "ip info: " << std::endl << reply.ip_info() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getCpuModel(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetCpuModelReq request;
+			// Container for the data we expect from the server.
+			GetCpuModelRsp reply;
+			Status status = stub_sys->getCpuModel(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "cpu model: " << std::endl << reply.cpu_model() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getCpuCores(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetCpuCoresReq request;
+			// Container for the data we expect from the server.
+			GetCpuCoresRsp reply;
+			Status status = stub_sys->getCpuCores(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "cpu cores: " << std::endl << reply.cpu_cores() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getMemTotal(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetMemTotalReq request;
+			// Container for the data we expect from the server.
+			GetMemTotalRsp reply;
+			Status status = stub_sys->getMemTotal(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "mem total: " << std::endl << reply.mem_total() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getEthCtrlInfo(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetEthCtrlInfoReq request;
+			// Container for the data we expect from the server.
+			GetEthCtrlInfoRsp reply;
+			Status status = stub_sys->getEthCtrlInfo(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "mem total: " << std::endl << reply.eth_ctrl_info() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
 
 		void ShowFieldValue(std::string strFiledName){
 			ClientContext context;
@@ -86,7 +281,7 @@ class RaltServiceClient {
 			req.set_field_name(strFiledName);
 			StatsFieldValue rsp;
 			
-			Status status = stub_->getStatsFieldValue(&context, req, &rsp);
+			Status status = stub_ralt->getStatsFieldValue(&context, req, &rsp);
 			if (status.ok()) {
 				std::cout << "bytes_total: " << rsp.value() << std::endl;
 			}
@@ -100,7 +295,7 @@ class RaltServiceClient {
 			HomePageReq req;
 			HomePageRsp rsp;
 			
-			Status status = stub_->getHomePageData(&context, req, &rsp);
+			Status status = stub_ralt->getHomePageData(&context, req, &rsp);
 			if (status.ok()) {
 				std::cout << "home page:" << std::endl;
 				std::cout << "domain_num: " << rsp.domain_num() << std::endl;
@@ -125,7 +320,7 @@ class RaltServiceClient {
 			CacheLookUpReq cacheRequest;
 			// Container for the data we expect from the server.
 			CacheResult cacheReply;
-			Status cacheStatus = stub_->showCacheData(&context, cacheRequest, &cacheReply);
+			Status cacheStatus = stub_ralt->showCacheData(&context, cacheRequest, &cacheReply);
 			// Act upon its cacheStatus.
 			if (cacheStatus.ok()) {
 				std::cout << "Cache data:" << std::endl;
@@ -146,7 +341,7 @@ class RaltServiceClient {
 			FlowStatLookUpReq flowRequest;
 			// Container for the data we expect from the server.
 			FlowResult flowReply;
-			Status flowStatus = stub_->showFlowStatData(&context, flowRequest, &flowReply);
+			Status flowStatus = stub_ralt->showFlowStatData(&context, flowRequest, &flowReply);
 			// Act upon its flowStatus.
 			if (flowStatus.ok()) {
 				std::cout << "Flow stats data:" << std::endl;
@@ -174,7 +369,7 @@ class RaltServiceClient {
 			LogInfoLookUpReq logRequest;
 			// Container for the data we expect from the server.
 			LogResult logReply;
-			Status logStatus = stub_->showLogInfoData(&context, logRequest, &logReply);
+			Status logStatus = stub_ralt->showLogInfoData(&context, logRequest, &logReply);
 			// Act upon its logStatus.
 			if (logStatus.ok()) {
 				std::cout << "Cache data:" << std::endl;
@@ -185,11 +380,27 @@ class RaltServiceClient {
 			}
 		}
 
+		void getRaltLogs(){
+			ClientContext context;
+			GetRaltLogsReq request;
+			std::unique_ptr<ClientReader<RaltLogs> > reader(stub_ralt->getRaltLogs(&context, request));
+			RaltLogs logs;
+			while (reader->Read(&logs)) {
+				std::cout << "raltlogs:" << std::endl << logs.logs() << std::endl ;
+			}
+			Status status = reader->Finish();
+			if (status.ok()) {
+				std::cout << "getRaltLogs rpc succeeded." << std::endl;
+			} else {
+				std::cout << "getRaltLogs rpc failed." << std::endl;
+			}
+		}
+
 		void getRecord(){
 			ClientContext context;
 			GetRecordCfgReq request;
 			GetRecordCfgRsp reply;
-			Status status =  stub_->getRecordConfig(&context, request, &reply);
+			Status status =  stub_ralt->getRecordConfig(&context, request, &reply);
 			if (status.ok()) {
 				std::cout << "logging_enabled:" << reply.logging_enabled() << std::endl;
 				std::cout << "max_space_mb_for_logs:" << reply.max_space_mb_for_logs() << std::endl;
@@ -206,7 +417,7 @@ class RaltServiceClient {
 			request.set_key(RecordCfgType::enum_max_space_mb_for_logs);
 			request.set_value("250");
 			SetRecordCfgRsp reply;
-			Status status =  stub_->setRecordConfig(&context, request, &reply);
+			Status status =  stub_ralt->setRecordConfig(&context, request, &reply);
 
 			if (status.ok()) {
 				printf("modify success\n");
@@ -218,7 +429,7 @@ class RaltServiceClient {
 		void getAllDomain(){
 			ClientContext context;
 			GetAllDomainReq request;
-			std::unique_ptr<ClientReader<Domain> > reader(stub_->getAllDomain(&context, request));
+			std::unique_ptr<ClientReader<Domain> > reader(stub_ralt->getAllDomain(&context, request));
 			Domain domain_member;
 			while (reader->Read(&domain_member)) {
 				std::cout << "member:" << domain_member.domain_str() << std::endl;
@@ -238,7 +449,7 @@ class RaltServiceClient {
     		ClientContext context;
 			UpdateDomainRsp reply;
 			std::unique_ptr<ClientWriter<Domain> > writer(
-        		stub_->updateDomain(&context, &reply));
+        		stub_ralt->updateDomain(&context, &reply));
 
 			Domain domain;
 			domain.set_type(DomainType::enum_member_domain);
@@ -266,7 +477,7 @@ class RaltServiceClient {
 			GetDomainReq request;
 			request.set_domain_str("www.reyzar.com");
 			Domain reply;
-			Status status =  stub_->getDomain(&context, request, &reply);
+			Status status =  stub_ralt->getDomain(&context, request, &reply);
 			if (status.ok()) {
 				std::cout << "type: " << reply.type() << std::endl;
 				std::cout << "append_or_replace_str: " << reply.append_or_replace_str() << std::endl;
@@ -284,7 +495,7 @@ class RaltServiceClient {
 			request.set_append_or_replace_str("ipv6.reyzar.com");
 			request.set_port("[8080]");
 			AddDomainRsp reply;
-			Status status =  stub_->addDomain(&context, request, &reply);
+			Status status =  stub_ralt->addDomain(&context, request, &reply);
 			if (status.ok()) {
 				std::cout << "addDomain rpc success." << std::endl;
 			} else {
@@ -297,7 +508,7 @@ class RaltServiceClient {
 			DeleteDomainReq request;
 			request.set_domain_str("www.reyzar.com");
 			DeleteDomainRsp reply;
-			Status status =  stub_->deleteDomain(&context, request, &reply);
+			Status status =  stub_ralt->deleteDomain(&context, request, &reply);
 			if (status.ok()) {
 				std::cout << "delDomain rpc success." << std::endl;
 			} else {
@@ -309,7 +520,7 @@ class RaltServiceClient {
 			ClientContext context;
 			GetMiscReq request;
 			GetMiscRsp reply;
-			Status status =  stub_->getMisc(&context, request, &reply);
+			Status status =  stub_ralt->getMisc(&context, request, &reply);
 			if (status.ok()) {
 				std::cout << "ralt_filter_type_default: " << reply.ralt_filter_type_default() << std::endl;
 				//std::cout << "ralt_referer_default: " << reply.ralt_referer_default() << std::endl;
@@ -329,7 +540,7 @@ class RaltServiceClient {
 			//request.set_key(MiscKey::enum_ralt_utf16_to_utf8_default);
 			//request.set_value(MiscSwitch::switch_on);
 			ModMiscOpRsp reply;
-			Status status =  stub_->modMisc(&context, request, &reply);
+			Status status =  stub_ralt->modMisc(&context, request, &reply);
 
 			if (status.ok()) {
 				printf("modify misc data success\n");
@@ -341,7 +552,7 @@ class RaltServiceClient {
 		void getRaltStatus(){
 			ClientContext context;
 			RaltStatusReq request;
-			std::unique_ptr<ClientReader<RaltStatus> > reader(stub_->getRaltStatus(&context, request));
+			std::unique_ptr<ClientReader<RaltStatus> > reader(stub_ralt->getRaltStatus(&context, request));
 			
 			RaltStatus ralt_status;
 			while (reader->Read(&ralt_status)) {
@@ -362,7 +573,7 @@ class RaltServiceClient {
 			ExecCmdRsp reply;
 			request.set_ip_addr("10.2.21.143");
 			request.set_cmd(CommandType::ralt_stop);
-			Status status =  stub_->execCmd(&context, request, &reply);
+			Status status =  stub_ralt->execCmd(&context, request, &reply);
 
 			if (status.ok()) {
 				printf("exec success\n");
@@ -371,88 +582,9 @@ class RaltServiceClient {
 			}
 		}
 
-		void getCpuUsage(){
-			ClientContext context;
-				
-			// The actual RPC.
-			GetCpuUsageReq request;
-			// Container for the data we expect from the server.
-			GetCpuUsageRsp reply;
-			Status status = stub_->getCpuUsage(&context, request, &reply);
-			// Act upon its cacheStatus.
-			if (status.ok()) {
-				std::cout << "cpu usage: " << std::endl << reply.cpu_usage() << std::endl;
-			} else {
-				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-			}
-		}
-
-		void getCpuTemp(){
-			ClientContext context;
-				
-			// The actual RPC.
-			GetCpuTempReq request;
-			// Container for the data we expect from the server.
-			GetCpuTempRsp reply;
-			Status status = stub_->getCpuTemp(&context, request, &reply);
-			// Act upon its cacheStatus.
-			if (status.ok()) {
-				std::cout << "cpu temp: " << std::endl << reply.cpu_temp() << std::endl;
-			} else {
-				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-			}
-		}
-
-		void getMemUsage(){
-			ClientContext context;
-				
-			// The actual RPC.
-			GetMemUsageReq request;
-			// Container for the data we expect from the server.
-			GetMemUsageRsp reply;
-			Status status = stub_->getMemUsage(&context, request, &reply);
-			// Act upon its cacheStatus.
-			if (status.ok()) {
-				std::cout << "mem usage: " << std::endl << reply.mem_usage() << std::endl;
-			} else {
-				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-			}
-		}
-
-		void getNicInfo(){
-			ClientContext context;
-				
-			// The actual RPC.
-			GetNicInfoReq request;
-			// Container for the data we expect from the server.
-			GetNicInfoRsp reply;
-			Status status = stub_->getNicInfo(&context, request, &reply);
-			// Act upon its cacheStatus.
-			if (status.ok()) {
-				std::cout << "nic info: " << std::endl << reply.nic_info() << std::endl;
-			} else {
-				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-			}
-		}
-
-		void getRaltLogs(){
-			ClientContext context;
-			GetRaltLogsReq request;
-			std::unique_ptr<ClientReader<RaltLogs> > reader(stub_->getRaltLogs(&context, request));
-			RaltLogs logs;
-			while (reader->Read(&logs)) {
-				std::cout << "raltlogs:" << std::endl << logs.logs() << std::endl ;
-			}
-			Status status = reader->Finish();
-			if (status.ok()) {
-				std::cout << "getRaltLogs rpc succeeded." << std::endl;
-			} else {
-				std::cout << "getRaltLogs rpc failed." << std::endl;
-			}
-		}
-
 	private:
-		std::unique_ptr<RaltService::Stub> stub_;
+		std::unique_ptr<RaltService::Stub> stub_ralt;
+		std::unique_ptr<SysInfo::Stub> stub_sys;
 };
 
 int main(int argc, char** argv) {
@@ -463,6 +595,7 @@ int main(int argc, char** argv) {
 	//client.showCache();
 	//client.showFlowStats();
 	//client.showLogInfo();
+	//client.getRaltLogs();
 
 	//client.getRecord();
 	//client.setRecord();
@@ -479,13 +612,18 @@ int main(int argc, char** argv) {
 
 	//client.getRaltStatus();
 	//client.execCmd();
-	
-	client.getCpuUsage();
+
+	client.getDeviceInfo();
+	//client.getCpuUsage();
 	//client.getCpuTemp();
 	//client.getMemUsage();
-	//client.getNicInfo();
-	
-	//client.getRaltLogs();
+	//client.getNicInfo(true);
+	//client.getHostName();
+	//client.getIpInfo();
+	//client.getCpuModel();
+	//client.getCpuCores();
+	//client.getMemTotal();
+	//client.getEthCtrlInfo();
 	return 0;
 }
 

@@ -18,6 +18,51 @@
 #define ATS_ROOT_DIR "/opt/reyzar/can/"
 #define ATS_LOG_DIR "/opt/reyzar/can/var/log/trafficserver/"
 
+
+Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoReq* request, GetDeviceInfoRsp* reply)
+{
+	LOG_INFO("getdevice info");
+	
+	string strCpuModel;
+	string strCpuModelCmd = "cat /proc/cpuinfo |grep model\\\\s*name |uniq -w1";
+	if(!UtilCommon::ShellCmd(strCpuModelCmd, strCpuModel)){
+		LOG_ERROR("shell cmd failed: %s\n", strCpuModelCmd.c_str());
+		return Status::CANCELLED;
+	}
+
+	string strCpuCores;
+	string strCpuCoresCmd = "cat /proc/cpuinfo |grep cpu\\\\s*cores |uniq -w1";
+	if(!UtilCommon::ShellCmd(strCpuCoresCmd, strCpuCores)){
+		LOG_ERROR("shell cmd failed: %s\n", strCpuCoresCmd.c_str());
+		return Status::CANCELLED;
+	}
+
+	string strMemTotal;
+	string strMemTotalCmd = "cat /proc/meminfo |grep MemTotal";
+	if(!UtilCommon::ShellCmd(strMemTotalCmd, strMemTotal)){
+		LOG_ERROR("shell cmd failed: %s\n", strMemTotalCmd.c_str());
+		return Status::CANCELLED;
+	}
+
+	string strEthCtrlInfo;
+	string strEthCtrlInfoCmd = "lspci | grep Ethernet";
+	if(!UtilCommon::ShellCmd(strEthCtrlInfoCmd, strEthCtrlInfo)){
+		LOG_ERROR("shell cmd failed: %s\n", strEthCtrlInfoCmd.c_str());
+		return Status::CANCELLED;
+	}
+
+	LOG_INFO("cpu model:%s", strCpuModel.c_str());
+	LOG_INFO("cpu cores:%s", strCpuCores.c_str());
+	LOG_INFO("mem total:%s", strMemTotal.c_str());
+	LOG_INFO("ethernet controler info:%s", strEthCtrlInfo.c_str());
+	reply->set_cpu_model(strCpuModel);
+	reply->set_cpu_cores(strCpuCores);
+	reply->set_mem_total(strMemTotal);
+	reply->set_eth_ctrl_info(strEthCtrlInfo);
+	LOG_INFO("get cpu model successfully");
+	return Status::OK;
+}
+
 Status SysInfoImpl::getCpuUsage (ServerContext* context, const GetCpuUsageReq* request, GetCpuUsageRsp* reply)
 {
 	LOG_INFO("get cpu usage");
