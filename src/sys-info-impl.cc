@@ -19,6 +19,33 @@
 #define ATS_LOG_DIR "/opt/reyzar/can/var/log/trafficserver/"
 
 
+
+Status SysInfoImpl::getNameAndIpInfo (ServerContext* context, const GetNameAndIpInfoReq* request, GetNameAndIpInfoRsp* reply) 
+{
+	LOG_INFO("get host name and ip info");
+	string strHostName;
+	string strHostNameCmd = "hostname";
+	if(!UtilCommon::ShellCmd(strHostNameCmd, strHostName)){
+		LOG_ERROR("shell cmd failed: %s\n", strHostNameCmd.c_str());
+		return Status::CANCELLED;
+	}
+	LOG_INFO("host name:%s", strHostName.c_str());
+	reply->set_host_name(strHostName);
+
+	string strIpInfo;
+	string strIpInfoCmd = "ip address show";
+	if(!UtilCommon::ShellCmd(strIpInfoCmd, strIpInfo)){
+		LOG_ERROR("shell cmd failed: %s\n", strIpInfoCmd.c_str());
+		return Status::CANCELLED;
+	}
+	LOG_INFO("ip info:%s", strIpInfo.c_str());
+	reply->set_ip_info(strIpInfo);
+	
+	LOG_INFO("get host name successfully");
+	return Status::OK;
+}
+
+
 Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoReq* request, GetDeviceInfoRsp* reply)
 {
 	LOG_INFO("getdevice info");
@@ -29,6 +56,8 @@ Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoRe
 		LOG_ERROR("shell cmd failed: %s\n", strCpuModelCmd.c_str());
 		return Status::CANCELLED;
 	}
+	LOG_INFO("cpu model:%s", strCpuModel.c_str());
+	reply->set_cpu_model(strCpuModel);
 
 	string strCpuCores;
 	string strCpuCoresCmd = "cat /proc/cpuinfo |grep cpu\\\\s*cores |uniq -w1";
@@ -36,6 +65,8 @@ Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoRe
 		LOG_ERROR("shell cmd failed: %s\n", strCpuCoresCmd.c_str());
 		return Status::CANCELLED;
 	}
+	LOG_INFO("cpu cores:%s", strCpuCores.c_str());
+	reply->set_cpu_cores(strCpuCores);
 
 	string strMemTotal;
 	string strMemTotalCmd = "cat /proc/meminfo |grep MemTotal";
@@ -43,6 +74,8 @@ Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoRe
 		LOG_ERROR("shell cmd failed: %s\n", strMemTotalCmd.c_str());
 		return Status::CANCELLED;
 	}
+	LOG_INFO("mem total:%s", strMemTotal.c_str());
+	reply->set_mem_total(strMemTotal);
 
 	string strEthCtrlInfo;
 	string strEthCtrlInfoCmd = "lspci | grep Ethernet";
@@ -50,15 +83,9 @@ Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoRe
 		LOG_ERROR("shell cmd failed: %s\n", strEthCtrlInfoCmd.c_str());
 		return Status::CANCELLED;
 	}
-
-	LOG_INFO("cpu model:%s", strCpuModel.c_str());
-	LOG_INFO("cpu cores:%s", strCpuCores.c_str());
-	LOG_INFO("mem total:%s", strMemTotal.c_str());
-	LOG_INFO("ethernet controler info:%s", strEthCtrlInfo.c_str());
-	reply->set_cpu_model(strCpuModel);
-	reply->set_cpu_cores(strCpuCores);
-	reply->set_mem_total(strMemTotal);
+	LOG_INFO("ethernet controler info:%s", strEthCtrlInfo.c_str());	
 	reply->set_eth_ctrl_info(strEthCtrlInfo);
+	
 	LOG_INFO("get cpu model successfully");
 	return Status::OK;
 }
