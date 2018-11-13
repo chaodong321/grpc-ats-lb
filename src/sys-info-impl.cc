@@ -90,6 +90,66 @@ Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoRe
 	return Status::OK;
 }
 
+Status SysInfoImpl::getDeviceDetail (ServerContext* context, const GetDeviceDetailReq* request, GetDeviceDetailRsp* reply)
+{
+	LOG_INFO("get device detail");
+	string strCpuUsage;
+	string strCpuUsageCmd = "mpstat -P ALL |grep -v CPU | awk 'NF > 4'|awk '{print $3,$12}'";
+	if(!UtilCommon::ShellCmd(strCpuUsageCmd, strCpuUsage)){
+		LOG_ERROR("shell cmd failed: %s\n", strCpuUsageCmd.c_str());
+		return Status::CANCELLED;
+	}
+	LOG_INFO("cpu usage:%s", strCpuUsage.c_str());
+	reply->set_cpu_usage(strCpuUsage);
+
+	string strMemUsage;
+	string strMemUsageCmd = "free -m | grep -v total | grep -v cache | awk '{print $1,$2,$3,$4}'";
+	if(!UtilCommon::ShellCmd(strMemUsageCmd, strMemUsage)){
+		LOG_ERROR("shell cmd failed: %s\n", strMemUsageCmd.c_str());
+		return Status::CANCELLED;
+	}
+	LOG_INFO("memory usage: %s", strMemUsage.c_str());
+	reply->set_mem_usage(strMemUsage);
+
+	string strCpuTemp;
+	string strCpuTempCmd = "sensors | grep Core |awk '{print $2,$3}'";
+	if(!UtilCommon::ShellCmd(strCpuTempCmd, strCpuTemp)){
+		LOG_ERROR("shell cmd failed: %s\n", strCpuTempCmd.c_str());
+		return Status::CANCELLED;
+	}
+	LOG_INFO("cpu temperature:%s", strCpuTemp.c_str());
+	reply->set_cpu_temp(strCpuTemp);
+
+	string strSysVer;
+	string strSysVerCmd = "cat /etc/redhat-release|sed -r 's/.* ([0-9]+)\\..*/\\1/'";
+	if(!UtilCommon::ShellCmd(strSysVerCmd, strSysVer)){
+		LOG_ERROR("shell cmd error: %s", strSysVerCmd.c_str());
+		return Status::CANCELLED;
+	}
+	string strNicInfoCmd, strNicInfo;
+	if(strSysVer.find("6") != string::npos){
+		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
+	}
+	else if(strSysVer.find("7") != string::npos){
+		strNicInfoCmd = "ifconfig";
+	}
+	else{
+		LOG_WARN("the system version is not centos6 and centos7");
+		return Status::CANCELLED;
+	}
+	if(!UtilCommon::ShellCmd(strNicInfoCmd, strNicInfo)){
+		LOG_ERROR("shell cmd error: %s", strNicInfoCmd.c_str());
+		return Status::CANCELLED;
+	}
+	reply->set_nic_info(strNicInfo);
+	LOG_INFO("network info:%s", strNicInfo.c_str());
+	
+	LOG_INFO("get cpu usage successfully");
+	return Status::OK;
+}
+
+
+
 Status SysInfoImpl::getCpuUsage (ServerContext* context, const GetCpuUsageReq* request, GetCpuUsageRsp* reply)
 {
 	LOG_INFO("get cpu usage");

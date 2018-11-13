@@ -24,6 +24,9 @@ using sysinfo::GetNameAndIpInfoReq;
 using sysinfo::GetNameAndIpInfoRsp;
 using sysinfo::GetDeviceInfoReq;
 using sysinfo::GetDeviceInfoRsp;
+using sysinfo::GetDeviceDetailReq;
+using sysinfo::GetDeviceDetailRsp;
+
 using sysinfo::GetCpuUsageReq;
 using sysinfo::GetCpuUsageRsp;
 using sysinfo::GetCpuTempReq;
@@ -56,6 +59,9 @@ public:
 
 	Status getDeviceInfo (ServerContext* context, const GetDeviceInfoReq* request,
                   GetDeviceInfoRsp* reply) override;
+
+	Status getDeviceDetail (ServerContext* context, const GetDeviceDetailReq* request,
+                  GetDeviceDetailRsp* reply) override;
 	
 	Status getCpuUsage (ServerContext* context, const GetCpuUsageReq* request,
                   GetCpuUsageRsp* reply) override;

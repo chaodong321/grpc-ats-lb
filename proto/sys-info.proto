@@ -6,7 +6,8 @@ service SysInfo {
 
 	rpc getNameAndIpInfo(GetNameAndIpInfoReq) returns (GetNameAndIpInfoRsp) {}
 	rpc getDeviceInfo (GetDeviceInfoReq) returns (GetDeviceInfoRsp) {}
-	
+	rpc getDeviceDetail (GetDeviceDetailReq) returns (GetDeviceDetailRsp) {}
+
 	rpc getCpuUsage (GetCpuUsageReq) returns (GetCpuUsageRsp) {}
 	rpc getCpuTemp (GetCpuTempReq) returns (GetCpuTempRsp) {}
 	rpc getMemUsage (GetMemUsageReq) returns (GetMemUsageRsp) {}
@@ -39,6 +40,18 @@ message GetDeviceInfoRsp{
 	string cpu_cores = 2;
 	string mem_total = 3;
 	string eth_ctrl_info = 4;
+}
+
+//device detail
+message GetDeviceDetailReq{
+	string ip_addr = 1;
+}
+
+message GetDeviceDetailRsp{
+	string cpu_usage = 1;
+	string mem_usage = 2;
+	string cpu_temp = 3;
+	string nic_info = 4;
 }
 
 //cpu usage

@@ -36,7 +36,7 @@ namespace protobuf_sys_2dinfo_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[24];
+  static const ::google::protobuf::internal::ParseTable schema[26];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -50,6 +50,10 @@ void InitDefaultsGetDeviceInfoReqImpl();
 void InitDefaultsGetDeviceInfoReq();
 void InitDefaultsGetDeviceInfoRspImpl();
 void InitDefaultsGetDeviceInfoRsp();
+void InitDefaultsGetDeviceDetailReqImpl();
+void InitDefaultsGetDeviceDetailReq();
+void InitDefaultsGetDeviceDetailRspImpl();
+void InitDefaultsGetDeviceDetailRsp();
 void InitDefaultsGetCpuUsageReqImpl();
 void InitDefaultsGetCpuUsageReq();
 void InitDefaultsGetCpuUsageRspImpl();
@@ -95,6 +99,8 @@ inline void InitDefaults() {
   InitDefaultsGetNameAndIpInfoRsp();
   InitDefaultsGetDeviceInfoReq();
   InitDefaultsGetDeviceInfoRsp();
+  InitDefaultsGetDeviceDetailReq();
+  InitDefaultsGetDeviceDetailRsp();
   InitDefaultsGetCpuUsageReq();
   InitDefaultsGetCpuUsageRsp();
   InitDefaultsGetCpuTempReq();
@@ -142,6 +148,12 @@ extern GetCpuUsageReqDefaultTypeInternal _GetCpuUsageReq_default_instance_;
 class GetCpuUsageRsp;
 class GetCpuUsageRspDefaultTypeInternal;
 extern GetCpuUsageRspDefaultTypeInternal _GetCpuUsageRsp_default_instance_;
+class GetDeviceDetailReq;
+class GetDeviceDetailReqDefaultTypeInternal;
+extern GetDeviceDetailReqDefaultTypeInternal _GetDeviceDetailReq_default_instance_;
+class GetDeviceDetailRsp;
+class GetDeviceDetailRspDefaultTypeInternal;
+extern GetDeviceDetailRspDefaultTypeInternal _GetDeviceDetailRsp_default_instance_;
 class GetDeviceInfoReq;
 class GetDeviceInfoReqDefaultTypeInternal;
 extern GetDeviceInfoReqDefaultTypeInternal _GetDeviceInfoReq_default_instance_;
@@ -683,6 +695,265 @@ class GetDeviceInfoRsp : public ::google::protobuf::Message /* @@protoc_insertio
 };
 // -------------------------------------------------------------------
 
+class GetDeviceDetailReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:sysinfo.GetDeviceDetailReq) */ {
+ public:
+  GetDeviceDetailReq();
+  virtual ~GetDeviceDetailReq();
+
+  GetDeviceDetailReq(const GetDeviceDetailReq& from);
+
+  inline GetDeviceDetailReq& operator=(const GetDeviceDetailReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetDeviceDetailReq(GetDeviceDetailReq&& from) noexcept
+    : GetDeviceDetailReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GetDeviceDetailReq& operator=(GetDeviceDetailReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetDeviceDetailReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetDeviceDetailReq* internal_default_instance() {
+    return reinterpret_cast<const GetDeviceDetailReq*>(
+               &_GetDeviceDetailReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    4;
+
+  void Swap(GetDeviceDetailReq* other);
+  friend void swap(GetDeviceDetailReq& a, GetDeviceDetailReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetDeviceDetailReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetDeviceDetailReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetDeviceDetailReq& from);
+  void MergeFrom(const GetDeviceDetailReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetDeviceDetailReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // @@protoc_insertion_point(class_scope:sysinfo.GetDeviceDetailReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_sys_2dinfo_2eproto::TableStruct;
+  friend void ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceDetailReqImpl();
+};
+// -------------------------------------------------------------------
+
+class GetDeviceDetailRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:sysinfo.GetDeviceDetailRsp) */ {
+ public:
+  GetDeviceDetailRsp();
+  virtual ~GetDeviceDetailRsp();
+
+  GetDeviceDetailRsp(const GetDeviceDetailRsp& from);
+
+  inline GetDeviceDetailRsp& operator=(const GetDeviceDetailRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetDeviceDetailRsp(GetDeviceDetailRsp&& from) noexcept
+    : GetDeviceDetailRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetDeviceDetailRsp& operator=(GetDeviceDetailRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetDeviceDetailRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetDeviceDetailRsp* internal_default_instance() {
+    return reinterpret_cast<const GetDeviceDetailRsp*>(
+               &_GetDeviceDetailRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    5;
+
+  void Swap(GetDeviceDetailRsp* other);
+  friend void swap(GetDeviceDetailRsp& a, GetDeviceDetailRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetDeviceDetailRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetDeviceDetailRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetDeviceDetailRsp& from);
+  void MergeFrom(const GetDeviceDetailRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetDeviceDetailRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string cpu_usage = 1;
+  void clear_cpu_usage();
+  static const int kCpuUsageFieldNumber = 1;
+  const ::std::string& cpu_usage() const;
+  void set_cpu_usage(const ::std::string& value);
+  #if LANG_CXX11
+  void set_cpu_usage(::std::string&& value);
+  #endif
+  void set_cpu_usage(const char* value);
+  void set_cpu_usage(const char* value, size_t size);
+  ::std::string* mutable_cpu_usage();
+  ::std::string* release_cpu_usage();
+  void set_allocated_cpu_usage(::std::string* cpu_usage);
+
+  // string mem_usage = 2;
+  void clear_mem_usage();
+  static const int kMemUsageFieldNumber = 2;
+  const ::std::string& mem_usage() const;
+  void set_mem_usage(const ::std::string& value);
+  #if LANG_CXX11
+  void set_mem_usage(::std::string&& value);
+  #endif
+  void set_mem_usage(const char* value);
+  void set_mem_usage(const char* value, size_t size);
+  ::std::string* mutable_mem_usage();
+  ::std::string* release_mem_usage();
+  void set_allocated_mem_usage(::std::string* mem_usage);
+
+  // string cpu_temp = 3;
+  void clear_cpu_temp();
+  static const int kCpuTempFieldNumber = 3;
+  const ::std::string& cpu_temp() const;
+  void set_cpu_temp(const ::std::string& value);
+  #if LANG_CXX11
+  void set_cpu_temp(::std::string&& value);
+  #endif
+  void set_cpu_temp(const char* value);
+  void set_cpu_temp(const char* value, size_t size);
+  ::std::string* mutable_cpu_temp();
+  ::std::string* release_cpu_temp();
+  void set_allocated_cpu_temp(::std::string* cpu_temp);
+
+  // string nic_info = 4;
+  void clear_nic_info();
+  static const int kNicInfoFieldNumber = 4;
+  const ::std::string& nic_info() const;
+  void set_nic_info(const ::std::string& value);
+  #if LANG_CXX11
+  void set_nic_info(::std::string&& value);
+  #endif
+  void set_nic_info(const char* value);
+  void set_nic_info(const char* value, size_t size);
+  ::std::string* mutable_nic_info();
+  ::std::string* release_nic_info();
+  void set_allocated_nic_info(::std::string* nic_info);
+
+  // @@protoc_insertion_point(class_scope:sysinfo.GetDeviceDetailRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr cpu_usage_;
+  ::google::protobuf::internal::ArenaStringPtr mem_usage_;
+  ::google::protobuf::internal::ArenaStringPtr cpu_temp_;
+  ::google::protobuf::internal::ArenaStringPtr nic_info_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_sys_2dinfo_2eproto::TableStruct;
+  friend void ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceDetailRspImpl();
+};
+// -------------------------------------------------------------------
+
 class GetCpuUsageReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:sysinfo.GetCpuUsageReq) */ {
  public:
   GetCpuUsageReq();
@@ -718,7 +989,7 @@ class GetCpuUsageReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuUsageReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
+    6;
 
   void Swap(GetCpuUsageReq* other);
   friend void swap(GetCpuUsageReq& a, GetCpuUsageReq& b) {
@@ -825,7 +1096,7 @@ class GetCpuUsageRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuUsageRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    5;
+    7;
 
   void Swap(GetCpuUsageRsp* other);
   friend void swap(GetCpuUsageRsp& a, GetCpuUsageRsp& b) {
@@ -932,7 +1203,7 @@ class GetCpuTempReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetCpuTempReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
+    8;
 
   void Swap(GetCpuTempReq* other);
   friend void swap(GetCpuTempReq& a, GetCpuTempReq& b) {
@@ -1039,7 +1310,7 @@ class GetCpuTempRsp : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetCpuTempRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    7;
+    9;
 
   void Swap(GetCpuTempRsp* other);
   friend void swap(GetCpuTempRsp& a, GetCpuTempRsp& b) {
@@ -1146,7 +1417,7 @@ class GetMemUsageReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetMemUsageReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    8;
+    10;
 
   void Swap(GetMemUsageReq* other);
   friend void swap(GetMemUsageReq& a, GetMemUsageReq& b) {
@@ -1253,7 +1524,7 @@ class GetMemUsageRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetMemUsageRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
+    11;
 
   void Swap(GetMemUsageRsp* other);
   friend void swap(GetMemUsageRsp& a, GetMemUsageRsp& b) {
@@ -1360,7 +1631,7 @@ class GetNicInfoReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetNicInfoReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    10;
+    12;
 
   void Swap(GetNicInfoReq* other);
   friend void swap(GetNicInfoReq& a, GetNicInfoReq& b) {
@@ -1474,7 +1745,7 @@ class GetNicInfoRsp : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetNicInfoRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    11;
+    13;
 
   void Swap(GetNicInfoRsp* other);
   friend void swap(GetNicInfoRsp& a, GetNicInfoRsp& b) {
@@ -1596,7 +1867,7 @@ class GetHostNameReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetHostNameReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    12;
+    14;
 
   void Swap(GetHostNameReq* other);
   friend void swap(GetHostNameReq& a, GetHostNameReq& b) {
@@ -1703,7 +1974,7 @@ class GetHostNameRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetHostNameRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    13;
+    15;
 
   void Swap(GetHostNameRsp* other);
   friend void swap(GetHostNameRsp& a, GetHostNameRsp& b) {
@@ -1810,7 +2081,7 @@ class GetIpInfoReq : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetIpInfoReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    14;
+    16;
 
   void Swap(GetIpInfoReq* other);
   friend void swap(GetIpInfoReq& a, GetIpInfoReq& b) {
@@ -1917,7 +2188,7 @@ class GetIpInfoRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetIpInfoRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    15;
+    17;
 
   void Swap(GetIpInfoRsp* other);
   friend void swap(GetIpInfoRsp& a, GetIpInfoRsp& b) {
@@ -2024,7 +2295,7 @@ class GetCpuModelReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuModelReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    16;
+    18;
 
   void Swap(GetCpuModelReq* other);
   friend void swap(GetCpuModelReq& a, GetCpuModelReq& b) {
@@ -2131,7 +2402,7 @@ class GetCpuModelRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuModelRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    17;
+    19;
 
   void Swap(GetCpuModelRsp* other);
   friend void swap(GetCpuModelRsp& a, GetCpuModelRsp& b) {
@@ -2238,7 +2509,7 @@ class GetCpuCoresReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuCoresReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    18;
+    20;
 
   void Swap(GetCpuCoresReq* other);
   friend void swap(GetCpuCoresReq& a, GetCpuCoresReq& b) {
@@ -2345,7 +2616,7 @@ class GetCpuCoresRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetCpuCoresRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    19;
+    21;
 
   void Swap(GetCpuCoresRsp* other);
   friend void swap(GetCpuCoresRsp& a, GetCpuCoresRsp& b) {
@@ -2452,7 +2723,7 @@ class GetMemTotalReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetMemTotalReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    20;
+    22;
 
   void Swap(GetMemTotalReq* other);
   friend void swap(GetMemTotalReq& a, GetMemTotalReq& b) {
@@ -2559,7 +2830,7 @@ class GetMemTotalRsp : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetMemTotalRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    21;
+    23;
 
   void Swap(GetMemTotalRsp* other);
   friend void swap(GetMemTotalRsp& a, GetMemTotalRsp& b) {
@@ -2666,7 +2937,7 @@ class GetEthCtrlInfoReq : public ::google::protobuf::Message /* @@protoc_inserti
                &_GetEthCtrlInfoReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    22;
+    24;
 
   void Swap(GetEthCtrlInfoReq* other);
   friend void swap(GetEthCtrlInfoReq& a, GetEthCtrlInfoReq& b) {
@@ -2773,7 +3044,7 @@ class GetEthCtrlInfoRsp : public ::google::protobuf::Message /* @@protoc_inserti
                &_GetEthCtrlInfoRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    23;
+    25;
 
   void Swap(GetEthCtrlInfoRsp* other);
   friend void swap(GetEthCtrlInfoRsp& a, GetEthCtrlInfoRsp& b) {
@@ -3288,6 +3559,279 @@ inline void GetDeviceInfoRsp::set_allocated_eth_ctrl_info(::std::string* eth_ctr
   }
   eth_ctrl_info_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), eth_ctrl_info);
   // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceInfoRsp.eth_ctrl_info)
+}
+
+// -------------------------------------------------------------------
+
+// GetDeviceDetailReq
+
+// string ip_addr = 1;
+inline void GetDeviceDetailReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetDeviceDetailReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:sysinfo.GetDeviceDetailReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void GetDeviceDetailReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sysinfo.GetDeviceDetailReq.ip_addr)
+}
+#if LANG_CXX11
+inline void GetDeviceDetailReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetDeviceDetailReq.ip_addr)
+}
+#endif
+inline void GetDeviceDetailReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sysinfo.GetDeviceDetailReq.ip_addr)
+}
+inline void GetDeviceDetailReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetDeviceDetailReq.ip_addr)
+}
+inline ::std::string* GetDeviceDetailReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:sysinfo.GetDeviceDetailReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetDeviceDetailReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:sysinfo.GetDeviceDetailReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetDeviceDetailReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceDetailReq.ip_addr)
+}
+
+// -------------------------------------------------------------------
+
+// GetDeviceDetailRsp
+
+// string cpu_usage = 1;
+inline void GetDeviceDetailRsp::clear_cpu_usage() {
+  cpu_usage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetDeviceDetailRsp::cpu_usage() const {
+  // @@protoc_insertion_point(field_get:sysinfo.GetDeviceDetailRsp.cpu_usage)
+  return cpu_usage_.GetNoArena();
+}
+inline void GetDeviceDetailRsp::set_cpu_usage(const ::std::string& value) {
+  
+  cpu_usage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sysinfo.GetDeviceDetailRsp.cpu_usage)
+}
+#if LANG_CXX11
+inline void GetDeviceDetailRsp::set_cpu_usage(::std::string&& value) {
+  
+  cpu_usage_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetDeviceDetailRsp.cpu_usage)
+}
+#endif
+inline void GetDeviceDetailRsp::set_cpu_usage(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  cpu_usage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sysinfo.GetDeviceDetailRsp.cpu_usage)
+}
+inline void GetDeviceDetailRsp::set_cpu_usage(const char* value, size_t size) {
+  
+  cpu_usage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetDeviceDetailRsp.cpu_usage)
+}
+inline ::std::string* GetDeviceDetailRsp::mutable_cpu_usage() {
+  
+  // @@protoc_insertion_point(field_mutable:sysinfo.GetDeviceDetailRsp.cpu_usage)
+  return cpu_usage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetDeviceDetailRsp::release_cpu_usage() {
+  // @@protoc_insertion_point(field_release:sysinfo.GetDeviceDetailRsp.cpu_usage)
+  
+  return cpu_usage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetDeviceDetailRsp::set_allocated_cpu_usage(::std::string* cpu_usage) {
+  if (cpu_usage != NULL) {
+    
+  } else {
+    
+  }
+  cpu_usage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cpu_usage);
+  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceDetailRsp.cpu_usage)
+}
+
+// string mem_usage = 2;
+inline void GetDeviceDetailRsp::clear_mem_usage() {
+  mem_usage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetDeviceDetailRsp::mem_usage() const {
+  // @@protoc_insertion_point(field_get:sysinfo.GetDeviceDetailRsp.mem_usage)
+  return mem_usage_.GetNoArena();
+}
+inline void GetDeviceDetailRsp::set_mem_usage(const ::std::string& value) {
+  
+  mem_usage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sysinfo.GetDeviceDetailRsp.mem_usage)
+}
+#if LANG_CXX11
+inline void GetDeviceDetailRsp::set_mem_usage(::std::string&& value) {
+  
+  mem_usage_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetDeviceDetailRsp.mem_usage)
+}
+#endif
+inline void GetDeviceDetailRsp::set_mem_usage(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  mem_usage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sysinfo.GetDeviceDetailRsp.mem_usage)
+}
+inline void GetDeviceDetailRsp::set_mem_usage(const char* value, size_t size) {
+  
+  mem_usage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetDeviceDetailRsp.mem_usage)
+}
+inline ::std::string* GetDeviceDetailRsp::mutable_mem_usage() {
+  
+  // @@protoc_insertion_point(field_mutable:sysinfo.GetDeviceDetailRsp.mem_usage)
+  return mem_usage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetDeviceDetailRsp::release_mem_usage() {
+  // @@protoc_insertion_point(field_release:sysinfo.GetDeviceDetailRsp.mem_usage)
+  
+  return mem_usage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetDeviceDetailRsp::set_allocated_mem_usage(::std::string* mem_usage) {
+  if (mem_usage != NULL) {
+    
+  } else {
+    
+  }
+  mem_usage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), mem_usage);
+  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceDetailRsp.mem_usage)
+}
+
+// string cpu_temp = 3;
+inline void GetDeviceDetailRsp::clear_cpu_temp() {
+  cpu_temp_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetDeviceDetailRsp::cpu_temp() const {
+  // @@protoc_insertion_point(field_get:sysinfo.GetDeviceDetailRsp.cpu_temp)
+  return cpu_temp_.GetNoArena();
+}
+inline void GetDeviceDetailRsp::set_cpu_temp(const ::std::string& value) {
+  
+  cpu_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sysinfo.GetDeviceDetailRsp.cpu_temp)
+}
+#if LANG_CXX11
+inline void GetDeviceDetailRsp::set_cpu_temp(::std::string&& value) {
+  
+  cpu_temp_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetDeviceDetailRsp.cpu_temp)
+}
+#endif
+inline void GetDeviceDetailRsp::set_cpu_temp(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  cpu_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sysinfo.GetDeviceDetailRsp.cpu_temp)
+}
+inline void GetDeviceDetailRsp::set_cpu_temp(const char* value, size_t size) {
+  
+  cpu_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetDeviceDetailRsp.cpu_temp)
+}
+inline ::std::string* GetDeviceDetailRsp::mutable_cpu_temp() {
+  
+  // @@protoc_insertion_point(field_mutable:sysinfo.GetDeviceDetailRsp.cpu_temp)
+  return cpu_temp_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetDeviceDetailRsp::release_cpu_temp() {
+  // @@protoc_insertion_point(field_release:sysinfo.GetDeviceDetailRsp.cpu_temp)
+  
+  return cpu_temp_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetDeviceDetailRsp::set_allocated_cpu_temp(::std::string* cpu_temp) {
+  if (cpu_temp != NULL) {
+    
+  } else {
+    
+  }
+  cpu_temp_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cpu_temp);
+  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceDetailRsp.cpu_temp)
+}
+
+// string nic_info = 4;
+inline void GetDeviceDetailRsp::clear_nic_info() {
+  nic_info_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetDeviceDetailRsp::nic_info() const {
+  // @@protoc_insertion_point(field_get:sysinfo.GetDeviceDetailRsp.nic_info)
+  return nic_info_.GetNoArena();
+}
+inline void GetDeviceDetailRsp::set_nic_info(const ::std::string& value) {
+  
+  nic_info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sysinfo.GetDeviceDetailRsp.nic_info)
+}
+#if LANG_CXX11
+inline void GetDeviceDetailRsp::set_nic_info(::std::string&& value) {
+  
+  nic_info_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetDeviceDetailRsp.nic_info)
+}
+#endif
+inline void GetDeviceDetailRsp::set_nic_info(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  nic_info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sysinfo.GetDeviceDetailRsp.nic_info)
+}
+inline void GetDeviceDetailRsp::set_nic_info(const char* value, size_t size) {
+  
+  nic_info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetDeviceDetailRsp.nic_info)
+}
+inline ::std::string* GetDeviceDetailRsp::mutable_nic_info() {
+  
+  // @@protoc_insertion_point(field_mutable:sysinfo.GetDeviceDetailRsp.nic_info)
+  return nic_info_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetDeviceDetailRsp::release_nic_info() {
+  // @@protoc_insertion_point(field_release:sysinfo.GetDeviceDetailRsp.nic_info)
+  
+  return nic_info_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetDeviceDetailRsp::set_allocated_nic_info(::std::string* nic_info) {
+  if (nic_info != NULL) {
+    
+  } else {
+    
+  }
+  nic_info_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), nic_info);
+  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceDetailRsp.nic_info)
 }
 
 // -------------------------------------------------------------------
@@ -4500,6 +5044,10 @@ inline void GetEthCtrlInfoRsp::set_allocated_eth_ctrl_info(::std::string* eth_ct
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

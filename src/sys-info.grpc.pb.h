@@ -47,6 +47,13 @@ class SysInfo final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceInfoRsp>> PrepareAsyncgetDeviceInfo(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceInfoRsp>>(PrepareAsyncgetDeviceInfoRaw(context, request, cq));
     }
+    virtual ::grpc::Status getDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::sysinfo::GetDeviceDetailRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceDetailRsp>> AsyncgetDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceDetailRsp>>(AsyncgetDeviceDetailRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceDetailRsp>> PrepareAsyncgetDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceDetailRsp>>(PrepareAsyncgetDeviceDetailRaw(context, request, cq));
+    }
     virtual ::grpc::Status getCpuUsage(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::sysinfo::GetCpuUsageRsp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetCpuUsageRsp>> AsyncgetCpuUsage(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetCpuUsageRsp>>(AsyncgetCpuUsageRaw(context, request, cq));
@@ -122,6 +129,8 @@ class SysInfo final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetNameAndIpInfoRsp>* PrepareAsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceInfoRsp>* AsyncgetDeviceInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceInfoRsp>* PrepareAsyncgetDeviceInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceDetailRsp>* AsyncgetDeviceDetailRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetDeviceDetailRsp>* PrepareAsyncgetDeviceDetailRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetCpuUsageRsp>* AsyncgetCpuUsageRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetCpuUsageRsp>* PrepareAsyncgetCpuUsageRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetCpuTempRsp>* AsyncgetCpuTempRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuTempReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -159,6 +168,13 @@ class SysInfo final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceInfoRsp>> PrepareAsyncgetDeviceInfo(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceInfoRsp>>(PrepareAsyncgetDeviceInfoRaw(context, request, cq));
+    }
+    ::grpc::Status getDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::sysinfo::GetDeviceDetailRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceDetailRsp>> AsyncgetDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceDetailRsp>>(AsyncgetDeviceDetailRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceDetailRsp>> PrepareAsyncgetDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceDetailRsp>>(PrepareAsyncgetDeviceDetailRaw(context, request, cq));
     }
     ::grpc::Status getCpuUsage(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::sysinfo::GetCpuUsageRsp* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetCpuUsageRsp>> AsyncgetCpuUsage(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) {
@@ -237,6 +253,8 @@ class SysInfo final {
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetNameAndIpInfoRsp>* PrepareAsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceInfoRsp>* AsyncgetDeviceInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceInfoRsp>* PrepareAsyncgetDeviceInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceDetailRsp>* AsyncgetDeviceDetailRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceDetailRsp>* PrepareAsyncgetDeviceDetailRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetCpuUsageRsp>* AsyncgetCpuUsageRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetCpuUsageRsp>* PrepareAsyncgetCpuUsageRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetCpuTempRsp>* AsyncgetCpuTempRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuTempReq& request, ::grpc::CompletionQueue* cq) override;
@@ -259,6 +277,7 @@ class SysInfo final {
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetEthCtrlInfoRsp>* PrepareAsyncgetEthCtrlInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetEthCtrlInfoReq& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_getNameAndIpInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_getDeviceInfo_;
+    const ::grpc::internal::RpcMethod rpcmethod_getDeviceDetail_;
     const ::grpc::internal::RpcMethod rpcmethod_getCpuUsage_;
     const ::grpc::internal::RpcMethod rpcmethod_getCpuTemp_;
     const ::grpc::internal::RpcMethod rpcmethod_getMemUsage_;
@@ -278,6 +297,7 @@ class SysInfo final {
     virtual ~Service();
     virtual ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response);
     virtual ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response);
+    virtual ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response);
     virtual ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response);
     virtual ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response);
     virtual ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response);
@@ -330,12 +350,32 @@ class SysInfo final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_getDeviceDetail : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_getDeviceDetail() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_getDeviceDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) final override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetDeviceDetail(::grpc::ServerContext* context, ::sysinfo::GetDeviceDetailReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetDeviceDetailRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_getCpuUsage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getCpuUsage() {
-      ::grpc::Service::MarkMethodAsync(2);
+      ::grpc::Service::MarkMethodAsync(3);
     }
     ~WithAsyncMethod_getCpuUsage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -346,7 +386,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetCpuUsage(::grpc::ServerContext* context, ::sysinfo::GetCpuUsageReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetCpuUsageRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -355,7 +395,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getCpuTemp() {
-      ::grpc::Service::MarkMethodAsync(3);
+      ::grpc::Service::MarkMethodAsync(4);
     }
     ~WithAsyncMethod_getCpuTemp() override {
       BaseClassMustBeDerivedFromService(this);
@@ -366,7 +406,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetCpuTemp(::grpc::ServerContext* context, ::sysinfo::GetCpuTempReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetCpuTempRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -375,7 +415,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getMemUsage() {
-      ::grpc::Service::MarkMethodAsync(4);
+      ::grpc::Service::MarkMethodAsync(5);
     }
     ~WithAsyncMethod_getMemUsage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -386,7 +426,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetMemUsage(::grpc::ServerContext* context, ::sysinfo::GetMemUsageReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetMemUsageRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -395,7 +435,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getNicInfo() {
-      ::grpc::Service::MarkMethodAsync(5);
+      ::grpc::Service::MarkMethodAsync(6);
     }
     ~WithAsyncMethod_getNicInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -406,7 +446,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetNicInfo(::grpc::ServerContext* context, ::sysinfo::GetNicInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetNicInfoRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -415,7 +455,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getHostName() {
-      ::grpc::Service::MarkMethodAsync(6);
+      ::grpc::Service::MarkMethodAsync(7);
     }
     ~WithAsyncMethod_getHostName() override {
       BaseClassMustBeDerivedFromService(this);
@@ -426,7 +466,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetHostName(::grpc::ServerContext* context, ::sysinfo::GetHostNameReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetHostNameRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -435,7 +475,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getIpInfo() {
-      ::grpc::Service::MarkMethodAsync(7);
+      ::grpc::Service::MarkMethodAsync(8);
     }
     ~WithAsyncMethod_getIpInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -446,7 +486,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetIpInfo(::grpc::ServerContext* context, ::sysinfo::GetIpInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetIpInfoRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -455,7 +495,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getCpuModel() {
-      ::grpc::Service::MarkMethodAsync(8);
+      ::grpc::Service::MarkMethodAsync(9);
     }
     ~WithAsyncMethod_getCpuModel() override {
       BaseClassMustBeDerivedFromService(this);
@@ -466,7 +506,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetCpuModel(::grpc::ServerContext* context, ::sysinfo::GetCpuModelReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetCpuModelRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -475,7 +515,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getCpuCores() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_getCpuCores() override {
       BaseClassMustBeDerivedFromService(this);
@@ -486,7 +526,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetCpuCores(::grpc::ServerContext* context, ::sysinfo::GetCpuCoresReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetCpuCoresRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -495,7 +535,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getMemTotal() {
-      ::grpc::Service::MarkMethodAsync(10);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_getMemTotal() override {
       BaseClassMustBeDerivedFromService(this);
@@ -506,7 +546,7 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetMemTotal(::grpc::ServerContext* context, ::sysinfo::GetMemTotalReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetMemTotalRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -515,7 +555,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getEthCtrlInfo() {
-      ::grpc::Service::MarkMethodAsync(11);
+      ::grpc::Service::MarkMethodAsync(12);
     }
     ~WithAsyncMethod_getEthCtrlInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -526,10 +566,10 @@ class SysInfo final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetEthCtrlInfo(::grpc::ServerContext* context, ::sysinfo::GetEthCtrlInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::sysinfo::GetEthCtrlInfoRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_getNameAndIpInfo<WithAsyncMethod_getDeviceInfo<WithAsyncMethod_getCpuUsage<WithAsyncMethod_getCpuTemp<WithAsyncMethod_getMemUsage<WithAsyncMethod_getNicInfo<WithAsyncMethod_getHostName<WithAsyncMethod_getIpInfo<WithAsyncMethod_getCpuModel<WithAsyncMethod_getCpuCores<WithAsyncMethod_getMemTotal<WithAsyncMethod_getEthCtrlInfo<Service > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_getNameAndIpInfo<WithAsyncMethod_getDeviceInfo<WithAsyncMethod_getDeviceDetail<WithAsyncMethod_getCpuUsage<WithAsyncMethod_getCpuTemp<WithAsyncMethod_getMemUsage<WithAsyncMethod_getNicInfo<WithAsyncMethod_getHostName<WithAsyncMethod_getIpInfo<WithAsyncMethod_getCpuModel<WithAsyncMethod_getCpuCores<WithAsyncMethod_getMemTotal<WithAsyncMethod_getEthCtrlInfo<Service > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_getNameAndIpInfo : public BaseClass {
    private:
@@ -565,12 +605,29 @@ class SysInfo final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_getDeviceDetail : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_getDeviceDetail() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_getDeviceDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) final override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_getCpuUsage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getCpuUsage() {
-      ::grpc::Service::MarkMethodGeneric(2);
+      ::grpc::Service::MarkMethodGeneric(3);
     }
     ~WithGenericMethod_getCpuUsage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -587,7 +644,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getCpuTemp() {
-      ::grpc::Service::MarkMethodGeneric(3);
+      ::grpc::Service::MarkMethodGeneric(4);
     }
     ~WithGenericMethod_getCpuTemp() override {
       BaseClassMustBeDerivedFromService(this);
@@ -604,7 +661,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getMemUsage() {
-      ::grpc::Service::MarkMethodGeneric(4);
+      ::grpc::Service::MarkMethodGeneric(5);
     }
     ~WithGenericMethod_getMemUsage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -621,7 +678,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getNicInfo() {
-      ::grpc::Service::MarkMethodGeneric(5);
+      ::grpc::Service::MarkMethodGeneric(6);
     }
     ~WithGenericMethod_getNicInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -638,7 +695,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getHostName() {
-      ::grpc::Service::MarkMethodGeneric(6);
+      ::grpc::Service::MarkMethodGeneric(7);
     }
     ~WithGenericMethod_getHostName() override {
       BaseClassMustBeDerivedFromService(this);
@@ -655,7 +712,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getIpInfo() {
-      ::grpc::Service::MarkMethodGeneric(7);
+      ::grpc::Service::MarkMethodGeneric(8);
     }
     ~WithGenericMethod_getIpInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -672,7 +729,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getCpuModel() {
-      ::grpc::Service::MarkMethodGeneric(8);
+      ::grpc::Service::MarkMethodGeneric(9);
     }
     ~WithGenericMethod_getCpuModel() override {
       BaseClassMustBeDerivedFromService(this);
@@ -689,7 +746,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getCpuCores() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_getCpuCores() override {
       BaseClassMustBeDerivedFromService(this);
@@ -706,7 +763,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getMemTotal() {
-      ::grpc::Service::MarkMethodGeneric(10);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_getMemTotal() override {
       BaseClassMustBeDerivedFromService(this);
@@ -723,7 +780,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getEthCtrlInfo() {
-      ::grpc::Service::MarkMethodGeneric(11);
+      ::grpc::Service::MarkMethodGeneric(12);
     }
     ~WithGenericMethod_getEthCtrlInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -775,12 +832,32 @@ class SysInfo final {
     virtual ::grpc::Status StreamedgetDeviceInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sysinfo::GetDeviceInfoReq,::sysinfo::GetDeviceInfoRsp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_getDeviceDetail : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_getDeviceDetail() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetDeviceDetailReq, ::sysinfo::GetDeviceDetailRsp>(std::bind(&WithStreamedUnaryMethod_getDeviceDetail<BaseClass>::StreamedgetDeviceDetail, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_getDeviceDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) final override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedgetDeviceDetail(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sysinfo::GetDeviceDetailReq,::sysinfo::GetDeviceDetailRsp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_getCpuUsage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getCpuUsage() {
-      ::grpc::Service::MarkMethodStreamed(2,
+      ::grpc::Service::MarkMethodStreamed(3,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetCpuUsageReq, ::sysinfo::GetCpuUsageRsp>(std::bind(&WithStreamedUnaryMethod_getCpuUsage<BaseClass>::StreamedgetCpuUsage, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getCpuUsage() override {
@@ -800,7 +877,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getCpuTemp() {
-      ::grpc::Service::MarkMethodStreamed(3,
+      ::grpc::Service::MarkMethodStreamed(4,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetCpuTempReq, ::sysinfo::GetCpuTempRsp>(std::bind(&WithStreamedUnaryMethod_getCpuTemp<BaseClass>::StreamedgetCpuTemp, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getCpuTemp() override {
@@ -820,7 +897,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getMemUsage() {
-      ::grpc::Service::MarkMethodStreamed(4,
+      ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetMemUsageReq, ::sysinfo::GetMemUsageRsp>(std::bind(&WithStreamedUnaryMethod_getMemUsage<BaseClass>::StreamedgetMemUsage, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getMemUsage() override {
@@ -840,7 +917,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getNicInfo() {
-      ::grpc::Service::MarkMethodStreamed(5,
+      ::grpc::Service::MarkMethodStreamed(6,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetNicInfoReq, ::sysinfo::GetNicInfoRsp>(std::bind(&WithStreamedUnaryMethod_getNicInfo<BaseClass>::StreamedgetNicInfo, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getNicInfo() override {
@@ -860,7 +937,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getHostName() {
-      ::grpc::Service::MarkMethodStreamed(6,
+      ::grpc::Service::MarkMethodStreamed(7,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetHostNameReq, ::sysinfo::GetHostNameRsp>(std::bind(&WithStreamedUnaryMethod_getHostName<BaseClass>::StreamedgetHostName, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getHostName() override {
@@ -880,7 +957,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getIpInfo() {
-      ::grpc::Service::MarkMethodStreamed(7,
+      ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetIpInfoReq, ::sysinfo::GetIpInfoRsp>(std::bind(&WithStreamedUnaryMethod_getIpInfo<BaseClass>::StreamedgetIpInfo, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getIpInfo() override {
@@ -900,7 +977,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getCpuModel() {
-      ::grpc::Service::MarkMethodStreamed(8,
+      ::grpc::Service::MarkMethodStreamed(9,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetCpuModelReq, ::sysinfo::GetCpuModelRsp>(std::bind(&WithStreamedUnaryMethod_getCpuModel<BaseClass>::StreamedgetCpuModel, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getCpuModel() override {
@@ -920,7 +997,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getCpuCores() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetCpuCoresReq, ::sysinfo::GetCpuCoresRsp>(std::bind(&WithStreamedUnaryMethod_getCpuCores<BaseClass>::StreamedgetCpuCores, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getCpuCores() override {
@@ -940,7 +1017,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getMemTotal() {
-      ::grpc::Service::MarkMethodStreamed(10,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetMemTotalReq, ::sysinfo::GetMemTotalRsp>(std::bind(&WithStreamedUnaryMethod_getMemTotal<BaseClass>::StreamedgetMemTotal, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getMemTotal() override {
@@ -960,7 +1037,7 @@ class SysInfo final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_getEthCtrlInfo() {
-      ::grpc::Service::MarkMethodStreamed(11,
+      ::grpc::Service::MarkMethodStreamed(12,
         new ::grpc::internal::StreamedUnaryHandler< ::sysinfo::GetEthCtrlInfoReq, ::sysinfo::GetEthCtrlInfoRsp>(std::bind(&WithStreamedUnaryMethod_getEthCtrlInfo<BaseClass>::StreamedgetEthCtrlInfo, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getEthCtrlInfo() override {
@@ -974,9 +1051,9 @@ class SysInfo final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedgetEthCtrlInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sysinfo::GetEthCtrlInfoReq,::sysinfo::GetEthCtrlInfoRsp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_getNameAndIpInfo<WithStreamedUnaryMethod_getDeviceInfo<WithStreamedUnaryMethod_getCpuUsage<WithStreamedUnaryMethod_getCpuTemp<WithStreamedUnaryMethod_getMemUsage<WithStreamedUnaryMethod_getNicInfo<WithStreamedUnaryMethod_getHostName<WithStreamedUnaryMethod_getIpInfo<WithStreamedUnaryMethod_getCpuModel<WithStreamedUnaryMethod_getCpuCores<WithStreamedUnaryMethod_getMemTotal<WithStreamedUnaryMethod_getEthCtrlInfo<Service > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_getNameAndIpInfo<WithStreamedUnaryMethod_getDeviceInfo<WithStreamedUnaryMethod_getDeviceDetail<WithStreamedUnaryMethod_getCpuUsage<WithStreamedUnaryMethod_getCpuTemp<WithStreamedUnaryMethod_getMemUsage<WithStreamedUnaryMethod_getNicInfo<WithStreamedUnaryMethod_getHostName<WithStreamedUnaryMethod_getIpInfo<WithStreamedUnaryMethod_getCpuModel<WithStreamedUnaryMethod_getCpuCores<WithStreamedUnaryMethod_getMemTotal<WithStreamedUnaryMethod_getEthCtrlInfo<Service > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_getNameAndIpInfo<WithStreamedUnaryMethod_getDeviceInfo<WithStreamedUnaryMethod_getCpuUsage<WithStreamedUnaryMethod_getCpuTemp<WithStreamedUnaryMethod_getMemUsage<WithStreamedUnaryMethod_getNicInfo<WithStreamedUnaryMethod_getHostName<WithStreamedUnaryMethod_getIpInfo<WithStreamedUnaryMethod_getCpuModel<WithStreamedUnaryMethod_getCpuCores<WithStreamedUnaryMethod_getMemTotal<WithStreamedUnaryMethod_getEthCtrlInfo<Service > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_getNameAndIpInfo<WithStreamedUnaryMethod_getDeviceInfo<WithStreamedUnaryMethod_getDeviceDetail<WithStreamedUnaryMethod_getCpuUsage<WithStreamedUnaryMethod_getCpuTemp<WithStreamedUnaryMethod_getMemUsage<WithStreamedUnaryMethod_getNicInfo<WithStreamedUnaryMethod_getHostName<WithStreamedUnaryMethod_getIpInfo<WithStreamedUnaryMethod_getCpuModel<WithStreamedUnaryMethod_getCpuCores<WithStreamedUnaryMethod_getMemTotal<WithStreamedUnaryMethod_getEthCtrlInfo<Service > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace sysinfo

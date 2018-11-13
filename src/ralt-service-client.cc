@@ -23,6 +23,9 @@ using sysinfo::GetNameAndIpInfoReq;
 using sysinfo::GetNameAndIpInfoRsp;
 using sysinfo::GetDeviceInfoReq;
 using sysinfo::GetDeviceInfoRsp;
+using sysinfo::GetDeviceDetailReq;
+using sysinfo::GetDeviceDetailRsp;
+
 using sysinfo::GetCpuUsageReq;
 using sysinfo::GetCpuUsageRsp;
 using sysinfo::GetCpuTempReq;
@@ -128,6 +131,25 @@ class RaltServiceClient {
 				std::cout << "cpu cores: " << std::endl << reply.cpu_cores() << std::endl;
 				std::cout << "mem total: " << std::endl << reply.mem_total() << std::endl;
 				std::cout << "ethernet controler: " << std::endl << reply.eth_ctrl_info() << std::endl;
+			} else {
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
+		void getDeviceDetail(){
+			ClientContext context;
+				
+			// The actual RPC.
+			GetDeviceDetailReq request;
+			// Container for the data we expect from the server.
+			GetDeviceDetailRsp reply;
+			Status status = stub_sys->getDeviceDetail(&context, request, &reply);
+			// Act upon its cacheStatus.
+			if (status.ok()) {
+				std::cout << "cpu usage: " << std::endl << reply.cpu_usage() << std::endl;
+				std::cout << "memory usage: " << std::endl << reply.mem_usage() << std::endl;
+				std::cout << "cpu temperature: " << std::endl << reply.cpu_temp() << std::endl;
+				std::cout << "network info: " << std::endl << reply.nic_info() << std::endl;
 			} else {
 				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
 			}
@@ -632,8 +654,9 @@ int main(int argc, char** argv) {
 	//client.getRaltStatus();
 	//client.execCmd();
 
-	client.getNameAndIpInfo();
+	//client.getNameAndIpInfo();
 	//client.getDeviceInfo();
+	client.getDeviceDetail();
 	//client.getCpuUsage();
 	//client.getCpuTemp();
 	//client.getMemUsage();
