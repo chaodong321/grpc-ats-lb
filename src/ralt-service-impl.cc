@@ -3,7 +3,6 @@
 #include "ralt-service-impl.h"
 #include "ralt-domain.h"
 #include "misc-conf.h"
-#include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>  
 #include <string.h>  
@@ -19,11 +18,98 @@
 
 #define ATS_ROOT_DIR "/opt/reyzar/can/"
 #define ATS_LOG_DIR "/opt/reyzar/can/var/log/trafficserver/"
+#define TRAFFIC_CTL "/opt/reyzar/can/bin/traffic_ctl"
+#define RECORD_CONFIG_PATH "/opt/reyzar/can/etc/trafficserver/storage.config"
+
+Status RaltServiceImpl::getRaltStats (ServerContext* context, const GetRaltStatsReq* request, GetRaltStatsRsp* reply)
+{
+	LOG_INFO("get ralt stats");
+	
+	string strValue;
+	string strCmd =  "curl -v http://127.0.0.1:8080/_stats";
+	if(!UtilCommon::ShellCmd(strCmd, strValue)){
+		LOG_ERROR("shell cmd error: %s", strCmd.c_str());
+		return Status::CANCELLED;
+	}
+	
+	json_t *j_stats = json_loads(strValue.c_str(), 0, NULL);
+	if(NULL == j_stats){
+		LOG_ERROR("json_loads failed");
+		return Status::CANCELLED;
+	}
+	
+	json_t *j_global = json_object_get(j_stats,"global");
+	if(NULL == j_global){
+		LOG_ERROR("json_object_get failed");
+		return Status::CANCELLED;
+	}
+
+	json_t *j_cache_bytes_used = json_object_get(j_global,"proxy.process.cache.bytes_used");
+	if(NULL != j_cache_bytes_used)
+		reply->set_cache_used_bytes(atoi(json_string_value(j_cache_bytes_used)));
+
+	json_t *j_cache_bytes_total = json_object_get(j_global,"proxy.process.cache.bytes_total");
+	if(NULL != j_cache_bytes_total)
+		reply->set_cache_total_bytes(atoi(json_string_value(j_cache_bytes_total)));
+
+	json_t *j_flow_completed_requests = json_object_get(j_global,"proxy.process.http.completed_requests");
+	if(NULL != j_flow_completed_requests)
+		reply->set_flow_completed_requests(atoi(json_string_value(j_flow_completed_requests)));
+	
+	json_t *j_flow_incoming_requests = json_object_get(j_global,"proxy.process.http.incoming_requests");
+	if(NULL != j_flow_incoming_requests)
+		reply->set_flow_incoming_requests(atoi(json_string_value(j_flow_incoming_requests)));
+	
+	json_t *j_flow_total_client_connections_ipv4 = json_object_get(j_global,"proxy.process.http.total_client_connections_ipv4");
+	if(NULL != j_flow_total_client_connections_ipv4)
+		reply->set_flow_total_client_connections_ipv4(atoi(json_string_value(j_flow_total_client_connections_ipv4)));
+		
+	json_t *j_flow_total_client_connections_ipv6 = json_object_get(j_global,"proxy.process.http.total_client_connections_ipv6");
+	if(NULL != j_flow_total_client_connections_ipv6)
+		reply->set_flow_total_client_connections_ipv6(atoi(json_string_value(j_flow_total_client_connections_ipv6)));
+
+	json_t *j_flow_bandwidth_hit_ratio = json_object_get(j_global,"proxy.node.bandwidth_hit_ratio");
+	if(NULL != j_flow_bandwidth_hit_ratio)
+		reply->set_flow_bandwidth_hit_ratio(atof(json_string_value(j_flow_bandwidth_hit_ratio)));
+
+	json_t *j_logs_space_used_mb = json_object_get(j_global,"proxy.process.log.log_files_space_used");
+	if(NULL != j_logs_space_used_mb)
+		reply->set_logs_space_used_mb(atoi(json_string_value(j_logs_space_used_mb))/1024);
+
+	//max_space_mb_for_logs
+	string strLogMaxSpaceCmd = string("/opt/reyzar/can/bin/traffic_ctl config get proxy.config.log.max_space_mb_for_logs|awk -F ': ' '{print $2}'");
+	string strLogMaxSpace;
+	if( ! UtilCommon::ShellCmd(strLogMaxSpaceCmd, strLogMaxSpace) ){
+		LOG_ERROR("shell cmd error: %s", strLogMaxSpaceCmd.c_str());
+		return Status::CANCELLED;
+	}
+	if(!strLogMaxSpace.empty()){
+		reply->set_logs_space_total_mb(atoi(strLogMaxSpace.c_str()));
+	}
+	else{
+		LOG_WARN("get logs space total mb failed");
+	}
+
+	LOG_INFO("cache_used_bytes: %llu", reply->cache_used_bytes());
+	LOG_INFO("cache_total_bytes: %llu", reply->cache_total_bytes());
+	LOG_INFO("logs_space_used_mb: %lu", reply->logs_space_used_mb());
+	LOG_INFO("logs_space_total_mb: %lu", reply->logs_space_total_mb());
+	LOG_INFO("flow_completed_requests: %lu", reply->flow_completed_requests());
+	LOG_INFO("flow_incoming_requests: %lu", reply->flow_incoming_requests());
+	LOG_INFO("flow_total_client_connections_ipv4: %lu", reply->flow_total_client_connections_ipv4());
+	LOG_INFO("flow_total_client_connections_ipv6: %lu", reply->flow_total_client_connections_ipv6());
+	LOG_INFO("flow_bandwidth_hit_ratio: %f", reply->flow_bandwidth_hit_ratio());
+	
+	LOG_INFO("get ralt stats successfully");
+	return Status::OK;
+}
 
 Status RaltServiceImpl::getStatsFieldValue (ServerContext* context, const StatsFieldName* request, StatsFieldValue* reply)
 {
+	LOG_INFO("get stats field value");
+	
 	string strName = request->field_name();
-	LOG_INFO("get stats field value by field name: %s", strName.c_str());
+	LOG_INFO("field name: %s", strName.c_str());
 	if(strName.empty()){
 		LOG_ERROR("file name is empty");
 		return Status::CANCELLED;
@@ -435,86 +521,210 @@ Status RaltServiceImpl::getRaltLogs(ServerContext* context, const GetRaltLogsReq
 	*/
 }
 
-Status RaltServiceImpl::getRecordConfig(ServerContext* context, const GetRecordCfgReq* request, GetRecordCfgRsp* reply)
+Status RaltServiceImpl::getBasicConfig(ServerContext* context, const GetBasicConfigReq* request, GetBasicConfigRsp* reply)
 {
-	LOG_INFO("get record.config");
+
+	LOG_INFO("get basic config");
 	//logging_enabled
-	string strLoggingEnabledCmd = string("/opt/reyzar/can/bin/traffic_ctl config get proxy.config.log.logging_enabled|awk -F ': ' '{print $2}'");
+	string strLoggingEnabledCmd = string(TRAFFIC_CTL) + string(" config get proxy.config.log.logging_enabled|awk -F ': ' '{printf $2}'");
 	string strLoggingEnabled;
 	if(UtilCommon::ShellCmd(strLoggingEnabledCmd, strLoggingEnabled)){
 		if(!strLoggingEnabled.empty()){
+			LOG_INFO("logging enabled: %s", strLoggingEnabled.c_str());
 			reply->set_logging_enabled(atoi(strLoggingEnabled.c_str()));
 		}
+		else{
+			LOG_ERROR("get logging enabled error: %s", strLoggingEnabledCmd.c_str());
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strLoggingEnabledCmd.c_str());
+		return Status::CANCELLED;
 	}
 	
 	//max_space_mb_for_logs
-	string strLogMaxSpaceCmd = string("/opt/reyzar/can/bin/traffic_ctl config get proxy.config.log.max_space_mb_for_logs|awk -F ': ' '{print $2}'");
+	string strLogMaxSpaceCmd = string(TRAFFIC_CTL) + string(" config get proxy.config.log.max_space_mb_for_logs|awk -F ': ' '{printf $2}'");
 	string strLogMaxSpace;
 	if(UtilCommon::ShellCmd(strLogMaxSpaceCmd, strLogMaxSpace)){
 		if(!strLogMaxSpace.empty()){
+			LOG_INFO("log max space: %s", strLogMaxSpace.c_str());
 			reply->set_max_space_mb_for_logs(atoi(strLogMaxSpace.c_str()));
 		}
+		else{
+			LOG_ERROR("get log max space error: %s", strLogMaxSpace.c_str());
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strLogMaxSpaceCmd.c_str());
+		return Status::CANCELLED;
 	}
 	
 	//rolling_enabled
-	string strRollongEnabledCmd = string("/opt/reyzar/can/bin/traffic_ctl config get proxy.config.log.rolling_enabled|awk -F ': ' '{print $2}'");
-	string strRollongEnabled;
-	if(UtilCommon::ShellCmd(strRollongEnabledCmd, strRollongEnabled)){
-		if(!strRollongEnabled.empty()){
-			reply->set_rolling_enabled(atoi(strRollongEnabled.c_str()));
+	string strRollingEnabledCmd = string(TRAFFIC_CTL) + string(" config get proxy.config.log.rolling_enabled|awk -F ': ' '{printf $2}'");
+	string strRollingEnabled;
+	if(UtilCommon::ShellCmd(strRollingEnabledCmd, strRollingEnabled)){
+		if(!strRollingEnabled.empty()){
+			LOG_INFO("roll enabled: %s", strRollingEnabled.c_str());
+			reply->set_rolling_enabled(atoi(strRollingEnabled.c_str()));
 		}
+		else{
+			LOG_ERROR("get roll enabled error: %s", strRollingEnabled.c_str());
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strRollingEnabledCmd.c_str());
+		return Status::CANCELLED;
 	}
 
 	//server_ports
-	string strServerPortsCmd = string("/opt/reyzar/can/bin/traffic_ctl config get proxy.config.http.server_ports|awk -F ': ' '{print $2}'");
+	string strServerPortsCmd = string(TRAFFIC_CTL) + string(" config get proxy.config.http.server_ports|awk -F ': ' '{printf $2}'");
 	string strServerPorts;
 	if(UtilCommon::ShellCmd(strServerPortsCmd, strServerPorts)){
 		if(!strServerPorts.empty()){
+			LOG_INFO("server ports: %s", strServerPorts.c_str());
 			reply->set_server_ports(strServerPorts.c_str());
 		}
+		else{
+			LOG_ERROR("get server ports error: %s", strServerPorts.c_str());
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strServerPortsCmd.c_str());
+		return Status::CANCELLED;
 	}
 
-	LOG_INFO("get record.config successfully");
+	//storage cache size
+	string strStorageCacheCmd = string("cat ") + string(RECORD_CONFIG_PATH) + string(" | grep -v '#' | awk '{printf $2}'");
+	string strStorageCache;
+	if(UtilCommon::ShellCmd(strStorageCacheCmd, strStorageCache)){
+		if(!strStorageCache.empty()){
+			LOG_INFO("storage cache size: %s", strStorageCache.c_str());
+			reply->set_storage_cache_size(strStorageCache.c_str());
+		}
+		else{
+			LOG_ERROR("get storage cache size error: %s", strStorageCache.c_str());
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strStorageCacheCmd.c_str());
+		return Status::CANCELLED;
+	}
+
+	LOG_INFO("get basic config successfully");
 	return Status::OK;
 }
 
-Status RaltServiceImpl::setRecordConfig(ServerContext* context, const SetRecordCfgReq* request, SetRecordCfgRsp* reply)
+Status RaltServiceImpl::setBasicConfig(ServerContext* context, const SetBasicConfigReq* request, SetBasicConfigRsp* reply)
 {
-	LOG_INFO("set record.config");
-	int key = request->key();
-	string value = request->value();
-	
-	string strKey;
-	switch(key){
-		case RecordCfgType::enum_logging_enabled:
-			strKey.assign("proxy.config.log.logging_enabled");
-			LOG_INFO("key: proxy.config.log.logging_enabled");
-			break;
-		case RecordCfgType::enum_max_space_mb_for_logs:
-			strKey.assign("proxy.config.log.max_space_mb_for_logs");
-			LOG_INFO("key: proxy.config.log.max_space_mb_for_logs");
-			break;
-		case RecordCfgType::enum_rolling_enabled:
-			strKey.assign("proxy.config.log.rolling_enabled");
-			LOG_INFO("key: proxy.config.log.rolling_enabled");
-			break;
-		case RecordCfgType::enum_server_ports:
-			strKey.assign("proxy.config.http.server_ports");
-			LOG_INFO("key: proxy.config.http.server_ports");
-			break;
-		default:
-			LOG_INFO("key: no such key");
+	LOG_INFO("set basic config");
+	LOG_INFO("logging_enabled: %u", request->logging_enabled());
+	LOG_INFO("max_space_mb_for_logs: %u", request->max_space_mb_for_logs());
+	LOG_INFO("rolling_enabled: %u", request->rolling_enabled());
+	LOG_INFO("server_ports: %s", request->server_ports().c_str());
+	LOG_INFO("storage_cache_size: %s", request->storage_cache_size().c_str());
+
+	string strRet;
+	string strLoggingEnabledCmd = string(TRAFFIC_CTL) + string(" config set proxy.config.log.logging_enabled ") + to_string(request->logging_enabled());
+	if(UtilCommon::ShellCmd(strLoggingEnabledCmd, strRet)){
+		if(strRet.find("failed") == string::npos){
+			LOG_INFO("set logging enabled successfully");
+		}
+		else{
+			LOG_ERROR("%s", strRet.c_str());
 			reply->set_result(1);
 			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strLoggingEnabledCmd.c_str());
+		return Status::CANCELLED;
 	}
 
-	LOG_INFO("value: %s", value.c_str());
-	
-	string strCmd = string("/opt/reyzar/can/bin/traffic_ctl config set ") + strKey + string(" ") + value;
-	system(strCmd.c_str());
-	reply->set_result(0);
+	string strMaxSpaceMbForLogsCmd = string(TRAFFIC_CTL) + string(" config set proxy.config.log.max_space_mb_for_logs ") + to_string(request->max_space_mb_for_logs());
+	if(UtilCommon::ShellCmd(strMaxSpaceMbForLogsCmd, strRet)){
+		if(strRet.find("failed") == string::npos){
+			LOG_INFO("set max space mb for logs successfully");
+		}
+		else{
+			LOG_ERROR("%s", strRet.c_str());
+			reply->set_result(1);
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strMaxSpaceMbForLogsCmd.c_str());
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
 
-	LOG_INFO("set record.config successfully");
+	string strRollingEnabledCmd = string(TRAFFIC_CTL) + string(" config set proxy.config.log.rolling_enabled ") + to_string(request->rolling_enabled());
+	if(UtilCommon::ShellCmd(strRollingEnabledCmd, strRet)){
+		if(strRet.find("failed") == string::npos){
+			LOG_INFO("set log rolling enabled successfully");
+		}
+		else{
+			LOG_ERROR("%s", strRet.c_str());
+			reply->set_result(1);
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strRollingEnabledCmd.c_str());
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+	string strServerPortCmd = string(TRAFFIC_CTL) + string(" config set proxy.config.http.server_ports '") + request->server_ports() + string("'");
+	if(UtilCommon::ShellCmd(strServerPortCmd, strRet)){
+		if(strRet.find("failed") == string::npos){
+			LOG_INFO("set server port successfully");
+		}
+		else{
+			LOG_ERROR("%s", strRet.c_str());
+			reply->set_result(1);
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strServerPortCmd.c_str());
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+	string strDelStorageCmd = string("sed -i '/#/!d' ") + (RECORD_CONFIG_PATH);
+	if(UtilCommon::ShellCmd(strDelStorageCmd, strRet)){
+		if(!strRet.empty()){
+			LOG_ERROR("%s", strRet.c_str());
+			reply->set_result(1);
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strDelStorageCmd.c_str());
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+	string strAppendStorageCmd = string("sed -i '$a var/trafficserver ")+request->storage_cache_size()+string("' ") + (RECORD_CONFIG_PATH);
+	if(UtilCommon::ShellCmd(strAppendStorageCmd, strRet)){
+		if(!strRet.empty()){
+			LOG_ERROR("%s", strRet.c_str());
+			reply->set_result(1);
+			return Status::CANCELLED;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strAppendStorageCmd.c_str());
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+	reply->set_result(0);
+	LOG_INFO("set basic config successfully");
 	return Status::OK;
 }
 
@@ -525,8 +735,10 @@ Status RaltServiceImpl::getAllDomain(ServerContext* context, const GetAllDomainR
 	for(const auto it : *domainMap)
 	{
 		Domain domain_member;
+		domain_member.set_type((raltservice::DomainType)it.second.type);
 		domain_member.set_domain_str(it.second.str_domain);
 		domain_member.set_append_or_replace_str(it.second.str_append_or_replace);
+		domain_member.set_port(it.second.str_port);
 		reply->Write(domain_member);
 	}
 	LOG_INFO("get all domain successfully");

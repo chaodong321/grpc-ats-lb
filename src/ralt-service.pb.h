@@ -37,12 +37,16 @@ namespace protobuf_ralt_2dservice_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[31];
+  static const ::google::protobuf::internal::ParseTable schema[33];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors();
+void InitDefaultsGetRaltStatsReqImpl();
+void InitDefaultsGetRaltStatsReq();
+void InitDefaultsGetRaltStatsRspImpl();
+void InitDefaultsGetRaltStatsRsp();
 void InitDefaultsStatsFieldNameImpl();
 void InitDefaultsStatsFieldName();
 void InitDefaultsStatsFieldValueImpl();
@@ -53,28 +57,28 @@ void InitDefaultsHomePageRspImpl();
 void InitDefaultsHomePageRsp();
 void InitDefaultsCacheLookUpReqImpl();
 void InitDefaultsCacheLookUpReq();
-void InitDefaultsFlowStatLookUpReqImpl();
-void InitDefaultsFlowStatLookUpReq();
-void InitDefaultsLogInfoLookUpReqImpl();
-void InitDefaultsLogInfoLookUpReq();
 void InitDefaultsCacheResultImpl();
 void InitDefaultsCacheResult();
+void InitDefaultsFlowStatLookUpReqImpl();
+void InitDefaultsFlowStatLookUpReq();
 void InitDefaultsFlowResultImpl();
 void InitDefaultsFlowResult();
+void InitDefaultsLogInfoLookUpReqImpl();
+void InitDefaultsLogInfoLookUpReq();
 void InitDefaultsLogResultImpl();
 void InitDefaultsLogResult();
 void InitDefaultsGetRaltLogsReqImpl();
 void InitDefaultsGetRaltLogsReq();
 void InitDefaultsRaltLogsImpl();
 void InitDefaultsRaltLogs();
-void InitDefaultsGetRecordCfgReqImpl();
-void InitDefaultsGetRecordCfgReq();
-void InitDefaultsGetRecordCfgRspImpl();
-void InitDefaultsGetRecordCfgRsp();
-void InitDefaultsSetRecordCfgReqImpl();
-void InitDefaultsSetRecordCfgReq();
-void InitDefaultsSetRecordCfgRspImpl();
-void InitDefaultsSetRecordCfgRsp();
+void InitDefaultsGetBasicConfigReqImpl();
+void InitDefaultsGetBasicConfigReq();
+void InitDefaultsGetBasicConfigRspImpl();
+void InitDefaultsGetBasicConfigRsp();
+void InitDefaultsSetBasicConfigReqImpl();
+void InitDefaultsSetBasicConfigReq();
+void InitDefaultsSetBasicConfigRspImpl();
+void InitDefaultsSetBasicConfigRsp();
 void InitDefaultsGetAllDomainReqImpl();
 void InitDefaultsGetAllDomainReq();
 void InitDefaultsDomainImpl();
@@ -106,22 +110,24 @@ void InitDefaultsExecCmdReq();
 void InitDefaultsExecCmdRspImpl();
 void InitDefaultsExecCmdRsp();
 inline void InitDefaults() {
+  InitDefaultsGetRaltStatsReq();
+  InitDefaultsGetRaltStatsRsp();
   InitDefaultsStatsFieldName();
   InitDefaultsStatsFieldValue();
   InitDefaultsHomePageReq();
   InitDefaultsHomePageRsp();
   InitDefaultsCacheLookUpReq();
-  InitDefaultsFlowStatLookUpReq();
-  InitDefaultsLogInfoLookUpReq();
   InitDefaultsCacheResult();
+  InitDefaultsFlowStatLookUpReq();
   InitDefaultsFlowResult();
+  InitDefaultsLogInfoLookUpReq();
   InitDefaultsLogResult();
   InitDefaultsGetRaltLogsReq();
   InitDefaultsRaltLogs();
-  InitDefaultsGetRecordCfgReq();
-  InitDefaultsGetRecordCfgRsp();
-  InitDefaultsSetRecordCfgReq();
-  InitDefaultsSetRecordCfgRsp();
+  InitDefaultsGetBasicConfigReq();
+  InitDefaultsGetBasicConfigRsp();
+  InitDefaultsSetBasicConfigReq();
+  InitDefaultsSetBasicConfigRsp();
   InitDefaultsGetAllDomainReq();
   InitDefaultsDomain();
   InitDefaultsUpdateDomainRsp();
@@ -173,6 +179,12 @@ extern FlowStatLookUpReqDefaultTypeInternal _FlowStatLookUpReq_default_instance_
 class GetAllDomainReq;
 class GetAllDomainReqDefaultTypeInternal;
 extern GetAllDomainReqDefaultTypeInternal _GetAllDomainReq_default_instance_;
+class GetBasicConfigReq;
+class GetBasicConfigReqDefaultTypeInternal;
+extern GetBasicConfigReqDefaultTypeInternal _GetBasicConfigReq_default_instance_;
+class GetBasicConfigRsp;
+class GetBasicConfigRspDefaultTypeInternal;
+extern GetBasicConfigRspDefaultTypeInternal _GetBasicConfigRsp_default_instance_;
 class GetDomainReq;
 class GetDomainReqDefaultTypeInternal;
 extern GetDomainReqDefaultTypeInternal _GetDomainReq_default_instance_;
@@ -185,12 +197,12 @@ extern GetMiscRspDefaultTypeInternal _GetMiscRsp_default_instance_;
 class GetRaltLogsReq;
 class GetRaltLogsReqDefaultTypeInternal;
 extern GetRaltLogsReqDefaultTypeInternal _GetRaltLogsReq_default_instance_;
-class GetRecordCfgReq;
-class GetRecordCfgReqDefaultTypeInternal;
-extern GetRecordCfgReqDefaultTypeInternal _GetRecordCfgReq_default_instance_;
-class GetRecordCfgRsp;
-class GetRecordCfgRspDefaultTypeInternal;
-extern GetRecordCfgRspDefaultTypeInternal _GetRecordCfgRsp_default_instance_;
+class GetRaltStatsReq;
+class GetRaltStatsReqDefaultTypeInternal;
+extern GetRaltStatsReqDefaultTypeInternal _GetRaltStatsReq_default_instance_;
+class GetRaltStatsRsp;
+class GetRaltStatsRspDefaultTypeInternal;
+extern GetRaltStatsRspDefaultTypeInternal _GetRaltStatsRsp_default_instance_;
 class HomePageReq;
 class HomePageReqDefaultTypeInternal;
 extern HomePageReqDefaultTypeInternal _HomePageReq_default_instance_;
@@ -218,12 +230,12 @@ extern RaltStatusDefaultTypeInternal _RaltStatus_default_instance_;
 class RaltStatusReq;
 class RaltStatusReqDefaultTypeInternal;
 extern RaltStatusReqDefaultTypeInternal _RaltStatusReq_default_instance_;
-class SetRecordCfgReq;
-class SetRecordCfgReqDefaultTypeInternal;
-extern SetRecordCfgReqDefaultTypeInternal _SetRecordCfgReq_default_instance_;
-class SetRecordCfgRsp;
-class SetRecordCfgRspDefaultTypeInternal;
-extern SetRecordCfgRspDefaultTypeInternal _SetRecordCfgRsp_default_instance_;
+class SetBasicConfigReq;
+class SetBasicConfigReqDefaultTypeInternal;
+extern SetBasicConfigReqDefaultTypeInternal _SetBasicConfigReq_default_instance_;
+class SetBasicConfigRsp;
+class SetBasicConfigRspDefaultTypeInternal;
+extern SetBasicConfigRspDefaultTypeInternal _SetBasicConfigRsp_default_instance_;
 class StatsFieldName;
 class StatsFieldNameDefaultTypeInternal;
 extern StatsFieldNameDefaultTypeInternal _StatsFieldName_default_instance_;
@@ -236,29 +248,6 @@ extern UpdateDomainRspDefaultTypeInternal _UpdateDomainRsp_default_instance_;
 }  // namespace raltservice
 namespace raltservice {
 
-enum RecordCfgType {
-  enum_logging_enabled = 0,
-  enum_max_space_mb_for_logs = 1,
-  enum_rolling_enabled = 2,
-  enum_server_ports = 3,
-  RecordCfgType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  RecordCfgType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool RecordCfgType_IsValid(int value);
-const RecordCfgType RecordCfgType_MIN = enum_logging_enabled;
-const RecordCfgType RecordCfgType_MAX = enum_server_ports;
-const int RecordCfgType_ARRAYSIZE = RecordCfgType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* RecordCfgType_descriptor();
-inline const ::std::string& RecordCfgType_Name(RecordCfgType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    RecordCfgType_descriptor(), value);
-}
-inline bool RecordCfgType_Parse(
-    const ::std::string& name, RecordCfgType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<RecordCfgType>(
-    RecordCfgType_descriptor(), name, value);
-}
 enum DomainType {
   enum_member_domain = 0,
   enum_subs_domain = 1,
@@ -347,6 +336,268 @@ inline bool CommandType_Parse(
 }
 // ===================================================================
 
+class GetRaltStatsReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetRaltStatsReq) */ {
+ public:
+  GetRaltStatsReq();
+  virtual ~GetRaltStatsReq();
+
+  GetRaltStatsReq(const GetRaltStatsReq& from);
+
+  inline GetRaltStatsReq& operator=(const GetRaltStatsReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetRaltStatsReq(GetRaltStatsReq&& from) noexcept
+    : GetRaltStatsReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GetRaltStatsReq& operator=(GetRaltStatsReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetRaltStatsReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetRaltStatsReq* internal_default_instance() {
+    return reinterpret_cast<const GetRaltStatsReq*>(
+               &_GetRaltStatsReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    0;
+
+  void Swap(GetRaltStatsReq* other);
+  friend void swap(GetRaltStatsReq& a, GetRaltStatsReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetRaltStatsReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetRaltStatsReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetRaltStatsReq& from);
+  void MergeFrom(const GetRaltStatsReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetRaltStatsReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // @@protoc_insertion_point(class_scope:raltservice.GetRaltStatsReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRaltStatsReqImpl();
+};
+// -------------------------------------------------------------------
+
+class GetRaltStatsRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetRaltStatsRsp) */ {
+ public:
+  GetRaltStatsRsp();
+  virtual ~GetRaltStatsRsp();
+
+  GetRaltStatsRsp(const GetRaltStatsRsp& from);
+
+  inline GetRaltStatsRsp& operator=(const GetRaltStatsRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetRaltStatsRsp(GetRaltStatsRsp&& from) noexcept
+    : GetRaltStatsRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetRaltStatsRsp& operator=(GetRaltStatsRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetRaltStatsRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetRaltStatsRsp* internal_default_instance() {
+    return reinterpret_cast<const GetRaltStatsRsp*>(
+               &_GetRaltStatsRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    1;
+
+  void Swap(GetRaltStatsRsp* other);
+  friend void swap(GetRaltStatsRsp& a, GetRaltStatsRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetRaltStatsRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetRaltStatsRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetRaltStatsRsp& from);
+  void MergeFrom(const GetRaltStatsRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetRaltStatsRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 cache_used_bytes = 1;
+  void clear_cache_used_bytes();
+  static const int kCacheUsedBytesFieldNumber = 1;
+  ::google::protobuf::uint64 cache_used_bytes() const;
+  void set_cache_used_bytes(::google::protobuf::uint64 value);
+
+  // uint64 cache_total_bytes = 2;
+  void clear_cache_total_bytes();
+  static const int kCacheTotalBytesFieldNumber = 2;
+  ::google::protobuf::uint64 cache_total_bytes() const;
+  void set_cache_total_bytes(::google::protobuf::uint64 value);
+
+  // uint32 logs_space_used_mb = 3;
+  void clear_logs_space_used_mb();
+  static const int kLogsSpaceUsedMbFieldNumber = 3;
+  ::google::protobuf::uint32 logs_space_used_mb() const;
+  void set_logs_space_used_mb(::google::protobuf::uint32 value);
+
+  // uint32 logs_space_total_mb = 4;
+  void clear_logs_space_total_mb();
+  static const int kLogsSpaceTotalMbFieldNumber = 4;
+  ::google::protobuf::uint32 logs_space_total_mb() const;
+  void set_logs_space_total_mb(::google::protobuf::uint32 value);
+
+  // uint32 flow_completed_requests = 5;
+  void clear_flow_completed_requests();
+  static const int kFlowCompletedRequestsFieldNumber = 5;
+  ::google::protobuf::uint32 flow_completed_requests() const;
+  void set_flow_completed_requests(::google::protobuf::uint32 value);
+
+  // uint32 flow_incoming_requests = 6;
+  void clear_flow_incoming_requests();
+  static const int kFlowIncomingRequestsFieldNumber = 6;
+  ::google::protobuf::uint32 flow_incoming_requests() const;
+  void set_flow_incoming_requests(::google::protobuf::uint32 value);
+
+  // uint32 flow_total_client_connections_ipv4 = 7;
+  void clear_flow_total_client_connections_ipv4();
+  static const int kFlowTotalClientConnectionsIpv4FieldNumber = 7;
+  ::google::protobuf::uint32 flow_total_client_connections_ipv4() const;
+  void set_flow_total_client_connections_ipv4(::google::protobuf::uint32 value);
+
+  // uint32 flow_total_client_connections_ipv6 = 8;
+  void clear_flow_total_client_connections_ipv6();
+  static const int kFlowTotalClientConnectionsIpv6FieldNumber = 8;
+  ::google::protobuf::uint32 flow_total_client_connections_ipv6() const;
+  void set_flow_total_client_connections_ipv6(::google::protobuf::uint32 value);
+
+  // float flow_bandwidth_hit_ratio = 9;
+  void clear_flow_bandwidth_hit_ratio();
+  static const int kFlowBandwidthHitRatioFieldNumber = 9;
+  float flow_bandwidth_hit_ratio() const;
+  void set_flow_bandwidth_hit_ratio(float value);
+
+  // @@protoc_insertion_point(class_scope:raltservice.GetRaltStatsRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 cache_used_bytes_;
+  ::google::protobuf::uint64 cache_total_bytes_;
+  ::google::protobuf::uint32 logs_space_used_mb_;
+  ::google::protobuf::uint32 logs_space_total_mb_;
+  ::google::protobuf::uint32 flow_completed_requests_;
+  ::google::protobuf::uint32 flow_incoming_requests_;
+  ::google::protobuf::uint32 flow_total_client_connections_ipv4_;
+  ::google::protobuf::uint32 flow_total_client_connections_ipv6_;
+  float flow_bandwidth_hit_ratio_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRaltStatsRspImpl();
+};
+// -------------------------------------------------------------------
+
 class StatsFieldName : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.StatsFieldName) */ {
  public:
   StatsFieldName();
@@ -382,7 +633,7 @@ class StatsFieldName : public ::google::protobuf::Message /* @@protoc_insertion_
                &_StatsFieldName_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    0;
+    2;
 
   void Swap(StatsFieldName* other);
   friend void swap(StatsFieldName& a, StatsFieldName& b) {
@@ -504,7 +755,7 @@ class StatsFieldValue : public ::google::protobuf::Message /* @@protoc_insertion
                &_StatsFieldValue_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
+    3;
 
   void Swap(StatsFieldValue* other);
   friend void swap(StatsFieldValue& a, StatsFieldValue& b) {
@@ -611,7 +862,7 @@ class HomePageReq : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_HomePageReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    4;
 
   void Swap(HomePageReq* other);
   friend void swap(HomePageReq& a, HomePageReq& b) {
@@ -710,7 +961,7 @@ class HomePageRsp : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_HomePageRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    5;
 
   void Swap(HomePageRsp* other);
   friend void swap(HomePageRsp& a, HomePageRsp& b) {
@@ -858,7 +1109,7 @@ class CacheLookUpReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_CacheLookUpReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
+    6;
 
   void Swap(CacheLookUpReq* other);
   friend void swap(CacheLookUpReq& a, CacheLookUpReq& b) {
@@ -927,220 +1178,6 @@ class CacheLookUpReq : public ::google::protobuf::Message /* @@protoc_insertion_
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
   friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsCacheLookUpReqImpl();
-};
-// -------------------------------------------------------------------
-
-class FlowStatLookUpReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.FlowStatLookUpReq) */ {
- public:
-  FlowStatLookUpReq();
-  virtual ~FlowStatLookUpReq();
-
-  FlowStatLookUpReq(const FlowStatLookUpReq& from);
-
-  inline FlowStatLookUpReq& operator=(const FlowStatLookUpReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  FlowStatLookUpReq(FlowStatLookUpReq&& from) noexcept
-    : FlowStatLookUpReq() {
-    *this = ::std::move(from);
-  }
-
-  inline FlowStatLookUpReq& operator=(FlowStatLookUpReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const FlowStatLookUpReq& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const FlowStatLookUpReq* internal_default_instance() {
-    return reinterpret_cast<const FlowStatLookUpReq*>(
-               &_FlowStatLookUpReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    5;
-
-  void Swap(FlowStatLookUpReq* other);
-  friend void swap(FlowStatLookUpReq& a, FlowStatLookUpReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline FlowStatLookUpReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  FlowStatLookUpReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const FlowStatLookUpReq& from);
-  void MergeFrom(const FlowStatLookUpReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(FlowStatLookUpReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string ip_addr = 1;
-  void clear_ip_addr();
-  static const int kIpAddrFieldNumber = 1;
-  const ::std::string& ip_addr() const;
-  void set_ip_addr(const ::std::string& value);
-  #if LANG_CXX11
-  void set_ip_addr(::std::string&& value);
-  #endif
-  void set_ip_addr(const char* value);
-  void set_ip_addr(const char* value, size_t size);
-  ::std::string* mutable_ip_addr();
-  ::std::string* release_ip_addr();
-  void set_allocated_ip_addr(::std::string* ip_addr);
-
-  // @@protoc_insertion_point(class_scope:raltservice.FlowStatLookUpReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
-  mutable int _cached_size_;
-  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
-  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsFlowStatLookUpReqImpl();
-};
-// -------------------------------------------------------------------
-
-class LogInfoLookUpReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.LogInfoLookUpReq) */ {
- public:
-  LogInfoLookUpReq();
-  virtual ~LogInfoLookUpReq();
-
-  LogInfoLookUpReq(const LogInfoLookUpReq& from);
-
-  inline LogInfoLookUpReq& operator=(const LogInfoLookUpReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  LogInfoLookUpReq(LogInfoLookUpReq&& from) noexcept
-    : LogInfoLookUpReq() {
-    *this = ::std::move(from);
-  }
-
-  inline LogInfoLookUpReq& operator=(LogInfoLookUpReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const LogInfoLookUpReq& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const LogInfoLookUpReq* internal_default_instance() {
-    return reinterpret_cast<const LogInfoLookUpReq*>(
-               &_LogInfoLookUpReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
-
-  void Swap(LogInfoLookUpReq* other);
-  friend void swap(LogInfoLookUpReq& a, LogInfoLookUpReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline LogInfoLookUpReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  LogInfoLookUpReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const LogInfoLookUpReq& from);
-  void MergeFrom(const LogInfoLookUpReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(LogInfoLookUpReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string ip_addr = 1;
-  void clear_ip_addr();
-  static const int kIpAddrFieldNumber = 1;
-  const ::std::string& ip_addr() const;
-  void set_ip_addr(const ::std::string& value);
-  #if LANG_CXX11
-  void set_ip_addr(::std::string&& value);
-  #endif
-  void set_ip_addr(const char* value);
-  void set_ip_addr(const char* value, size_t size);
-  ::std::string* mutable_ip_addr();
-  ::std::string* release_ip_addr();
-  void set_allocated_ip_addr(::std::string* ip_addr);
-
-  // @@protoc_insertion_point(class_scope:raltservice.LogInfoLookUpReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
-  mutable int _cached_size_;
-  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
-  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsLogInfoLookUpReqImpl();
 };
 // -------------------------------------------------------------------
 
@@ -1271,6 +1308,113 @@ class CacheResult : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
+class FlowStatLookUpReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.FlowStatLookUpReq) */ {
+ public:
+  FlowStatLookUpReq();
+  virtual ~FlowStatLookUpReq();
+
+  FlowStatLookUpReq(const FlowStatLookUpReq& from);
+
+  inline FlowStatLookUpReq& operator=(const FlowStatLookUpReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  FlowStatLookUpReq(FlowStatLookUpReq&& from) noexcept
+    : FlowStatLookUpReq() {
+    *this = ::std::move(from);
+  }
+
+  inline FlowStatLookUpReq& operator=(FlowStatLookUpReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FlowStatLookUpReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FlowStatLookUpReq* internal_default_instance() {
+    return reinterpret_cast<const FlowStatLookUpReq*>(
+               &_FlowStatLookUpReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    8;
+
+  void Swap(FlowStatLookUpReq* other);
+  friend void swap(FlowStatLookUpReq& a, FlowStatLookUpReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FlowStatLookUpReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  FlowStatLookUpReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const FlowStatLookUpReq& from);
+  void MergeFrom(const FlowStatLookUpReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(FlowStatLookUpReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // @@protoc_insertion_point(class_scope:raltservice.FlowStatLookUpReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsFlowStatLookUpReqImpl();
+};
+// -------------------------------------------------------------------
+
 class FlowResult : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.FlowResult) */ {
  public:
   FlowResult();
@@ -1306,7 +1450,7 @@ class FlowResult : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_FlowResult_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(FlowResult* other);
   friend void swap(FlowResult& a, FlowResult& b) {
@@ -1461,6 +1605,113 @@ class FlowResult : public ::google::protobuf::Message /* @@protoc_insertion_poin
 };
 // -------------------------------------------------------------------
 
+class LogInfoLookUpReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.LogInfoLookUpReq) */ {
+ public:
+  LogInfoLookUpReq();
+  virtual ~LogInfoLookUpReq();
+
+  LogInfoLookUpReq(const LogInfoLookUpReq& from);
+
+  inline LogInfoLookUpReq& operator=(const LogInfoLookUpReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  LogInfoLookUpReq(LogInfoLookUpReq&& from) noexcept
+    : LogInfoLookUpReq() {
+    *this = ::std::move(from);
+  }
+
+  inline LogInfoLookUpReq& operator=(LogInfoLookUpReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LogInfoLookUpReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const LogInfoLookUpReq* internal_default_instance() {
+    return reinterpret_cast<const LogInfoLookUpReq*>(
+               &_LogInfoLookUpReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    10;
+
+  void Swap(LogInfoLookUpReq* other);
+  friend void swap(LogInfoLookUpReq& a, LogInfoLookUpReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline LogInfoLookUpReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  LogInfoLookUpReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const LogInfoLookUpReq& from);
+  void MergeFrom(const LogInfoLookUpReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(LogInfoLookUpReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // @@protoc_insertion_point(class_scope:raltservice.LogInfoLookUpReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsLogInfoLookUpReqImpl();
+};
+// -------------------------------------------------------------------
+
 class LogResult : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.LogResult) */ {
  public:
   LogResult();
@@ -1496,7 +1747,7 @@ class LogResult : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_LogResult_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
+    11;
 
   void Swap(LogResult* other);
   friend void swap(LogResult& a, LogResult& b) {
@@ -1602,7 +1853,7 @@ class GetRaltLogsReq : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GetRaltLogsReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    10;
+    12;
 
   void Swap(GetRaltLogsReq* other);
   friend void swap(GetRaltLogsReq& a, GetRaltLogsReq& b) {
@@ -1709,7 +1960,7 @@ class RaltLogs : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_RaltLogs_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    11;
+    13;
 
   void Swap(RaltLogs* other);
   friend void swap(RaltLogs& a, RaltLogs& b) {
@@ -1781,24 +2032,24 @@ class RaltLogs : public ::google::protobuf::Message /* @@protoc_insertion_point(
 };
 // -------------------------------------------------------------------
 
-class GetRecordCfgReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetRecordCfgReq) */ {
+class GetBasicConfigReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetBasicConfigReq) */ {
  public:
-  GetRecordCfgReq();
-  virtual ~GetRecordCfgReq();
+  GetBasicConfigReq();
+  virtual ~GetBasicConfigReq();
 
-  GetRecordCfgReq(const GetRecordCfgReq& from);
+  GetBasicConfigReq(const GetBasicConfigReq& from);
 
-  inline GetRecordCfgReq& operator=(const GetRecordCfgReq& from) {
+  inline GetBasicConfigReq& operator=(const GetBasicConfigReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  GetRecordCfgReq(GetRecordCfgReq&& from) noexcept
-    : GetRecordCfgReq() {
+  GetBasicConfigReq(GetBasicConfigReq&& from) noexcept
+    : GetBasicConfigReq() {
     *this = ::std::move(from);
   }
 
-  inline GetRecordCfgReq& operator=(GetRecordCfgReq&& from) noexcept {
+  inline GetBasicConfigReq& operator=(GetBasicConfigReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1808,30 +2059,30 @@ class GetRecordCfgReq : public ::google::protobuf::Message /* @@protoc_insertion
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GetRecordCfgReq& default_instance();
+  static const GetBasicConfigReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const GetRecordCfgReq* internal_default_instance() {
-    return reinterpret_cast<const GetRecordCfgReq*>(
-               &_GetRecordCfgReq_default_instance_);
+  static inline const GetBasicConfigReq* internal_default_instance() {
+    return reinterpret_cast<const GetBasicConfigReq*>(
+               &_GetBasicConfigReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    12;
+    14;
 
-  void Swap(GetRecordCfgReq* other);
-  friend void swap(GetRecordCfgReq& a, GetRecordCfgReq& b) {
+  void Swap(GetBasicConfigReq* other);
+  friend void swap(GetBasicConfigReq& a, GetBasicConfigReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline GetRecordCfgReq* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline GetBasicConfigReq* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  GetRecordCfgReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  GetBasicConfigReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const GetRecordCfgReq& from);
-  void MergeFrom(const GetRecordCfgReq& from);
+  void CopyFrom(const GetBasicConfigReq& from);
+  void MergeFrom(const GetBasicConfigReq& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1847,7 +2098,7 @@ class GetRecordCfgReq : public ::google::protobuf::Message /* @@protoc_insertion
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(GetRecordCfgReq* other);
+  void InternalSwap(GetBasicConfigReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1869,35 +2120,35 @@ class GetRecordCfgReq : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 type() const;
   void set_type(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:raltservice.GetRecordCfgReq)
+  // @@protoc_insertion_point(class_scope:raltservice.GetBasicConfigReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 type_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
-  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRecordCfgReqImpl();
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetBasicConfigReqImpl();
 };
 // -------------------------------------------------------------------
 
-class GetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetRecordCfgRsp) */ {
+class GetBasicConfigRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetBasicConfigRsp) */ {
  public:
-  GetRecordCfgRsp();
-  virtual ~GetRecordCfgRsp();
+  GetBasicConfigRsp();
+  virtual ~GetBasicConfigRsp();
 
-  GetRecordCfgRsp(const GetRecordCfgRsp& from);
+  GetBasicConfigRsp(const GetBasicConfigRsp& from);
 
-  inline GetRecordCfgRsp& operator=(const GetRecordCfgRsp& from) {
+  inline GetBasicConfigRsp& operator=(const GetBasicConfigRsp& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  GetRecordCfgRsp(GetRecordCfgRsp&& from) noexcept
-    : GetRecordCfgRsp() {
+  GetBasicConfigRsp(GetBasicConfigRsp&& from) noexcept
+    : GetBasicConfigRsp() {
     *this = ::std::move(from);
   }
 
-  inline GetRecordCfgRsp& operator=(GetRecordCfgRsp&& from) noexcept {
+  inline GetBasicConfigRsp& operator=(GetBasicConfigRsp&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1907,30 +2158,30 @@ class GetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GetRecordCfgRsp& default_instance();
+  static const GetBasicConfigRsp& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const GetRecordCfgRsp* internal_default_instance() {
-    return reinterpret_cast<const GetRecordCfgRsp*>(
-               &_GetRecordCfgRsp_default_instance_);
+  static inline const GetBasicConfigRsp* internal_default_instance() {
+    return reinterpret_cast<const GetBasicConfigRsp*>(
+               &_GetBasicConfigRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    13;
+    15;
 
-  void Swap(GetRecordCfgRsp* other);
-  friend void swap(GetRecordCfgRsp& a, GetRecordCfgRsp& b) {
+  void Swap(GetBasicConfigRsp* other);
+  friend void swap(GetBasicConfigRsp& a, GetBasicConfigRsp& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline GetRecordCfgRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline GetBasicConfigRsp* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  GetRecordCfgRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  GetBasicConfigRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const GetRecordCfgRsp& from);
-  void MergeFrom(const GetRecordCfgRsp& from);
+  void CopyFrom(const GetBasicConfigRsp& from);
+  void MergeFrom(const GetBasicConfigRsp& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1946,7 +2197,7 @@ class GetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(GetRecordCfgRsp* other);
+  void InternalSwap(GetBasicConfigRsp* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1994,7 +2245,13 @@ class GetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 rolling_enabled() const;
   void set_rolling_enabled(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:raltservice.GetRecordCfgRsp)
+  // uint32 storage_cache_size = 5;
+  void clear_storage_cache_size();
+  static const int kStorageCacheSizeFieldNumber = 5;
+  ::google::protobuf::uint32 storage_cache_size() const;
+  void set_storage_cache_size(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:raltservice.GetBasicConfigRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -2002,30 +2259,31 @@ class GetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 logging_enabled_;
   ::google::protobuf::uint32 max_space_mb_for_logs_;
   ::google::protobuf::uint32 rolling_enabled_;
+  ::google::protobuf::uint32 storage_cache_size_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
-  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetRecordCfgRspImpl();
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetBasicConfigRspImpl();
 };
 // -------------------------------------------------------------------
 
-class SetRecordCfgReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.SetRecordCfgReq) */ {
+class SetBasicConfigReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.SetBasicConfigReq) */ {
  public:
-  SetRecordCfgReq();
-  virtual ~SetRecordCfgReq();
+  SetBasicConfigReq();
+  virtual ~SetBasicConfigReq();
 
-  SetRecordCfgReq(const SetRecordCfgReq& from);
+  SetBasicConfigReq(const SetBasicConfigReq& from);
 
-  inline SetRecordCfgReq& operator=(const SetRecordCfgReq& from) {
+  inline SetBasicConfigReq& operator=(const SetBasicConfigReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SetRecordCfgReq(SetRecordCfgReq&& from) noexcept
-    : SetRecordCfgReq() {
+  SetBasicConfigReq(SetBasicConfigReq&& from) noexcept
+    : SetBasicConfigReq() {
     *this = ::std::move(from);
   }
 
-  inline SetRecordCfgReq& operator=(SetRecordCfgReq&& from) noexcept {
+  inline SetBasicConfigReq& operator=(SetBasicConfigReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -2035,30 +2293,30 @@ class SetRecordCfgReq : public ::google::protobuf::Message /* @@protoc_insertion
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SetRecordCfgReq& default_instance();
+  static const SetBasicConfigReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SetRecordCfgReq* internal_default_instance() {
-    return reinterpret_cast<const SetRecordCfgReq*>(
-               &_SetRecordCfgReq_default_instance_);
+  static inline const SetBasicConfigReq* internal_default_instance() {
+    return reinterpret_cast<const SetBasicConfigReq*>(
+               &_SetBasicConfigReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    14;
+    16;
 
-  void Swap(SetRecordCfgReq* other);
-  friend void swap(SetRecordCfgReq& a, SetRecordCfgReq& b) {
+  void Swap(SetBasicConfigReq* other);
+  friend void swap(SetBasicConfigReq& a, SetBasicConfigReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SetRecordCfgReq* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline SetBasicConfigReq* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  SetRecordCfgReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  SetBasicConfigReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SetRecordCfgReq& from);
-  void MergeFrom(const SetRecordCfgReq& from);
+  void CopyFrom(const SetBasicConfigReq& from);
+  void MergeFrom(const SetBasicConfigReq& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -2074,7 +2332,7 @@ class SetRecordCfgReq : public ::google::protobuf::Message /* @@protoc_insertion
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SetRecordCfgReq* other);
+  void InternalSwap(SetBasicConfigReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -2090,56 +2348,77 @@ class SetRecordCfgReq : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // string value = 2;
-  void clear_value();
-  static const int kValueFieldNumber = 2;
-  const ::std::string& value() const;
-  void set_value(const ::std::string& value);
+  // string server_ports = 4;
+  void clear_server_ports();
+  static const int kServerPortsFieldNumber = 4;
+  const ::std::string& server_ports() const;
+  void set_server_ports(const ::std::string& value);
   #if LANG_CXX11
-  void set_value(::std::string&& value);
+  void set_server_ports(::std::string&& value);
   #endif
-  void set_value(const char* value);
-  void set_value(const char* value, size_t size);
-  ::std::string* mutable_value();
-  ::std::string* release_value();
-  void set_allocated_value(::std::string* value);
+  void set_server_ports(const char* value);
+  void set_server_ports(const char* value, size_t size);
+  ::std::string* mutable_server_ports();
+  ::std::string* release_server_ports();
+  void set_allocated_server_ports(::std::string* server_ports);
 
-  // .raltservice.RecordCfgType key = 1;
-  void clear_key();
-  static const int kKeyFieldNumber = 1;
-  ::raltservice::RecordCfgType key() const;
-  void set_key(::raltservice::RecordCfgType value);
+  // uint32 logging_enabled = 1;
+  void clear_logging_enabled();
+  static const int kLoggingEnabledFieldNumber = 1;
+  ::google::protobuf::uint32 logging_enabled() const;
+  void set_logging_enabled(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:raltservice.SetRecordCfgReq)
+  // uint32 max_space_mb_for_logs = 2;
+  void clear_max_space_mb_for_logs();
+  static const int kMaxSpaceMbForLogsFieldNumber = 2;
+  ::google::protobuf::uint32 max_space_mb_for_logs() const;
+  void set_max_space_mb_for_logs(::google::protobuf::uint32 value);
+
+  // uint32 rolling_enabled = 3;
+  void clear_rolling_enabled();
+  static const int kRollingEnabledFieldNumber = 3;
+  ::google::protobuf::uint32 rolling_enabled() const;
+  void set_rolling_enabled(::google::protobuf::uint32 value);
+
+  // uint32 storage_cache_size = 5;
+  void clear_storage_cache_size();
+  static const int kStorageCacheSizeFieldNumber = 5;
+  ::google::protobuf::uint32 storage_cache_size() const;
+  void set_storage_cache_size(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:raltservice.SetBasicConfigReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr value_;
-  int key_;
+  ::google::protobuf::internal::ArenaStringPtr server_ports_;
+  ::google::protobuf::uint32 logging_enabled_;
+  ::google::protobuf::uint32 max_space_mb_for_logs_;
+  ::google::protobuf::uint32 rolling_enabled_;
+  ::google::protobuf::uint32 storage_cache_size_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
-  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetRecordCfgReqImpl();
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetBasicConfigReqImpl();
 };
 // -------------------------------------------------------------------
 
-class SetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.SetRecordCfgRsp) */ {
+class SetBasicConfigRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.SetBasicConfigRsp) */ {
  public:
-  SetRecordCfgRsp();
-  virtual ~SetRecordCfgRsp();
+  SetBasicConfigRsp();
+  virtual ~SetBasicConfigRsp();
 
-  SetRecordCfgRsp(const SetRecordCfgRsp& from);
+  SetBasicConfigRsp(const SetBasicConfigRsp& from);
 
-  inline SetRecordCfgRsp& operator=(const SetRecordCfgRsp& from) {
+  inline SetBasicConfigRsp& operator=(const SetBasicConfigRsp& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SetRecordCfgRsp(SetRecordCfgRsp&& from) noexcept
-    : SetRecordCfgRsp() {
+  SetBasicConfigRsp(SetBasicConfigRsp&& from) noexcept
+    : SetBasicConfigRsp() {
     *this = ::std::move(from);
   }
 
-  inline SetRecordCfgRsp& operator=(SetRecordCfgRsp&& from) noexcept {
+  inline SetBasicConfigRsp& operator=(SetBasicConfigRsp&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -2149,30 +2428,30 @@ class SetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SetRecordCfgRsp& default_instance();
+  static const SetBasicConfigRsp& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SetRecordCfgRsp* internal_default_instance() {
-    return reinterpret_cast<const SetRecordCfgRsp*>(
-               &_SetRecordCfgRsp_default_instance_);
+  static inline const SetBasicConfigRsp* internal_default_instance() {
+    return reinterpret_cast<const SetBasicConfigRsp*>(
+               &_SetBasicConfigRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    15;
+    17;
 
-  void Swap(SetRecordCfgRsp* other);
-  friend void swap(SetRecordCfgRsp& a, SetRecordCfgRsp& b) {
+  void Swap(SetBasicConfigRsp* other);
+  friend void swap(SetBasicConfigRsp& a, SetBasicConfigRsp& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SetRecordCfgRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline SetBasicConfigRsp* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  SetRecordCfgRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  SetBasicConfigRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SetRecordCfgRsp& from);
-  void MergeFrom(const SetRecordCfgRsp& from);
+  void CopyFrom(const SetBasicConfigRsp& from);
+  void MergeFrom(const SetBasicConfigRsp& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -2188,7 +2467,7 @@ class SetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SetRecordCfgRsp* other);
+  void InternalSwap(SetBasicConfigRsp* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -2210,14 +2489,14 @@ class SetRecordCfgRsp : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 result() const;
   void set_result(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:raltservice.SetRecordCfgRsp)
+  // @@protoc_insertion_point(class_scope:raltservice.SetBasicConfigRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 result_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
-  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetRecordCfgRspImpl();
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetBasicConfigRspImpl();
 };
 // -------------------------------------------------------------------
 
@@ -2256,7 +2535,7 @@ class GetAllDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
                &_GetAllDomainReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    16;
+    18;
 
   void Swap(GetAllDomainReq* other);
   friend void swap(GetAllDomainReq& a, GetAllDomainReq& b) {
@@ -2355,7 +2634,7 @@ class Domain : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
                &_Domain_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    17;
+    19;
 
   void Swap(Domain* other);
   friend void swap(Domain& a, Domain& b) {
@@ -2499,7 +2778,7 @@ class UpdateDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion
                &_UpdateDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    18;
+    20;
 
   void Swap(UpdateDomainRsp* other);
   friend void swap(UpdateDomainRsp& a, UpdateDomainRsp& b) {
@@ -2598,7 +2877,7 @@ class GetDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetDomainReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    19;
+    21;
 
   void Swap(GetDomainReq* other);
   friend void swap(GetDomainReq& a, GetDomainReq& b) {
@@ -2705,7 +2984,7 @@ class AddDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_AddDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    20;
+    22;
 
   void Swap(AddDomainRsp* other);
   friend void swap(AddDomainRsp& a, AddDomainRsp& b) {
@@ -2804,7 +3083,7 @@ class DeleteDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
                &_DeleteDomainReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    21;
+    23;
 
   void Swap(DeleteDomainReq* other);
   friend void swap(DeleteDomainReq& a, DeleteDomainReq& b) {
@@ -2911,7 +3190,7 @@ class DeleteDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion
                &_DeleteDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    22;
+    24;
 
   void Swap(DeleteDomainRsp* other);
   friend void swap(DeleteDomainRsp& a, DeleteDomainRsp& b) {
@@ -3010,7 +3289,7 @@ class GetMiscReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_GetMiscReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    23;
+    25;
 
   void Swap(GetMiscReq* other);
   friend void swap(GetMiscReq& a, GetMiscReq& b) {
@@ -3109,7 +3388,7 @@ class GetMiscRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_GetMiscRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    24;
+    26;
 
   void Swap(GetMiscRsp* other);
   friend void swap(GetMiscRsp& a, GetMiscRsp& b) {
@@ -3208,7 +3487,7 @@ class Misc : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
                &_Misc_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    25;
+    27;
 
   void Swap(Misc* other);
   friend void swap(Misc& a, Misc& b) {
@@ -3314,7 +3593,7 @@ class ModMiscOpRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_ModMiscOpRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    26;
+    28;
 
   void Swap(ModMiscOpRsp* other);
   friend void swap(ModMiscOpRsp& a, ModMiscOpRsp& b) {
@@ -3413,7 +3692,7 @@ class RaltStatusReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_RaltStatusReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    27;
+    29;
 
   void Swap(RaltStatusReq* other);
   friend void swap(RaltStatusReq& a, RaltStatusReq& b) {
@@ -3520,7 +3799,7 @@ class RaltStatus : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_RaltStatus_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    28;
+    30;
 
   void Swap(RaltStatus* other);
   friend void swap(RaltStatus& a, RaltStatus& b) {
@@ -3634,7 +3913,7 @@ class ExecCmdReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_ExecCmdReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    29;
+    31;
 
   void Swap(ExecCmdReq* other);
   friend void swap(ExecCmdReq& a, ExecCmdReq& b) {
@@ -3748,7 +4027,7 @@ class ExecCmdRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_ExecCmdRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    30;
+    32;
 
   void Swap(ExecCmdRsp* other);
   friend void swap(ExecCmdRsp& a, ExecCmdRsp& b) {
@@ -3819,6 +4098,193 @@ class ExecCmdRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// GetRaltStatsReq
+
+// string ip_addr = 1;
+inline void GetRaltStatsReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetRaltStatsReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void GetRaltStatsReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsReq.ip_addr)
+}
+#if LANG_CXX11
+inline void GetRaltStatsReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetRaltStatsReq.ip_addr)
+}
+#endif
+inline void GetRaltStatsReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.GetRaltStatsReq.ip_addr)
+}
+inline void GetRaltStatsReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetRaltStatsReq.ip_addr)
+}
+inline ::std::string* GetRaltStatsReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.GetRaltStatsReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetRaltStatsReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.GetRaltStatsReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetRaltStatsReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetRaltStatsReq.ip_addr)
+}
+
+// -------------------------------------------------------------------
+
+// GetRaltStatsRsp
+
+// uint64 cache_used_bytes = 1;
+inline void GetRaltStatsRsp::clear_cache_used_bytes() {
+  cache_used_bytes_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetRaltStatsRsp::cache_used_bytes() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.cache_used_bytes)
+  return cache_used_bytes_;
+}
+inline void GetRaltStatsRsp::set_cache_used_bytes(::google::protobuf::uint64 value) {
+  
+  cache_used_bytes_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.cache_used_bytes)
+}
+
+// uint64 cache_total_bytes = 2;
+inline void GetRaltStatsRsp::clear_cache_total_bytes() {
+  cache_total_bytes_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetRaltStatsRsp::cache_total_bytes() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.cache_total_bytes)
+  return cache_total_bytes_;
+}
+inline void GetRaltStatsRsp::set_cache_total_bytes(::google::protobuf::uint64 value) {
+  
+  cache_total_bytes_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.cache_total_bytes)
+}
+
+// uint32 logs_space_used_mb = 3;
+inline void GetRaltStatsRsp::clear_logs_space_used_mb() {
+  logs_space_used_mb_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::logs_space_used_mb() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.logs_space_used_mb)
+  return logs_space_used_mb_;
+}
+inline void GetRaltStatsRsp::set_logs_space_used_mb(::google::protobuf::uint32 value) {
+  
+  logs_space_used_mb_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.logs_space_used_mb)
+}
+
+// uint32 logs_space_total_mb = 4;
+inline void GetRaltStatsRsp::clear_logs_space_total_mb() {
+  logs_space_total_mb_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::logs_space_total_mb() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.logs_space_total_mb)
+  return logs_space_total_mb_;
+}
+inline void GetRaltStatsRsp::set_logs_space_total_mb(::google::protobuf::uint32 value) {
+  
+  logs_space_total_mb_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.logs_space_total_mb)
+}
+
+// uint32 flow_completed_requests = 5;
+inline void GetRaltStatsRsp::clear_flow_completed_requests() {
+  flow_completed_requests_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::flow_completed_requests() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_completed_requests)
+  return flow_completed_requests_;
+}
+inline void GetRaltStatsRsp::set_flow_completed_requests(::google::protobuf::uint32 value) {
+  
+  flow_completed_requests_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_completed_requests)
+}
+
+// uint32 flow_incoming_requests = 6;
+inline void GetRaltStatsRsp::clear_flow_incoming_requests() {
+  flow_incoming_requests_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::flow_incoming_requests() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_incoming_requests)
+  return flow_incoming_requests_;
+}
+inline void GetRaltStatsRsp::set_flow_incoming_requests(::google::protobuf::uint32 value) {
+  
+  flow_incoming_requests_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_incoming_requests)
+}
+
+// uint32 flow_total_client_connections_ipv4 = 7;
+inline void GetRaltStatsRsp::clear_flow_total_client_connections_ipv4() {
+  flow_total_client_connections_ipv4_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::flow_total_client_connections_ipv4() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_total_client_connections_ipv4)
+  return flow_total_client_connections_ipv4_;
+}
+inline void GetRaltStatsRsp::set_flow_total_client_connections_ipv4(::google::protobuf::uint32 value) {
+  
+  flow_total_client_connections_ipv4_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_total_client_connections_ipv4)
+}
+
+// uint32 flow_total_client_connections_ipv6 = 8;
+inline void GetRaltStatsRsp::clear_flow_total_client_connections_ipv6() {
+  flow_total_client_connections_ipv6_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::flow_total_client_connections_ipv6() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_total_client_connections_ipv6)
+  return flow_total_client_connections_ipv6_;
+}
+inline void GetRaltStatsRsp::set_flow_total_client_connections_ipv6(::google::protobuf::uint32 value) {
+  
+  flow_total_client_connections_ipv6_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_total_client_connections_ipv6)
+}
+
+// float flow_bandwidth_hit_ratio = 9;
+inline void GetRaltStatsRsp::clear_flow_bandwidth_hit_ratio() {
+  flow_bandwidth_hit_ratio_ = 0;
+}
+inline float GetRaltStatsRsp::flow_bandwidth_hit_ratio() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_bandwidth_hit_ratio)
+  return flow_bandwidth_hit_ratio_;
+}
+inline void GetRaltStatsRsp::set_flow_bandwidth_hit_ratio(float value) {
+  
+  flow_bandwidth_hit_ratio_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_bandwidth_hit_ratio)
+}
+
+// -------------------------------------------------------------------
+
 // StatsFieldName
 
 // string ip_addr = 1;
@@ -4177,120 +4643,6 @@ inline void CacheLookUpReq::set_allocated_ip_addr(::std::string* ip_addr) {
 
 // -------------------------------------------------------------------
 
-// FlowStatLookUpReq
-
-// string ip_addr = 1;
-inline void FlowStatLookUpReq::clear_ip_addr() {
-  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& FlowStatLookUpReq::ip_addr() const {
-  // @@protoc_insertion_point(field_get:raltservice.FlowStatLookUpReq.ip_addr)
-  return ip_addr_.GetNoArena();
-}
-inline void FlowStatLookUpReq::set_ip_addr(const ::std::string& value) {
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.FlowStatLookUpReq.ip_addr)
-}
-#if LANG_CXX11
-inline void FlowStatLookUpReq::set_ip_addr(::std::string&& value) {
-  
-  ip_addr_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.FlowStatLookUpReq.ip_addr)
-}
-#endif
-inline void FlowStatLookUpReq::set_ip_addr(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.FlowStatLookUpReq.ip_addr)
-}
-inline void FlowStatLookUpReq::set_ip_addr(const char* value, size_t size) {
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.FlowStatLookUpReq.ip_addr)
-}
-inline ::std::string* FlowStatLookUpReq::mutable_ip_addr() {
-  
-  // @@protoc_insertion_point(field_mutable:raltservice.FlowStatLookUpReq.ip_addr)
-  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* FlowStatLookUpReq::release_ip_addr() {
-  // @@protoc_insertion_point(field_release:raltservice.FlowStatLookUpReq.ip_addr)
-  
-  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void FlowStatLookUpReq::set_allocated_ip_addr(::std::string* ip_addr) {
-  if (ip_addr != NULL) {
-    
-  } else {
-    
-  }
-  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.FlowStatLookUpReq.ip_addr)
-}
-
-// -------------------------------------------------------------------
-
-// LogInfoLookUpReq
-
-// string ip_addr = 1;
-inline void LogInfoLookUpReq::clear_ip_addr() {
-  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& LogInfoLookUpReq::ip_addr() const {
-  // @@protoc_insertion_point(field_get:raltservice.LogInfoLookUpReq.ip_addr)
-  return ip_addr_.GetNoArena();
-}
-inline void LogInfoLookUpReq::set_ip_addr(const ::std::string& value) {
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.LogInfoLookUpReq.ip_addr)
-}
-#if LANG_CXX11
-inline void LogInfoLookUpReq::set_ip_addr(::std::string&& value) {
-  
-  ip_addr_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.LogInfoLookUpReq.ip_addr)
-}
-#endif
-inline void LogInfoLookUpReq::set_ip_addr(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.LogInfoLookUpReq.ip_addr)
-}
-inline void LogInfoLookUpReq::set_ip_addr(const char* value, size_t size) {
-  
-  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.LogInfoLookUpReq.ip_addr)
-}
-inline ::std::string* LogInfoLookUpReq::mutable_ip_addr() {
-  
-  // @@protoc_insertion_point(field_mutable:raltservice.LogInfoLookUpReq.ip_addr)
-  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* LogInfoLookUpReq::release_ip_addr() {
-  // @@protoc_insertion_point(field_release:raltservice.LogInfoLookUpReq.ip_addr)
-  
-  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void LogInfoLookUpReq::set_allocated_ip_addr(::std::string* ip_addr) {
-  if (ip_addr != NULL) {
-    
-  } else {
-    
-  }
-  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.LogInfoLookUpReq.ip_addr)
-}
-
-// -------------------------------------------------------------------
-
 // CacheResult
 
 // uint32 cache_total_hits = 1;
@@ -4361,6 +4713,63 @@ inline void CacheResult::set_cache_hit_ratio(float value) {
   
   cache_hit_ratio_ = value;
   // @@protoc_insertion_point(field_set:raltservice.CacheResult.cache_hit_ratio)
+}
+
+// -------------------------------------------------------------------
+
+// FlowStatLookUpReq
+
+// string ip_addr = 1;
+inline void FlowStatLookUpReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& FlowStatLookUpReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.FlowStatLookUpReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void FlowStatLookUpReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.FlowStatLookUpReq.ip_addr)
+}
+#if LANG_CXX11
+inline void FlowStatLookUpReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.FlowStatLookUpReq.ip_addr)
+}
+#endif
+inline void FlowStatLookUpReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.FlowStatLookUpReq.ip_addr)
+}
+inline void FlowStatLookUpReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.FlowStatLookUpReq.ip_addr)
+}
+inline ::std::string* FlowStatLookUpReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.FlowStatLookUpReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* FlowStatLookUpReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.FlowStatLookUpReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FlowStatLookUpReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.FlowStatLookUpReq.ip_addr)
 }
 
 // -------------------------------------------------------------------
@@ -4565,6 +4974,63 @@ inline void FlowResult::set_bandwidth_hit_ratio(float value) {
 
 // -------------------------------------------------------------------
 
+// LogInfoLookUpReq
+
+// string ip_addr = 1;
+inline void LogInfoLookUpReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& LogInfoLookUpReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.LogInfoLookUpReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void LogInfoLookUpReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.LogInfoLookUpReq.ip_addr)
+}
+#if LANG_CXX11
+inline void LogInfoLookUpReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.LogInfoLookUpReq.ip_addr)
+}
+#endif
+inline void LogInfoLookUpReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.LogInfoLookUpReq.ip_addr)
+}
+inline void LogInfoLookUpReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.LogInfoLookUpReq.ip_addr)
+}
+inline ::std::string* LogInfoLookUpReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.LogInfoLookUpReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* LogInfoLookUpReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.LogInfoLookUpReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void LogInfoLookUpReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.LogInfoLookUpReq.ip_addr)
+}
+
+// -------------------------------------------------------------------
+
 // LogResult
 
 // uint32 log_files_space_mb_used = 1;
@@ -4711,208 +5177,264 @@ inline void RaltLogs::set_allocated_logs(::std::string* logs) {
 
 // -------------------------------------------------------------------
 
-// GetRecordCfgReq
+// GetBasicConfigReq
 
 // uint32 type = 1;
-inline void GetRecordCfgReq::clear_type() {
+inline void GetBasicConfigReq::clear_type() {
   type_ = 0u;
 }
-inline ::google::protobuf::uint32 GetRecordCfgReq::type() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRecordCfgReq.type)
+inline ::google::protobuf::uint32 GetBasicConfigReq::type() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigReq.type)
   return type_;
 }
-inline void GetRecordCfgReq::set_type(::google::protobuf::uint32 value) {
+inline void GetBasicConfigReq::set_type(::google::protobuf::uint32 value) {
   
   type_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetRecordCfgReq.type)
+  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigReq.type)
 }
 
 // -------------------------------------------------------------------
 
-// GetRecordCfgRsp
+// GetBasicConfigRsp
 
 // uint32 logging_enabled = 1;
-inline void GetRecordCfgRsp::clear_logging_enabled() {
+inline void GetBasicConfigRsp::clear_logging_enabled() {
   logging_enabled_ = 0u;
 }
-inline ::google::protobuf::uint32 GetRecordCfgRsp::logging_enabled() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRecordCfgRsp.logging_enabled)
+inline ::google::protobuf::uint32 GetBasicConfigRsp::logging_enabled() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.logging_enabled)
   return logging_enabled_;
 }
-inline void GetRecordCfgRsp::set_logging_enabled(::google::protobuf::uint32 value) {
+inline void GetBasicConfigRsp::set_logging_enabled(::google::protobuf::uint32 value) {
   
   logging_enabled_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetRecordCfgRsp.logging_enabled)
+  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.logging_enabled)
 }
 
 // uint32 max_space_mb_for_logs = 2;
-inline void GetRecordCfgRsp::clear_max_space_mb_for_logs() {
+inline void GetBasicConfigRsp::clear_max_space_mb_for_logs() {
   max_space_mb_for_logs_ = 0u;
 }
-inline ::google::protobuf::uint32 GetRecordCfgRsp::max_space_mb_for_logs() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRecordCfgRsp.max_space_mb_for_logs)
+inline ::google::protobuf::uint32 GetBasicConfigRsp::max_space_mb_for_logs() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.max_space_mb_for_logs)
   return max_space_mb_for_logs_;
 }
-inline void GetRecordCfgRsp::set_max_space_mb_for_logs(::google::protobuf::uint32 value) {
+inline void GetBasicConfigRsp::set_max_space_mb_for_logs(::google::protobuf::uint32 value) {
   
   max_space_mb_for_logs_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetRecordCfgRsp.max_space_mb_for_logs)
+  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.max_space_mb_for_logs)
 }
 
 // uint32 rolling_enabled = 3;
-inline void GetRecordCfgRsp::clear_rolling_enabled() {
+inline void GetBasicConfigRsp::clear_rolling_enabled() {
   rolling_enabled_ = 0u;
 }
-inline ::google::protobuf::uint32 GetRecordCfgRsp::rolling_enabled() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRecordCfgRsp.rolling_enabled)
+inline ::google::protobuf::uint32 GetBasicConfigRsp::rolling_enabled() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.rolling_enabled)
   return rolling_enabled_;
 }
-inline void GetRecordCfgRsp::set_rolling_enabled(::google::protobuf::uint32 value) {
+inline void GetBasicConfigRsp::set_rolling_enabled(::google::protobuf::uint32 value) {
   
   rolling_enabled_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetRecordCfgRsp.rolling_enabled)
+  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.rolling_enabled)
 }
 
 // string server_ports = 4;
-inline void GetRecordCfgRsp::clear_server_ports() {
+inline void GetBasicConfigRsp::clear_server_ports() {
   server_ports_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& GetRecordCfgRsp::server_ports() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRecordCfgRsp.server_ports)
+inline const ::std::string& GetBasicConfigRsp::server_ports() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.server_ports)
   return server_ports_.GetNoArena();
 }
-inline void GetRecordCfgRsp::set_server_ports(const ::std::string& value) {
+inline void GetBasicConfigRsp::set_server_ports(const ::std::string& value) {
   
   server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.GetRecordCfgRsp.server_ports)
+  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.server_ports)
 }
 #if LANG_CXX11
-inline void GetRecordCfgRsp::set_server_ports(::std::string&& value) {
+inline void GetBasicConfigRsp::set_server_ports(::std::string&& value) {
   
   server_ports_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetRecordCfgRsp.server_ports)
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetBasicConfigRsp.server_ports)
 }
 #endif
-inline void GetRecordCfgRsp::set_server_ports(const char* value) {
+inline void GetBasicConfigRsp::set_server_ports(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.GetRecordCfgRsp.server_ports)
+  // @@protoc_insertion_point(field_set_char:raltservice.GetBasicConfigRsp.server_ports)
 }
-inline void GetRecordCfgRsp::set_server_ports(const char* value, size_t size) {
+inline void GetBasicConfigRsp::set_server_ports(const char* value, size_t size) {
   
   server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.GetRecordCfgRsp.server_ports)
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetBasicConfigRsp.server_ports)
 }
-inline ::std::string* GetRecordCfgRsp::mutable_server_ports() {
+inline ::std::string* GetBasicConfigRsp::mutable_server_ports() {
   
-  // @@protoc_insertion_point(field_mutable:raltservice.GetRecordCfgRsp.server_ports)
+  // @@protoc_insertion_point(field_mutable:raltservice.GetBasicConfigRsp.server_ports)
   return server_ports_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* GetRecordCfgRsp::release_server_ports() {
-  // @@protoc_insertion_point(field_release:raltservice.GetRecordCfgRsp.server_ports)
+inline ::std::string* GetBasicConfigRsp::release_server_ports() {
+  // @@protoc_insertion_point(field_release:raltservice.GetBasicConfigRsp.server_ports)
   
   return server_ports_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void GetRecordCfgRsp::set_allocated_server_ports(::std::string* server_ports) {
+inline void GetBasicConfigRsp::set_allocated_server_ports(::std::string* server_ports) {
   if (server_ports != NULL) {
     
   } else {
     
   }
   server_ports_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), server_ports);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.GetRecordCfgRsp.server_ports)
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetBasicConfigRsp.server_ports)
+}
+
+// uint32 storage_cache_size = 5;
+inline void GetBasicConfigRsp::clear_storage_cache_size() {
+  storage_cache_size_ = 0u;
+}
+inline ::google::protobuf::uint32 GetBasicConfigRsp::storage_cache_size() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.storage_cache_size)
+  return storage_cache_size_;
+}
+inline void GetBasicConfigRsp::set_storage_cache_size(::google::protobuf::uint32 value) {
+  
+  storage_cache_size_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.storage_cache_size)
 }
 
 // -------------------------------------------------------------------
 
-// SetRecordCfgReq
+// SetBasicConfigReq
 
-// .raltservice.RecordCfgType key = 1;
-inline void SetRecordCfgReq::clear_key() {
-  key_ = 0;
+// uint32 logging_enabled = 1;
+inline void SetBasicConfigReq::clear_logging_enabled() {
+  logging_enabled_ = 0u;
 }
-inline ::raltservice::RecordCfgType SetRecordCfgReq::key() const {
-  // @@protoc_insertion_point(field_get:raltservice.SetRecordCfgReq.key)
-  return static_cast< ::raltservice::RecordCfgType >(key_);
+inline ::google::protobuf::uint32 SetBasicConfigReq::logging_enabled() const {
+  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.logging_enabled)
+  return logging_enabled_;
 }
-inline void SetRecordCfgReq::set_key(::raltservice::RecordCfgType value) {
+inline void SetBasicConfigReq::set_logging_enabled(::google::protobuf::uint32 value) {
   
-  key_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.SetRecordCfgReq.key)
+  logging_enabled_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.logging_enabled)
 }
 
-// string value = 2;
-inline void SetRecordCfgReq::clear_value() {
-  value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// uint32 max_space_mb_for_logs = 2;
+inline void SetBasicConfigReq::clear_max_space_mb_for_logs() {
+  max_space_mb_for_logs_ = 0u;
 }
-inline const ::std::string& SetRecordCfgReq::value() const {
-  // @@protoc_insertion_point(field_get:raltservice.SetRecordCfgReq.value)
-  return value_.GetNoArena();
+inline ::google::protobuf::uint32 SetBasicConfigReq::max_space_mb_for_logs() const {
+  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.max_space_mb_for_logs)
+  return max_space_mb_for_logs_;
 }
-inline void SetRecordCfgReq::set_value(const ::std::string& value) {
+inline void SetBasicConfigReq::set_max_space_mb_for_logs(::google::protobuf::uint32 value) {
   
-  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.SetRecordCfgReq.value)
+  max_space_mb_for_logs_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.max_space_mb_for_logs)
+}
+
+// uint32 rolling_enabled = 3;
+inline void SetBasicConfigReq::clear_rolling_enabled() {
+  rolling_enabled_ = 0u;
+}
+inline ::google::protobuf::uint32 SetBasicConfigReq::rolling_enabled() const {
+  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.rolling_enabled)
+  return rolling_enabled_;
+}
+inline void SetBasicConfigReq::set_rolling_enabled(::google::protobuf::uint32 value) {
+  
+  rolling_enabled_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.rolling_enabled)
+}
+
+// string server_ports = 4;
+inline void SetBasicConfigReq::clear_server_ports() {
+  server_ports_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SetBasicConfigReq::server_ports() const {
+  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.server_ports)
+  return server_ports_.GetNoArena();
+}
+inline void SetBasicConfigReq::set_server_ports(const ::std::string& value) {
+  
+  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.server_ports)
 }
 #if LANG_CXX11
-inline void SetRecordCfgReq::set_value(::std::string&& value) {
+inline void SetBasicConfigReq::set_server_ports(::std::string&& value) {
   
-  value_.SetNoArena(
+  server_ports_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.SetRecordCfgReq.value)
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.SetBasicConfigReq.server_ports)
 }
 #endif
-inline void SetRecordCfgReq::set_value(const char* value) {
+inline void SetBasicConfigReq::set_server_ports(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.SetRecordCfgReq.value)
+  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.SetBasicConfigReq.server_ports)
 }
-inline void SetRecordCfgReq::set_value(const char* value, size_t size) {
+inline void SetBasicConfigReq::set_server_ports(const char* value, size_t size) {
   
-  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.SetRecordCfgReq.value)
+  // @@protoc_insertion_point(field_set_pointer:raltservice.SetBasicConfigReq.server_ports)
 }
-inline ::std::string* SetRecordCfgReq::mutable_value() {
+inline ::std::string* SetBasicConfigReq::mutable_server_ports() {
   
-  // @@protoc_insertion_point(field_mutable:raltservice.SetRecordCfgReq.value)
-  return value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:raltservice.SetBasicConfigReq.server_ports)
+  return server_ports_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* SetRecordCfgReq::release_value() {
-  // @@protoc_insertion_point(field_release:raltservice.SetRecordCfgReq.value)
+inline ::std::string* SetBasicConfigReq::release_server_ports() {
+  // @@protoc_insertion_point(field_release:raltservice.SetBasicConfigReq.server_ports)
   
-  return value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return server_ports_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SetRecordCfgReq::set_allocated_value(::std::string* value) {
-  if (value != NULL) {
+inline void SetBasicConfigReq::set_allocated_server_ports(::std::string* server_ports) {
+  if (server_ports != NULL) {
     
   } else {
     
   }
-  value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.SetRecordCfgReq.value)
+  server_ports_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), server_ports);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.SetBasicConfigReq.server_ports)
+}
+
+// uint32 storage_cache_size = 5;
+inline void SetBasicConfigReq::clear_storage_cache_size() {
+  storage_cache_size_ = 0u;
+}
+inline ::google::protobuf::uint32 SetBasicConfigReq::storage_cache_size() const {
+  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.storage_cache_size)
+  return storage_cache_size_;
+}
+inline void SetBasicConfigReq::set_storage_cache_size(::google::protobuf::uint32 value) {
+  
+  storage_cache_size_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.storage_cache_size)
 }
 
 // -------------------------------------------------------------------
 
-// SetRecordCfgRsp
+// SetBasicConfigRsp
 
 // uint32 result = 1;
-inline void SetRecordCfgRsp::clear_result() {
+inline void SetBasicConfigRsp::clear_result() {
   result_ = 0u;
 }
-inline ::google::protobuf::uint32 SetRecordCfgRsp::result() const {
-  // @@protoc_insertion_point(field_get:raltservice.SetRecordCfgRsp.result)
+inline ::google::protobuf::uint32 SetBasicConfigRsp::result() const {
+  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigRsp.result)
   return result_;
 }
-inline void SetRecordCfgRsp::set_result(::google::protobuf::uint32 value) {
+inline void SetBasicConfigRsp::set_result(::google::protobuf::uint32 value) {
   
   result_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.SetRecordCfgRsp.result)
+  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigRsp.result)
 }
 
 // -------------------------------------------------------------------
@@ -5644,6 +6166,10 @@ inline void ExecCmdRsp::set_result(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -5652,11 +6178,6 @@ inline void ExecCmdRsp::set_result(::google::protobuf::uint32 value) {
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::raltservice::RecordCfgType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::raltservice::RecordCfgType>() {
-  return ::raltservice::RecordCfgType_descriptor();
-}
 template <> struct is_proto_enum< ::raltservice::DomainType> : ::google::protobuf::internal::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::raltservice::DomainType>() {

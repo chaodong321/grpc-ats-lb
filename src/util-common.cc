@@ -5,6 +5,10 @@
 #include <unistd.h>
 #include <string.h>
 
+#define IS_HEX(c) ((c) >= '0' && (c) <= '9' ? 1 : \
+									 (c) >= 'a' && (c) <= 'f' ? 1 : \
+									 (c) >= 'A' && (c) <= 'F' ? 1 : 0)
+
 char *UtilCommon::SkipSpaceLeft(char *str_in)
 {
 	if (str_in == NULL)
@@ -107,4 +111,46 @@ std::string &UtilCommon::Trim(std::string &s)
     return s;
 }
 
+bool UtilCommon::IsIp(const char *ip)
+{
+	int n[4];
+	char c[4];
+
+	if (sscanf(ip, "%d%c%d%c%d%c%d%c", &n[0], &c[0],&n[1], &c[1], &n[2], &c[2], &n[3], &c[3]) != 8)
+		return false;
+
+	for (int i = 0; i < 3; ++i)
+		if (c[i] != '.' && c[i] != '-')
+			return false;
+	for (int i = 0; i < 4; ++i)
+		if (n[i] < 0 || n[i] > 255)
+			return false;
+
+	if ( c[3] == '.')
+		return false;
+
+	return true;
+}
+
+bool UtilCommon::IsIp6(const char *ip6)
+{
+	if (*ip6 != '[')
+		return false;
+
+	unsigned int len = strlen(ip6);
+	const char *end = ip6 + len - 1;
+
+	char c = *++ip6;
+	while (c != ']' && ip6 <= end) {
+		if (IS_HEX(c) || c == ':')
+			c = *++ip6;
+		else
+			break;
+	}
+
+	if (c == ']')
+		return true;
+	else
+		return false;
+}
 

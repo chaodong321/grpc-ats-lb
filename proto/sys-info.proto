@@ -45,13 +45,15 @@ message GetDeviceInfoRsp{
 //device detail
 message GetDeviceDetailReq{
 	string ip_addr = 1;
+	bool is_depend_os_version = 2;
 }
 
 message GetDeviceDetailRsp{
 	string cpu_usage = 1;
 	string mem_usage = 2;
 	string cpu_temp = 3;
-	string nic_info = 4;
+	string os_version = 4;
+	string nic_info = 5;
 }
 
 //cpu usage

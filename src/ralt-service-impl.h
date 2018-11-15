@@ -23,6 +23,8 @@ using raltservice::RaltService;
 using raltservice::HomePageReq;
 using raltservice::HomePageRsp;
 //stats
+using raltservice::GetRaltStatsReq;
+using raltservice::GetRaltStatsRsp;
 using raltservice::StatsFieldName;
 using raltservice::StatsFieldValue;
 using raltservice::CacheLookUpReq;
@@ -34,12 +36,11 @@ using raltservice::LogResult;
 //ralt log
 using raltservice::GetRaltLogsReq;
 using raltservice::RaltLogs;
-//record
-using raltservice::RecordCfgType;
-using raltservice::GetRecordCfgReq;
-using raltservice::GetRecordCfgRsp;
-using raltservice::SetRecordCfgReq;
-using raltservice::SetRecordCfgRsp;
+//basic config
+using raltservice::GetBasicConfigReq;
+using raltservice::GetBasicConfigRsp;
+using raltservice::SetBasicConfigReq;
+using raltservice::SetBasicConfigRsp;
 //domain
 using raltservice::DomainType;
 using raltservice::Domain;
@@ -69,6 +70,9 @@ using namespace std;
 class RaltServiceImpl final : public RaltService::Service {
 public:	
 	//stats
+	Status getRaltStats (ServerContext* context, const GetRaltStatsReq* request,
+                  GetRaltStatsRsp* reply) override;
+	
 	Status getStatsFieldValue (ServerContext* context, const StatsFieldName* request,
                   StatsFieldValue* reply) override;
 	
@@ -88,17 +92,17 @@ public:
                   ServerWriter<RaltLogs>* reply) override;
 
 	//configure
-	Status getRecordConfig(ServerContext* context, const GetRecordCfgReq* request,
-                  GetRecordCfgRsp* reply) override;
+	Status getBasicConfig(ServerContext* context, const GetBasicConfigReq* request,
+                  GetBasicConfigRsp* reply) override;
 
-	Status setRecordConfig(ServerContext* context, const SetRecordCfgReq* request,
-                  SetRecordCfgRsp* reply) override;
+	Status setBasicConfig(ServerContext* context, const SetBasicConfigReq* request,
+                  SetBasicConfigRsp* reply) override;
 
 	Status getAllDomain(ServerContext* context, const GetAllDomainReq* request,
                   ServerWriter<Domain>* reply) override;
 
 	Status updateDomain(ServerContext* context, ServerReader<Domain>* request,
-                     UpdateDomainRsp* reply) override;
+                  UpdateDomainRsp* reply) override;
 
 	Status getDomain(ServerContext* context, const GetDomainReq* request,
                   Domain* reply) override;

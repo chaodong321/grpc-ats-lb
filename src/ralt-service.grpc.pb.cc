@@ -16,14 +16,15 @@
 namespace raltservice {
 
 static const char* RaltService_method_names[] = {
+  "/raltservice.RaltService/getRaltStats",
   "/raltservice.RaltService/getStatsFieldValue",
   "/raltservice.RaltService/getHomePageData",
   "/raltservice.RaltService/showCacheData",
   "/raltservice.RaltService/showFlowStatData",
   "/raltservice.RaltService/showLogInfoData",
   "/raltservice.RaltService/getRaltLogs",
-  "/raltservice.RaltService/getRecordConfig",
-  "/raltservice.RaltService/setRecordConfig",
+  "/raltservice.RaltService/getBasicConfig",
+  "/raltservice.RaltService/setBasicConfig",
   "/raltservice.RaltService/getAllDomain",
   "/raltservice.RaltService/updateDomain",
   "/raltservice.RaltService/getDomain",
@@ -41,24 +42,37 @@ std::unique_ptr< RaltService::Stub> RaltService::NewStub(const std::shared_ptr< 
 }
 
 RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
-  : channel_(channel), rpcmethod_getStatsFieldValue_(RaltService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getHomePageData_(RaltService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_showCacheData_(RaltService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_showFlowStatData_(RaltService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_showLogInfoData_(RaltService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getRaltLogs_(RaltService_method_names[5], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_getRecordConfig_(RaltService_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_setRecordConfig_(RaltService_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getAllDomain_(RaltService_method_names[8], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_updateDomain_(RaltService_method_names[9], ::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
-  , rpcmethod_getDomain_(RaltService_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_addDomain_(RaltService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_deleteDomain_(RaltService_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getMisc_(RaltService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_modMisc_(RaltService_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getRaltStatus_(RaltService_method_names[15], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_execCmd_(RaltService_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_getRaltStats_(RaltService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getStatsFieldValue_(RaltService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getHomePageData_(RaltService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_showCacheData_(RaltService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_showFlowStatData_(RaltService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_showLogInfoData_(RaltService_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getRaltLogs_(RaltService_method_names[6], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_getBasicConfig_(RaltService_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_setBasicConfig_(RaltService_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getAllDomain_(RaltService_method_names[9], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_updateDomain_(RaltService_method_names[10], ::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
+  , rpcmethod_getDomain_(RaltService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_addDomain_(RaltService_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_deleteDomain_(RaltService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getMisc_(RaltService_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_modMisc_(RaltService_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getRaltStatus_(RaltService_method_names[16], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_execCmd_(RaltService_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
+
+::grpc::Status RaltService::Stub::getRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::raltservice::GetRaltStatsRsp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getRaltStats_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>* RaltService::Stub::AsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetRaltStatsRsp>::Create(channel_.get(), cq, rpcmethod_getRaltStats_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>* RaltService::Stub::PrepareAsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetRaltStatsRsp>::Create(channel_.get(), cq, rpcmethod_getRaltStats_, context, request, false);
+}
 
 ::grpc::Status RaltService::Stub::getStatsFieldValue(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::raltservice::StatsFieldValue* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getStatsFieldValue_, context, request, response);
@@ -132,28 +146,28 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::ClientAsyncReaderFactory< ::raltservice::RaltLogs>::Create(channel_.get(), cq, rpcmethod_getRaltLogs_, context, request, false, nullptr);
 }
 
-::grpc::Status RaltService::Stub::getRecordConfig(::grpc::ClientContext* context, const ::raltservice::GetRecordCfgReq& request, ::raltservice::GetRecordCfgRsp* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getRecordConfig_, context, request, response);
+::grpc::Status RaltService::Stub::getBasicConfig(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq& request, ::raltservice::GetBasicConfigRsp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getBasicConfig_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::raltservice::GetRecordCfgRsp>* RaltService::Stub::AsyncgetRecordConfigRaw(::grpc::ClientContext* context, const ::raltservice::GetRecordCfgReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetRecordCfgRsp>::Create(channel_.get(), cq, rpcmethod_getRecordConfig_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::raltservice::GetBasicConfigRsp>* RaltService::Stub::AsyncgetBasicConfigRaw(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetBasicConfigRsp>::Create(channel_.get(), cq, rpcmethod_getBasicConfig_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::raltservice::GetRecordCfgRsp>* RaltService::Stub::PrepareAsyncgetRecordConfigRaw(::grpc::ClientContext* context, const ::raltservice::GetRecordCfgReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetRecordCfgRsp>::Create(channel_.get(), cq, rpcmethod_getRecordConfig_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::raltservice::GetBasicConfigRsp>* RaltService::Stub::PrepareAsyncgetBasicConfigRaw(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetBasicConfigRsp>::Create(channel_.get(), cq, rpcmethod_getBasicConfig_, context, request, false);
 }
 
-::grpc::Status RaltService::Stub::setRecordConfig(::grpc::ClientContext* context, const ::raltservice::SetRecordCfgReq& request, ::raltservice::SetRecordCfgRsp* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_setRecordConfig_, context, request, response);
+::grpc::Status RaltService::Stub::setBasicConfig(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq& request, ::raltservice::SetBasicConfigRsp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_setBasicConfig_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::raltservice::SetRecordCfgRsp>* RaltService::Stub::AsyncsetRecordConfigRaw(::grpc::ClientContext* context, const ::raltservice::SetRecordCfgReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::SetRecordCfgRsp>::Create(channel_.get(), cq, rpcmethod_setRecordConfig_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::raltservice::SetBasicConfigRsp>* RaltService::Stub::AsyncsetBasicConfigRaw(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::SetBasicConfigRsp>::Create(channel_.get(), cq, rpcmethod_setBasicConfig_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::raltservice::SetRecordCfgRsp>* RaltService::Stub::PrepareAsyncsetRecordConfigRaw(::grpc::ClientContext* context, const ::raltservice::SetRecordCfgReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::SetRecordCfgRsp>::Create(channel_.get(), cq, rpcmethod_setRecordConfig_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::raltservice::SetBasicConfigRsp>* RaltService::Stub::PrepareAsyncsetBasicConfigRaw(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::SetBasicConfigRsp>::Create(channel_.get(), cq, rpcmethod_setBasicConfig_, context, request, false);
 }
 
 ::grpc::ClientReader< ::raltservice::Domain>* RaltService::Stub::getAllDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq& request) {
@@ -268,91 +282,103 @@ RaltService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RaltService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetRaltStatsReq, ::raltservice::GetRaltStatsRsp>(
+          std::mem_fn(&RaltService::Service::getRaltStats), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RaltService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::StatsFieldName, ::raltservice::StatsFieldValue>(
           std::mem_fn(&RaltService::Service::getStatsFieldValue), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[1],
+      RaltService_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::HomePageReq, ::raltservice::HomePageRsp>(
           std::mem_fn(&RaltService::Service::getHomePageData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[2],
+      RaltService_method_names[3],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::CacheLookUpReq, ::raltservice::CacheResult>(
           std::mem_fn(&RaltService::Service::showCacheData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[3],
+      RaltService_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::FlowStatLookUpReq, ::raltservice::FlowResult>(
           std::mem_fn(&RaltService::Service::showFlowStatData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[4],
+      RaltService_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::LogInfoLookUpReq, ::raltservice::LogResult>(
           std::mem_fn(&RaltService::Service::showLogInfoData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[5],
+      RaltService_method_names[6],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< RaltService::Service, ::raltservice::GetRaltLogsReq, ::raltservice::RaltLogs>(
           std::mem_fn(&RaltService::Service::getRaltLogs), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[6],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetRecordCfgReq, ::raltservice::GetRecordCfgRsp>(
-          std::mem_fn(&RaltService::Service::getRecordConfig), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
       RaltService_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::SetRecordCfgReq, ::raltservice::SetRecordCfgRsp>(
-          std::mem_fn(&RaltService::Service::setRecordConfig), this)));
+      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetBasicConfigReq, ::raltservice::GetBasicConfigRsp>(
+          std::mem_fn(&RaltService::Service::getBasicConfig), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RaltService_method_names[8],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::SetBasicConfigReq, ::raltservice::SetBasicConfigRsp>(
+          std::mem_fn(&RaltService::Service::setBasicConfig), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RaltService_method_names[9],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< RaltService::Service, ::raltservice::GetAllDomainReq, ::raltservice::Domain>(
           std::mem_fn(&RaltService::Service::getAllDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[9],
+      RaltService_method_names[10],
       ::grpc::internal::RpcMethod::CLIENT_STREAMING,
       new ::grpc::internal::ClientStreamingHandler< RaltService::Service, ::raltservice::Domain, ::raltservice::UpdateDomainRsp>(
           std::mem_fn(&RaltService::Service::updateDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[10],
+      RaltService_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetDomainReq, ::raltservice::Domain>(
           std::mem_fn(&RaltService::Service::getDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[11],
+      RaltService_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::Domain, ::raltservice::AddDomainRsp>(
           std::mem_fn(&RaltService::Service::addDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[12],
+      RaltService_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::DeleteDomainReq, ::raltservice::DeleteDomainRsp>(
           std::mem_fn(&RaltService::Service::deleteDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[13],
+      RaltService_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetMiscReq, ::raltservice::GetMiscRsp>(
           std::mem_fn(&RaltService::Service::getMisc), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[14],
+      RaltService_method_names[15],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::Misc, ::raltservice::ModMiscOpRsp>(
           std::mem_fn(&RaltService::Service::modMisc), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[15],
+      RaltService_method_names[16],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< RaltService::Service, ::raltservice::RaltStatusReq, ::raltservice::RaltStatus>(
           std::mem_fn(&RaltService::Service::getRaltStatus), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[16],
+      RaltService_method_names[17],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::ExecCmdReq, ::raltservice::ExecCmdRsp>(
           std::mem_fn(&RaltService::Service::execCmd), this)));
 }
 
 RaltService::Service::~Service() {
+}
+
+::grpc::Status RaltService::Service::getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
 ::grpc::Status RaltService::Service::getStatsFieldValue(::grpc::ServerContext* context, const ::raltservice::StatsFieldName* request, ::raltservice::StatsFieldValue* response) {
@@ -397,14 +423,14 @@ RaltService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status RaltService::Service::getRecordConfig(::grpc::ServerContext* context, const ::raltservice::GetRecordCfgReq* request, ::raltservice::GetRecordCfgRsp* response) {
+::grpc::Status RaltService::Service::getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status RaltService::Service::setRecordConfig(::grpc::ServerContext* context, const ::raltservice::SetRecordCfgReq* request, ::raltservice::SetRecordCfgRsp* response) {
+::grpc::Status RaltService::Service::setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) {
   (void) context;
   (void) request;
   (void) response;

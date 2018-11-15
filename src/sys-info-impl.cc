@@ -120,6 +120,7 @@ Status SysInfoImpl::getDeviceDetail (ServerContext* context, const GetDeviceDeta
 	LOG_INFO("cpu temperature:%s", strCpuTemp.c_str());
 	reply->set_cpu_temp(strCpuTemp);
 
+	bool bDependOsVersion = request->is_depend_os_version();
 	string strSysVer;
 	string strSysVerCmd = "cat /etc/redhat-release|sed -r 's/.* ([0-9]+)\\..*/\\1/'";
 	if(!UtilCommon::ShellCmd(strSysVerCmd, strSysVer)){
@@ -127,11 +128,21 @@ Status SysInfoImpl::getDeviceDetail (ServerContext* context, const GetDeviceDeta
 		return Status::CANCELLED;
 	}
 	string strNicInfoCmd, strNicInfo;
-	if(strSysVer.find("6") != string::npos){
+	if(bDependOsVersion && strSysVer.find("6") != string::npos){
+		reply->set_os_version("centos6");
 		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
 	}
-	else if(strSysVer.find("7") != string::npos){
+	else if(bDependOsVersion && strSysVer.find("7") != string::npos){
+		reply->set_os_version("centos7");
 		strNicInfoCmd = "ifconfig";
+	}
+	else if( !bDependOsVersion && strSysVer.find("6") != string::npos){
+		reply->set_os_version("centos6");
+		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
+	}
+	else if( !bDependOsVersion && strSysVer.find("7") != string::npos){
+		reply->set_os_version("centos7");
+		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
 	}
 	else{
 		LOG_WARN("the system version is not centos6 and centos7");
@@ -147,7 +158,6 @@ Status SysInfoImpl::getDeviceDetail (ServerContext* context, const GetDeviceDeta
 	LOG_INFO("get cpu usage successfully");
 	return Status::OK;
 }
-
 
 
 Status SysInfoImpl::getCpuUsage (ServerContext* context, const GetCpuUsageReq* request, GetCpuUsageRsp* reply)

@@ -12,6 +12,8 @@ public:
 	static bool ShellCmd(std::string &strCmd,std::string &strRet);
 	static bool GetLine(std::string&strValue, std::string&strLine);
 	static std::string &Trim(std::string &s);
+	static bool IsIp(const char *ip);
+	static bool IsIp6(const char *ip6);
 };
 
 #endif

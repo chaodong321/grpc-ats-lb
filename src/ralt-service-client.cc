@@ -1,5 +1,6 @@
 #include "ralt-service.grpc.pb.h"
 #include "sys-info.grpc.pb.h"
+#include <stdlib.h>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -54,6 +55,8 @@ using raltservice::RaltService;
 using raltservice::HomePageReq;
 using raltservice::HomePageRsp;
 //stats
+using raltservice::GetRaltStatsReq;
+using raltservice::GetRaltStatsRsp;
 using raltservice::StatsFieldName;
 using raltservice::StatsFieldValue;
 using raltservice::CacheLookUpReq;
@@ -65,12 +68,11 @@ using raltservice::LogResult;
 //ralt log
 using raltservice::GetRaltLogsReq;
 using raltservice::RaltLogs;
-//record
-using raltservice::RecordCfgType;
-using raltservice::GetRecordCfgReq;
-using raltservice::GetRecordCfgRsp;
-using raltservice::SetRecordCfgReq;
-using raltservice::SetRecordCfgRsp;
+//basic config
+using raltservice::GetBasicConfigReq;
+using raltservice::GetBasicConfigRsp;
+using raltservice::SetBasicConfigReq;
+using raltservice::SetBasicConfigRsp;
 //domain
 using raltservice::DomainType;
 using raltservice::Domain;
@@ -136,11 +138,12 @@ class RaltServiceClient {
 			}
 		}
 
-		void getDeviceDetail(){
+		void getDeviceDetail(bool bDependOsVersion){
 			ClientContext context;
 				
 			// The actual RPC.
 			GetDeviceDetailReq request;
+			request.set_is_depend_os_version(bDependOsVersion);
 			// Container for the data we expect from the server.
 			GetDeviceDetailRsp reply;
 			Status status = stub_sys->getDeviceDetail(&context, request, &reply);
@@ -149,6 +152,7 @@ class RaltServiceClient {
 				std::cout << "cpu usage: " << std::endl << reply.cpu_usage() << std::endl;
 				std::cout << "memory usage: " << std::endl << reply.mem_usage() << std::endl;
 				std::cout << "cpu temperature: " << std::endl << reply.cpu_temp() << std::endl;
+				std::cout << "os version: " << std::endl << reply.os_version() << std::endl;
 				std::cout << "network info: " << std::endl << reply.nic_info() << std::endl;
 			} else {
 				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
@@ -316,6 +320,28 @@ class RaltServiceClient {
 			}
 		}
 
+		void getRaltStats(){
+			ClientContext context;
+			GetRaltStatsReq req;
+			GetRaltStatsRsp rsp;
+			
+			Status status = stub_ralt->getRaltStats(&context, req, &rsp);
+			if (status.ok()) {
+				std::cout << "cache_used_bytes: " << rsp.cache_used_bytes() << std::endl;
+				std::cout << "cache_total_bytes: " << rsp.cache_total_bytes() << std::endl;
+				std::cout << "logs_space_used_mb: " << rsp.logs_space_used_mb() << std::endl;
+				std::cout << "logs_space_total_mb: " << rsp.logs_space_total_mb() << std::endl;
+				std::cout << "flow_completed_requests: " << rsp.flow_completed_requests() << std::endl;
+				std::cout << "flow_incoming_requests: " << rsp.flow_incoming_requests() << std::endl;
+				std::cout << "flow_total_client_connections_ipv4: " << rsp.flow_total_client_connections_ipv4() << std::endl;
+				std::cout << "flow_total_client_connections_ipv6: " << rsp.flow_total_client_connections_ipv6() << std::endl;
+				std::cout << "flow_bandwidth_hit_ratio: " << rsp.flow_bandwidth_hit_ratio() << std::endl;
+			}
+			else{
+				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+			}
+		}
+
 		void ShowFieldValue(std::string strFiledName){
 			ClientContext context;
 			StatsFieldName req;
@@ -437,28 +463,32 @@ class RaltServiceClient {
 			}
 		}
 
-		void getRecord(){
+		void getBasicConfig(){
 			ClientContext context;
-			GetRecordCfgReq request;
-			GetRecordCfgRsp reply;
-			Status status =  stub_ralt->getRecordConfig(&context, request, &reply);
+			GetBasicConfigReq request;
+			GetBasicConfigRsp reply;
+			Status status =  stub_ralt->getBasicConfig(&context, request, &reply);
 			if (status.ok()) {
 				std::cout << "logging_enabled:" << reply.logging_enabled() << std::endl;
 				std::cout << "max_space_mb_for_logs:" << reply.max_space_mb_for_logs() << std::endl;
 				std::cout << "rolling_enabled:" << reply.rolling_enabled() << std::endl;
 				std::cout << "server_ports:" << reply.server_ports() << std::endl;
+				std::cout << "storage_cache_size:" << reply.storage_cache_size() << std::endl;
 			} else {
 				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
 			}
 		}
 
-		void setRecord(){
+		void setBasicConfig(){
 			ClientContext context;
-			SetRecordCfgReq request;
-			request.set_key(RecordCfgType::enum_max_space_mb_for_logs);
-			request.set_value("250");
-			SetRecordCfgRsp reply;
-			Status status =  stub_ralt->setRecordConfig(&context, request, &reply);
+			SetBasicConfigReq request;
+			request.set_logging_enabled(1);
+			request.set_max_space_mb_for_logs(1);
+			request.set_rolling_enabled(1);
+			request.set_server_ports("80:ipv6 8080:ipv6 443:ipv6");
+			request.set_storage_cache_size("500mb");
+			SetBasicConfigRsp reply;
+			Status status =  stub_ralt->setBasicConfig(&context, request, &reply);
 
 			if (status.ok()) {
 				printf("modify success\n");
@@ -473,6 +503,7 @@ class RaltServiceClient {
 			std::unique_ptr<ClientReader<Domain> > reader(stub_ralt->getAllDomain(&context, request));
 			Domain domain_member;
 			while (reader->Read(&domain_member)) {
+				std::cout << "type:" << domain_member.type() << std::endl;
 				std::cout << "member:" << domain_member.domain_str() << std::endl;
 				std::cout << "transform:" << domain_member.append_or_replace_str() << std::endl;
 				std::cout << "port:" << domain_member.port() << std::endl;
@@ -496,12 +527,12 @@ class RaltServiceClient {
 			domain.set_type(DomainType::enum_member_domain);
 			domain.set_domain_str("www.reyzar.com");
 			domain.set_append_or_replace_str("ipv6.reyzar.com");
-			domain.set_port("[80, 8080]");
+			domain.set_port("80,8080");
 			writer->Write(domain);
 			Domain domain2;
 			domain2.set_type(DomainType::enum_subs_domain);
-			domain2.set_domain_str("[10.2.21.143]");
-			domain2.set_append_or_replace_str("[[240e:ff:e000:9:20c:29ff:fe35:5e1a]]");
+			domain2.set_domain_str("10.2.21.143");
+			domain2.set_append_or_replace_str("[240e:ff:e000:9:20c:29ff:fe35:5e1a]");
 			writer->Write(domain2);
 
 			writer->WritesDone();
@@ -630,7 +661,22 @@ class RaltServiceClient {
 
 int main(int argc, char** argv) {
 	RaltServiceClient client(grpc::CreateChannel("127.0.0.1:50052", grpc::InsecureChannelCredentials()));
-	
+
+	//client.getNameAndIpInfo();
+	//client.getDeviceInfo();
+	//client.getDeviceDetail(true);
+	//client.getCpuUsage();
+	//client.getCpuTemp();
+	//client.getMemUsage();
+	//client.getNicInfo(true);
+	//client.getHostName();
+	//client.getIpInfo();
+	//client.getCpuModel();
+	//client.getCpuCores();
+	//client.getMemTotal();
+	//client.getEthCtrlInfo();
+
+	//client.getRaltStats();
 	//client.ShowFieldValue("proxy.process.cache.bytes_total");
 	//client.showHomePageData();
 	//client.showCache();
@@ -638,8 +684,8 @@ int main(int argc, char** argv) {
 	//client.showLogInfo();
 	//client.getRaltLogs();
 
-	//client.getRecord();
-	//client.setRecord();
+	client.getBasicConfig();
+	//client.setBasicConfig();
 	
 	//client.getAllDomain();
 	//client.updateDomain();
@@ -653,20 +699,6 @@ int main(int argc, char** argv) {
 
 	//client.getRaltStatus();
 	//client.execCmd();
-
-	//client.getNameAndIpInfo();
-	//client.getDeviceInfo();
-	client.getDeviceDetail();
-	//client.getCpuUsage();
-	//client.getCpuTemp();
-	//client.getMemUsage();
-	//client.getNicInfo(true);
-	//client.getHostName();
-	//client.getIpInfo();
-	//client.getCpuModel();
-	//client.getCpuCores();
-	//client.getMemTotal();
-	//client.getEthCtrlInfo();
 	return 0;
 }
 

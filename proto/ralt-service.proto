@@ -3,24 +3,21 @@ syntax = "proto3";
 package raltservice;
 
 service RaltService {
-	//ats info
-	//get stats field info
+	//ats stats
+	rpc getRaltStats (GetRaltStatsReq) returns (GetRaltStatsRsp) {}
 	rpc getStatsFieldValue (StatsFieldName) returns (StatsFieldValue) {}
-	//home page
 	rpc getHomePageData (HomePageReq) returns (HomePageRsp) {}
-	//cache
 	rpc showCacheData (CacheLookUpReq) returns (CacheResult) {}
-	//flow statistic
+	//flow related
 	rpc showFlowStatData (FlowStatLookUpReq) returns (FlowResult) {}
-	//log config
+	//logs related
 	rpc showLogInfoData (LogInfoLookUpReq) returns (LogResult) {}
-	//ralt logs
 	rpc getRaltLogs (GetRaltLogsReq) returns (stream RaltLogs) {}
-	
+
 	//configure
-	//record.conf
-	rpc getRecordConfig (GetRecordCfgReq) returns (GetRecordCfgRsp) {}
-	rpc setRecordConfig (SetRecordCfgReq) returns (SetRecordCfgRsp) {}
+	//basic config, main for record.config
+	rpc getBasicConfig (GetBasicConfigReq) returns (GetBasicConfigRsp) {}
+	rpc setBasicConfig (SetBasicConfigReq) returns (SetBasicConfigRsp) {}
 	//ralt.domain.conf
 	rpc getAllDomain (GetAllDomainReq) returns (stream Domain) {}
 	rpc updateDomain (stream Domain) returns (UpdateDomainRsp) {}		//add modify delete
@@ -30,8 +27,7 @@ service RaltService {
 	//ralt.miscellaneous.conf
 	rpc getMisc (GetMiscReq) returns (GetMiscRsp) {}
 	rpc modMisc (Misc) returns (ModMiscOpRsp) {}
-	
-	
+
 	//ralt status: 
 	rpc getRaltStatus (RaltStatusReq) returns (stream RaltStatus) {}
 	//exec cmd
@@ -39,6 +35,22 @@ service RaltService {
 }
 
 //ats info
+message GetRaltStatsReq {
+	string ip_addr = 1;
+}
+
+message GetRaltStatsRsp{
+	uint64 cache_used_bytes = 1;
+	uint64 cache_total_bytes = 2;
+	uint32 logs_space_used_mb = 3;
+	uint32 logs_space_total_mb = 4;
+	uint32 flow_completed_requests = 5;
+	uint32 flow_incoming_requests = 6;
+	uint32 flow_total_client_connections_ipv4 = 7;
+	uint32 flow_total_client_connections_ipv6 = 8;
+	float  flow_bandwidth_hit_ratio = 9;
+}
+
 message StatsFieldName{
 	string ip_addr = 1;
 	string field_name = 2;
@@ -67,20 +79,16 @@ message CacheLookUpReq {
 	string ip_addr = 1;
 }
 
-message FlowStatLookUpReq {
-	string ip_addr = 1;
-}
-
-message LogInfoLookUpReq {
-	string ip_addr = 1;
-}
-
 message CacheResult {
 	uint32 cache_total_hits = 1;
 	uint64 bytes_total = 2;
 	uint64 bytes_used = 3;
 	uint32 num_docs = 4;
 	float cache_hit_ratio = 5;
+}
+
+message FlowStatLookUpReq {
+	string ip_addr = 1;
 }
 
 message FlowResult{
@@ -100,6 +108,10 @@ message FlowResult{
 	float bandwidth_hit_ratio = 14;
 }
 
+message LogInfoLookUpReq {
+	string ip_addr = 1;
+}
+
 message LogResult{
 	uint32 log_files_space_mb_used = 1;
 	uint32 max_space_mb_for_logs = 2;
@@ -114,31 +126,28 @@ message RaltLogs{
 	bytes logs = 1;
 }
 
-//record.conf
-enum RecordCfgType{
-	enum_logging_enabled = 0;       //取值：0-不启用日志； 1-开启错误； 2-开启事务日志； 3-错误日志和事务日志一起开启
-	enum_max_space_mb_for_logs = 1; //日志最大磁盘空间（单位为mb）
-	enum_rolling_enabled = 2;       //日志是否备份	0-不开启； 1-开启
-	enum_server_ports = 3;			//ralt服务端口，默认值 8080 8080:ipv6
-}
-
-message GetRecordCfgReq{
+//main for record.conf
+message GetBasicConfigReq{
 	uint32 type = 1; //客户端类型，目前网管约定为1
 }
 
-message GetRecordCfgRsp {
+message GetBasicConfigRsp {
 	uint32 logging_enabled = 1;
 	uint32 max_space_mb_for_logs = 2;
 	uint32 rolling_enabled = 3;
 	string server_ports = 4;
+	string storage_cache_size = 5;
 }
 
-message SetRecordCfgReq {
-	RecordCfgType key = 1;
-	string value = 2;
+message SetBasicConfigReq {
+	uint32 logging_enabled = 1;            //取值：0-不启用日志； 1-开启错误； 2-开启事务日志； 3-错误日志和事务日志一起开启
+	uint32 max_space_mb_for_logs = 2;      //日志最大磁盘空间（单位为mb）
+	uint32 rolling_enabled = 3;            //日志是否备份	0-不开启； 1-开启
+	string server_ports = 4;               //ralt服务端口，默认值 8080 8080:ipv6
+	string storage_cache_size = 5;         //缓存磁盘大小，默认值 250M
 }
 
-message SetRecordCfgRsp{
+message SetBasicConfigRsp{
 	uint32 result = 1;
 }
 

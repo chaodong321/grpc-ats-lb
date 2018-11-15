@@ -791,11 +791,18 @@ class GetDeviceDetailReq : public ::google::protobuf::Message /* @@protoc_insert
   ::std::string* release_ip_addr();
   void set_allocated_ip_addr(::std::string* ip_addr);
 
+  // bool is_depend_os_version = 2;
+  void clear_is_depend_os_version();
+  static const int kIsDependOsVersionFieldNumber = 2;
+  bool is_depend_os_version() const;
+  void set_is_depend_os_version(bool value);
+
   // @@protoc_insertion_point(class_scope:sysinfo.GetDeviceDetailReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  bool is_depend_os_version_;
   mutable int _cached_size_;
   friend struct ::protobuf_sys_2dinfo_2eproto::TableStruct;
   friend void ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceDetailReqImpl();
@@ -926,9 +933,23 @@ class GetDeviceDetailRsp : public ::google::protobuf::Message /* @@protoc_insert
   ::std::string* release_cpu_temp();
   void set_allocated_cpu_temp(::std::string* cpu_temp);
 
-  // string nic_info = 4;
+  // string os_version = 4;
+  void clear_os_version();
+  static const int kOsVersionFieldNumber = 4;
+  const ::std::string& os_version() const;
+  void set_os_version(const ::std::string& value);
+  #if LANG_CXX11
+  void set_os_version(::std::string&& value);
+  #endif
+  void set_os_version(const char* value);
+  void set_os_version(const char* value, size_t size);
+  ::std::string* mutable_os_version();
+  ::std::string* release_os_version();
+  void set_allocated_os_version(::std::string* os_version);
+
+  // string nic_info = 5;
   void clear_nic_info();
-  static const int kNicInfoFieldNumber = 4;
+  static const int kNicInfoFieldNumber = 5;
   const ::std::string& nic_info() const;
   void set_nic_info(const ::std::string& value);
   #if LANG_CXX11
@@ -947,6 +968,7 @@ class GetDeviceDetailRsp : public ::google::protobuf::Message /* @@protoc_insert
   ::google::protobuf::internal::ArenaStringPtr cpu_usage_;
   ::google::protobuf::internal::ArenaStringPtr mem_usage_;
   ::google::protobuf::internal::ArenaStringPtr cpu_temp_;
+  ::google::protobuf::internal::ArenaStringPtr os_version_;
   ::google::protobuf::internal::ArenaStringPtr nic_info_;
   mutable int _cached_size_;
   friend struct ::protobuf_sys_2dinfo_2eproto::TableStruct;
@@ -3618,6 +3640,20 @@ inline void GetDeviceDetailReq::set_allocated_ip_addr(::std::string* ip_addr) {
   // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceDetailReq.ip_addr)
 }
 
+// bool is_depend_os_version = 2;
+inline void GetDeviceDetailReq::clear_is_depend_os_version() {
+  is_depend_os_version_ = false;
+}
+inline bool GetDeviceDetailReq::is_depend_os_version() const {
+  // @@protoc_insertion_point(field_get:sysinfo.GetDeviceDetailReq.is_depend_os_version)
+  return is_depend_os_version_;
+}
+inline void GetDeviceDetailReq::set_is_depend_os_version(bool value) {
+  
+  is_depend_os_version_ = value;
+  // @@protoc_insertion_point(field_set:sysinfo.GetDeviceDetailReq.is_depend_os_version)
+}
+
 // -------------------------------------------------------------------
 
 // GetDeviceDetailRsp
@@ -3781,7 +3817,60 @@ inline void GetDeviceDetailRsp::set_allocated_cpu_temp(::std::string* cpu_temp) 
   // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceDetailRsp.cpu_temp)
 }
 
-// string nic_info = 4;
+// string os_version = 4;
+inline void GetDeviceDetailRsp::clear_os_version() {
+  os_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetDeviceDetailRsp::os_version() const {
+  // @@protoc_insertion_point(field_get:sysinfo.GetDeviceDetailRsp.os_version)
+  return os_version_.GetNoArena();
+}
+inline void GetDeviceDetailRsp::set_os_version(const ::std::string& value) {
+  
+  os_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sysinfo.GetDeviceDetailRsp.os_version)
+}
+#if LANG_CXX11
+inline void GetDeviceDetailRsp::set_os_version(::std::string&& value) {
+  
+  os_version_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:sysinfo.GetDeviceDetailRsp.os_version)
+}
+#endif
+inline void GetDeviceDetailRsp::set_os_version(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  os_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sysinfo.GetDeviceDetailRsp.os_version)
+}
+inline void GetDeviceDetailRsp::set_os_version(const char* value, size_t size) {
+  
+  os_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sysinfo.GetDeviceDetailRsp.os_version)
+}
+inline ::std::string* GetDeviceDetailRsp::mutable_os_version() {
+  
+  // @@protoc_insertion_point(field_mutable:sysinfo.GetDeviceDetailRsp.os_version)
+  return os_version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetDeviceDetailRsp::release_os_version() {
+  // @@protoc_insertion_point(field_release:sysinfo.GetDeviceDetailRsp.os_version)
+  
+  return os_version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetDeviceDetailRsp::set_allocated_os_version(::std::string* os_version) {
+  if (os_version != NULL) {
+    
+  } else {
+    
+  }
+  os_version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), os_version);
+  // @@protoc_insertion_point(field_set_allocated:sysinfo.GetDeviceDetailRsp.os_version)
+}
+
+// string nic_info = 5;
 inline void GetDeviceDetailRsp::clear_nic_info() {
   nic_info_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
