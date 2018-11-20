@@ -24,9 +24,10 @@ public:
 	static RaltDomain* GetInstance();
 	bool ParseDomainConf();
 	int GetMemberNum();
-	map<string, DomainValue>* GetAllDomain();
+	map<string, DomainValue>& GetAllDomain();
 	void UpdateDomain(const map<string, DomainValue>* domainMap);
-	DomainValue GetDomain(string strDomain);
+	void GetDomain(const string &strDomain, const string &strTransDomain,
+		map<string, DomainValue> &domainMap);
 	void AddDomain(const DomainValue *domain);
 	void DelDomain(string strDomain);
 

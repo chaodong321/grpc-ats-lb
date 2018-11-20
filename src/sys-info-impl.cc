@@ -48,7 +48,7 @@ Status SysInfoImpl::getNameAndIpInfo (ServerContext* context, const GetNameAndIp
 
 Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoReq* request, GetDeviceInfoRsp* reply)
 {
-	LOG_INFO("getdevice info");
+	LOG_INFO("get device info");
 	
 	string strCpuModel;
 	string strCpuModelCmd = "cat /proc/cpuinfo |grep model\\\\s*name |uniq -w1";
@@ -86,7 +86,7 @@ Status SysInfoImpl::getDeviceInfo (ServerContext* context, const GetDeviceInfoRe
 	LOG_INFO("ethernet controler info:%s", strEthCtrlInfo.c_str());	
 	reply->set_eth_ctrl_info(strEthCtrlInfo);
 	
-	LOG_INFO("get cpu model successfully");
+	LOG_INFO("get device info successfully");
 	return Status::OK;
 }
 
@@ -129,20 +129,24 @@ Status SysInfoImpl::getDeviceDetail (ServerContext* context, const GetDeviceDeta
 	}
 	string strNicInfoCmd, strNicInfo;
 	if(bDependOsVersion && strSysVer.find("6") != string::npos){
+		LOG_INFO("depend os, and os version: centos6");
 		reply->set_os_version("centos6");
 		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
 	}
 	else if(bDependOsVersion && strSysVer.find("7") != string::npos){
+		LOG_INFO("depend os, and os version: centos7");
 		reply->set_os_version("centos7");
 		strNicInfoCmd = "ifconfig";
 	}
 	else if( !bDependOsVersion && strSysVer.find("6") != string::npos){
+		LOG_INFO("no depend os, and os version: centos6");
 		reply->set_os_version("centos6");
-		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
+		strNicInfoCmd = "ifconfig";
 	}
 	else if( !bDependOsVersion && strSysVer.find("7") != string::npos){
+		LOG_INFO("no depend os, and os version: centos7");
 		reply->set_os_version("centos7");
-		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
+		strNicInfoCmd = "ifconfig";
 	}
 	else{
 		LOG_WARN("the system version is not centos6 and centos7");
@@ -155,7 +159,7 @@ Status SysInfoImpl::getDeviceDetail (ServerContext* context, const GetDeviceDeta
 	reply->set_nic_info(strNicInfo);
 	LOG_INFO("network info:%s", strNicInfo.c_str());
 	
-	LOG_INFO("get cpu usage successfully");
+	LOG_INFO("get device detail successfully");
 	return Status::OK;
 }
 
@@ -224,20 +228,24 @@ Status SysInfoImpl::getNicInfo (ServerContext* context, const GetNicInfoReq* req
 
 	string strNicInfoCmd, strNicInfo;
 	if(bDependOsVersion && strSysVer.find("6") != string::npos){
+		LOG_INFO("depend os, and os version: centos6");
 		reply->set_os_version("centos6");
 		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
 	}
 	else if(bDependOsVersion && strSysVer.find("7") != string::npos){
+		LOG_INFO("depend os, and os version: centos7");
 		reply->set_os_version("centos7");
 		strNicInfoCmd = "ifconfig";
 	}
 	else if( !bDependOsVersion && strSysVer.find("6") != string::npos){
+		LOG_INFO("no depend os, and os version: centos6");
 		reply->set_os_version("centos6");
-		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
+		strNicInfoCmd = "ifconfig";
 	}
 	else if( !bDependOsVersion && strSysVer.find("7") != string::npos){
+		LOG_INFO("no depend os, and os version: centos7");
 		reply->set_os_version("centos7");
-		strNicInfoCmd = "ifconfig -a |awk NF |grep -v collisions |grep -v Memory";
+		strNicInfoCmd = "ifconfig";
 	}
 	else{
 		LOG_WARN("the system version is not centos6 and centos7");

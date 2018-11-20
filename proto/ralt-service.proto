@@ -19,9 +19,9 @@ service RaltService {
 	rpc getBasicConfig (GetBasicConfigReq) returns (GetBasicConfigRsp) {}
 	rpc setBasicConfig (SetBasicConfigReq) returns (SetBasicConfigRsp) {}
 	//ralt.domain.conf
-	rpc getAllDomain (GetAllDomainReq) returns (stream Domain) {}
+	rpc getAllDomain (GetAllDomainReq) returns (GetAllDomainRsp) {}
 	rpc updateDomain (stream Domain) returns (UpdateDomainRsp) {}		//add modify delete
-	rpc getDomain (GetDomainReq) returns (Domain) {}
+	rpc getDomain (GetDomainReq) returns (stream Domain) {}
 	rpc addDomain (Domain) returns (AddDomainRsp) {}
 	rpc deleteDomain (DeleteDomainReq) returns (DeleteDomainRsp) {}
 	//ralt.miscellaneous.conf
@@ -136,15 +136,15 @@ message GetBasicConfigRsp {
 	uint32 max_space_mb_for_logs = 2;
 	uint32 rolling_enabled = 3;
 	string server_ports = 4;
-	string storage_cache_size = 5;
+	uint32 storage_cache_size = 5;
 }
 
 message SetBasicConfigReq {
 	uint32 logging_enabled = 1;            //取值：0-不启用日志； 1-开启错误； 2-开启事务日志； 3-错误日志和事务日志一起开启
 	uint32 max_space_mb_for_logs = 2;      //日志最大磁盘空间（单位为mb）
-	uint32 rolling_enabled = 3;            //日志是否备份	0-不开启； 1-开启
+	uint32 rolling_enabled = 3;            //日志是否备份	0-不开启； 1-开启日志（根据时间间隔备份）；2-开启日志（根据日志文件大小备份）
 	string server_ports = 4;               //ralt服务端口，默认值 8080 8080:ipv6
-	string storage_cache_size = 5;         //缓存磁盘大小，默认值 250M
+	uint32 storage_cache_size = 5;         //缓存磁盘大小，单位为M，默认值 250（最小值为128）
 }
 
 message SetBasicConfigRsp{
@@ -157,10 +157,6 @@ enum DomainType{
 	enum_subs_domain = 1;
 }
 
-message GetAllDomainReq{
-	uint32 type = 1;
-}
-
 message Domain{
 	DomainType type = 1;
 	string domain_str = 2;
@@ -168,12 +164,23 @@ message Domain{
 	string port = 4;
 }
 
+message GetAllDomainReq{
+	uint32 page_domain_sum = 1;            //每页会员数
+	uint32 page_num = 2;                   //页数
+}
+
+message GetAllDomainRsp{
+	repeated Domain domain = 1;
+	uint32 domain_sum = 2;                 //会员总数
+}
+
 message UpdateDomainRsp{
 	uint32 result = 1;
 }
 
 message GetDomainReq{
-	string domain_str = 1;
+	string domain_str = 1;              //根据域名模糊查询
+	string transformed_domain = 2;      //根据转换域名模糊查询
 }
 
 message AddDomainRsp{

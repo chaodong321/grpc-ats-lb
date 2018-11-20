@@ -77,6 +77,7 @@ using raltservice::SetBasicConfigRsp;
 using raltservice::DomainType;
 using raltservice::Domain;
 using raltservice::GetAllDomainReq;
+using raltservice::GetAllDomainRsp;
 using raltservice::GetDomainReq;
 using raltservice::UpdateDomainRsp;
 using raltservice::AddDomainRsp;
@@ -486,7 +487,7 @@ class RaltServiceClient {
 			request.set_max_space_mb_for_logs(1);
 			request.set_rolling_enabled(1);
 			request.set_server_ports("80:ipv6 8080:ipv6 443:ipv6");
-			request.set_storage_cache_size("500mb");
+			request.set_storage_cache_size(500);
 			SetBasicConfigRsp reply;
 			Status status =  stub_ralt->setBasicConfig(&context, request, &reply);
 
@@ -497,22 +498,25 @@ class RaltServiceClient {
 			}
 		}
 
-		void getAllDomain(){
+		void getAllDomain(unsigned int page_domain_sum, unsigned int page_num){
 			ClientContext context;
 			GetAllDomainReq request;
-			std::unique_ptr<ClientReader<Domain> > reader(stub_ralt->getAllDomain(&context, request));
-			Domain domain_member;
-			while (reader->Read(&domain_member)) {
-				std::cout << "type:" << domain_member.type() << std::endl;
-				std::cout << "member:" << domain_member.domain_str() << std::endl;
-				std::cout << "transform:" << domain_member.append_or_replace_str() << std::endl;
-				std::cout << "port:" << domain_member.port() << std::endl;
-			}
-			Status status = reader->Finish();
+			GetAllDomainRsp reply;
+			request.set_page_domain_sum(page_domain_sum);
+			request.set_page_num(page_num);
+			Status status =  stub_ralt->getAllDomain(&context, request, &reply);
 			if (status.ok()) {
-				std::cout << "getDomain rpc succeeded." << std::endl;
+				std::cout << "getAllDomain rpc succeeded." << std::endl;
+				std::cout << "domain_sum: " << reply.domain_sum() << std::endl;
+				::google::protobuf::RepeatedPtrField<Domain> domain=reply.domain();
+				for (const auto& domain_member : domain){
+					std::cout << "type:" << domain_member.type() << std::endl;
+					std::cout << "member:" << domain_member.domain_str() << std::endl;
+					std::cout << "transform:" << domain_member.append_or_replace_str() << std::endl;
+					std::cout << "port:" << domain_member.port() << std::endl;
+				}
 			} else {
-				std::cout << "getDomain rpc failed." << std::endl;
+				std::cout << "getAllDomain rpc failed." << std::endl;
 			}
 		}
 
@@ -544,16 +548,22 @@ class RaltServiceClient {
 		    }
 		}
 
-		void getDomain(){
+		void getDomain(const std::string &strDomain, const std::string &strTransDomain){
 			ClientContext context;
 			GetDomainReq request;
-			request.set_domain_str("www.reyzar.com");
-			Domain reply;
-			Status status =  stub_ralt->getDomain(&context, request, &reply);
+			request.set_domain_str(strDomain);
+			request.set_transformed_domain(strTransDomain);
+			std::unique_ptr<ClientReader<Domain> > reader(stub_ralt->getDomain(&context, request));
+			Domain domain_member;
+			while (reader->Read(&domain_member)) {
+				std::cout << "type:" << domain_member.type() << std::endl;
+				std::cout << "member:" << domain_member.domain_str() << std::endl;
+				std::cout << "transform:" << domain_member.append_or_replace_str() << std::endl;
+				std::cout << "port:" << domain_member.port() << std::endl;
+			}
+			Status status = reader->Finish();
 			if (status.ok()) {
-				std::cout << "type: " << reply.type() << std::endl;
-				std::cout << "append_or_replace_str: " << reply.append_or_replace_str() << std::endl;
-				std::cout << "port: " << reply.port() << std::endl;
+				std::cout << "getDomain rpc succeeded." << std::endl;
 			} else {
 				std::cout << "getDomain rpc failed." << std::endl;
 			}
@@ -684,12 +694,12 @@ int main(int argc, char** argv) {
 	//client.showLogInfo();
 	//client.getRaltLogs();
 
-	client.getBasicConfig();
+	//client.getBasicConfig();
 	//client.setBasicConfig();
 	
-	//client.getAllDomain();
+	client.getAllDomain(2,2);
 	//client.updateDomain();
-	//client.getDomain("www.reyzar.com");
+	//client.getDomain("www.reyzar.com", "");
 	//client.delDomain("www.reyzar.com");
 	//client.addDomain();
 	

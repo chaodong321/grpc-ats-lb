@@ -218,10 +218,10 @@ int RaltDomain::GetMemberNum()
 }
 
 
-map<string, DomainValue>* RaltDomain::GetAllDomain()
+map<string, DomainValue>& RaltDomain::GetAllDomain()
 {
 	ParseDomainConf();
-	return &m_DomainMap;
+	return m_DomainMap;
 }
 
 
@@ -278,10 +278,40 @@ void RaltDomain::UpdateDomain(const map<string, DomainValue>* domainMap)
 	of.close();
 }
 
-DomainValue RaltDomain::GetDomain(string strDomain)
+void RaltDomain::GetDomain(const string &strDomain, const string &strTransDomain,
+    map<string, DomainValue> &domainMap)
 {
 	ParseDomainConf();
-	return m_DomainMap[strDomain];
+	if( !strDomain.empty() && !strTransDomain.empty()){
+		for(const auto it:  m_DomainMap){
+			if(it.first.find(strDomain) != string::npos && it.second.type == DOMAIN_MEMBER
+				&& it.second.str_append_or_replace.find(strTransDomain)!= string::npos){
+				domainMap[it.first] = m_DomainMap[it.first];
+			}
+		}
+	}
+	else if(!strDomain.empty() && strTransDomain.empty()){
+		for(const auto it:  m_DomainMap){
+			if(it.first.find(strDomain) != string::npos && it.second.type == DOMAIN_MEMBER){
+				domainMap[it.first] = m_DomainMap[it.first];
+			}
+		}
+	}
+	else if(strDomain.empty() && !strTransDomain.empty()){
+		for(const auto it:  m_DomainMap){
+			if(it.second.type == DOMAIN_MEMBER 
+				&& it.second.str_append_or_replace.find(strTransDomain) != string::npos){
+				domainMap[it.second.str_domain] = m_DomainMap[it.second.str_domain];
+			}
+		}
+	}
+	else{
+		for(const auto it:  m_DomainMap){
+			if(it.second.type == DOMAIN_MEMBER){
+				domainMap[it.second.str_domain] = m_DomainMap[it.second.str_domain];
+			}
+		}
+	}
 }
 
 void RaltDomain::AddDomain(const DomainValue *domain)

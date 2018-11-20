@@ -110,16 +110,21 @@ class SetBasicConfigRspDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<SetBasicConfigRsp>
       _instance;
 } _SetBasicConfigRsp_default_instance_;
-class GetAllDomainReqDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetAllDomainReq>
-      _instance;
-} _GetAllDomainReq_default_instance_;
 class DomainDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<Domain>
       _instance;
 } _Domain_default_instance_;
+class GetAllDomainReqDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<GetAllDomainReq>
+      _instance;
+} _GetAllDomainReq_default_instance_;
+class GetAllDomainRspDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<GetAllDomainRsp>
+      _instance;
+} _GetAllDomainRsp_default_instance_;
 class UpdateDomainRspDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<UpdateDomainRsp>
@@ -565,6 +570,27 @@ void InitDefaultsSetBasicConfigRsp() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsSetBasicConfigRspImpl);
 }
 
+void InitDefaultsDomainImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  {
+    void* ptr = &::raltservice::_Domain_default_instance_;
+    new (ptr) ::raltservice::Domain();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::raltservice::Domain::InitAsDefaultInstance();
+}
+
+void InitDefaultsDomain() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsDomainImpl);
+}
+
 void InitDefaultsGetAllDomainReqImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -586,7 +612,7 @@ void InitDefaultsGetAllDomainReq() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetAllDomainReqImpl);
 }
 
-void InitDefaultsDomainImpl() {
+void InitDefaultsGetAllDomainRspImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
 #ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
@@ -594,17 +620,18 @@ void InitDefaultsDomainImpl() {
 #else
   ::google::protobuf::internal::InitProtobufDefaults();
 #endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_ralt_2dservice_2eproto::InitDefaultsDomain();
   {
-    void* ptr = &::raltservice::_Domain_default_instance_;
-    new (ptr) ::raltservice::Domain();
+    void* ptr = &::raltservice::_GetAllDomainRsp_default_instance_;
+    new (ptr) ::raltservice::GetAllDomainRsp();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::raltservice::Domain::InitAsDefaultInstance();
+  ::raltservice::GetAllDomainRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsDomain() {
+void InitDefaultsGetAllDomainRsp() {
   static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsDomainImpl);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetAllDomainRspImpl);
 }
 
 void InitDefaultsUpdateDomainRspImpl() {
@@ -880,7 +907,7 @@ void InitDefaultsExecCmdRsp() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsExecCmdRspImpl);
 }
 
-::google::protobuf::Metadata file_level_metadata[33];
+::google::protobuf::Metadata file_level_metadata[34];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[4];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -1035,12 +1062,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::SetBasicConfigRsp, result_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetAllDomainReq, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetAllDomainReq, type_),
-  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::Domain, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -1049,6 +1070,20 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::Domain, domain_str_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::Domain, append_or_replace_str_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::Domain, port_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetAllDomainReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetAllDomainReq, page_domain_sum_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetAllDomainReq, page_num_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetAllDomainRsp, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetAllDomainRsp, domain_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetAllDomainRsp, domain_sum_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::UpdateDomainRsp, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1061,6 +1096,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetDomainReq, domain_str_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetDomainReq, transformed_domain_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::AddDomainRsp, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1150,21 +1186,22 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 124, -1, sizeof(::raltservice::GetBasicConfigRsp)},
   { 134, -1, sizeof(::raltservice::SetBasicConfigReq)},
   { 144, -1, sizeof(::raltservice::SetBasicConfigRsp)},
-  { 150, -1, sizeof(::raltservice::GetAllDomainReq)},
-  { 156, -1, sizeof(::raltservice::Domain)},
-  { 165, -1, sizeof(::raltservice::UpdateDomainRsp)},
-  { 171, -1, sizeof(::raltservice::GetDomainReq)},
-  { 177, -1, sizeof(::raltservice::AddDomainRsp)},
-  { 183, -1, sizeof(::raltservice::DeleteDomainReq)},
-  { 189, -1, sizeof(::raltservice::DeleteDomainRsp)},
-  { 195, -1, sizeof(::raltservice::GetMiscReq)},
-  { 201, -1, sizeof(::raltservice::GetMiscRsp)},
-  { 207, -1, sizeof(::raltservice::Misc)},
-  { 214, -1, sizeof(::raltservice::ModMiscOpRsp)},
-  { 220, -1, sizeof(::raltservice::RaltStatusReq)},
-  { 226, -1, sizeof(::raltservice::RaltStatus)},
-  { 233, -1, sizeof(::raltservice::ExecCmdReq)},
-  { 240, -1, sizeof(::raltservice::ExecCmdRsp)},
+  { 150, -1, sizeof(::raltservice::Domain)},
+  { 159, -1, sizeof(::raltservice::GetAllDomainReq)},
+  { 166, -1, sizeof(::raltservice::GetAllDomainRsp)},
+  { 173, -1, sizeof(::raltservice::UpdateDomainRsp)},
+  { 179, -1, sizeof(::raltservice::GetDomainReq)},
+  { 186, -1, sizeof(::raltservice::AddDomainRsp)},
+  { 192, -1, sizeof(::raltservice::DeleteDomainReq)},
+  { 198, -1, sizeof(::raltservice::DeleteDomainRsp)},
+  { 204, -1, sizeof(::raltservice::GetMiscReq)},
+  { 210, -1, sizeof(::raltservice::GetMiscRsp)},
+  { 216, -1, sizeof(::raltservice::Misc)},
+  { 223, -1, sizeof(::raltservice::ModMiscOpRsp)},
+  { 229, -1, sizeof(::raltservice::RaltStatusReq)},
+  { 235, -1, sizeof(::raltservice::RaltStatus)},
+  { 242, -1, sizeof(::raltservice::ExecCmdReq)},
+  { 249, -1, sizeof(::raltservice::ExecCmdRsp)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1186,8 +1223,9 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetBasicConfigRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_SetBasicConfigReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_SetBasicConfigRsp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetAllDomainReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_Domain_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetAllDomainReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetAllDomainRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_UpdateDomainRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_GetDomainReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::raltservice::_AddDomainRsp_default_instance_),
@@ -1219,7 +1257,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 33);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 34);
 }
 
 void AddDescriptorsImpl() {
@@ -1274,68 +1312,71 @@ void AddDescriptorsImpl() {
       "ax_space_mb_for_logs\030\002 \001(\r\022\027\n\017rolling_en"
       "abled\030\003 \001(\r\022\024\n\014server_ports\030\004 \001(\t\022\032\n\022sto"
       "rage_cache_size\030\005 \001(\r\"#\n\021SetBasicConfigR"
-      "sp\022\016\n\006result\030\001 \001(\r\"\037\n\017GetAllDomainReq\022\014\n"
-      "\004type\030\001 \001(\r\"p\n\006Domain\022%\n\004type\030\001 \001(\0162\027.ra"
-      "ltservice.DomainType\022\022\n\ndomain_str\030\002 \001(\t"
-      "\022\035\n\025append_or_replace_str\030\003 \001(\t\022\014\n\004port\030"
-      "\004 \001(\t\"!\n\017UpdateDomainRsp\022\016\n\006result\030\001 \001(\r"
-      "\"\"\n\014GetDomainReq\022\022\n\ndomain_str\030\001 \001(\t\"\036\n\014"
-      "AddDomainRsp\022\016\n\006result\030\001 \001(\r\"%\n\017DeleteDo"
-      "mainReq\022\022\n\ndomain_str\030\001 \001(\t\"!\n\017DeleteDom"
-      "ainRsp\022\016\n\006result\030\001 \001(\r\"\032\n\nGetMiscReq\022\014\n\004"
-      "type\030\001 \001(\r\"G\n\nGetMiscRsp\0229\n\030ralt_filter_"
-      "type_default\030\001 \001(\0162\027.raltservice.MiscSwi"
-      "tch\"Q\n\004Misc\022!\n\003key\030\001 \001(\0162\024.raltservice.M"
-      "iscKey\022&\n\005value\030\002 \001(\0162\027.raltservice.Misc"
-      "Switch\"\036\n\014ModMiscOpRsp\022\016\n\006result\030\001 \001(\r\" "
-      "\n\rRaltStatusReq\022\017\n\007ip_addr\030\001 \001(\t\"-\n\nRalt"
-      "Status\022\017\n\007ip_addr\030\001 \001(\t\022\016\n\006status\030\002 \001(\r\""
-      "D\n\nExecCmdReq\022\017\n\007ip_addr\030\001 \001(\t\022%\n\003cmd\030\002 "
-      "\001(\0162\030.raltservice.CommandType\"\034\n\nExecCmd"
-      "Rsp\022\016\n\006result\030\001 \001(\r*:\n\nDomainType\022\026\n\022enu"
-      "m_member_domain\020\000\022\024\n\020enum_subs_domain\020\001*"
-      ",\n\007MiscKey\022!\n\035enum_ralt_filter_type_defa"
-      "ult\020\000*+\n\nMiscSwitch\022\016\n\nswitch_off\020\000\022\r\n\ts"
-      "witch_on\020\001*b\n\013CommandType\022\016\n\nralt_start\020"
-      "\000\022\r\n\tralt_stop\020\001\022\020\n\014ralt_restart\020\002\022\017\n\013ca"
-      "che_clear\020\003\022\021\n\rreload_config\020\0042\250\n\n\013RaltS"
-      "ervice\022L\n\014getRaltStats\022\034.raltservice.Get"
-      "RaltStatsReq\032\034.raltservice.GetRaltStatsR"
-      "sp\"\000\022Q\n\022getStatsFieldValue\022\033.raltservice"
-      ".StatsFieldName\032\034.raltservice.StatsField"
-      "Value\"\000\022G\n\017getHomePageData\022\030.raltservice"
-      ".HomePageReq\032\030.raltservice.HomePageRsp\"\000"
-      "\022H\n\rshowCacheData\022\033.raltservice.CacheLoo"
-      "kUpReq\032\030.raltservice.CacheResult\"\000\022M\n\020sh"
-      "owFlowStatData\022\036.raltservice.FlowStatLoo"
-      "kUpReq\032\027.raltservice.FlowResult\"\000\022J\n\017sho"
-      "wLogInfoData\022\035.raltservice.LogInfoLookUp"
-      "Req\032\026.raltservice.LogResult\"\000\022E\n\013getRalt"
-      "Logs\022\033.raltservice.GetRaltLogsReq\032\025.ralt"
-      "service.RaltLogs\"\0000\001\022R\n\016getBasicConfig\022\036"
-      ".raltservice.GetBasicConfigReq\032\036.raltser"
-      "vice.GetBasicConfigRsp\"\000\022R\n\016setBasicConf"
-      "ig\022\036.raltservice.SetBasicConfigReq\032\036.ral"
-      "tservice.SetBasicConfigRsp\"\000\022E\n\014getAllDo"
-      "main\022\034.raltservice.GetAllDomainReq\032\023.ral"
-      "tservice.Domain\"\0000\001\022E\n\014updateDomain\022\023.ra"
-      "ltservice.Domain\032\034.raltservice.UpdateDom"
-      "ainRsp\"\000(\001\022=\n\tgetDomain\022\031.raltservice.Ge"
-      "tDomainReq\032\023.raltservice.Domain\"\000\022=\n\tadd"
-      "Domain\022\023.raltservice.Domain\032\031.raltservic"
-      "e.AddDomainRsp\"\000\022L\n\014deleteDomain\022\034.ralts"
-      "ervice.DeleteDomainReq\032\034.raltservice.Del"
-      "eteDomainRsp\"\000\022=\n\007getMisc\022\027.raltservice."
-      "GetMiscReq\032\027.raltservice.GetMiscRsp\"\000\0229\n"
-      "\007modMisc\022\021.raltservice.Misc\032\031.raltservic"
-      "e.ModMiscOpRsp\"\000\022H\n\rgetRaltStatus\022\032.ralt"
-      "service.RaltStatusReq\032\027.raltservice.Ralt"
-      "Status\"\0000\001\022=\n\007execCmd\022\027.raltservice.Exec"
-      "CmdReq\032\027.raltservice.ExecCmdRsp\"\000b\006proto"
-      "3"
+      "sp\022\016\n\006result\030\001 \001(\r\"p\n\006Domain\022%\n\004type\030\001 \001"
+      "(\0162\027.raltservice.DomainType\022\022\n\ndomain_st"
+      "r\030\002 \001(\t\022\035\n\025append_or_replace_str\030\003 \001(\t\022\014"
+      "\n\004port\030\004 \001(\t\"<\n\017GetAllDomainReq\022\027\n\017page_"
+      "domain_sum\030\001 \001(\r\022\020\n\010page_num\030\002 \001(\r\"J\n\017Ge"
+      "tAllDomainRsp\022#\n\006domain\030\001 \003(\0132\023.raltserv"
+      "ice.Domain\022\022\n\ndomain_sum\030\002 \001(\r\"!\n\017Update"
+      "DomainRsp\022\016\n\006result\030\001 \001(\r\">\n\014GetDomainRe"
+      "q\022\022\n\ndomain_str\030\001 \001(\t\022\032\n\022transformed_dom"
+      "ain\030\002 \001(\t\"\036\n\014AddDomainRsp\022\016\n\006result\030\001 \001("
+      "\r\"%\n\017DeleteDomainReq\022\022\n\ndomain_str\030\001 \001(\t"
+      "\"!\n\017DeleteDomainRsp\022\016\n\006result\030\001 \001(\r\"\032\n\nG"
+      "etMiscReq\022\014\n\004type\030\001 \001(\r\"G\n\nGetMiscRsp\0229\n"
+      "\030ralt_filter_type_default\030\001 \001(\0162\027.raltse"
+      "rvice.MiscSwitch\"Q\n\004Misc\022!\n\003key\030\001 \001(\0162\024."
+      "raltservice.MiscKey\022&\n\005value\030\002 \001(\0162\027.ral"
+      "tservice.MiscSwitch\"\036\n\014ModMiscOpRsp\022\016\n\006r"
+      "esult\030\001 \001(\r\" \n\rRaltStatusReq\022\017\n\007ip_addr\030"
+      "\001 \001(\t\"-\n\nRaltStatus\022\017\n\007ip_addr\030\001 \001(\t\022\016\n\006"
+      "status\030\002 \001(\r\"D\n\nExecCmdReq\022\017\n\007ip_addr\030\001 "
+      "\001(\t\022%\n\003cmd\030\002 \001(\0162\030.raltservice.CommandTy"
+      "pe\"\034\n\nExecCmdRsp\022\016\n\006result\030\001 \001(\r*:\n\nDoma"
+      "inType\022\026\n\022enum_member_domain\020\000\022\024\n\020enum_s"
+      "ubs_domain\020\001*,\n\007MiscKey\022!\n\035enum_ralt_fil"
+      "ter_type_default\020\000*+\n\nMiscSwitch\022\016\n\nswit"
+      "ch_off\020\000\022\r\n\tswitch_on\020\001*b\n\013CommandType\022\016"
+      "\n\nralt_start\020\000\022\r\n\tralt_stop\020\001\022\020\n\014ralt_re"
+      "start\020\002\022\017\n\013cache_clear\020\003\022\021\n\rreload_confi"
+      "g\020\0042\261\n\n\013RaltService\022L\n\014getRaltStats\022\034.ra"
+      "ltservice.GetRaltStatsReq\032\034.raltservice."
+      "GetRaltStatsRsp\"\000\022Q\n\022getStatsFieldValue\022"
+      "\033.raltservice.StatsFieldName\032\034.raltservi"
+      "ce.StatsFieldValue\"\000\022G\n\017getHomePageData\022"
+      "\030.raltservice.HomePageReq\032\030.raltservice."
+      "HomePageRsp\"\000\022H\n\rshowCacheData\022\033.raltser"
+      "vice.CacheLookUpReq\032\030.raltservice.CacheR"
+      "esult\"\000\022M\n\020showFlowStatData\022\036.raltservic"
+      "e.FlowStatLookUpReq\032\027.raltservice.FlowRe"
+      "sult\"\000\022J\n\017showLogInfoData\022\035.raltservice."
+      "LogInfoLookUpReq\032\026.raltservice.LogResult"
+      "\"\000\022E\n\013getRaltLogs\022\033.raltservice.GetRaltL"
+      "ogsReq\032\025.raltservice.RaltLogs\"\0000\001\022R\n\016get"
+      "BasicConfig\022\036.raltservice.GetBasicConfig"
+      "Req\032\036.raltservice.GetBasicConfigRsp\"\000\022R\n"
+      "\016setBasicConfig\022\036.raltservice.SetBasicCo"
+      "nfigReq\032\036.raltservice.SetBasicConfigRsp\""
+      "\000\022L\n\014getAllDomain\022\034.raltservice.GetAllDo"
+      "mainReq\032\034.raltservice.GetAllDomainRsp\"\000\022"
+      "E\n\014updateDomain\022\023.raltservice.Domain\032\034.r"
+      "altservice.UpdateDomainRsp\"\000(\001\022\?\n\tgetDom"
+      "ain\022\031.raltservice.GetDomainReq\032\023.raltser"
+      "vice.Domain\"\0000\001\022=\n\taddDomain\022\023.raltservi"
+      "ce.Domain\032\031.raltservice.AddDomainRsp\"\000\022L"
+      "\n\014deleteDomain\022\034.raltservice.DeleteDomai"
+      "nReq\032\034.raltservice.DeleteDomainRsp\"\000\022=\n\007"
+      "getMisc\022\027.raltservice.GetMiscReq\032\027.ralts"
+      "ervice.GetMiscRsp\"\000\0229\n\007modMisc\022\021.raltser"
+      "vice.Misc\032\031.raltservice.ModMiscOpRsp\"\000\022H"
+      "\n\rgetRaltStatus\022\032.raltservice.RaltStatus"
+      "Req\032\027.raltservice.RaltStatus\"\0000\001\022=\n\007exec"
+      "Cmd\022\027.raltservice.ExecCmdReq\032\027.raltservi"
+      "ce.ExecCmdRsp\"\000b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 4281);
+      descriptor, 4423);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ralt-service.proto", &protobuf_RegisterTypes);
 }
@@ -7440,244 +7481,6 @@ void SetBasicConfigRsp::InternalSwap(SetBasicConfigRsp* other) {
 
 // ===================================================================
 
-void GetAllDomainReq::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetAllDomainReq::kTypeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetAllDomainReq::GetAllDomainReq()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainReq();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:raltservice.GetAllDomainReq)
-}
-GetAllDomainReq::GetAllDomainReq(const GetAllDomainReq& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  type_ = from.type_;
-  // @@protoc_insertion_point(copy_constructor:raltservice.GetAllDomainReq)
-}
-
-void GetAllDomainReq::SharedCtor() {
-  type_ = 0u;
-  _cached_size_ = 0;
-}
-
-GetAllDomainReq::~GetAllDomainReq() {
-  // @@protoc_insertion_point(destructor:raltservice.GetAllDomainReq)
-  SharedDtor();
-}
-
-void GetAllDomainReq::SharedDtor() {
-}
-
-void GetAllDomainReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* GetAllDomainReq::descriptor() {
-  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetAllDomainReq& GetAllDomainReq::default_instance() {
-  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainReq();
-  return *internal_default_instance();
-}
-
-GetAllDomainReq* GetAllDomainReq::New(::google::protobuf::Arena* arena) const {
-  GetAllDomainReq* n = new GetAllDomainReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void GetAllDomainReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:raltservice.GetAllDomainReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  type_ = 0u;
-  _internal_metadata_.Clear();
-}
-
-bool GetAllDomainReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:raltservice.GetAllDomainReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 type = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &type_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:raltservice.GetAllDomainReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:raltservice.GetAllDomainReq)
-  return false;
-#undef DO_
-}
-
-void GetAllDomainReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:raltservice.GetAllDomainReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint32 type = 1;
-  if (this->type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->type(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:raltservice.GetAllDomainReq)
-}
-
-::google::protobuf::uint8* GetAllDomainReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetAllDomainReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint32 type = 1;
-  if (this->type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->type(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetAllDomainReq)
-  return target;
-}
-
-size_t GetAllDomainReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:raltservice.GetAllDomainReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // uint32 type = 1;
-  if (this->type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->type());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void GetAllDomainReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetAllDomainReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetAllDomainReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetAllDomainReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetAllDomainReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetAllDomainReq)
-    MergeFrom(*source);
-  }
-}
-
-void GetAllDomainReq::MergeFrom(const GetAllDomainReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetAllDomainReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.type() != 0) {
-    set_type(from.type());
-  }
-}
-
-void GetAllDomainReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetAllDomainReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetAllDomainReq::CopyFrom(const GetAllDomainReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetAllDomainReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetAllDomainReq::IsInitialized() const {
-  return true;
-}
-
-void GetAllDomainReq::Swap(GetAllDomainReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetAllDomainReq::InternalSwap(GetAllDomainReq* other) {
-  using std::swap;
-  swap(type_, other->type_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata GetAllDomainReq::GetMetadata() const {
-  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
 void Domain::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -8089,6 +7892,566 @@ void Domain::InternalSwap(Domain* other) {
 
 // ===================================================================
 
+void GetAllDomainReq::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int GetAllDomainReq::kPageDomainSumFieldNumber;
+const int GetAllDomainReq::kPageNumFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+GetAllDomainReq::GetAllDomainReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainReq();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:raltservice.GetAllDomainReq)
+}
+GetAllDomainReq::GetAllDomainReq(const GetAllDomainReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&page_domain_sum_, &from.page_domain_sum_,
+    static_cast<size_t>(reinterpret_cast<char*>(&page_num_) -
+    reinterpret_cast<char*>(&page_domain_sum_)) + sizeof(page_num_));
+  // @@protoc_insertion_point(copy_constructor:raltservice.GetAllDomainReq)
+}
+
+void GetAllDomainReq::SharedCtor() {
+  ::memset(&page_domain_sum_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&page_num_) -
+      reinterpret_cast<char*>(&page_domain_sum_)) + sizeof(page_num_));
+  _cached_size_ = 0;
+}
+
+GetAllDomainReq::~GetAllDomainReq() {
+  // @@protoc_insertion_point(destructor:raltservice.GetAllDomainReq)
+  SharedDtor();
+}
+
+void GetAllDomainReq::SharedDtor() {
+}
+
+void GetAllDomainReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetAllDomainReq::descriptor() {
+  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const GetAllDomainReq& GetAllDomainReq::default_instance() {
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainReq();
+  return *internal_default_instance();
+}
+
+GetAllDomainReq* GetAllDomainReq::New(::google::protobuf::Arena* arena) const {
+  GetAllDomainReq* n = new GetAllDomainReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetAllDomainReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:raltservice.GetAllDomainReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&page_domain_sum_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&page_num_) -
+      reinterpret_cast<char*>(&page_domain_sum_)) + sizeof(page_num_));
+  _internal_metadata_.Clear();
+}
+
+bool GetAllDomainReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:raltservice.GetAllDomainReq)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint32 page_domain_sum = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &page_domain_sum_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 page_num = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &page_num_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:raltservice.GetAllDomainReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:raltservice.GetAllDomainReq)
+  return false;
+#undef DO_
+}
+
+void GetAllDomainReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:raltservice.GetAllDomainReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 page_domain_sum = 1;
+  if (this->page_domain_sum() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->page_domain_sum(), output);
+  }
+
+  // uint32 page_num = 2;
+  if (this->page_num() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->page_num(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:raltservice.GetAllDomainReq)
+}
+
+::google::protobuf::uint8* GetAllDomainReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetAllDomainReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 page_domain_sum = 1;
+  if (this->page_domain_sum() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->page_domain_sum(), target);
+  }
+
+  // uint32 page_num = 2;
+  if (this->page_num() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->page_num(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetAllDomainReq)
+  return target;
+}
+
+size_t GetAllDomainReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:raltservice.GetAllDomainReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // uint32 page_domain_sum = 1;
+  if (this->page_domain_sum() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->page_domain_sum());
+  }
+
+  // uint32 page_num = 2;
+  if (this->page_num() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->page_num());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetAllDomainReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetAllDomainReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetAllDomainReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetAllDomainReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetAllDomainReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetAllDomainReq)
+    MergeFrom(*source);
+  }
+}
+
+void GetAllDomainReq::MergeFrom(const GetAllDomainReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetAllDomainReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.page_domain_sum() != 0) {
+    set_page_domain_sum(from.page_domain_sum());
+  }
+  if (from.page_num() != 0) {
+    set_page_num(from.page_num());
+  }
+}
+
+void GetAllDomainReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetAllDomainReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetAllDomainReq::CopyFrom(const GetAllDomainReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetAllDomainReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetAllDomainReq::IsInitialized() const {
+  return true;
+}
+
+void GetAllDomainReq::Swap(GetAllDomainReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetAllDomainReq::InternalSwap(GetAllDomainReq* other) {
+  using std::swap;
+  swap(page_domain_sum_, other->page_domain_sum_);
+  swap(page_num_, other->page_num_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetAllDomainReq::GetMetadata() const {
+  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void GetAllDomainRsp::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int GetAllDomainRsp::kDomainFieldNumber;
+const int GetAllDomainRsp::kDomainSumFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+GetAllDomainRsp::GetAllDomainRsp()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainRsp();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:raltservice.GetAllDomainRsp)
+}
+GetAllDomainRsp::GetAllDomainRsp(const GetAllDomainRsp& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      domain_(from.domain_),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  domain_sum_ = from.domain_sum_;
+  // @@protoc_insertion_point(copy_constructor:raltservice.GetAllDomainRsp)
+}
+
+void GetAllDomainRsp::SharedCtor() {
+  domain_sum_ = 0u;
+  _cached_size_ = 0;
+}
+
+GetAllDomainRsp::~GetAllDomainRsp() {
+  // @@protoc_insertion_point(destructor:raltservice.GetAllDomainRsp)
+  SharedDtor();
+}
+
+void GetAllDomainRsp::SharedDtor() {
+}
+
+void GetAllDomainRsp::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetAllDomainRsp::descriptor() {
+  ::protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const GetAllDomainRsp& GetAllDomainRsp::default_instance() {
+  ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainRsp();
+  return *internal_default_instance();
+}
+
+GetAllDomainRsp* GetAllDomainRsp::New(::google::protobuf::Arena* arena) const {
+  GetAllDomainRsp* n = new GetAllDomainRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetAllDomainRsp::Clear() {
+// @@protoc_insertion_point(message_clear_start:raltservice.GetAllDomainRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  domain_.Clear();
+  domain_sum_ = 0u;
+  _internal_metadata_.Clear();
+}
+
+bool GetAllDomainRsp::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:raltservice.GetAllDomainRsp)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .raltservice.Domain domain = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(input, add_domain()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 domain_sum = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &domain_sum_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:raltservice.GetAllDomainRsp)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:raltservice.GetAllDomainRsp)
+  return false;
+#undef DO_
+}
+
+void GetAllDomainRsp::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:raltservice.GetAllDomainRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .raltservice.Domain domain = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->domain_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->domain(static_cast<int>(i)), output);
+  }
+
+  // uint32 domain_sum = 2;
+  if (this->domain_sum() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->domain_sum(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:raltservice.GetAllDomainRsp)
+}
+
+::google::protobuf::uint8* GetAllDomainRsp::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:raltservice.GetAllDomainRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .raltservice.Domain domain = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->domain_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, this->domain(static_cast<int>(i)), deterministic, target);
+  }
+
+  // uint32 domain_sum = 2;
+  if (this->domain_sum() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->domain_sum(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:raltservice.GetAllDomainRsp)
+  return target;
+}
+
+size_t GetAllDomainRsp::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:raltservice.GetAllDomainRsp)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // repeated .raltservice.Domain domain = 1;
+  {
+    unsigned int count = static_cast<unsigned int>(this->domain_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->domain(static_cast<int>(i)));
+    }
+  }
+
+  // uint32 domain_sum = 2;
+  if (this->domain_sum() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->domain_sum());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetAllDomainRsp::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:raltservice.GetAllDomainRsp)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetAllDomainRsp* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetAllDomainRsp>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:raltservice.GetAllDomainRsp)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:raltservice.GetAllDomainRsp)
+    MergeFrom(*source);
+  }
+}
+
+void GetAllDomainRsp::MergeFrom(const GetAllDomainRsp& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:raltservice.GetAllDomainRsp)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  domain_.MergeFrom(from.domain_);
+  if (from.domain_sum() != 0) {
+    set_domain_sum(from.domain_sum());
+  }
+}
+
+void GetAllDomainRsp::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:raltservice.GetAllDomainRsp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetAllDomainRsp::CopyFrom(const GetAllDomainRsp& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:raltservice.GetAllDomainRsp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetAllDomainRsp::IsInitialized() const {
+  return true;
+}
+
+void GetAllDomainRsp::Swap(GetAllDomainRsp* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetAllDomainRsp::InternalSwap(GetAllDomainRsp* other) {
+  using std::swap;
+  domain_.InternalSwap(&other->domain_);
+  swap(domain_sum_, other->domain_sum_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetAllDomainRsp::GetMetadata() const {
+  protobuf_ralt_2dservice_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ralt_2dservice_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void UpdateDomainRsp::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -8331,6 +8694,7 @@ void GetDomainReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int GetDomainReq::kDomainStrFieldNumber;
+const int GetDomainReq::kTransformedDomainFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 GetDomainReq::GetDomainReq()
@@ -8350,11 +8714,16 @@ GetDomainReq::GetDomainReq(const GetDomainReq& from)
   if (from.domain_str().size() > 0) {
     domain_str_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.domain_str_);
   }
+  transformed_domain_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.transformed_domain().size() > 0) {
+    transformed_domain_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.transformed_domain_);
+  }
   // @@protoc_insertion_point(copy_constructor:raltservice.GetDomainReq)
 }
 
 void GetDomainReq::SharedCtor() {
   domain_str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  transformed_domain_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _cached_size_ = 0;
 }
 
@@ -8365,6 +8734,7 @@ GetDomainReq::~GetDomainReq() {
 
 void GetDomainReq::SharedDtor() {
   domain_str_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  transformed_domain_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void GetDomainReq::SetCachedSize(int size) const {
@@ -8397,6 +8767,7 @@ void GetDomainReq::Clear() {
   (void) cached_has_bits;
 
   domain_str_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  transformed_domain_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -8420,6 +8791,22 @@ bool GetDomainReq::MergePartialFromCodedStream(
             this->domain_str().data(), static_cast<int>(this->domain_str().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
             "raltservice.GetDomainReq.domain_str"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string transformed_domain = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_transformed_domain()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->transformed_domain().data(), static_cast<int>(this->transformed_domain().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "raltservice.GetDomainReq.transformed_domain"));
         } else {
           goto handle_unusual;
         }
@@ -8462,6 +8849,16 @@ void GetDomainReq::SerializeWithCachedSizes(
       1, this->domain_str(), output);
   }
 
+  // string transformed_domain = 2;
+  if (this->transformed_domain().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->transformed_domain().data(), static_cast<int>(this->transformed_domain().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "raltservice.GetDomainReq.transformed_domain");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->transformed_domain(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -8487,6 +8884,17 @@ void GetDomainReq::SerializeWithCachedSizes(
         1, this->domain_str(), target);
   }
 
+  // string transformed_domain = 2;
+  if (this->transformed_domain().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->transformed_domain().data(), static_cast<int>(this->transformed_domain().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "raltservice.GetDomainReq.transformed_domain");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->transformed_domain(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -8509,6 +8917,13 @@ size_t GetDomainReq::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->domain_str());
+  }
+
+  // string transformed_domain = 2;
+  if (this->transformed_domain().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->transformed_domain());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -8544,6 +8959,10 @@ void GetDomainReq::MergeFrom(const GetDomainReq& from) {
 
     domain_str_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.domain_str_);
   }
+  if (from.transformed_domain().size() > 0) {
+
+    transformed_domain_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.transformed_domain_);
+  }
 }
 
 void GetDomainReq::CopyFrom(const ::google::protobuf::Message& from) {
@@ -8571,6 +8990,7 @@ void GetDomainReq::Swap(GetDomainReq* other) {
 void GetDomainReq::InternalSwap(GetDomainReq* other) {
   using std::swap;
   domain_str_.Swap(&other->domain_str_);
+  transformed_domain_.Swap(&other->transformed_domain_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }

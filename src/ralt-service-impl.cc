@@ -21,7 +21,8 @@
 #define TRAFFIC_CTL "/opt/reyzar/can/bin/traffic_ctl"
 #define RECORD_CONFIG_PATH "/opt/reyzar/can/etc/trafficserver/storage.config"
 
-Status RaltServiceImpl::getRaltStats (ServerContext* context, const GetRaltStatsReq* request, GetRaltStatsRsp* reply)
+Status RaltServiceImpl::getRaltStats (ServerContext* context,
+	const GetRaltStatsReq* request, GetRaltStatsRsp* reply)
 {
 	LOG_INFO("get ralt stats");
 	
@@ -104,7 +105,8 @@ Status RaltServiceImpl::getRaltStats (ServerContext* context, const GetRaltStats
 	return Status::OK;
 }
 
-Status RaltServiceImpl::getStatsFieldValue (ServerContext* context, const StatsFieldName* request, StatsFieldValue* reply)
+Status RaltServiceImpl::getStatsFieldValue (ServerContext* context,
+	const StatsFieldName* request, StatsFieldValue* reply)
 {
 	LOG_INFO("get stats field value");
 	
@@ -143,7 +145,8 @@ Status RaltServiceImpl::getStatsFieldValue (ServerContext* context, const StatsF
 	return Status::OK;
 }
 
-Status RaltServiceImpl::getHomePageData (ServerContext* context, const HomePageReq* request, HomePageRsp* reply)
+Status RaltServiceImpl::getHomePageData (ServerContext* context,
+	const HomePageReq* request, HomePageRsp* reply)
 {
 	LOG_INFO("get home page data");
 	string strValue;
@@ -244,7 +247,8 @@ Status RaltServiceImpl::showCacheData(ServerContext* context, const CacheLookUpR
 	return Status::OK;
 }
 
-Status RaltServiceImpl::showFlowStatData(ServerContext* context, const FlowStatLookUpReq* request, FlowResult* reply)
+Status RaltServiceImpl::showFlowStatData(ServerContext* context,
+	const FlowStatLookUpReq* request, FlowResult* reply)
 {
 	LOG_INFO("get flow data");
 	string strValue;
@@ -327,7 +331,8 @@ Status RaltServiceImpl::showFlowStatData(ServerContext* context, const FlowStatL
 	return Status::OK;
 }
 
-Status RaltServiceImpl::showLogInfoData(ServerContext* context, const LogInfoLookUpReq* request, LogResult* reply)
+Status RaltServiceImpl::showLogInfoData(ServerContext* context,
+	const LogInfoLookUpReq* request, LogResult* reply)
 {
 	LOG_INFO("get log info");
 	string strValue;
@@ -367,12 +372,14 @@ Status RaltServiceImpl::showLogInfoData(ServerContext* context, const LogInfoLoo
 	return Status::OK;
 }
 
-Status RaltServiceImpl::getRaltLogs(ServerContext* context, const GetRaltLogsReq* request, ServerWriter<RaltLogs>* reply)
+Status RaltServiceImpl::getRaltLogs(ServerContext* context,
+	const GetRaltLogsReq* request, ServerWriter<RaltLogs>* reply)
 {
 	LOG_INFO("get ralt logs");
 	string strFileListCmd, strFileList;
 	//strFileListCmd = "ls -ltr /opt/reyzar/can/var/log/trafficserver/ | grep '.old' | grep -v 'error' | grep -v 'squid'";
-	strFileListCmd = string("ls -ltr ") + string(ATS_LOG_DIR) + string(" | grep -v total |awk '{print $9}'");
+	strFileListCmd = string("ls -ltr ") + string(ATS_LOG_DIR) 
+		+ string(" | grep -v total |awk '{print $9}'");
 	if(!UtilCommon::ShellCmd(strFileListCmd, strFileList)){
 		LOG_ERROR("shell cmd error: %s", strFileListCmd.c_str());
 		return Status::CANCELLED;
@@ -393,7 +400,8 @@ Status RaltServiceImpl::getRaltLogs(ServerContext* context, const GetRaltLogsReq
 		string strAbsolutePath = string(ATS_LOG_DIR) + strLine;
 
 		struct stat statbuf;
-		if( stat(strAbsolutePath.c_str(), &statbuf) < 0 || S_ISDIR(statbuf.st_mode) || statbuf.st_size <= 0){
+		if( stat(strAbsolutePath.c_str(), &statbuf) < 0 
+			|| S_ISDIR(statbuf.st_mode) || statbuf.st_size <= 0){
 			continue;
 		}
 
@@ -427,7 +435,8 @@ Status RaltServiceImpl::getRaltLogs(ServerContext* context, const GetRaltLogsReq
 	time(&now);
 	timenow = localtime(&now);
 	char format_time[32];
-	snprintf(format_time, sizeof(format_time)-1, "%d-%d-%d", timenow->tm_year+1900, timenow-> tm_mon+1,  timenow-> tm_mday);
+	snprintf(format_time, sizeof(format_time)-1, "%d-%d-%d",
+		timenow->tm_year+1900, timenow-> tm_mon+1,  timenow-> tm_mday);
 	string strDirName = string(ATS_LOG_DIR) + string("bak/") + string(format_time);
 	string strCreateDirCmd = string("mkdir -p ") + strDirName;
 	system(strCreateDirCmd.c_str());
@@ -521,12 +530,14 @@ Status RaltServiceImpl::getRaltLogs(ServerContext* context, const GetRaltLogsReq
 	*/
 }
 
-Status RaltServiceImpl::getBasicConfig(ServerContext* context, const GetBasicConfigReq* request, GetBasicConfigRsp* reply)
+Status RaltServiceImpl::getBasicConfig(ServerContext* context,
+	const GetBasicConfigReq* request, GetBasicConfigRsp* reply)
 {
 
 	LOG_INFO("get basic config");
 	//logging_enabled
-	string strLoggingEnabledCmd = string(TRAFFIC_CTL) + string(" config get proxy.config.log.logging_enabled|awk -F ': ' '{printf $2}'");
+	string strLoggingEnabledCmd = string(TRAFFIC_CTL)
+		+ string(" config get proxy.config.log.logging_enabled|awk -F ': ' '{printf $2}'");
 	string strLoggingEnabled;
 	if(UtilCommon::ShellCmd(strLoggingEnabledCmd, strLoggingEnabled)){
 		if(!strLoggingEnabled.empty()){
@@ -544,7 +555,8 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context, const GetBasicCon
 	}
 	
 	//max_space_mb_for_logs
-	string strLogMaxSpaceCmd = string(TRAFFIC_CTL) + string(" config get proxy.config.log.max_space_mb_for_logs|awk -F ': ' '{printf $2}'");
+	string strLogMaxSpaceCmd = string(TRAFFIC_CTL)
+		+ string(" config get proxy.config.log.max_space_mb_for_logs|awk -F ': ' '{printf $2}'");
 	string strLogMaxSpace;
 	if(UtilCommon::ShellCmd(strLogMaxSpaceCmd, strLogMaxSpace)){
 		if(!strLogMaxSpace.empty()){
@@ -562,7 +574,8 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context, const GetBasicCon
 	}
 	
 	//rolling_enabled
-	string strRollingEnabledCmd = string(TRAFFIC_CTL) + string(" config get proxy.config.log.rolling_enabled|awk -F ': ' '{printf $2}'");
+	string strRollingEnabledCmd = string(TRAFFIC_CTL) 
+		+ string(" config get proxy.config.log.rolling_enabled|awk -F ': ' '{printf $2}'");
 	string strRollingEnabled;
 	if(UtilCommon::ShellCmd(strRollingEnabledCmd, strRollingEnabled)){
 		if(!strRollingEnabled.empty()){
@@ -580,7 +593,8 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context, const GetBasicCon
 	}
 
 	//server_ports
-	string strServerPortsCmd = string(TRAFFIC_CTL) + string(" config get proxy.config.http.server_ports|awk -F ': ' '{printf $2}'");
+	string strServerPortsCmd = string(TRAFFIC_CTL)
+		+ string(" config get proxy.config.http.server_ports|awk -F ': ' '{printf $2}'");
 	string strServerPorts;
 	if(UtilCommon::ShellCmd(strServerPortsCmd, strServerPorts)){
 		if(!strServerPorts.empty()){
@@ -598,12 +612,15 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context, const GetBasicCon
 	}
 
 	//storage cache size
-	string strStorageCacheCmd = string("cat ") + string(RECORD_CONFIG_PATH) + string(" | grep -v '#' | awk '{printf $2}'");
+	string strStorageCacheCmd = string("cat ") + string(RECORD_CONFIG_PATH)
+		+ string(" | grep -v '#' | awk '{printf $2}'");
 	string strStorageCache;
 	if(UtilCommon::ShellCmd(strStorageCacheCmd, strStorageCache)){
 		if(!strStorageCache.empty()){
 			LOG_INFO("storage cache size: %s", strStorageCache.c_str());
-			reply->set_storage_cache_size(strStorageCache.c_str());
+			unsigned int nStorageSize;
+			sscanf(strStorageCache.c_str(), "%d[1-9]", &nStorageSize);
+			reply->set_storage_cache_size(nStorageSize);
 		}
 		else{
 			LOG_ERROR("get storage cache size error: %s", strStorageCache.c_str());
@@ -619,17 +636,20 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context, const GetBasicCon
 	return Status::OK;
 }
 
-Status RaltServiceImpl::setBasicConfig(ServerContext* context, const SetBasicConfigReq* request, SetBasicConfigRsp* reply)
+Status RaltServiceImpl::setBasicConfig(ServerContext* context,
+	const SetBasicConfigReq* request, SetBasicConfigRsp* reply)
 {
 	LOG_INFO("set basic config");
 	LOG_INFO("logging_enabled: %u", request->logging_enabled());
 	LOG_INFO("max_space_mb_for_logs: %u", request->max_space_mb_for_logs());
 	LOG_INFO("rolling_enabled: %u", request->rolling_enabled());
 	LOG_INFO("server_ports: %s", request->server_ports().c_str());
-	LOG_INFO("storage_cache_size: %s", request->storage_cache_size().c_str());
+	LOG_INFO("storage_cache_size: %dM", request->storage_cache_size());
 
 	string strRet;
-	string strLoggingEnabledCmd = string(TRAFFIC_CTL) + string(" config set proxy.config.log.logging_enabled ") + to_string(request->logging_enabled());
+	string strLoggingEnabledCmd = string(TRAFFIC_CTL)
+		+ string(" config set proxy.config.log.logging_enabled ")
+		+ to_string(request->logging_enabled());
 	if(UtilCommon::ShellCmd(strLoggingEnabledCmd, strRet)){
 		if(strRet.find("failed") == string::npos){
 			LOG_INFO("set logging enabled successfully");
@@ -645,7 +665,10 @@ Status RaltServiceImpl::setBasicConfig(ServerContext* context, const SetBasicCon
 		return Status::CANCELLED;
 	}
 
-	string strMaxSpaceMbForLogsCmd = string(TRAFFIC_CTL) + string(" config set proxy.config.log.max_space_mb_for_logs ") + to_string(request->max_space_mb_for_logs());
+	string strMaxSpaceMbForLogsCmd = string(TRAFFIC_CTL)
+		+ string(" config set proxy.config.log.max_space_mb_for_logs ")
+		+ to_string(request->max_space_mb_for_logs());
+	
 	if(UtilCommon::ShellCmd(strMaxSpaceMbForLogsCmd, strRet)){
 		if(strRet.find("failed") == string::npos){
 			LOG_INFO("set max space mb for logs successfully");
@@ -662,7 +685,10 @@ Status RaltServiceImpl::setBasicConfig(ServerContext* context, const SetBasicCon
 		return Status::CANCELLED;
 	}
 
-	string strRollingEnabledCmd = string(TRAFFIC_CTL) + string(" config set proxy.config.log.rolling_enabled ") + to_string(request->rolling_enabled());
+	string strRollingEnabledCmd = string(TRAFFIC_CTL)
+		+ string(" config set proxy.config.log.rolling_enabled ")
+		+ to_string(request->rolling_enabled());
+	
 	if(UtilCommon::ShellCmd(strRollingEnabledCmd, strRet)){
 		if(strRet.find("failed") == string::npos){
 			LOG_INFO("set log rolling enabled successfully");
@@ -709,7 +735,8 @@ Status RaltServiceImpl::setBasicConfig(ServerContext* context, const SetBasicCon
 		reply->set_result(1);
 		return Status::CANCELLED;
 	}
-	string strAppendStorageCmd = string("sed -i '$a var/trafficserver ")+request->storage_cache_size()+string("' ") + (RECORD_CONFIG_PATH);
+	string strAppendStorageCmd = string("sed -i '$a var/trafficserver ") +
+	     to_string(request->storage_cache_size())+string("M' ") + (RECORD_CONFIG_PATH);
 	if(UtilCommon::ShellCmd(strAppendStorageCmd, strRet)){
 		if(!strRet.empty()){
 			LOG_ERROR("%s", strRet.c_str());
@@ -728,24 +755,44 @@ Status RaltServiceImpl::setBasicConfig(ServerContext* context, const SetBasicCon
 	return Status::OK;
 }
 
-Status RaltServiceImpl::getAllDomain(ServerContext* context, const GetAllDomainReq* request, ServerWriter<Domain>* reply)
+Status RaltServiceImpl::getAllDomain(ServerContext* context, const GetAllDomainReq* request,
+	GetAllDomainRsp* reply)
 {
 	LOG_INFO("get all domain");
-	map<string, DomainValue>* domainMap = RaltDomain::GetInstance()->GetAllDomain();
-	for(const auto it : *domainMap)
+	unsigned int nPageDomainSum = request->page_domain_sum();
+	unsigned int nPageNum = request->page_num();
+	LOG_INFO("page domain sum: %u", nPageDomainSum);
+	LOG_INFO("page num: %u", nPageNum);
+	map<string, DomainValue> domainMap = RaltDomain::GetInstance()->GetAllDomain();
+
+	reply->set_domain_sum(domainMap.size());
+
+	unsigned int nStart = (nPageNum-1>=0?(nPageNum-1):1) * nPageDomainSum + 1;
+	unsigned int nEnd = nPageNum * nPageDomainSum;
+	unsigned int nDomainNum = 0;
+
+	LOG_INFO("nStart: %u", nStart);
+	LOG_INFO("nEnd: %u", nEnd);
+	for(const auto it : domainMap)
 	{
-		Domain domain_member;
-		domain_member.set_type((raltservice::DomainType)it.second.type);
-		domain_member.set_domain_str(it.second.str_domain);
-		domain_member.set_append_or_replace_str(it.second.str_append_or_replace);
-		domain_member.set_port(it.second.str_port);
-		reply->Write(domain_member);
+		nDomainNum++;
+		LOG_INFO("nDomainNum: %u", nDomainNum);
+		LOG_INFO("str_domain: %s", it.second.str_domain.c_str());
+		if(nDomainNum >= nStart && nDomainNum <= nEnd){
+			LOG_INFO("add domain to reply: %s", it.second.str_domain.c_str());
+			Domain *domain_member = reply->add_domain();
+			domain_member->set_type((raltservice::DomainType)it.second.type);
+			domain_member->set_domain_str(it.second.str_domain);
+			domain_member->set_append_or_replace_str(it.second.str_append_or_replace);
+			domain_member->set_port(it.second.str_port);
+		}
 	}
 	LOG_INFO("get all domain successfully");
 	return Status::OK;
 }
 
-Status RaltServiceImpl::updateDomain(ServerContext* context, ServerReader<Domain>* request, UpdateDomainRsp* reply)
+Status RaltServiceImpl::updateDomain(ServerContext* context, ServerReader<Domain>* request,
+	UpdateDomainRsp* reply)
 {
 	LOG_INFO("update all domain");
 	map<string, DomainValue> domainMap;
@@ -766,21 +813,35 @@ Status RaltServiceImpl::updateDomain(ServerContext* context, ServerReader<Domain
 	return Status::OK;
 }
 
-Status RaltServiceImpl::getDomain(ServerContext* context, const GetDomainReq* request, Domain* reply)
+Status RaltServiceImpl::getDomain(ServerContext* context, const GetDomainReq* request,
+	ServerWriter<Domain>* reply)
 {
 	LOG_INFO("get domain info");
 	string strDomain = request->domain_str();
-	LOG_INFO("domain name: %s", strDomain.c_str());
-	DomainValue domain_value = RaltDomain::GetInstance()->GetDomain(strDomain);
-	reply->set_type((raltservice::DomainType)domain_value.type);
-	reply->set_domain_str(domain_value.str_domain);
-	reply->set_append_or_replace_str(domain_value.str_append_or_replace);
-	reply->set_port(domain_value.str_port);
+	string strTransDomain = request->transformed_domain();
+	LOG_INFO("search domain: %s", strDomain.c_str());
+	LOG_INFO("search transformed domain: %s", strTransDomain.c_str());
+	map<string, DomainValue> domainMap;
+	RaltDomain::GetInstance()->GetDomain(strDomain, strTransDomain, domainMap);
+	for(const auto it : domainMap)
+	{
+		Domain domain_member;
+		domain_member.set_type((raltservice::DomainType)it.second.type);
+		domain_member.set_domain_str(it.second.str_domain);
+		domain_member.set_append_or_replace_str(it.second.str_append_or_replace);
+		domain_member.set_port(it.second.str_port);
+		LOG_INFO("type: %d", it.second.type);
+		LOG_INFO("str_domain: %s", it.second.str_domain.c_str());
+		LOG_INFO("set_append_or_replace_str: %s", it.second.str_append_or_replace.c_str());
+		LOG_INFO("str_port: %s", it.second.str_port.c_str());
+		reply->Write(domain_member);
+	}
 	LOG_INFO("get domain info successfully");
 	return Status::OK;
 }
 
-Status RaltServiceImpl::addDomain(ServerContext* context, const Domain* request, AddDomainRsp* reply)
+Status RaltServiceImpl::addDomain(ServerContext* context, const Domain* request,
+	AddDomainRsp* reply)
 {
 	LOG_INFO("add domain");
 	DomainValue domain;
@@ -793,7 +854,8 @@ Status RaltServiceImpl::addDomain(ServerContext* context, const Domain* request,
 	return Status::OK;
 }
 
-Status RaltServiceImpl::deleteDomain(ServerContext* context, const DeleteDomainReq* request, DeleteDomainRsp* reply)
+Status RaltServiceImpl::deleteDomain(ServerContext* context, const DeleteDomainReq* request,
+	DeleteDomainRsp* reply)
 {
 	LOG_INFO("delete domain");
 	string strDomain = request->domain_str();
@@ -802,7 +864,8 @@ Status RaltServiceImpl::deleteDomain(ServerContext* context, const DeleteDomainR
 	return Status::OK;
 }
 
-Status RaltServiceImpl::getMisc(ServerContext* context, const GetMiscReq* request, GetMiscRsp* reply)
+Status RaltServiceImpl::getMisc(ServerContext* context, const GetMiscReq* request,
+	GetMiscRsp* reply)
 {
 	LOG_INFO("get misc");
 	MiscData data;
@@ -826,7 +889,8 @@ Status RaltServiceImpl::modMisc(ServerContext* context, const Misc* request, Mod
 	return Status::OK;
 }
 
-Status RaltServiceImpl::getRaltStatus(ServerContext* context, const RaltStatusReq* request, ServerWriter<RaltStatus>* reply)
+Status RaltServiceImpl::getRaltStatus(ServerContext* context, const RaltStatusReq* request,
+	ServerWriter<RaltStatus>* reply)
 {
 	LOG_INFO("get ralt status");
 	RaltStatus status;
@@ -846,7 +910,8 @@ Status RaltServiceImpl::getRaltStatus(ServerContext* context, const RaltStatusRe
 	return Status::OK;
 }
 
-Status RaltServiceImpl::execCmd(ServerContext* context, const ExecCmdReq* request, ExecCmdRsp* reply)
+Status RaltServiceImpl::execCmd(ServerContext* context, const ExecCmdReq* request,
+	ExecCmdRsp* reply)
 {
 	LOG_INFO("execute cmd");
 	int cmdType = request->cmd();
