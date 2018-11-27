@@ -21,7 +21,7 @@ service RaltService {
 	//ralt.domain.conf
 	rpc getAllDomain (GetAllDomainReq) returns (GetAllDomainRsp) {}
 	rpc updateDomain (stream Domain) returns (UpdateDomainRsp) {}		//add modify delete
-	rpc getDomain (GetDomainReq) returns (stream Domain) {}
+	rpc getDomain (GetDomainReq) returns (GetDomainRsp) {}
 	rpc addDomain (Domain) returns (AddDomainRsp) {}
 	rpc deleteDomain (DeleteDomainReq) returns (DeleteDomainRsp) {}
 	//ralt.miscellaneous.conf
@@ -165,13 +165,13 @@ message Domain{
 }
 
 message GetAllDomainReq{
-	uint32 page_domain_sum = 1;            //每页会员数
-	uint32 page_num = 2;                   //页数
+	uint32 page_size = 1;                     //每页会员数
+	uint32 page_number = 2;                   //页数
 }
 
 message GetAllDomainRsp{
 	repeated Domain domain = 1;
-	uint32 domain_sum = 2;                 //会员总数
+	uint32 domain_total = 2;                 //会员总数
 }
 
 message UpdateDomainRsp{
@@ -181,6 +181,13 @@ message UpdateDomainRsp{
 message GetDomainReq{
 	string domain_str = 1;              //根据域名模糊查询
 	string transformed_domain = 2;      //根据转换域名模糊查询
+	uint32 page_size = 3;                     //每页会员数
+	uint32 page_number = 4;                   //页数
+}
+
+message GetDomainRsp{
+	repeated Domain domain = 1;
+	uint32 domain_total = 2;                 //会员总数
 }
 
 message AddDomainRsp{

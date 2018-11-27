@@ -37,7 +37,7 @@ namespace protobuf_ralt_2dservice_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[34];
+  static const ::google::protobuf::internal::ParseTable schema[35];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -89,6 +89,8 @@ void InitDefaultsUpdateDomainRspImpl();
 void InitDefaultsUpdateDomainRsp();
 void InitDefaultsGetDomainReqImpl();
 void InitDefaultsGetDomainReq();
+void InitDefaultsGetDomainRspImpl();
+void InitDefaultsGetDomainRsp();
 void InitDefaultsAddDomainRspImpl();
 void InitDefaultsAddDomainRsp();
 void InitDefaultsDeleteDomainReqImpl();
@@ -135,6 +137,7 @@ inline void InitDefaults() {
   InitDefaultsGetAllDomainRsp();
   InitDefaultsUpdateDomainRsp();
   InitDefaultsGetDomainReq();
+  InitDefaultsGetDomainRsp();
   InitDefaultsAddDomainRsp();
   InitDefaultsDeleteDomainReq();
   InitDefaultsDeleteDomainRsp();
@@ -194,6 +197,9 @@ extern GetBasicConfigRspDefaultTypeInternal _GetBasicConfigRsp_default_instance_
 class GetDomainReq;
 class GetDomainReqDefaultTypeInternal;
 extern GetDomainReqDefaultTypeInternal _GetDomainReq_default_instance_;
+class GetDomainRsp;
+class GetDomainRspDefaultTypeInternal;
+extern GetDomainRspDefaultTypeInternal _GetDomainRsp_default_instance_;
 class GetMiscReq;
 class GetMiscReqDefaultTypeInternal;
 extern GetMiscReqDefaultTypeInternal _GetMiscReq_default_instance_;
@@ -2732,24 +2738,24 @@ class GetAllDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // uint32 page_domain_sum = 1;
-  void clear_page_domain_sum();
-  static const int kPageDomainSumFieldNumber = 1;
-  ::google::protobuf::uint32 page_domain_sum() const;
-  void set_page_domain_sum(::google::protobuf::uint32 value);
+  // uint32 page_size = 1;
+  void clear_page_size();
+  static const int kPageSizeFieldNumber = 1;
+  ::google::protobuf::uint32 page_size() const;
+  void set_page_size(::google::protobuf::uint32 value);
 
-  // uint32 page_num = 2;
-  void clear_page_num();
-  static const int kPageNumFieldNumber = 2;
-  ::google::protobuf::uint32 page_num() const;
-  void set_page_num(::google::protobuf::uint32 value);
+  // uint32 page_number = 2;
+  void clear_page_number();
+  static const int kPageNumberFieldNumber = 2;
+  ::google::protobuf::uint32 page_number() const;
+  void set_page_number(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:raltservice.GetAllDomainReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 page_domain_sum_;
-  ::google::protobuf::uint32 page_num_;
+  ::google::protobuf::uint32 page_size_;
+  ::google::protobuf::uint32 page_number_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
   friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainReqImpl();
@@ -2850,18 +2856,18 @@ class GetAllDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion
   const ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >&
       domain() const;
 
-  // uint32 domain_sum = 2;
-  void clear_domain_sum();
-  static const int kDomainSumFieldNumber = 2;
-  ::google::protobuf::uint32 domain_sum() const;
-  void set_domain_sum(::google::protobuf::uint32 value);
+  // uint32 domain_total = 2;
+  void clear_domain_total();
+  static const int kDomainTotalFieldNumber = 2;
+  ::google::protobuf::uint32 domain_total() const;
+  void set_domain_total(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:raltservice.GetAllDomainRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::raltservice::Domain > domain_;
-  ::google::protobuf::uint32 domain_sum_;
+  ::google::protobuf::uint32 domain_total_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
   friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetAllDomainRspImpl();
@@ -3077,15 +3083,141 @@ class GetDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_transformed_domain();
   void set_allocated_transformed_domain(::std::string* transformed_domain);
 
+  // uint32 page_size = 3;
+  void clear_page_size();
+  static const int kPageSizeFieldNumber = 3;
+  ::google::protobuf::uint32 page_size() const;
+  void set_page_size(::google::protobuf::uint32 value);
+
+  // uint32 page_number = 4;
+  void clear_page_number();
+  static const int kPageNumberFieldNumber = 4;
+  ::google::protobuf::uint32 page_number() const;
+  void set_page_number(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:raltservice.GetDomainReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr domain_str_;
   ::google::protobuf::internal::ArenaStringPtr transformed_domain_;
+  ::google::protobuf::uint32 page_size_;
+  ::google::protobuf::uint32 page_number_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
   friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetDomainReqImpl();
+};
+// -------------------------------------------------------------------
+
+class GetDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetDomainRsp) */ {
+ public:
+  GetDomainRsp();
+  virtual ~GetDomainRsp();
+
+  GetDomainRsp(const GetDomainRsp& from);
+
+  inline GetDomainRsp& operator=(const GetDomainRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetDomainRsp(GetDomainRsp&& from) noexcept
+    : GetDomainRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetDomainRsp& operator=(GetDomainRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetDomainRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetDomainRsp* internal_default_instance() {
+    return reinterpret_cast<const GetDomainRsp*>(
+               &_GetDomainRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    23;
+
+  void Swap(GetDomainRsp* other);
+  friend void swap(GetDomainRsp& a, GetDomainRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetDomainRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetDomainRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetDomainRsp& from);
+  void MergeFrom(const GetDomainRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetDomainRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .raltservice.Domain domain = 1;
+  int domain_size() const;
+  void clear_domain();
+  static const int kDomainFieldNumber = 1;
+  const ::raltservice::Domain& domain(int index) const;
+  ::raltservice::Domain* mutable_domain(int index);
+  ::raltservice::Domain* add_domain();
+  ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >*
+      mutable_domain();
+  const ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >&
+      domain() const;
+
+  // uint32 domain_total = 2;
+  void clear_domain_total();
+  static const int kDomainTotalFieldNumber = 2;
+  ::google::protobuf::uint32 domain_total() const;
+  void set_domain_total(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:raltservice.GetDomainRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::raltservice::Domain > domain_;
+  ::google::protobuf::uint32 domain_total_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetDomainRspImpl();
 };
 // -------------------------------------------------------------------
 
@@ -3124,7 +3256,7 @@ class AddDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_AddDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    23;
+    24;
 
   void Swap(AddDomainRsp* other);
   friend void swap(AddDomainRsp& a, AddDomainRsp& b) {
@@ -3223,7 +3355,7 @@ class DeleteDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
                &_DeleteDomainReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    24;
+    25;
 
   void Swap(DeleteDomainReq* other);
   friend void swap(DeleteDomainReq& a, DeleteDomainReq& b) {
@@ -3330,7 +3462,7 @@ class DeleteDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion
                &_DeleteDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    25;
+    26;
 
   void Swap(DeleteDomainRsp* other);
   friend void swap(DeleteDomainRsp& a, DeleteDomainRsp& b) {
@@ -3429,7 +3561,7 @@ class GetMiscReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_GetMiscReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    26;
+    27;
 
   void Swap(GetMiscReq* other);
   friend void swap(GetMiscReq& a, GetMiscReq& b) {
@@ -3528,7 +3660,7 @@ class GetMiscRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_GetMiscRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    27;
+    28;
 
   void Swap(GetMiscRsp* other);
   friend void swap(GetMiscRsp& a, GetMiscRsp& b) {
@@ -3627,7 +3759,7 @@ class Misc : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
                &_Misc_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    28;
+    29;
 
   void Swap(Misc* other);
   friend void swap(Misc& a, Misc& b) {
@@ -3733,7 +3865,7 @@ class ModMiscOpRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_ModMiscOpRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    29;
+    30;
 
   void Swap(ModMiscOpRsp* other);
   friend void swap(ModMiscOpRsp& a, ModMiscOpRsp& b) {
@@ -3832,7 +3964,7 @@ class RaltStatusReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_RaltStatusReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    30;
+    31;
 
   void Swap(RaltStatusReq* other);
   friend void swap(RaltStatusReq& a, RaltStatusReq& b) {
@@ -3939,7 +4071,7 @@ class RaltStatus : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_RaltStatus_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    31;
+    32;
 
   void Swap(RaltStatus* other);
   friend void swap(RaltStatus& a, RaltStatus& b) {
@@ -4053,7 +4185,7 @@ class ExecCmdReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_ExecCmdReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    32;
+    33;
 
   void Swap(ExecCmdReq* other);
   friend void swap(ExecCmdReq& a, ExecCmdReq& b) {
@@ -4167,7 +4299,7 @@ class ExecCmdRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_ExecCmdRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    33;
+    34;
 
   void Swap(ExecCmdRsp* other);
   friend void swap(ExecCmdRsp& a, ExecCmdRsp& b) {
@@ -5758,32 +5890,32 @@ inline void Domain::set_allocated_port(::std::string* port) {
 
 // GetAllDomainReq
 
-// uint32 page_domain_sum = 1;
-inline void GetAllDomainReq::clear_page_domain_sum() {
-  page_domain_sum_ = 0u;
+// uint32 page_size = 1;
+inline void GetAllDomainReq::clear_page_size() {
+  page_size_ = 0u;
 }
-inline ::google::protobuf::uint32 GetAllDomainReq::page_domain_sum() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetAllDomainReq.page_domain_sum)
-  return page_domain_sum_;
+inline ::google::protobuf::uint32 GetAllDomainReq::page_size() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetAllDomainReq.page_size)
+  return page_size_;
 }
-inline void GetAllDomainReq::set_page_domain_sum(::google::protobuf::uint32 value) {
+inline void GetAllDomainReq::set_page_size(::google::protobuf::uint32 value) {
   
-  page_domain_sum_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetAllDomainReq.page_domain_sum)
+  page_size_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetAllDomainReq.page_size)
 }
 
-// uint32 page_num = 2;
-inline void GetAllDomainReq::clear_page_num() {
-  page_num_ = 0u;
+// uint32 page_number = 2;
+inline void GetAllDomainReq::clear_page_number() {
+  page_number_ = 0u;
 }
-inline ::google::protobuf::uint32 GetAllDomainReq::page_num() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetAllDomainReq.page_num)
-  return page_num_;
+inline ::google::protobuf::uint32 GetAllDomainReq::page_number() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetAllDomainReq.page_number)
+  return page_number_;
 }
-inline void GetAllDomainReq::set_page_num(::google::protobuf::uint32 value) {
+inline void GetAllDomainReq::set_page_number(::google::protobuf::uint32 value) {
   
-  page_num_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetAllDomainReq.page_num)
+  page_number_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetAllDomainReq.page_number)
 }
 
 // -------------------------------------------------------------------
@@ -5820,18 +5952,18 @@ GetAllDomainRsp::domain() const {
   return domain_;
 }
 
-// uint32 domain_sum = 2;
-inline void GetAllDomainRsp::clear_domain_sum() {
-  domain_sum_ = 0u;
+// uint32 domain_total = 2;
+inline void GetAllDomainRsp::clear_domain_total() {
+  domain_total_ = 0u;
 }
-inline ::google::protobuf::uint32 GetAllDomainRsp::domain_sum() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetAllDomainRsp.domain_sum)
-  return domain_sum_;
+inline ::google::protobuf::uint32 GetAllDomainRsp::domain_total() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetAllDomainRsp.domain_total)
+  return domain_total_;
 }
-inline void GetAllDomainRsp::set_domain_sum(::google::protobuf::uint32 value) {
+inline void GetAllDomainRsp::set_domain_total(::google::protobuf::uint32 value) {
   
-  domain_sum_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetAllDomainRsp.domain_sum)
+  domain_total_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetAllDomainRsp.domain_total)
 }
 
 // -------------------------------------------------------------------
@@ -5960,6 +6092,82 @@ inline void GetDomainReq::set_allocated_transformed_domain(::std::string* transf
   }
   transformed_domain_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), transformed_domain);
   // @@protoc_insertion_point(field_set_allocated:raltservice.GetDomainReq.transformed_domain)
+}
+
+// uint32 page_size = 3;
+inline void GetDomainReq::clear_page_size() {
+  page_size_ = 0u;
+}
+inline ::google::protobuf::uint32 GetDomainReq::page_size() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetDomainReq.page_size)
+  return page_size_;
+}
+inline void GetDomainReq::set_page_size(::google::protobuf::uint32 value) {
+  
+  page_size_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetDomainReq.page_size)
+}
+
+// uint32 page_number = 4;
+inline void GetDomainReq::clear_page_number() {
+  page_number_ = 0u;
+}
+inline ::google::protobuf::uint32 GetDomainReq::page_number() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetDomainReq.page_number)
+  return page_number_;
+}
+inline void GetDomainReq::set_page_number(::google::protobuf::uint32 value) {
+  
+  page_number_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetDomainReq.page_number)
+}
+
+// -------------------------------------------------------------------
+
+// GetDomainRsp
+
+// repeated .raltservice.Domain domain = 1;
+inline int GetDomainRsp::domain_size() const {
+  return domain_.size();
+}
+inline void GetDomainRsp::clear_domain() {
+  domain_.Clear();
+}
+inline const ::raltservice::Domain& GetDomainRsp::domain(int index) const {
+  // @@protoc_insertion_point(field_get:raltservice.GetDomainRsp.domain)
+  return domain_.Get(index);
+}
+inline ::raltservice::Domain* GetDomainRsp::mutable_domain(int index) {
+  // @@protoc_insertion_point(field_mutable:raltservice.GetDomainRsp.domain)
+  return domain_.Mutable(index);
+}
+inline ::raltservice::Domain* GetDomainRsp::add_domain() {
+  // @@protoc_insertion_point(field_add:raltservice.GetDomainRsp.domain)
+  return domain_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >*
+GetDomainRsp::mutable_domain() {
+  // @@protoc_insertion_point(field_mutable_list:raltservice.GetDomainRsp.domain)
+  return &domain_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >&
+GetDomainRsp::domain() const {
+  // @@protoc_insertion_point(field_list:raltservice.GetDomainRsp.domain)
+  return domain_;
+}
+
+// uint32 domain_total = 2;
+inline void GetDomainRsp::clear_domain_total() {
+  domain_total_ = 0u;
+}
+inline ::google::protobuf::uint32 GetDomainRsp::domain_total() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetDomainRsp.domain_total)
+  return domain_total_;
+}
+inline void GetDomainRsp::set_domain_total(::google::protobuf::uint32 value) {
+  
+  domain_total_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetDomainRsp.domain_total)
 }
 
 // -------------------------------------------------------------------
@@ -6361,6 +6569,8 @@ inline void ExecCmdRsp::set_result(::google::protobuf::uint32 value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

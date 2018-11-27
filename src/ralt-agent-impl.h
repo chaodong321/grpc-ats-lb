@@ -15,23 +15,20 @@ using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::ServerReader;
 using grpc::ServerWriter;
+using grpc::ClientContext;
+using grpc::ClientReader;
+using grpc::ClientWriter;
+using grpc::Channel;
 using grpc::Status;
 
 using raltservice::RaltService;
 
-//system info
-using raltservice::GetCpuUsageReq;
-using raltservice::GetCpuUsageRsp;
-using raltservice::GetCpuTempReq;
-using raltservice::GetCpuTempRsp;
-using raltservice::GetMemUsageReq;
-using raltservice::GetMemUsageRsp;
-using raltservice::GetNicInfoReq;
-using raltservice::GetNicInfoRsp;
 //home page
 using raltservice::HomePageReq;
 using raltservice::HomePageRsp;
 //stats
+using raltservice::GetRaltStatsReq;
+using raltservice::GetRaltStatsRsp;
 using raltservice::StatsFieldName;
 using raltservice::StatsFieldValue;
 using raltservice::CacheLookUpReq;
@@ -43,17 +40,18 @@ using raltservice::LogResult;
 //ralt log
 using raltservice::GetRaltLogsReq;
 using raltservice::RaltLogs;
-//record
-using raltservice::RecordCfgType;
-using raltservice::GetRecordCfgReq;
-using raltservice::GetRecordCfgRsp;
-using raltservice::SetRecordCfgReq;
-using raltservice::SetRecordCfgRsp;
+//basic config
+using raltservice::GetBasicConfigReq;
+using raltservice::GetBasicConfigRsp;
+using raltservice::SetBasicConfigReq;
+using raltservice::SetBasicConfigRsp;
 //domain
 using raltservice::DomainType;
 using raltservice::Domain;
 using raltservice::GetAllDomainReq;
+using raltservice::GetAllDomainRsp;
 using raltservice::GetDomainReq;
+using raltservice::GetDomainRsp;
 using raltservice::UpdateDomainRsp;
 using raltservice::AddDomainRsp;
 using raltservice::DeleteDomainReq;
@@ -73,75 +71,71 @@ using raltservice::CommandType;
 using raltservice::ExecCmdReq;
 using raltservice::ExecCmdRsp;
 
-class RaltAgentImpl final : public RaltService::Service {
-public:
-	//system info
-	Status getCpuUsage (ServerContext* context, const GetCpuUsageReq* request,
-                  GetCpuUsageRsp* reply) override;
-	
-	Status getCpuTemp (ServerContext* context, const GetCpuTempReq* request,
-                  GetCpuTempRsp* reply) override;
-	
-	Status getMemUsage (ServerContext* context, const GetMemUsageReq* request,
-                  GetMemUsageRsp* reply) override;
-	
-	Status getNicInfo (ServerContext* context, const GetNicInfoReq* request,
-                  GetNicInfoRsp* reply) override;
+using namespace std;
 
-	//stats
-	Status getStatsFieldValue (ServerContext* context, const StatsFieldName* request,
+class RaltAgentImpl final : public RaltService::Service {
+public:	
+	RaltAgentImpl(){}
+
+	bool getStubByIp(string strIp);
+
+	Status getRaltStats (ServerContext* server_context, const GetRaltStatsReq* request,
+                  GetRaltStatsRsp* reply) override;
+
+	Status getStatsFieldValue (ServerContext* server_context, const StatsFieldName* request,
                   StatsFieldValue* reply) override;
 	
-	Status getHomePageData (ServerContext* context, const HomePageReq* request,
+	Status getHomePageData (ServerContext* server_context, const HomePageReq* request,
                   HomePageRsp* reply) override;
 
-	Status showCacheData(ServerContext* context, const CacheLookUpReq* request,
+	Status showCacheData(ServerContext* server_context, const CacheLookUpReq* request,
                   CacheResult* reply) override;
 
-	Status showFlowStatData(ServerContext* context, const FlowStatLookUpReq* request,
+	Status showFlowStatData(ServerContext* server_context, const FlowStatLookUpReq* request,
                   FlowResult* reply) override;
 
-	Status showLogInfoData(ServerContext* context, const LogInfoLookUpReq* request,
+	Status showLogInfoData(ServerContext* server_context, const LogInfoLookUpReq* request,
                   LogResult* reply) override;
-
-	Status getRaltLogs(ServerContext* context, const GetRaltLogsReq* request,
+	
+	Status getRaltLogs(ServerContext* server_context, const GetRaltLogsReq* request,
                   ServerWriter<RaltLogs>* reply) override;
 
-	//configure
-	Status getRecordConfig(ServerContext* context, const GetRecordCfgReq* request,
-                  GetRecordCfgRsp* reply) override;
+	Status getBasicConfig(ServerContext* server_context, const GetBasicConfigReq* request,
+                  GetBasicConfigRsp* reply) override;
 
-	Status setRecordConfig(ServerContext* context, const SetRecordCfgReq* request,
-                  SetRecordCfgRsp* reply) override;
+	Status setBasicConfig(ServerContext* server_context, const SetBasicConfigReq* request,
+                  SetBasicConfigRsp* reply) override;
 
-	Status getAllDomain(ServerContext* context, const GetAllDomainReq* request,
-                  ServerWriter<Domain>* reply) override;
+	Status getAllDomain(ServerContext* server_context, const GetAllDomainReq* request,
+                  GetAllDomainRsp* reply) override;
 
-	Status updateDomain(ServerContext* context, ServerReader<Domain>* request,
-                     UpdateDomainRsp* reply) override;
+	Status updateDomain(ServerContext* server_context, ServerReader<Domain>* request,
+                  UpdateDomainRsp* reply) override;
 
-	Status getDomain(ServerContext* context, const GetDomainReq* request,
-                  Domain* reply) override;
+	Status getDomain(ServerContext* server_context, const GetDomainReq* request,
+                  GetDomainRsp* reply) override;
 
-	Status addDomain(ServerContext* context, const Domain* request,
+	Status addDomain(ServerContext* server_context, const Domain* request,
                   AddDomainRsp* reply) override;
 
-	Status deleteDomain(ServerContext* context, const DeleteDomainReq* request,
+	Status deleteDomain(ServerContext* server_context, const DeleteDomainReq* request,
                   DeleteDomainRsp* reply) override;
 
-	Status getMisc(ServerContext* context, const GetMiscReq* request,
+	Status getMisc(ServerContext* server_context, const GetMiscReq* request,
                   GetMiscRsp* reply) override;
 
-	Status modMisc(ServerContext* context, const Misc* request,
+	Status modMisc(ServerContext* server_context, const Misc* request,
                   ModMiscOpRsp* reply) override;
 
-	//command
-	Status getRaltStatus(ServerContext* context, const RaltStatusReq* request,
+	Status getRaltStatus(ServerContext* server_context, const RaltStatusReq* request,
                   ServerWriter<RaltStatus>* reply) override;
 
-	Status execCmd(ServerContext* context, const ExecCmdReq* request,
+	Status execCmd(ServerContext* server_context, const ExecCmdReq* request,
                   ExecCmdRsp* reply) override;
 
+private:
+	std::unique_ptr<RaltService::Stub> stub_ralt;
+	//ClientContext client_context;
 };
 
 #endif

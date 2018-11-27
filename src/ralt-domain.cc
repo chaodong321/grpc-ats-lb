@@ -237,9 +237,9 @@ void RaltDomain::UpdateDomain(const map<string, DomainValue>* domainMap)
 
 		LOG_INFO("member:");
 		LOG_INFO("type: %u", it.second.type);
-		LOG_INFO("domain: %s", it.second.str_domain);
-		LOG_INFO("append or replace string: %s", it.second.str_append_or_replace);
-		LOG_INFO("port: %s", it.second.str_port);
+		LOG_INFO("domain: %s", it.second.str_domain.c_str());
+		LOG_INFO("append or replace string: %s", it.second.str_append_or_replace.c_str());
+		LOG_INFO("port: %s", it.second.str_port.c_str());
 
 		string strDomainType, strMember, strAppendOrReplace, strPort;
 		

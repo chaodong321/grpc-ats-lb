@@ -759,14 +759,12 @@ Status RaltServiceImpl::getAllDomain(ServerContext* context, const GetAllDomainR
 	GetAllDomainRsp* reply)
 {
 	LOG_INFO("get all domain");
-	unsigned int nPageDomainSum = request->page_domain_sum();
-	unsigned int nPageNum = request->page_num();
+	unsigned int nPageDomainSum = request->page_size();
+	unsigned int nPageNum = request->page_number();
 	LOG_INFO("page domain sum: %u", nPageDomainSum);
 	LOG_INFO("page num: %u", nPageNum);
 	map<string, DomainValue> domainMap = RaltDomain::GetInstance()->GetAllDomain();
-
-	reply->set_domain_sum(domainMap.size());
-
+	
 	unsigned int nStart = (nPageNum-1>=0?(nPageNum-1):1) * nPageDomainSum + 1;
 	unsigned int nEnd = nPageNum * nPageDomainSum;
 	unsigned int nDomainNum = 0;
@@ -787,6 +785,9 @@ Status RaltServiceImpl::getAllDomain(ServerContext* context, const GetAllDomainR
 			domain_member->set_port(it.second.str_port);
 		}
 	}
+	reply->set_domain_total(domainMap.size());
+	LOG_INFO("domain total: %u", domainMap.size());
+	
 	LOG_INFO("get all domain successfully");
 	return Status::OK;
 }
@@ -814,28 +815,42 @@ Status RaltServiceImpl::updateDomain(ServerContext* context, ServerReader<Domain
 }
 
 Status RaltServiceImpl::getDomain(ServerContext* context, const GetDomainReq* request,
-	ServerWriter<Domain>* reply)
+	 GetDomainRsp* reply)
 {
 	LOG_INFO("get domain info");
+	unsigned int nPageDomainSum = request->page_size();
+	unsigned int nPageNum = request->page_number();
+	LOG_INFO("page domain sum: %u", nPageDomainSum);
+	LOG_INFO("page num: %u", nPageNum);
 	string strDomain = request->domain_str();
 	string strTransDomain = request->transformed_domain();
 	LOG_INFO("search domain: %s", strDomain.c_str());
 	LOG_INFO("search transformed domain: %s", strTransDomain.c_str());
 	map<string, DomainValue> domainMap;
 	RaltDomain::GetInstance()->GetDomain(strDomain, strTransDomain, domainMap);
+
+	unsigned int nStart = (nPageNum-1>=0?(nPageNum-1):1) * nPageDomainSum + 1;
+	unsigned int nEnd = nPageNum * nPageDomainSum;
+	unsigned int nDomainNum = 0;
+
+	LOG_INFO("nStart: %u", nStart);
+	LOG_INFO("nEnd: %u", nEnd);
 	for(const auto it : domainMap)
 	{
-		Domain domain_member;
-		domain_member.set_type((raltservice::DomainType)it.second.type);
-		domain_member.set_domain_str(it.second.str_domain);
-		domain_member.set_append_or_replace_str(it.second.str_append_or_replace);
-		domain_member.set_port(it.second.str_port);
-		LOG_INFO("type: %d", it.second.type);
+		nDomainNum++;
+		LOG_INFO("nDomainNum: %u", nDomainNum);
 		LOG_INFO("str_domain: %s", it.second.str_domain.c_str());
-		LOG_INFO("set_append_or_replace_str: %s", it.second.str_append_or_replace.c_str());
-		LOG_INFO("str_port: %s", it.second.str_port.c_str());
-		reply->Write(domain_member);
+		if(nDomainNum >= nStart && nDomainNum <= nEnd){
+			LOG_INFO("add domain to reply: %s", it.second.str_domain.c_str());
+			Domain *domain_member = reply->add_domain();
+			domain_member->set_type((raltservice::DomainType)it.second.type);
+			domain_member->set_domain_str(it.second.str_domain);
+			domain_member->set_append_or_replace_str(it.second.str_append_or_replace);
+			domain_member->set_port(it.second.str_port);
+		}
 	}
+	reply->set_domain_total(domainMap.size());
+	LOG_INFO("domain total: %u", domainMap.size());
 	LOG_INFO("get domain info successfully");
 	return Status::OK;
 }

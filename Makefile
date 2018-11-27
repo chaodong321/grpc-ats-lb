@@ -1,6 +1,7 @@
-.PHONY: build clean install uninstall
+.PHONY: build clean install-svr install-agent uninstall-svr uninstall-agent
 
-INSTALL_ROOT = /opt/reyzar/ralt-svr
+RALT_SVR_ROOT = /opt/reyzar/ralt-svr
+RALT_AGENT_ROOT = /opt/reyzar/ralt-agent
 SYSTEM_ROOT = /usr/lib/systemd/system
 
 build:
@@ -10,21 +11,21 @@ clean:
 	cd src/ && make clean
 
 install-svr:build
-	mkdir -p $(INSTALL_ROOT)
-	cp src/ralt-svr $(INSTALL_ROOT)
+	mkdir -p $(RALT_SVR_ROOT)
+	cp src/ralt-svr $(RALT_SVR_ROOT)
 	cp service/ralt-svr.service $(SYSTEM_ROOT) -f
 
 install-agent:build
-	mkdir -p $(INSTALL_ROOT)
-	cp src/ralt-agent $(INSTALL_ROOT)
+	mkdir -p $(RALT_AGENT_ROOT)
+	cp src/ralt-agent $(RALT_AGENT_ROOT)
 	cp service/ralt-agent.service $(SYSTEM_ROOT) -f
 
 uninstall-svr:
 	service ralt-svr stop
-	rm $(INSTALL_ROOT) -rf
+	rm $(RALT_SVR_ROOT)/ralt-svr -rf
 	rm $(SYSTEM_ROOT)/ralt-svr.service
 
 uninstall-agent:
 	service ralt-agent stop
-	rm $(INSTALL_ROOT) -rf
+	rm $(RALT_AGENT_ROOT)/ralt-agent -rf
 	rm $(SYSTEM_ROOT)/ralt-agent.service

@@ -116,18 +116,16 @@ bool UtilCommon::IsIp(const char *ip)
 	int n[4];
 	char c[4];
 
-	if (sscanf(ip, "%d%c%d%c%d%c%d%c", &n[0], &c[0],&n[1], &c[1], &n[2], &c[2], &n[3], &c[3]) != 8)
+	if (sscanf(ip, "%d%c%d%c%d%c%d", &n[0], &c[0],&n[1], &c[1], &n[2], &c[2], &n[3], &c[3]) != 7)
 		return false;
 
 	for (int i = 0; i < 3; ++i)
 		if (c[i] != '.' && c[i] != '-')
 			return false;
+
 	for (int i = 0; i < 4; ++i)
 		if (n[i] < 0 || n[i] > 255)
 			return false;
-
-	if ( c[3] == '.')
-		return false;
 
 	return true;
 }

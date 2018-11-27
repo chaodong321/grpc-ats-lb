@@ -53,7 +53,7 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_setBasicConfig_(RaltService_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_getAllDomain_(RaltService_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_updateDomain_(RaltService_method_names[10], ::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
-  , rpcmethod_getDomain_(RaltService_method_names[11], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_getDomain_(RaltService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_addDomain_(RaltService_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_deleteDomain_(RaltService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_getMisc_(RaltService_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
@@ -194,16 +194,16 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::ClientAsyncWriterFactory< ::raltservice::Domain>::Create(channel_.get(), cq, rpcmethod_updateDomain_, context, response, false, nullptr);
 }
 
-::grpc::ClientReader< ::raltservice::Domain>* RaltService::Stub::getDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request) {
-  return ::grpc::internal::ClientReaderFactory< ::raltservice::Domain>::Create(channel_.get(), rpcmethod_getDomain_, context, request);
+::grpc::Status RaltService::Stub::getDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::raltservice::GetDomainRsp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getDomain_, context, request, response);
 }
 
-::grpc::ClientAsyncReader< ::raltservice::Domain>* RaltService::Stub::AsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::raltservice::Domain>::Create(channel_.get(), cq, rpcmethod_getDomain_, context, request, true, tag);
+::grpc::ClientAsyncResponseReader< ::raltservice::GetDomainRsp>* RaltService::Stub::AsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetDomainRsp>::Create(channel_.get(), cq, rpcmethod_getDomain_, context, request, true);
 }
 
-::grpc::ClientAsyncReader< ::raltservice::Domain>* RaltService::Stub::PrepareAsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::raltservice::Domain>::Create(channel_.get(), cq, rpcmethod_getDomain_, context, request, false, nullptr);
+::grpc::ClientAsyncResponseReader< ::raltservice::GetDomainRsp>* RaltService::Stub::PrepareAsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetDomainRsp>::Create(channel_.get(), cq, rpcmethod_getDomain_, context, request, false);
 }
 
 ::grpc::Status RaltService::Stub::addDomain(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::raltservice::AddDomainRsp* response) {
@@ -336,8 +336,8 @@ RaltService::Service::Service() {
           std::mem_fn(&RaltService::Service::updateDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RaltService_method_names[11],
-      ::grpc::internal::RpcMethod::SERVER_STREAMING,
-      new ::grpc::internal::ServerStreamingHandler< RaltService::Service, ::raltservice::GetDomainReq, ::raltservice::Domain>(
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetDomainReq, ::raltservice::GetDomainRsp>(
           std::mem_fn(&RaltService::Service::getDomain), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RaltService_method_names[12],
@@ -451,10 +451,10 @@ RaltService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status RaltService::Service::getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::grpc::ServerWriter< ::raltservice::Domain>* writer) {
+::grpc::Status RaltService::Service::getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) {
   (void) context;
   (void) request;
-  (void) writer;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

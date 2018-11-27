@@ -31,7 +31,7 @@ int MayDaemonize()
 
 
 void RunServer() {
-  std::string server_address("0.0.0.0:50052");
+  std::string server_address("0.0.0.0:50053");
   RaltServiceImpl ralt_service;
   SysInfoImpl sys_info_service;
 

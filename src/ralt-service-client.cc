@@ -79,6 +79,7 @@ using raltservice::Domain;
 using raltservice::GetAllDomainReq;
 using raltservice::GetAllDomainRsp;
 using raltservice::GetDomainReq;
+using raltservice::GetDomainRsp;
 using raltservice::UpdateDomainRsp;
 using raltservice::AddDomainRsp;
 using raltservice::DeleteDomainReq;
@@ -108,6 +109,7 @@ class RaltServiceClient {
 
 			// The actual RPC.
 			GetNameAndIpInfoReq request;
+			request.set_ip_addr("10.2.1.114");
 			// Container for the data we expect from the server.
 			GetNameAndIpInfoRsp reply;
 			Status status = stub_sys->getNameAndIpInfo(&context, request, &reply);
@@ -125,6 +127,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetDeviceInfoReq request;
+			request.set_ip_addr("10.2.1.114");
 			// Container for the data we expect from the server.
 			GetDeviceInfoRsp reply;
 			Status status = stub_sys->getDeviceInfo(&context, request, &reply);
@@ -498,16 +501,16 @@ class RaltServiceClient {
 			}
 		}
 
-		void getAllDomain(unsigned int page_domain_sum, unsigned int page_num){
+		void getAllDomain(unsigned int page_size, unsigned int page_num){
 			ClientContext context;
 			GetAllDomainReq request;
 			GetAllDomainRsp reply;
-			request.set_page_domain_sum(page_domain_sum);
-			request.set_page_num(page_num);
+			request.set_page_size(page_size);
+			request.set_page_number(page_num);
 			Status status =  stub_ralt->getAllDomain(&context, request, &reply);
 			if (status.ok()) {
 				std::cout << "getAllDomain rpc succeeded." << std::endl;
-				std::cout << "domain_sum: " << reply.domain_sum() << std::endl;
+				std::cout << "domain_sum: " << reply.domain_total() << std::endl;
 				::google::protobuf::RepeatedPtrField<Domain> domain=reply.domain();
 				for (const auto& domain_member : domain){
 					std::cout << "type:" << domain_member.type() << std::endl;
@@ -548,22 +551,25 @@ class RaltServiceClient {
 		    }
 		}
 
-		void getDomain(const std::string &strDomain, const std::string &strTransDomain){
+		void getDomain(const std::string &strDomain, const std::string &strTransDomain, unsigned int page_size, unsigned int page_num){
 			ClientContext context;
 			GetDomainReq request;
+			GetDomainRsp reply;
 			request.set_domain_str(strDomain);
 			request.set_transformed_domain(strTransDomain);
-			std::unique_ptr<ClientReader<Domain> > reader(stub_ralt->getDomain(&context, request));
-			Domain domain_member;
-			while (reader->Read(&domain_member)) {
-				std::cout << "type:" << domain_member.type() << std::endl;
-				std::cout << "member:" << domain_member.domain_str() << std::endl;
-				std::cout << "transform:" << domain_member.append_or_replace_str() << std::endl;
-				std::cout << "port:" << domain_member.port() << std::endl;
-			}
-			Status status = reader->Finish();
+			request.set_page_size(page_size);
+			request.set_page_number(page_num);
+			Status status =  stub_ralt->getDomain(&context, request, &reply);
 			if (status.ok()) {
 				std::cout << "getDomain rpc succeeded." << std::endl;
+				std::cout << "domain_sum: " << reply.domain_total() << std::endl;
+				::google::protobuf::RepeatedPtrField<Domain> domain=reply.domain();
+				for (const auto& domain_member : domain){
+					std::cout << "type:" << domain_member.type() << std::endl;
+					std::cout << "member:" << domain_member.domain_str() << std::endl;
+					std::cout << "transform:" << domain_member.append_or_replace_str() << std::endl;
+					std::cout << "port:" << domain_member.port() << std::endl;
+				}
 			} else {
 				std::cout << "getDomain rpc failed." << std::endl;
 			}
@@ -670,9 +676,9 @@ class RaltServiceClient {
 };
 
 int main(int argc, char** argv) {
-	RaltServiceClient client(grpc::CreateChannel("127.0.0.1:50052", grpc::InsecureChannelCredentials()));
+	RaltServiceClient client(grpc::CreateChannel("10.2.1.114:50052", grpc::InsecureChannelCredentials()));
 
-	//client.getNameAndIpInfo();
+	client.getNameAndIpInfo();
 	//client.getDeviceInfo();
 	//client.getDeviceDetail(true);
 	//client.getCpuUsage();
@@ -697,9 +703,9 @@ int main(int argc, char** argv) {
 	//client.getBasicConfig();
 	//client.setBasicConfig();
 	
-	client.getAllDomain(2,2);
+	//client.getAllDomain(2,2);
 	//client.updateDomain();
-	//client.getDomain("www.reyzar.com", "");
+	//client.getDomain("www.reyzar.com", "", 2, 1);
 	//client.delDomain("www.reyzar.com");
 	//client.addDomain();
 	

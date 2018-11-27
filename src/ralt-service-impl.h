@@ -47,6 +47,7 @@ using raltservice::Domain;
 using raltservice::GetAllDomainReq;
 using raltservice::GetAllDomainRsp;
 using raltservice::GetDomainReq;
+using raltservice::GetDomainRsp;
 using raltservice::UpdateDomainRsp;
 using raltservice::AddDomainRsp;
 using raltservice::DeleteDomainReq;
@@ -106,7 +107,7 @@ public:
                   UpdateDomainRsp* reply) override;
 
 	Status getDomain(ServerContext* context, const GetDomainReq* request,
-                  ServerWriter<Domain>* reply) override;
+                  GetDomainRsp* reply) override;
 
 	Status addDomain(ServerContext* context, const Domain* request,
                   AddDomainRsp* reply) override;
