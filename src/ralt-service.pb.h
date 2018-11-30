@@ -37,7 +37,7 @@ namespace protobuf_ralt_2dservice_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[35];
+  static const ::google::protobuf::internal::ParseTable schema[39];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -47,10 +47,10 @@ void InitDefaultsGetRaltStatsReqImpl();
 void InitDefaultsGetRaltStatsReq();
 void InitDefaultsGetRaltStatsRspImpl();
 void InitDefaultsGetRaltStatsRsp();
-void InitDefaultsStatsFieldNameImpl();
-void InitDefaultsStatsFieldName();
-void InitDefaultsStatsFieldValueImpl();
-void InitDefaultsStatsFieldValue();
+void InitDefaultsGetStatsFieldReqImpl();
+void InitDefaultsGetStatsFieldReq();
+void InitDefaultsGetStatsFieldRspImpl();
+void InitDefaultsGetStatsFieldRsp();
 void InitDefaultsHomePageReqImpl();
 void InitDefaultsHomePageReq();
 void InitDefaultsHomePageRspImpl();
@@ -73,6 +73,8 @@ void InitDefaultsRaltLogsImpl();
 void InitDefaultsRaltLogs();
 void InitDefaultsGetBasicConfigReqImpl();
 void InitDefaultsGetBasicConfigReq();
+void InitDefaultsBasicConfigImpl();
+void InitDefaultsBasicConfig();
 void InitDefaultsGetBasicConfigRspImpl();
 void InitDefaultsGetBasicConfigRsp();
 void InitDefaultsSetBasicConfigReqImpl();
@@ -85,12 +87,16 @@ void InitDefaultsGetAllDomainReqImpl();
 void InitDefaultsGetAllDomainReq();
 void InitDefaultsGetAllDomainRspImpl();
 void InitDefaultsGetAllDomainRsp();
+void InitDefaultsUpdateDomainReqImpl();
+void InitDefaultsUpdateDomainReq();
 void InitDefaultsUpdateDomainRspImpl();
 void InitDefaultsUpdateDomainRsp();
 void InitDefaultsGetDomainReqImpl();
 void InitDefaultsGetDomainReq();
 void InitDefaultsGetDomainRspImpl();
 void InitDefaultsGetDomainRsp();
+void InitDefaultsAddDomainReqImpl();
+void InitDefaultsAddDomainReq();
 void InitDefaultsAddDomainRspImpl();
 void InitDefaultsAddDomainRsp();
 void InitDefaultsDeleteDomainReqImpl();
@@ -103,6 +109,8 @@ void InitDefaultsGetMiscRspImpl();
 void InitDefaultsGetMiscRsp();
 void InitDefaultsMiscImpl();
 void InitDefaultsMisc();
+void InitDefaultsModMiscOpReqImpl();
+void InitDefaultsModMiscOpReq();
 void InitDefaultsModMiscOpRspImpl();
 void InitDefaultsModMiscOpRsp();
 void InitDefaultsRaltStatusReqImpl();
@@ -116,8 +124,8 @@ void InitDefaultsExecCmdRsp();
 inline void InitDefaults() {
   InitDefaultsGetRaltStatsReq();
   InitDefaultsGetRaltStatsRsp();
-  InitDefaultsStatsFieldName();
-  InitDefaultsStatsFieldValue();
+  InitDefaultsGetStatsFieldReq();
+  InitDefaultsGetStatsFieldRsp();
   InitDefaultsHomePageReq();
   InitDefaultsHomePageRsp();
   InitDefaultsCacheLookUpReq();
@@ -129,21 +137,25 @@ inline void InitDefaults() {
   InitDefaultsGetRaltLogsReq();
   InitDefaultsRaltLogs();
   InitDefaultsGetBasicConfigReq();
+  InitDefaultsBasicConfig();
   InitDefaultsGetBasicConfigRsp();
   InitDefaultsSetBasicConfigReq();
   InitDefaultsSetBasicConfigRsp();
   InitDefaultsDomain();
   InitDefaultsGetAllDomainReq();
   InitDefaultsGetAllDomainRsp();
+  InitDefaultsUpdateDomainReq();
   InitDefaultsUpdateDomainRsp();
   InitDefaultsGetDomainReq();
   InitDefaultsGetDomainRsp();
+  InitDefaultsAddDomainReq();
   InitDefaultsAddDomainRsp();
   InitDefaultsDeleteDomainReq();
   InitDefaultsDeleteDomainRsp();
   InitDefaultsGetMiscReq();
   InitDefaultsGetMiscRsp();
   InitDefaultsMisc();
+  InitDefaultsModMiscOpReq();
   InitDefaultsModMiscOpRsp();
   InitDefaultsRaltStatusReq();
   InitDefaultsRaltStatus();
@@ -152,9 +164,15 @@ inline void InitDefaults() {
 }
 }  // namespace protobuf_ralt_2dservice_2eproto
 namespace raltservice {
+class AddDomainReq;
+class AddDomainReqDefaultTypeInternal;
+extern AddDomainReqDefaultTypeInternal _AddDomainReq_default_instance_;
 class AddDomainRsp;
 class AddDomainRspDefaultTypeInternal;
 extern AddDomainRspDefaultTypeInternal _AddDomainRsp_default_instance_;
+class BasicConfig;
+class BasicConfigDefaultTypeInternal;
+extern BasicConfigDefaultTypeInternal _BasicConfig_default_instance_;
 class CacheLookUpReq;
 class CacheLookUpReqDefaultTypeInternal;
 extern CacheLookUpReqDefaultTypeInternal _CacheLookUpReq_default_instance_;
@@ -215,6 +233,12 @@ extern GetRaltStatsReqDefaultTypeInternal _GetRaltStatsReq_default_instance_;
 class GetRaltStatsRsp;
 class GetRaltStatsRspDefaultTypeInternal;
 extern GetRaltStatsRspDefaultTypeInternal _GetRaltStatsRsp_default_instance_;
+class GetStatsFieldReq;
+class GetStatsFieldReqDefaultTypeInternal;
+extern GetStatsFieldReqDefaultTypeInternal _GetStatsFieldReq_default_instance_;
+class GetStatsFieldRsp;
+class GetStatsFieldRspDefaultTypeInternal;
+extern GetStatsFieldRspDefaultTypeInternal _GetStatsFieldRsp_default_instance_;
 class HomePageReq;
 class HomePageReqDefaultTypeInternal;
 extern HomePageReqDefaultTypeInternal _HomePageReq_default_instance_;
@@ -230,6 +254,9 @@ extern LogResultDefaultTypeInternal _LogResult_default_instance_;
 class Misc;
 class MiscDefaultTypeInternal;
 extern MiscDefaultTypeInternal _Misc_default_instance_;
+class ModMiscOpReq;
+class ModMiscOpReqDefaultTypeInternal;
+extern ModMiscOpReqDefaultTypeInternal _ModMiscOpReq_default_instance_;
 class ModMiscOpRsp;
 class ModMiscOpRspDefaultTypeInternal;
 extern ModMiscOpRspDefaultTypeInternal _ModMiscOpRsp_default_instance_;
@@ -248,12 +275,9 @@ extern SetBasicConfigReqDefaultTypeInternal _SetBasicConfigReq_default_instance_
 class SetBasicConfigRsp;
 class SetBasicConfigRspDefaultTypeInternal;
 extern SetBasicConfigRspDefaultTypeInternal _SetBasicConfigRsp_default_instance_;
-class StatsFieldName;
-class StatsFieldNameDefaultTypeInternal;
-extern StatsFieldNameDefaultTypeInternal _StatsFieldName_default_instance_;
-class StatsFieldValue;
-class StatsFieldValueDefaultTypeInternal;
-extern StatsFieldValueDefaultTypeInternal _StatsFieldValue_default_instance_;
+class UpdateDomainReq;
+class UpdateDomainReqDefaultTypeInternal;
+extern UpdateDomainReqDefaultTypeInternal _UpdateDomainReq_default_instance_;
 class UpdateDomainRsp;
 class UpdateDomainRspDefaultTypeInternal;
 extern UpdateDomainRspDefaultTypeInternal _UpdateDomainRsp_default_instance_;
@@ -610,24 +634,24 @@ class GetRaltStatsRsp : public ::google::protobuf::Message /* @@protoc_insertion
 };
 // -------------------------------------------------------------------
 
-class StatsFieldName : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.StatsFieldName) */ {
+class GetStatsFieldReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetStatsFieldReq) */ {
  public:
-  StatsFieldName();
-  virtual ~StatsFieldName();
+  GetStatsFieldReq();
+  virtual ~GetStatsFieldReq();
 
-  StatsFieldName(const StatsFieldName& from);
+  GetStatsFieldReq(const GetStatsFieldReq& from);
 
-  inline StatsFieldName& operator=(const StatsFieldName& from) {
+  inline GetStatsFieldReq& operator=(const GetStatsFieldReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  StatsFieldName(StatsFieldName&& from) noexcept
-    : StatsFieldName() {
+  GetStatsFieldReq(GetStatsFieldReq&& from) noexcept
+    : GetStatsFieldReq() {
     *this = ::std::move(from);
   }
 
-  inline StatsFieldName& operator=(StatsFieldName&& from) noexcept {
+  inline GetStatsFieldReq& operator=(GetStatsFieldReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -637,30 +661,30 @@ class StatsFieldName : public ::google::protobuf::Message /* @@protoc_insertion_
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const StatsFieldName& default_instance();
+  static const GetStatsFieldReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const StatsFieldName* internal_default_instance() {
-    return reinterpret_cast<const StatsFieldName*>(
-               &_StatsFieldName_default_instance_);
+  static inline const GetStatsFieldReq* internal_default_instance() {
+    return reinterpret_cast<const GetStatsFieldReq*>(
+               &_GetStatsFieldReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     2;
 
-  void Swap(StatsFieldName* other);
-  friend void swap(StatsFieldName& a, StatsFieldName& b) {
+  void Swap(GetStatsFieldReq* other);
+  friend void swap(GetStatsFieldReq& a, GetStatsFieldReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline StatsFieldName* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline GetStatsFieldReq* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  StatsFieldName* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  GetStatsFieldReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const StatsFieldName& from);
-  void MergeFrom(const StatsFieldName& from);
+  void CopyFrom(const GetStatsFieldReq& from);
+  void MergeFrom(const GetStatsFieldReq& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -676,7 +700,7 @@ class StatsFieldName : public ::google::protobuf::Message /* @@protoc_insertion_
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(StatsFieldName* other);
+  void InternalSwap(GetStatsFieldReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -720,7 +744,7 @@ class StatsFieldName : public ::google::protobuf::Message /* @@protoc_insertion_
   ::std::string* release_field_name();
   void set_allocated_field_name(::std::string* field_name);
 
-  // @@protoc_insertion_point(class_scope:raltservice.StatsFieldName)
+  // @@protoc_insertion_point(class_scope:raltservice.GetStatsFieldReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -728,28 +752,28 @@ class StatsFieldName : public ::google::protobuf::Message /* @@protoc_insertion_
   ::google::protobuf::internal::ArenaStringPtr field_name_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
-  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsStatsFieldNameImpl();
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetStatsFieldReqImpl();
 };
 // -------------------------------------------------------------------
 
-class StatsFieldValue : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.StatsFieldValue) */ {
+class GetStatsFieldRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetStatsFieldRsp) */ {
  public:
-  StatsFieldValue();
-  virtual ~StatsFieldValue();
+  GetStatsFieldRsp();
+  virtual ~GetStatsFieldRsp();
 
-  StatsFieldValue(const StatsFieldValue& from);
+  GetStatsFieldRsp(const GetStatsFieldRsp& from);
 
-  inline StatsFieldValue& operator=(const StatsFieldValue& from) {
+  inline GetStatsFieldRsp& operator=(const GetStatsFieldRsp& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  StatsFieldValue(StatsFieldValue&& from) noexcept
-    : StatsFieldValue() {
+  GetStatsFieldRsp(GetStatsFieldRsp&& from) noexcept
+    : GetStatsFieldRsp() {
     *this = ::std::move(from);
   }
 
-  inline StatsFieldValue& operator=(StatsFieldValue&& from) noexcept {
+  inline GetStatsFieldRsp& operator=(GetStatsFieldRsp&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -759,30 +783,30 @@ class StatsFieldValue : public ::google::protobuf::Message /* @@protoc_insertion
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const StatsFieldValue& default_instance();
+  static const GetStatsFieldRsp& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const StatsFieldValue* internal_default_instance() {
-    return reinterpret_cast<const StatsFieldValue*>(
-               &_StatsFieldValue_default_instance_);
+  static inline const GetStatsFieldRsp* internal_default_instance() {
+    return reinterpret_cast<const GetStatsFieldRsp*>(
+               &_GetStatsFieldRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     3;
 
-  void Swap(StatsFieldValue* other);
-  friend void swap(StatsFieldValue& a, StatsFieldValue& b) {
+  void Swap(GetStatsFieldRsp* other);
+  friend void swap(GetStatsFieldRsp& a, GetStatsFieldRsp& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline StatsFieldValue* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline GetStatsFieldRsp* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  StatsFieldValue* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  GetStatsFieldRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const StatsFieldValue& from);
-  void MergeFrom(const StatsFieldValue& from);
+  void CopyFrom(const GetStatsFieldRsp& from);
+  void MergeFrom(const GetStatsFieldRsp& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -798,7 +822,7 @@ class StatsFieldValue : public ::google::protobuf::Message /* @@protoc_insertion
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(StatsFieldValue* other);
+  void InternalSwap(GetStatsFieldRsp* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -828,14 +852,14 @@ class StatsFieldValue : public ::google::protobuf::Message /* @@protoc_insertion
   ::std::string* release_value();
   void set_allocated_value(::std::string* value);
 
-  // @@protoc_insertion_point(class_scope:raltservice.StatsFieldValue)
+  // @@protoc_insertion_point(class_scope:raltservice.GetStatsFieldRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr value_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
-  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsStatsFieldValueImpl();
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetStatsFieldRspImpl();
 };
 // -------------------------------------------------------------------
 
@@ -2126,20 +2150,163 @@ class GetBasicConfigReq : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // uint32 type = 1;
-  void clear_type();
-  static const int kTypeFieldNumber = 1;
-  ::google::protobuf::uint32 type() const;
-  void set_type(::google::protobuf::uint32 value);
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
 
   // @@protoc_insertion_point(class_scope:raltservice.GetBasicConfigReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 type_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
   friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetBasicConfigReqImpl();
+};
+// -------------------------------------------------------------------
+
+class BasicConfig : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.BasicConfig) */ {
+ public:
+  BasicConfig();
+  virtual ~BasicConfig();
+
+  BasicConfig(const BasicConfig& from);
+
+  inline BasicConfig& operator=(const BasicConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BasicConfig(BasicConfig&& from) noexcept
+    : BasicConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline BasicConfig& operator=(BasicConfig&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BasicConfig& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const BasicConfig* internal_default_instance() {
+    return reinterpret_cast<const BasicConfig*>(
+               &_BasicConfig_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    15;
+
+  void Swap(BasicConfig* other);
+  friend void swap(BasicConfig& a, BasicConfig& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BasicConfig* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BasicConfig* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BasicConfig& from);
+  void MergeFrom(const BasicConfig& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BasicConfig* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string server_ports = 4;
+  void clear_server_ports();
+  static const int kServerPortsFieldNumber = 4;
+  const ::std::string& server_ports() const;
+  void set_server_ports(const ::std::string& value);
+  #if LANG_CXX11
+  void set_server_ports(::std::string&& value);
+  #endif
+  void set_server_ports(const char* value);
+  void set_server_ports(const char* value, size_t size);
+  ::std::string* mutable_server_ports();
+  ::std::string* release_server_ports();
+  void set_allocated_server_ports(::std::string* server_ports);
+
+  // uint32 logging_enabled = 1;
+  void clear_logging_enabled();
+  static const int kLoggingEnabledFieldNumber = 1;
+  ::google::protobuf::uint32 logging_enabled() const;
+  void set_logging_enabled(::google::protobuf::uint32 value);
+
+  // uint32 max_space_mb_for_logs = 2;
+  void clear_max_space_mb_for_logs();
+  static const int kMaxSpaceMbForLogsFieldNumber = 2;
+  ::google::protobuf::uint32 max_space_mb_for_logs() const;
+  void set_max_space_mb_for_logs(::google::protobuf::uint32 value);
+
+  // uint32 rolling_enabled = 3;
+  void clear_rolling_enabled();
+  static const int kRollingEnabledFieldNumber = 3;
+  ::google::protobuf::uint32 rolling_enabled() const;
+  void set_rolling_enabled(::google::protobuf::uint32 value);
+
+  // uint32 storage_cache_size = 5;
+  void clear_storage_cache_size();
+  static const int kStorageCacheSizeFieldNumber = 5;
+  ::google::protobuf::uint32 storage_cache_size() const;
+  void set_storage_cache_size(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:raltservice.BasicConfig)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr server_ports_;
+  ::google::protobuf::uint32 logging_enabled_;
+  ::google::protobuf::uint32 max_space_mb_for_logs_;
+  ::google::protobuf::uint32 rolling_enabled_;
+  ::google::protobuf::uint32 storage_cache_size_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsBasicConfigImpl();
 };
 // -------------------------------------------------------------------
 
@@ -2178,7 +2345,7 @@ class GetBasicConfigRsp : public ::google::protobuf::Message /* @@protoc_inserti
                &_GetBasicConfigRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    15;
+    16;
 
   void Swap(GetBasicConfigRsp* other);
   friend void swap(GetBasicConfigRsp& a, GetBasicConfigRsp& b) {
@@ -2225,53 +2392,20 @@ class GetBasicConfigRsp : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // string server_ports = 4;
-  void clear_server_ports();
-  static const int kServerPortsFieldNumber = 4;
-  const ::std::string& server_ports() const;
-  void set_server_ports(const ::std::string& value);
-  #if LANG_CXX11
-  void set_server_ports(::std::string&& value);
-  #endif
-  void set_server_ports(const char* value);
-  void set_server_ports(const char* value, size_t size);
-  ::std::string* mutable_server_ports();
-  ::std::string* release_server_ports();
-  void set_allocated_server_ports(::std::string* server_ports);
-
-  // uint32 logging_enabled = 1;
-  void clear_logging_enabled();
-  static const int kLoggingEnabledFieldNumber = 1;
-  ::google::protobuf::uint32 logging_enabled() const;
-  void set_logging_enabled(::google::protobuf::uint32 value);
-
-  // uint32 max_space_mb_for_logs = 2;
-  void clear_max_space_mb_for_logs();
-  static const int kMaxSpaceMbForLogsFieldNumber = 2;
-  ::google::protobuf::uint32 max_space_mb_for_logs() const;
-  void set_max_space_mb_for_logs(::google::protobuf::uint32 value);
-
-  // uint32 rolling_enabled = 3;
-  void clear_rolling_enabled();
-  static const int kRollingEnabledFieldNumber = 3;
-  ::google::protobuf::uint32 rolling_enabled() const;
-  void set_rolling_enabled(::google::protobuf::uint32 value);
-
-  // uint32 storage_cache_size = 5;
-  void clear_storage_cache_size();
-  static const int kStorageCacheSizeFieldNumber = 5;
-  ::google::protobuf::uint32 storage_cache_size() const;
-  void set_storage_cache_size(::google::protobuf::uint32 value);
+  // .raltservice.BasicConfig basic_config = 1;
+  bool has_basic_config() const;
+  void clear_basic_config();
+  static const int kBasicConfigFieldNumber = 1;
+  const ::raltservice::BasicConfig& basic_config() const;
+  ::raltservice::BasicConfig* release_basic_config();
+  ::raltservice::BasicConfig* mutable_basic_config();
+  void set_allocated_basic_config(::raltservice::BasicConfig* basic_config);
 
   // @@protoc_insertion_point(class_scope:raltservice.GetBasicConfigRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr server_ports_;
-  ::google::protobuf::uint32 logging_enabled_;
-  ::google::protobuf::uint32 max_space_mb_for_logs_;
-  ::google::protobuf::uint32 rolling_enabled_;
-  ::google::protobuf::uint32 storage_cache_size_;
+  ::raltservice::BasicConfig* basic_config_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
   friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetBasicConfigRspImpl();
@@ -2313,7 +2447,7 @@ class SetBasicConfigReq : public ::google::protobuf::Message /* @@protoc_inserti
                &_SetBasicConfigReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    16;
+    17;
 
   void Swap(SetBasicConfigReq* other);
   friend void swap(SetBasicConfigReq& a, SetBasicConfigReq& b) {
@@ -2360,53 +2494,35 @@ class SetBasicConfigReq : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // string server_ports = 4;
-  void clear_server_ports();
-  static const int kServerPortsFieldNumber = 4;
-  const ::std::string& server_ports() const;
-  void set_server_ports(const ::std::string& value);
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
   #if LANG_CXX11
-  void set_server_ports(::std::string&& value);
+  void set_ip_addr(::std::string&& value);
   #endif
-  void set_server_ports(const char* value);
-  void set_server_ports(const char* value, size_t size);
-  ::std::string* mutable_server_ports();
-  ::std::string* release_server_ports();
-  void set_allocated_server_ports(::std::string* server_ports);
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
 
-  // uint32 logging_enabled = 1;
-  void clear_logging_enabled();
-  static const int kLoggingEnabledFieldNumber = 1;
-  ::google::protobuf::uint32 logging_enabled() const;
-  void set_logging_enabled(::google::protobuf::uint32 value);
-
-  // uint32 max_space_mb_for_logs = 2;
-  void clear_max_space_mb_for_logs();
-  static const int kMaxSpaceMbForLogsFieldNumber = 2;
-  ::google::protobuf::uint32 max_space_mb_for_logs() const;
-  void set_max_space_mb_for_logs(::google::protobuf::uint32 value);
-
-  // uint32 rolling_enabled = 3;
-  void clear_rolling_enabled();
-  static const int kRollingEnabledFieldNumber = 3;
-  ::google::protobuf::uint32 rolling_enabled() const;
-  void set_rolling_enabled(::google::protobuf::uint32 value);
-
-  // uint32 storage_cache_size = 5;
-  void clear_storage_cache_size();
-  static const int kStorageCacheSizeFieldNumber = 5;
-  ::google::protobuf::uint32 storage_cache_size() const;
-  void set_storage_cache_size(::google::protobuf::uint32 value);
+  // .raltservice.BasicConfig basic_config = 2;
+  bool has_basic_config() const;
+  void clear_basic_config();
+  static const int kBasicConfigFieldNumber = 2;
+  const ::raltservice::BasicConfig& basic_config() const;
+  ::raltservice::BasicConfig* release_basic_config();
+  ::raltservice::BasicConfig* mutable_basic_config();
+  void set_allocated_basic_config(::raltservice::BasicConfig* basic_config);
 
   // @@protoc_insertion_point(class_scope:raltservice.SetBasicConfigReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr server_ports_;
-  ::google::protobuf::uint32 logging_enabled_;
-  ::google::protobuf::uint32 max_space_mb_for_logs_;
-  ::google::protobuf::uint32 rolling_enabled_;
-  ::google::protobuf::uint32 storage_cache_size_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  ::raltservice::BasicConfig* basic_config_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
   friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsSetBasicConfigReqImpl();
@@ -2448,7 +2564,7 @@ class SetBasicConfigRsp : public ::google::protobuf::Message /* @@protoc_inserti
                &_SetBasicConfigRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    17;
+    18;
 
   void Swap(SetBasicConfigRsp* other);
   friend void swap(SetBasicConfigRsp& a, SetBasicConfigRsp& b) {
@@ -2547,7 +2663,7 @@ class Domain : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
                &_Domain_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    18;
+    19;
 
   void Swap(Domain* other);
   friend void swap(Domain& a, Domain& b) {
@@ -2691,7 +2807,7 @@ class GetAllDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
                &_GetAllDomainReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    19;
+    20;
 
   void Swap(GetAllDomainReq* other);
   friend void swap(GetAllDomainReq& a, GetAllDomainReq& b) {
@@ -2738,15 +2854,29 @@ class GetAllDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // uint32 page_size = 1;
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // uint32 page_size = 2;
   void clear_page_size();
-  static const int kPageSizeFieldNumber = 1;
+  static const int kPageSizeFieldNumber = 2;
   ::google::protobuf::uint32 page_size() const;
   void set_page_size(::google::protobuf::uint32 value);
 
-  // uint32 page_number = 2;
+  // uint32 page_number = 3;
   void clear_page_number();
-  static const int kPageNumberFieldNumber = 2;
+  static const int kPageNumberFieldNumber = 3;
   ::google::protobuf::uint32 page_number() const;
   void set_page_number(::google::protobuf::uint32 value);
 
@@ -2754,6 +2884,7 @@ class GetAllDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
   ::google::protobuf::uint32 page_size_;
   ::google::protobuf::uint32 page_number_;
   mutable int _cached_size_;
@@ -2797,7 +2928,7 @@ class GetAllDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion
                &_GetAllDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    20;
+    21;
 
   void Swap(GetAllDomainRsp* other);
   friend void swap(GetAllDomainRsp& a, GetAllDomainRsp& b) {
@@ -2874,6 +3005,126 @@ class GetAllDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion
 };
 // -------------------------------------------------------------------
 
+class UpdateDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.UpdateDomainReq) */ {
+ public:
+  UpdateDomainReq();
+  virtual ~UpdateDomainReq();
+
+  UpdateDomainReq(const UpdateDomainReq& from);
+
+  inline UpdateDomainReq& operator=(const UpdateDomainReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UpdateDomainReq(UpdateDomainReq&& from) noexcept
+    : UpdateDomainReq() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateDomainReq& operator=(UpdateDomainReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UpdateDomainReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const UpdateDomainReq* internal_default_instance() {
+    return reinterpret_cast<const UpdateDomainReq*>(
+               &_UpdateDomainReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    22;
+
+  void Swap(UpdateDomainReq* other);
+  friend void swap(UpdateDomainReq& a, UpdateDomainReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UpdateDomainReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  UpdateDomainReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const UpdateDomainReq& from);
+  void MergeFrom(const UpdateDomainReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(UpdateDomainReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .raltservice.Domain domain = 2;
+  int domain_size() const;
+  void clear_domain();
+  static const int kDomainFieldNumber = 2;
+  const ::raltservice::Domain& domain(int index) const;
+  ::raltservice::Domain* mutable_domain(int index);
+  ::raltservice::Domain* add_domain();
+  ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >*
+      mutable_domain();
+  const ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >&
+      domain() const;
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // @@protoc_insertion_point(class_scope:raltservice.UpdateDomainReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::raltservice::Domain > domain_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsUpdateDomainReqImpl();
+};
+// -------------------------------------------------------------------
+
 class UpdateDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.UpdateDomainRsp) */ {
  public:
   UpdateDomainRsp();
@@ -2909,7 +3160,7 @@ class UpdateDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion
                &_UpdateDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    21;
+    23;
 
   void Swap(UpdateDomainRsp* other);
   friend void swap(UpdateDomainRsp& a, UpdateDomainRsp& b) {
@@ -3008,7 +3259,7 @@ class GetDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetDomainReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    22;
+    24;
 
   void Swap(GetDomainReq* other);
   friend void swap(GetDomainReq& a, GetDomainReq& b) {
@@ -3055,9 +3306,23 @@ class GetDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // string domain_str = 1;
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // string domain_str = 2;
   void clear_domain_str();
-  static const int kDomainStrFieldNumber = 1;
+  static const int kDomainStrFieldNumber = 2;
   const ::std::string& domain_str() const;
   void set_domain_str(const ::std::string& value);
   #if LANG_CXX11
@@ -3069,9 +3334,9 @@ class GetDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_domain_str();
   void set_allocated_domain_str(::std::string* domain_str);
 
-  // string transformed_domain = 2;
+  // string transformed_domain = 3;
   void clear_transformed_domain();
-  static const int kTransformedDomainFieldNumber = 2;
+  static const int kTransformedDomainFieldNumber = 3;
   const ::std::string& transformed_domain() const;
   void set_transformed_domain(const ::std::string& value);
   #if LANG_CXX11
@@ -3083,15 +3348,15 @@ class GetDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_transformed_domain();
   void set_allocated_transformed_domain(::std::string* transformed_domain);
 
-  // uint32 page_size = 3;
+  // uint32 page_size = 4;
   void clear_page_size();
-  static const int kPageSizeFieldNumber = 3;
+  static const int kPageSizeFieldNumber = 4;
   ::google::protobuf::uint32 page_size() const;
   void set_page_size(::google::protobuf::uint32 value);
 
-  // uint32 page_number = 4;
+  // uint32 page_number = 5;
   void clear_page_number();
-  static const int kPageNumberFieldNumber = 4;
+  static const int kPageNumberFieldNumber = 5;
   ::google::protobuf::uint32 page_number() const;
   void set_page_number(::google::protobuf::uint32 value);
 
@@ -3099,6 +3364,7 @@ class GetDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_po
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
   ::google::protobuf::internal::ArenaStringPtr domain_str_;
   ::google::protobuf::internal::ArenaStringPtr transformed_domain_;
   ::google::protobuf::uint32 page_size_;
@@ -3144,7 +3410,7 @@ class GetDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    23;
+    25;
 
   void Swap(GetDomainRsp* other);
   friend void swap(GetDomainRsp& a, GetDomainRsp& b) {
@@ -3221,6 +3487,123 @@ class GetDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // -------------------------------------------------------------------
 
+class AddDomainReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.AddDomainReq) */ {
+ public:
+  AddDomainReq();
+  virtual ~AddDomainReq();
+
+  AddDomainReq(const AddDomainReq& from);
+
+  inline AddDomainReq& operator=(const AddDomainReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  AddDomainReq(AddDomainReq&& from) noexcept
+    : AddDomainReq() {
+    *this = ::std::move(from);
+  }
+
+  inline AddDomainReq& operator=(AddDomainReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AddDomainReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const AddDomainReq* internal_default_instance() {
+    return reinterpret_cast<const AddDomainReq*>(
+               &_AddDomainReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    26;
+
+  void Swap(AddDomainReq* other);
+  friend void swap(AddDomainReq& a, AddDomainReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline AddDomainReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  AddDomainReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const AddDomainReq& from);
+  void MergeFrom(const AddDomainReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(AddDomainReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // .raltservice.Domain domain = 2;
+  bool has_domain() const;
+  void clear_domain();
+  static const int kDomainFieldNumber = 2;
+  const ::raltservice::Domain& domain() const;
+  ::raltservice::Domain* release_domain();
+  ::raltservice::Domain* mutable_domain();
+  void set_allocated_domain(::raltservice::Domain* domain);
+
+  // @@protoc_insertion_point(class_scope:raltservice.AddDomainReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  ::raltservice::Domain* domain_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsAddDomainReqImpl();
+};
+// -------------------------------------------------------------------
+
 class AddDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.AddDomainRsp) */ {
  public:
   AddDomainRsp();
@@ -3256,7 +3639,7 @@ class AddDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_AddDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    24;
+    27;
 
   void Swap(AddDomainRsp* other);
   friend void swap(AddDomainRsp& a, AddDomainRsp& b) {
@@ -3355,7 +3738,7 @@ class DeleteDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
                &_DeleteDomainReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    25;
+    28;
 
   void Swap(DeleteDomainReq* other);
   friend void swap(DeleteDomainReq& a, DeleteDomainReq& b) {
@@ -3402,9 +3785,23 @@ class DeleteDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // string domain_str = 1;
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // string domain_str = 2;
   void clear_domain_str();
-  static const int kDomainStrFieldNumber = 1;
+  static const int kDomainStrFieldNumber = 2;
   const ::std::string& domain_str() const;
   void set_domain_str(const ::std::string& value);
   #if LANG_CXX11
@@ -3420,6 +3817,7 @@ class DeleteDomainReq : public ::google::protobuf::Message /* @@protoc_insertion
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
   ::google::protobuf::internal::ArenaStringPtr domain_str_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
@@ -3462,7 +3860,7 @@ class DeleteDomainRsp : public ::google::protobuf::Message /* @@protoc_insertion
                &_DeleteDomainRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    26;
+    29;
 
   void Swap(DeleteDomainRsp* other);
   friend void swap(DeleteDomainRsp& a, DeleteDomainRsp& b) {
@@ -3561,7 +3959,7 @@ class GetMiscReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_GetMiscReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    27;
+    30;
 
   void Swap(GetMiscReq* other);
   friend void swap(GetMiscReq& a, GetMiscReq& b) {
@@ -3608,17 +4006,25 @@ class GetMiscReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // accessors -------------------------------------------------------
 
-  // uint32 type = 1;
-  void clear_type();
-  static const int kTypeFieldNumber = 1;
-  ::google::protobuf::uint32 type() const;
-  void set_type(::google::protobuf::uint32 value);
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
 
   // @@protoc_insertion_point(class_scope:raltservice.GetMiscReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 type_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
   mutable int _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
   friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsGetMiscReqImpl();
@@ -3660,7 +4066,7 @@ class GetMiscRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_GetMiscRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    28;
+    31;
 
   void Swap(GetMiscRsp* other);
   friend void swap(GetMiscRsp& a, GetMiscRsp& b) {
@@ -3759,7 +4165,7 @@ class Misc : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
                &_Misc_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    29;
+    32;
 
   void Swap(Misc* other);
   friend void swap(Misc& a, Misc& b) {
@@ -3830,6 +4236,123 @@ class Misc : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 };
 // -------------------------------------------------------------------
 
+class ModMiscOpReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.ModMiscOpReq) */ {
+ public:
+  ModMiscOpReq();
+  virtual ~ModMiscOpReq();
+
+  ModMiscOpReq(const ModMiscOpReq& from);
+
+  inline ModMiscOpReq& operator=(const ModMiscOpReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ModMiscOpReq(ModMiscOpReq&& from) noexcept
+    : ModMiscOpReq() {
+    *this = ::std::move(from);
+  }
+
+  inline ModMiscOpReq& operator=(ModMiscOpReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ModMiscOpReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ModMiscOpReq* internal_default_instance() {
+    return reinterpret_cast<const ModMiscOpReq*>(
+               &_ModMiscOpReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    33;
+
+  void Swap(ModMiscOpReq* other);
+  friend void swap(ModMiscOpReq& a, ModMiscOpReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ModMiscOpReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ModMiscOpReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ModMiscOpReq& from);
+  void MergeFrom(const ModMiscOpReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ModMiscOpReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // .raltservice.Misc misc = 2;
+  bool has_misc() const;
+  void clear_misc();
+  static const int kMiscFieldNumber = 2;
+  const ::raltservice::Misc& misc() const;
+  ::raltservice::Misc* release_misc();
+  ::raltservice::Misc* mutable_misc();
+  void set_allocated_misc(::raltservice::Misc* misc);
+
+  // @@protoc_insertion_point(class_scope:raltservice.ModMiscOpReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  ::raltservice::Misc* misc_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+  friend void ::protobuf_ralt_2dservice_2eproto::InitDefaultsModMiscOpReqImpl();
+};
+// -------------------------------------------------------------------
+
 class ModMiscOpRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.ModMiscOpRsp) */ {
  public:
   ModMiscOpRsp();
@@ -3865,7 +4388,7 @@ class ModMiscOpRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_ModMiscOpRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    30;
+    34;
 
   void Swap(ModMiscOpRsp* other);
   friend void swap(ModMiscOpRsp& a, ModMiscOpRsp& b) {
@@ -3964,7 +4487,7 @@ class RaltStatusReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_RaltStatusReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    31;
+    35;
 
   void Swap(RaltStatusReq* other);
   friend void swap(RaltStatusReq& a, RaltStatusReq& b) {
@@ -4071,7 +4594,7 @@ class RaltStatus : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_RaltStatus_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    32;
+    36;
 
   void Swap(RaltStatus* other);
   friend void swap(RaltStatus& a, RaltStatus& b) {
@@ -4185,7 +4708,7 @@ class ExecCmdReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_ExecCmdReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    33;
+    37;
 
   void Swap(ExecCmdReq* other);
   friend void swap(ExecCmdReq& a, ExecCmdReq& b) {
@@ -4299,7 +4822,7 @@ class ExecCmdRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_ExecCmdRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    34;
+    38;
 
   void Swap(ExecCmdRsp* other);
   friend void swap(ExecCmdRsp& a, ExecCmdRsp& b) {
@@ -4557,169 +5080,169 @@ inline void GetRaltStatsRsp::set_flow_bandwidth_hit_ratio(float value) {
 
 // -------------------------------------------------------------------
 
-// StatsFieldName
+// GetStatsFieldReq
 
 // string ip_addr = 1;
-inline void StatsFieldName::clear_ip_addr() {
+inline void GetStatsFieldReq::clear_ip_addr() {
   ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& StatsFieldName::ip_addr() const {
-  // @@protoc_insertion_point(field_get:raltservice.StatsFieldName.ip_addr)
+inline const ::std::string& GetStatsFieldReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetStatsFieldReq.ip_addr)
   return ip_addr_.GetNoArena();
 }
-inline void StatsFieldName::set_ip_addr(const ::std::string& value) {
+inline void GetStatsFieldReq::set_ip_addr(const ::std::string& value) {
   
   ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.StatsFieldName.ip_addr)
+  // @@protoc_insertion_point(field_set:raltservice.GetStatsFieldReq.ip_addr)
 }
 #if LANG_CXX11
-inline void StatsFieldName::set_ip_addr(::std::string&& value) {
+inline void GetStatsFieldReq::set_ip_addr(::std::string&& value) {
   
   ip_addr_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.StatsFieldName.ip_addr)
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetStatsFieldReq.ip_addr)
 }
 #endif
-inline void StatsFieldName::set_ip_addr(const char* value) {
+inline void GetStatsFieldReq::set_ip_addr(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.StatsFieldName.ip_addr)
+  // @@protoc_insertion_point(field_set_char:raltservice.GetStatsFieldReq.ip_addr)
 }
-inline void StatsFieldName::set_ip_addr(const char* value, size_t size) {
+inline void GetStatsFieldReq::set_ip_addr(const char* value, size_t size) {
   
   ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.StatsFieldName.ip_addr)
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetStatsFieldReq.ip_addr)
 }
-inline ::std::string* StatsFieldName::mutable_ip_addr() {
+inline ::std::string* GetStatsFieldReq::mutable_ip_addr() {
   
-  // @@protoc_insertion_point(field_mutable:raltservice.StatsFieldName.ip_addr)
+  // @@protoc_insertion_point(field_mutable:raltservice.GetStatsFieldReq.ip_addr)
   return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* StatsFieldName::release_ip_addr() {
-  // @@protoc_insertion_point(field_release:raltservice.StatsFieldName.ip_addr)
+inline ::std::string* GetStatsFieldReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.GetStatsFieldReq.ip_addr)
   
   return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void StatsFieldName::set_allocated_ip_addr(::std::string* ip_addr) {
+inline void GetStatsFieldReq::set_allocated_ip_addr(::std::string* ip_addr) {
   if (ip_addr != NULL) {
     
   } else {
     
   }
   ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.StatsFieldName.ip_addr)
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetStatsFieldReq.ip_addr)
 }
 
 // string field_name = 2;
-inline void StatsFieldName::clear_field_name() {
+inline void GetStatsFieldReq::clear_field_name() {
   field_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& StatsFieldName::field_name() const {
-  // @@protoc_insertion_point(field_get:raltservice.StatsFieldName.field_name)
+inline const ::std::string& GetStatsFieldReq::field_name() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetStatsFieldReq.field_name)
   return field_name_.GetNoArena();
 }
-inline void StatsFieldName::set_field_name(const ::std::string& value) {
+inline void GetStatsFieldReq::set_field_name(const ::std::string& value) {
   
   field_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.StatsFieldName.field_name)
+  // @@protoc_insertion_point(field_set:raltservice.GetStatsFieldReq.field_name)
 }
 #if LANG_CXX11
-inline void StatsFieldName::set_field_name(::std::string&& value) {
+inline void GetStatsFieldReq::set_field_name(::std::string&& value) {
   
   field_name_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.StatsFieldName.field_name)
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetStatsFieldReq.field_name)
 }
 #endif
-inline void StatsFieldName::set_field_name(const char* value) {
+inline void GetStatsFieldReq::set_field_name(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   field_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.StatsFieldName.field_name)
+  // @@protoc_insertion_point(field_set_char:raltservice.GetStatsFieldReq.field_name)
 }
-inline void StatsFieldName::set_field_name(const char* value, size_t size) {
+inline void GetStatsFieldReq::set_field_name(const char* value, size_t size) {
   
   field_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.StatsFieldName.field_name)
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetStatsFieldReq.field_name)
 }
-inline ::std::string* StatsFieldName::mutable_field_name() {
+inline ::std::string* GetStatsFieldReq::mutable_field_name() {
   
-  // @@protoc_insertion_point(field_mutable:raltservice.StatsFieldName.field_name)
+  // @@protoc_insertion_point(field_mutable:raltservice.GetStatsFieldReq.field_name)
   return field_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* StatsFieldName::release_field_name() {
-  // @@protoc_insertion_point(field_release:raltservice.StatsFieldName.field_name)
+inline ::std::string* GetStatsFieldReq::release_field_name() {
+  // @@protoc_insertion_point(field_release:raltservice.GetStatsFieldReq.field_name)
   
   return field_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void StatsFieldName::set_allocated_field_name(::std::string* field_name) {
+inline void GetStatsFieldReq::set_allocated_field_name(::std::string* field_name) {
   if (field_name != NULL) {
     
   } else {
     
   }
   field_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), field_name);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.StatsFieldName.field_name)
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetStatsFieldReq.field_name)
 }
 
 // -------------------------------------------------------------------
 
-// StatsFieldValue
+// GetStatsFieldRsp
 
 // string value = 1;
-inline void StatsFieldValue::clear_value() {
+inline void GetStatsFieldRsp::clear_value() {
   value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& StatsFieldValue::value() const {
-  // @@protoc_insertion_point(field_get:raltservice.StatsFieldValue.value)
+inline const ::std::string& GetStatsFieldRsp::value() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetStatsFieldRsp.value)
   return value_.GetNoArena();
 }
-inline void StatsFieldValue::set_value(const ::std::string& value) {
+inline void GetStatsFieldRsp::set_value(const ::std::string& value) {
   
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.StatsFieldValue.value)
+  // @@protoc_insertion_point(field_set:raltservice.GetStatsFieldRsp.value)
 }
 #if LANG_CXX11
-inline void StatsFieldValue::set_value(::std::string&& value) {
+inline void GetStatsFieldRsp::set_value(::std::string&& value) {
   
   value_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.StatsFieldValue.value)
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetStatsFieldRsp.value)
 }
 #endif
-inline void StatsFieldValue::set_value(const char* value) {
+inline void GetStatsFieldRsp::set_value(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.StatsFieldValue.value)
+  // @@protoc_insertion_point(field_set_char:raltservice.GetStatsFieldRsp.value)
 }
-inline void StatsFieldValue::set_value(const char* value, size_t size) {
+inline void GetStatsFieldRsp::set_value(const char* value, size_t size) {
   
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.StatsFieldValue.value)
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetStatsFieldRsp.value)
 }
-inline ::std::string* StatsFieldValue::mutable_value() {
+inline ::std::string* GetStatsFieldRsp::mutable_value() {
   
-  // @@protoc_insertion_point(field_mutable:raltservice.StatsFieldValue.value)
+  // @@protoc_insertion_point(field_mutable:raltservice.GetStatsFieldRsp.value)
   return value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* StatsFieldValue::release_value() {
-  // @@protoc_insertion_point(field_release:raltservice.StatsFieldValue.value)
+inline ::std::string* GetStatsFieldRsp::release_value() {
+  // @@protoc_insertion_point(field_release:raltservice.GetStatsFieldRsp.value)
   
   return value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void StatsFieldValue::set_allocated_value(::std::string* value) {
+inline void GetStatsFieldRsp::set_allocated_value(::std::string* value) {
   if (value != NULL) {
     
   } else {
     
   }
   value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.StatsFieldValue.value)
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetStatsFieldRsp.value)
 }
 
 // -------------------------------------------------------------------
@@ -5451,244 +5974,331 @@ inline void RaltLogs::set_allocated_logs(::std::string* logs) {
 
 // GetBasicConfigReq
 
-// uint32 type = 1;
-inline void GetBasicConfigReq::clear_type() {
-  type_ = 0u;
+// string ip_addr = 1;
+inline void GetBasicConfigReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 GetBasicConfigReq::type() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigReq.type)
-  return type_;
+inline const ::std::string& GetBasicConfigReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigReq.ip_addr)
+  return ip_addr_.GetNoArena();
 }
-inline void GetBasicConfigReq::set_type(::google::protobuf::uint32 value) {
+inline void GetBasicConfigReq::set_ip_addr(const ::std::string& value) {
   
-  type_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigReq.type)
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigReq.ip_addr)
+}
+#if LANG_CXX11
+inline void GetBasicConfigReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetBasicConfigReq.ip_addr)
+}
+#endif
+inline void GetBasicConfigReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.GetBasicConfigReq.ip_addr)
+}
+inline void GetBasicConfigReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetBasicConfigReq.ip_addr)
+}
+inline ::std::string* GetBasicConfigReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.GetBasicConfigReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetBasicConfigReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.GetBasicConfigReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetBasicConfigReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetBasicConfigReq.ip_addr)
+}
+
+// -------------------------------------------------------------------
+
+// BasicConfig
+
+// uint32 logging_enabled = 1;
+inline void BasicConfig::clear_logging_enabled() {
+  logging_enabled_ = 0u;
+}
+inline ::google::protobuf::uint32 BasicConfig::logging_enabled() const {
+  // @@protoc_insertion_point(field_get:raltservice.BasicConfig.logging_enabled)
+  return logging_enabled_;
+}
+inline void BasicConfig::set_logging_enabled(::google::protobuf::uint32 value) {
+  
+  logging_enabled_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.BasicConfig.logging_enabled)
+}
+
+// uint32 max_space_mb_for_logs = 2;
+inline void BasicConfig::clear_max_space_mb_for_logs() {
+  max_space_mb_for_logs_ = 0u;
+}
+inline ::google::protobuf::uint32 BasicConfig::max_space_mb_for_logs() const {
+  // @@protoc_insertion_point(field_get:raltservice.BasicConfig.max_space_mb_for_logs)
+  return max_space_mb_for_logs_;
+}
+inline void BasicConfig::set_max_space_mb_for_logs(::google::protobuf::uint32 value) {
+  
+  max_space_mb_for_logs_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.BasicConfig.max_space_mb_for_logs)
+}
+
+// uint32 rolling_enabled = 3;
+inline void BasicConfig::clear_rolling_enabled() {
+  rolling_enabled_ = 0u;
+}
+inline ::google::protobuf::uint32 BasicConfig::rolling_enabled() const {
+  // @@protoc_insertion_point(field_get:raltservice.BasicConfig.rolling_enabled)
+  return rolling_enabled_;
+}
+inline void BasicConfig::set_rolling_enabled(::google::protobuf::uint32 value) {
+  
+  rolling_enabled_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.BasicConfig.rolling_enabled)
+}
+
+// string server_ports = 4;
+inline void BasicConfig::clear_server_ports() {
+  server_ports_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BasicConfig::server_ports() const {
+  // @@protoc_insertion_point(field_get:raltservice.BasicConfig.server_ports)
+  return server_ports_.GetNoArena();
+}
+inline void BasicConfig::set_server_ports(const ::std::string& value) {
+  
+  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.BasicConfig.server_ports)
+}
+#if LANG_CXX11
+inline void BasicConfig::set_server_ports(::std::string&& value) {
+  
+  server_ports_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.BasicConfig.server_ports)
+}
+#endif
+inline void BasicConfig::set_server_ports(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.BasicConfig.server_ports)
+}
+inline void BasicConfig::set_server_ports(const char* value, size_t size) {
+  
+  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.BasicConfig.server_ports)
+}
+inline ::std::string* BasicConfig::mutable_server_ports() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.BasicConfig.server_ports)
+  return server_ports_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BasicConfig::release_server_ports() {
+  // @@protoc_insertion_point(field_release:raltservice.BasicConfig.server_ports)
+  
+  return server_ports_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BasicConfig::set_allocated_server_ports(::std::string* server_ports) {
+  if (server_ports != NULL) {
+    
+  } else {
+    
+  }
+  server_ports_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), server_ports);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.BasicConfig.server_ports)
+}
+
+// uint32 storage_cache_size = 5;
+inline void BasicConfig::clear_storage_cache_size() {
+  storage_cache_size_ = 0u;
+}
+inline ::google::protobuf::uint32 BasicConfig::storage_cache_size() const {
+  // @@protoc_insertion_point(field_get:raltservice.BasicConfig.storage_cache_size)
+  return storage_cache_size_;
+}
+inline void BasicConfig::set_storage_cache_size(::google::protobuf::uint32 value) {
+  
+  storage_cache_size_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.BasicConfig.storage_cache_size)
 }
 
 // -------------------------------------------------------------------
 
 // GetBasicConfigRsp
 
-// uint32 logging_enabled = 1;
-inline void GetBasicConfigRsp::clear_logging_enabled() {
-  logging_enabled_ = 0u;
+// .raltservice.BasicConfig basic_config = 1;
+inline bool GetBasicConfigRsp::has_basic_config() const {
+  return this != internal_default_instance() && basic_config_ != NULL;
 }
-inline ::google::protobuf::uint32 GetBasicConfigRsp::logging_enabled() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.logging_enabled)
-  return logging_enabled_;
+inline void GetBasicConfigRsp::clear_basic_config() {
+  if (GetArenaNoVirtual() == NULL && basic_config_ != NULL) {
+    delete basic_config_;
+  }
+  basic_config_ = NULL;
 }
-inline void GetBasicConfigRsp::set_logging_enabled(::google::protobuf::uint32 value) {
+inline const ::raltservice::BasicConfig& GetBasicConfigRsp::basic_config() const {
+  const ::raltservice::BasicConfig* p = basic_config_;
+  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.basic_config)
+  return p != NULL ? *p : *reinterpret_cast<const ::raltservice::BasicConfig*>(
+      &::raltservice::_BasicConfig_default_instance_);
+}
+inline ::raltservice::BasicConfig* GetBasicConfigRsp::release_basic_config() {
+  // @@protoc_insertion_point(field_release:raltservice.GetBasicConfigRsp.basic_config)
   
-  logging_enabled_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.logging_enabled)
+  ::raltservice::BasicConfig* temp = basic_config_;
+  basic_config_ = NULL;
+  return temp;
 }
-
-// uint32 max_space_mb_for_logs = 2;
-inline void GetBasicConfigRsp::clear_max_space_mb_for_logs() {
-  max_space_mb_for_logs_ = 0u;
-}
-inline ::google::protobuf::uint32 GetBasicConfigRsp::max_space_mb_for_logs() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.max_space_mb_for_logs)
-  return max_space_mb_for_logs_;
-}
-inline void GetBasicConfigRsp::set_max_space_mb_for_logs(::google::protobuf::uint32 value) {
+inline ::raltservice::BasicConfig* GetBasicConfigRsp::mutable_basic_config() {
   
-  max_space_mb_for_logs_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.max_space_mb_for_logs)
+  if (basic_config_ == NULL) {
+    basic_config_ = new ::raltservice::BasicConfig;
+  }
+  // @@protoc_insertion_point(field_mutable:raltservice.GetBasicConfigRsp.basic_config)
+  return basic_config_;
 }
-
-// uint32 rolling_enabled = 3;
-inline void GetBasicConfigRsp::clear_rolling_enabled() {
-  rolling_enabled_ = 0u;
-}
-inline ::google::protobuf::uint32 GetBasicConfigRsp::rolling_enabled() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.rolling_enabled)
-  return rolling_enabled_;
-}
-inline void GetBasicConfigRsp::set_rolling_enabled(::google::protobuf::uint32 value) {
-  
-  rolling_enabled_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.rolling_enabled)
-}
-
-// string server_ports = 4;
-inline void GetBasicConfigRsp::clear_server_ports() {
-  server_ports_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& GetBasicConfigRsp::server_ports() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.server_ports)
-  return server_ports_.GetNoArena();
-}
-inline void GetBasicConfigRsp::set_server_ports(const ::std::string& value) {
-  
-  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.server_ports)
-}
-#if LANG_CXX11
-inline void GetBasicConfigRsp::set_server_ports(::std::string&& value) {
-  
-  server_ports_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetBasicConfigRsp.server_ports)
-}
-#endif
-inline void GetBasicConfigRsp::set_server_ports(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.GetBasicConfigRsp.server_ports)
-}
-inline void GetBasicConfigRsp::set_server_ports(const char* value, size_t size) {
-  
-  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.GetBasicConfigRsp.server_ports)
-}
-inline ::std::string* GetBasicConfigRsp::mutable_server_ports() {
-  
-  // @@protoc_insertion_point(field_mutable:raltservice.GetBasicConfigRsp.server_ports)
-  return server_ports_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* GetBasicConfigRsp::release_server_ports() {
-  // @@protoc_insertion_point(field_release:raltservice.GetBasicConfigRsp.server_ports)
-  
-  return server_ports_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void GetBasicConfigRsp::set_allocated_server_ports(::std::string* server_ports) {
-  if (server_ports != NULL) {
+inline void GetBasicConfigRsp::set_allocated_basic_config(::raltservice::BasicConfig* basic_config) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete basic_config_;
+  }
+  if (basic_config) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      basic_config = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, basic_config, submessage_arena);
+    }
     
   } else {
     
   }
-  server_ports_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), server_ports);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.GetBasicConfigRsp.server_ports)
-}
-
-// uint32 storage_cache_size = 5;
-inline void GetBasicConfigRsp::clear_storage_cache_size() {
-  storage_cache_size_ = 0u;
-}
-inline ::google::protobuf::uint32 GetBasicConfigRsp::storage_cache_size() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetBasicConfigRsp.storage_cache_size)
-  return storage_cache_size_;
-}
-inline void GetBasicConfigRsp::set_storage_cache_size(::google::protobuf::uint32 value) {
-  
-  storage_cache_size_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetBasicConfigRsp.storage_cache_size)
+  basic_config_ = basic_config;
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetBasicConfigRsp.basic_config)
 }
 
 // -------------------------------------------------------------------
 
 // SetBasicConfigReq
 
-// uint32 logging_enabled = 1;
-inline void SetBasicConfigReq::clear_logging_enabled() {
-  logging_enabled_ = 0u;
+// string ip_addr = 1;
+inline void SetBasicConfigReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 SetBasicConfigReq::logging_enabled() const {
-  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.logging_enabled)
-  return logging_enabled_;
+inline const ::std::string& SetBasicConfigReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.ip_addr)
+  return ip_addr_.GetNoArena();
 }
-inline void SetBasicConfigReq::set_logging_enabled(::google::protobuf::uint32 value) {
+inline void SetBasicConfigReq::set_ip_addr(const ::std::string& value) {
   
-  logging_enabled_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.logging_enabled)
-}
-
-// uint32 max_space_mb_for_logs = 2;
-inline void SetBasicConfigReq::clear_max_space_mb_for_logs() {
-  max_space_mb_for_logs_ = 0u;
-}
-inline ::google::protobuf::uint32 SetBasicConfigReq::max_space_mb_for_logs() const {
-  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.max_space_mb_for_logs)
-  return max_space_mb_for_logs_;
-}
-inline void SetBasicConfigReq::set_max_space_mb_for_logs(::google::protobuf::uint32 value) {
-  
-  max_space_mb_for_logs_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.max_space_mb_for_logs)
-}
-
-// uint32 rolling_enabled = 3;
-inline void SetBasicConfigReq::clear_rolling_enabled() {
-  rolling_enabled_ = 0u;
-}
-inline ::google::protobuf::uint32 SetBasicConfigReq::rolling_enabled() const {
-  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.rolling_enabled)
-  return rolling_enabled_;
-}
-inline void SetBasicConfigReq::set_rolling_enabled(::google::protobuf::uint32 value) {
-  
-  rolling_enabled_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.rolling_enabled)
-}
-
-// string server_ports = 4;
-inline void SetBasicConfigReq::clear_server_ports() {
-  server_ports_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& SetBasicConfigReq::server_ports() const {
-  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.server_ports)
-  return server_ports_.GetNoArena();
-}
-inline void SetBasicConfigReq::set_server_ports(const ::std::string& value) {
-  
-  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.server_ports)
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.ip_addr)
 }
 #if LANG_CXX11
-inline void SetBasicConfigReq::set_server_ports(::std::string&& value) {
+inline void SetBasicConfigReq::set_ip_addr(::std::string&& value) {
   
-  server_ports_.SetNoArena(
+  ip_addr_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:raltservice.SetBasicConfigReq.server_ports)
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.SetBasicConfigReq.ip_addr)
 }
 #endif
-inline void SetBasicConfigReq::set_server_ports(const char* value) {
+inline void SetBasicConfigReq::set_ip_addr(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:raltservice.SetBasicConfigReq.server_ports)
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.SetBasicConfigReq.ip_addr)
 }
-inline void SetBasicConfigReq::set_server_ports(const char* value, size_t size) {
+inline void SetBasicConfigReq::set_ip_addr(const char* value, size_t size) {
   
-  server_ports_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:raltservice.SetBasicConfigReq.server_ports)
+  // @@protoc_insertion_point(field_set_pointer:raltservice.SetBasicConfigReq.ip_addr)
 }
-inline ::std::string* SetBasicConfigReq::mutable_server_ports() {
+inline ::std::string* SetBasicConfigReq::mutable_ip_addr() {
   
-  // @@protoc_insertion_point(field_mutable:raltservice.SetBasicConfigReq.server_ports)
-  return server_ports_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:raltservice.SetBasicConfigReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* SetBasicConfigReq::release_server_ports() {
-  // @@protoc_insertion_point(field_release:raltservice.SetBasicConfigReq.server_ports)
+inline ::std::string* SetBasicConfigReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.SetBasicConfigReq.ip_addr)
   
-  return server_ports_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SetBasicConfigReq::set_allocated_server_ports(::std::string* server_ports) {
-  if (server_ports != NULL) {
+inline void SetBasicConfigReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
     
   } else {
     
   }
-  server_ports_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), server_ports);
-  // @@protoc_insertion_point(field_set_allocated:raltservice.SetBasicConfigReq.server_ports)
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.SetBasicConfigReq.ip_addr)
 }
 
-// uint32 storage_cache_size = 5;
-inline void SetBasicConfigReq::clear_storage_cache_size() {
-  storage_cache_size_ = 0u;
+// .raltservice.BasicConfig basic_config = 2;
+inline bool SetBasicConfigReq::has_basic_config() const {
+  return this != internal_default_instance() && basic_config_ != NULL;
 }
-inline ::google::protobuf::uint32 SetBasicConfigReq::storage_cache_size() const {
-  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.storage_cache_size)
-  return storage_cache_size_;
+inline void SetBasicConfigReq::clear_basic_config() {
+  if (GetArenaNoVirtual() == NULL && basic_config_ != NULL) {
+    delete basic_config_;
+  }
+  basic_config_ = NULL;
 }
-inline void SetBasicConfigReq::set_storage_cache_size(::google::protobuf::uint32 value) {
+inline const ::raltservice::BasicConfig& SetBasicConfigReq::basic_config() const {
+  const ::raltservice::BasicConfig* p = basic_config_;
+  // @@protoc_insertion_point(field_get:raltservice.SetBasicConfigReq.basic_config)
+  return p != NULL ? *p : *reinterpret_cast<const ::raltservice::BasicConfig*>(
+      &::raltservice::_BasicConfig_default_instance_);
+}
+inline ::raltservice::BasicConfig* SetBasicConfigReq::release_basic_config() {
+  // @@protoc_insertion_point(field_release:raltservice.SetBasicConfigReq.basic_config)
   
-  storage_cache_size_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.SetBasicConfigReq.storage_cache_size)
+  ::raltservice::BasicConfig* temp = basic_config_;
+  basic_config_ = NULL;
+  return temp;
+}
+inline ::raltservice::BasicConfig* SetBasicConfigReq::mutable_basic_config() {
+  
+  if (basic_config_ == NULL) {
+    basic_config_ = new ::raltservice::BasicConfig;
+  }
+  // @@protoc_insertion_point(field_mutable:raltservice.SetBasicConfigReq.basic_config)
+  return basic_config_;
+}
+inline void SetBasicConfigReq::set_allocated_basic_config(::raltservice::BasicConfig* basic_config) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete basic_config_;
+  }
+  if (basic_config) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      basic_config = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, basic_config, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  basic_config_ = basic_config;
+  // @@protoc_insertion_point(field_set_allocated:raltservice.SetBasicConfigReq.basic_config)
 }
 
 // -------------------------------------------------------------------
@@ -5890,7 +6500,60 @@ inline void Domain::set_allocated_port(::std::string* port) {
 
 // GetAllDomainReq
 
-// uint32 page_size = 1;
+// string ip_addr = 1;
+inline void GetAllDomainReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetAllDomainReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetAllDomainReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void GetAllDomainReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.GetAllDomainReq.ip_addr)
+}
+#if LANG_CXX11
+inline void GetAllDomainReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetAllDomainReq.ip_addr)
+}
+#endif
+inline void GetAllDomainReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.GetAllDomainReq.ip_addr)
+}
+inline void GetAllDomainReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetAllDomainReq.ip_addr)
+}
+inline ::std::string* GetAllDomainReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.GetAllDomainReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetAllDomainReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.GetAllDomainReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetAllDomainReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetAllDomainReq.ip_addr)
+}
+
+// uint32 page_size = 2;
 inline void GetAllDomainReq::clear_page_size() {
   page_size_ = 0u;
 }
@@ -5904,7 +6567,7 @@ inline void GetAllDomainReq::set_page_size(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:raltservice.GetAllDomainReq.page_size)
 }
 
-// uint32 page_number = 2;
+// uint32 page_number = 3;
 inline void GetAllDomainReq::clear_page_number() {
   page_number_ = 0u;
 }
@@ -5968,6 +6631,93 @@ inline void GetAllDomainRsp::set_domain_total(::google::protobuf::uint32 value) 
 
 // -------------------------------------------------------------------
 
+// UpdateDomainReq
+
+// string ip_addr = 1;
+inline void UpdateDomainReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UpdateDomainReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.UpdateDomainReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void UpdateDomainReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.UpdateDomainReq.ip_addr)
+}
+#if LANG_CXX11
+inline void UpdateDomainReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.UpdateDomainReq.ip_addr)
+}
+#endif
+inline void UpdateDomainReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.UpdateDomainReq.ip_addr)
+}
+inline void UpdateDomainReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.UpdateDomainReq.ip_addr)
+}
+inline ::std::string* UpdateDomainReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.UpdateDomainReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UpdateDomainReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.UpdateDomainReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UpdateDomainReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.UpdateDomainReq.ip_addr)
+}
+
+// repeated .raltservice.Domain domain = 2;
+inline int UpdateDomainReq::domain_size() const {
+  return domain_.size();
+}
+inline void UpdateDomainReq::clear_domain() {
+  domain_.Clear();
+}
+inline const ::raltservice::Domain& UpdateDomainReq::domain(int index) const {
+  // @@protoc_insertion_point(field_get:raltservice.UpdateDomainReq.domain)
+  return domain_.Get(index);
+}
+inline ::raltservice::Domain* UpdateDomainReq::mutable_domain(int index) {
+  // @@protoc_insertion_point(field_mutable:raltservice.UpdateDomainReq.domain)
+  return domain_.Mutable(index);
+}
+inline ::raltservice::Domain* UpdateDomainReq::add_domain() {
+  // @@protoc_insertion_point(field_add:raltservice.UpdateDomainReq.domain)
+  return domain_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >*
+UpdateDomainReq::mutable_domain() {
+  // @@protoc_insertion_point(field_mutable_list:raltservice.UpdateDomainReq.domain)
+  return &domain_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::raltservice::Domain >&
+UpdateDomainReq::domain() const {
+  // @@protoc_insertion_point(field_list:raltservice.UpdateDomainReq.domain)
+  return domain_;
+}
+
+// -------------------------------------------------------------------
+
 // UpdateDomainRsp
 
 // uint32 result = 1;
@@ -5988,7 +6738,60 @@ inline void UpdateDomainRsp::set_result(::google::protobuf::uint32 value) {
 
 // GetDomainReq
 
-// string domain_str = 1;
+// string ip_addr = 1;
+inline void GetDomainReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetDomainReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetDomainReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void GetDomainReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.GetDomainReq.ip_addr)
+}
+#if LANG_CXX11
+inline void GetDomainReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetDomainReq.ip_addr)
+}
+#endif
+inline void GetDomainReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.GetDomainReq.ip_addr)
+}
+inline void GetDomainReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetDomainReq.ip_addr)
+}
+inline ::std::string* GetDomainReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.GetDomainReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetDomainReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.GetDomainReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetDomainReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetDomainReq.ip_addr)
+}
+
+// string domain_str = 2;
 inline void GetDomainReq::clear_domain_str() {
   domain_str_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -6041,7 +6844,7 @@ inline void GetDomainReq::set_allocated_domain_str(::std::string* domain_str) {
   // @@protoc_insertion_point(field_set_allocated:raltservice.GetDomainReq.domain_str)
 }
 
-// string transformed_domain = 2;
+// string transformed_domain = 3;
 inline void GetDomainReq::clear_transformed_domain() {
   transformed_domain_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -6094,7 +6897,7 @@ inline void GetDomainReq::set_allocated_transformed_domain(::std::string* transf
   // @@protoc_insertion_point(field_set_allocated:raltservice.GetDomainReq.transformed_domain)
 }
 
-// uint32 page_size = 3;
+// uint32 page_size = 4;
 inline void GetDomainReq::clear_page_size() {
   page_size_ = 0u;
 }
@@ -6108,7 +6911,7 @@ inline void GetDomainReq::set_page_size(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:raltservice.GetDomainReq.page_size)
 }
 
-// uint32 page_number = 4;
+// uint32 page_number = 5;
 inline void GetDomainReq::clear_page_number() {
   page_number_ = 0u;
 }
@@ -6172,6 +6975,113 @@ inline void GetDomainRsp::set_domain_total(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// AddDomainReq
+
+// string ip_addr = 1;
+inline void AddDomainReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& AddDomainReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.AddDomainReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void AddDomainReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.AddDomainReq.ip_addr)
+}
+#if LANG_CXX11
+inline void AddDomainReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.AddDomainReq.ip_addr)
+}
+#endif
+inline void AddDomainReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.AddDomainReq.ip_addr)
+}
+inline void AddDomainReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.AddDomainReq.ip_addr)
+}
+inline ::std::string* AddDomainReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.AddDomainReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* AddDomainReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.AddDomainReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AddDomainReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.AddDomainReq.ip_addr)
+}
+
+// .raltservice.Domain domain = 2;
+inline bool AddDomainReq::has_domain() const {
+  return this != internal_default_instance() && domain_ != NULL;
+}
+inline void AddDomainReq::clear_domain() {
+  if (GetArenaNoVirtual() == NULL && domain_ != NULL) {
+    delete domain_;
+  }
+  domain_ = NULL;
+}
+inline const ::raltservice::Domain& AddDomainReq::domain() const {
+  const ::raltservice::Domain* p = domain_;
+  // @@protoc_insertion_point(field_get:raltservice.AddDomainReq.domain)
+  return p != NULL ? *p : *reinterpret_cast<const ::raltservice::Domain*>(
+      &::raltservice::_Domain_default_instance_);
+}
+inline ::raltservice::Domain* AddDomainReq::release_domain() {
+  // @@protoc_insertion_point(field_release:raltservice.AddDomainReq.domain)
+  
+  ::raltservice::Domain* temp = domain_;
+  domain_ = NULL;
+  return temp;
+}
+inline ::raltservice::Domain* AddDomainReq::mutable_domain() {
+  
+  if (domain_ == NULL) {
+    domain_ = new ::raltservice::Domain;
+  }
+  // @@protoc_insertion_point(field_mutable:raltservice.AddDomainReq.domain)
+  return domain_;
+}
+inline void AddDomainReq::set_allocated_domain(::raltservice::Domain* domain) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete domain_;
+  }
+  if (domain) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      domain = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, domain, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  domain_ = domain;
+  // @@protoc_insertion_point(field_set_allocated:raltservice.AddDomainReq.domain)
+}
+
+// -------------------------------------------------------------------
+
 // AddDomainRsp
 
 // uint32 result = 1;
@@ -6192,7 +7102,60 @@ inline void AddDomainRsp::set_result(::google::protobuf::uint32 value) {
 
 // DeleteDomainReq
 
-// string domain_str = 1;
+// string ip_addr = 1;
+inline void DeleteDomainReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DeleteDomainReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.DeleteDomainReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void DeleteDomainReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.DeleteDomainReq.ip_addr)
+}
+#if LANG_CXX11
+inline void DeleteDomainReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.DeleteDomainReq.ip_addr)
+}
+#endif
+inline void DeleteDomainReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.DeleteDomainReq.ip_addr)
+}
+inline void DeleteDomainReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.DeleteDomainReq.ip_addr)
+}
+inline ::std::string* DeleteDomainReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.DeleteDomainReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DeleteDomainReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.DeleteDomainReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DeleteDomainReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.DeleteDomainReq.ip_addr)
+}
+
+// string domain_str = 2;
 inline void DeleteDomainReq::clear_domain_str() {
   domain_str_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -6267,18 +7230,57 @@ inline void DeleteDomainRsp::set_result(::google::protobuf::uint32 value) {
 
 // GetMiscReq
 
-// uint32 type = 1;
-inline void GetMiscReq::clear_type() {
-  type_ = 0u;
+// string ip_addr = 1;
+inline void GetMiscReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 GetMiscReq::type() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetMiscReq.type)
-  return type_;
+inline const ::std::string& GetMiscReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetMiscReq.ip_addr)
+  return ip_addr_.GetNoArena();
 }
-inline void GetMiscReq::set_type(::google::protobuf::uint32 value) {
+inline void GetMiscReq::set_ip_addr(const ::std::string& value) {
   
-  type_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetMiscReq.type)
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.GetMiscReq.ip_addr)
+}
+#if LANG_CXX11
+inline void GetMiscReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetMiscReq.ip_addr)
+}
+#endif
+inline void GetMiscReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.GetMiscReq.ip_addr)
+}
+inline void GetMiscReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetMiscReq.ip_addr)
+}
+inline ::std::string* GetMiscReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.GetMiscReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetMiscReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.GetMiscReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetMiscReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetMiscReq.ip_addr)
 }
 
 // -------------------------------------------------------------------
@@ -6329,6 +7331,113 @@ inline void Misc::set_value(::raltservice::MiscSwitch value) {
   
   value_ = value;
   // @@protoc_insertion_point(field_set:raltservice.Misc.value)
+}
+
+// -------------------------------------------------------------------
+
+// ModMiscOpReq
+
+// string ip_addr = 1;
+inline void ModMiscOpReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ModMiscOpReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.ModMiscOpReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void ModMiscOpReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.ModMiscOpReq.ip_addr)
+}
+#if LANG_CXX11
+inline void ModMiscOpReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.ModMiscOpReq.ip_addr)
+}
+#endif
+inline void ModMiscOpReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.ModMiscOpReq.ip_addr)
+}
+inline void ModMiscOpReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.ModMiscOpReq.ip_addr)
+}
+inline ::std::string* ModMiscOpReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.ModMiscOpReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ModMiscOpReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.ModMiscOpReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ModMiscOpReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.ModMiscOpReq.ip_addr)
+}
+
+// .raltservice.Misc misc = 2;
+inline bool ModMiscOpReq::has_misc() const {
+  return this != internal_default_instance() && misc_ != NULL;
+}
+inline void ModMiscOpReq::clear_misc() {
+  if (GetArenaNoVirtual() == NULL && misc_ != NULL) {
+    delete misc_;
+  }
+  misc_ = NULL;
+}
+inline const ::raltservice::Misc& ModMiscOpReq::misc() const {
+  const ::raltservice::Misc* p = misc_;
+  // @@protoc_insertion_point(field_get:raltservice.ModMiscOpReq.misc)
+  return p != NULL ? *p : *reinterpret_cast<const ::raltservice::Misc*>(
+      &::raltservice::_Misc_default_instance_);
+}
+inline ::raltservice::Misc* ModMiscOpReq::release_misc() {
+  // @@protoc_insertion_point(field_release:raltservice.ModMiscOpReq.misc)
+  
+  ::raltservice::Misc* temp = misc_;
+  misc_ = NULL;
+  return temp;
+}
+inline ::raltservice::Misc* ModMiscOpReq::mutable_misc() {
+  
+  if (misc_ == NULL) {
+    misc_ = new ::raltservice::Misc;
+  }
+  // @@protoc_insertion_point(field_mutable:raltservice.ModMiscOpReq.misc)
+  return misc_;
+}
+inline void ModMiscOpReq::set_allocated_misc(::raltservice::Misc* misc) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete misc_;
+  }
+  if (misc) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      misc = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, misc, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  misc_ = misc;
+  // @@protoc_insertion_point(field_set_allocated:raltservice.ModMiscOpReq.misc)
 }
 
 // -------------------------------------------------------------------
@@ -6569,6 +7678,14 @@ inline void ExecCmdRsp::set_result(::google::protobuf::uint32 value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

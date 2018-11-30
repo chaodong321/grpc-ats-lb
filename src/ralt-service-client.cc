@@ -57,8 +57,8 @@ using raltservice::HomePageRsp;
 //stats
 using raltservice::GetRaltStatsReq;
 using raltservice::GetRaltStatsRsp;
-using raltservice::StatsFieldName;
-using raltservice::StatsFieldValue;
+using raltservice::GetStatsFieldReq;
+using raltservice::GetStatsFieldRsp;
 using raltservice::CacheLookUpReq;
 using raltservice::CacheResult;
 using raltservice::FlowStatLookUpReq;
@@ -69,6 +69,7 @@ using raltservice::LogResult;
 using raltservice::GetRaltLogsReq;
 using raltservice::RaltLogs;
 //basic config
+using raltservice::BasicConfig;
 using raltservice::GetBasicConfigReq;
 using raltservice::GetBasicConfigRsp;
 using raltservice::SetBasicConfigReq;
@@ -80,16 +81,19 @@ using raltservice::GetAllDomainReq;
 using raltservice::GetAllDomainRsp;
 using raltservice::GetDomainReq;
 using raltservice::GetDomainRsp;
+using raltservice::UpdateDomainReq;
 using raltservice::UpdateDomainRsp;
+using raltservice::AddDomainReq;
 using raltservice::AddDomainRsp;
 using raltservice::DeleteDomainReq;
 using raltservice::DeleteDomainRsp;
 //miscellous
 using raltservice::MiscKey;
 using raltservice::MiscSwitch;
+using raltservice::Misc;
 using raltservice::GetMiscReq;
 using raltservice::GetMiscRsp;
-using raltservice::Misc;
+using raltservice::ModMiscOpReq;
 using raltservice::ModMiscOpRsp;
 //ralt status
 using raltservice::RaltStatusReq;
@@ -109,7 +113,7 @@ class RaltServiceClient {
 
 			// The actual RPC.
 			GetNameAndIpInfoReq request;
-			request.set_ip_addr("10.2.1.114");
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetNameAndIpInfoRsp reply;
 			Status status = stub_sys->getNameAndIpInfo(&context, request, &reply);
@@ -127,7 +131,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetDeviceInfoReq request;
-			request.set_ip_addr("10.2.1.114");
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetDeviceInfoRsp reply;
 			Status status = stub_sys->getDeviceInfo(&context, request, &reply);
@@ -147,6 +151,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetDeviceDetailReq request;
+			request.set_ip_addr("10.2.1.240");
 			request.set_is_depend_os_version(bDependOsVersion);
 			// Container for the data we expect from the server.
 			GetDeviceDetailRsp reply;
@@ -168,6 +173,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetCpuUsageReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetCpuUsageRsp reply;
 			Status status = stub_sys->getCpuUsage(&context, request, &reply);
@@ -184,6 +190,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetCpuTempReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetCpuTempRsp reply;
 			Status status = stub_sys->getCpuTemp(&context, request, &reply);
@@ -200,6 +207,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetMemUsageReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetMemUsageRsp reply;
 			Status status = stub_sys->getMemUsage(&context, request, &reply);
@@ -216,6 +224,7 @@ class RaltServiceClient {
 			
 			// The actual RPC.
 			GetNicInfoReq request;
+			request.set_ip_addr("10.2.1.240");
 			request.set_is_depend_os_version(bDependOsVersion);
 			// Container for the data we expect from the server.
 			GetNicInfoRsp reply;
@@ -233,6 +242,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetHostNameReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetHostNameRsp reply;
 			Status status = stub_sys->getHostName(&context, request, &reply);
@@ -249,6 +259,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetIpInfoReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetIpInfoRsp reply;
 			Status status = stub_sys->getIpInfo(&context, request, &reply);
@@ -265,6 +276,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetCpuModelReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetCpuModelRsp reply;
 			Status status = stub_sys->getCpuModel(&context, request, &reply);
@@ -281,6 +293,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetCpuCoresReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetCpuCoresRsp reply;
 			Status status = stub_sys->getCpuCores(&context, request, &reply);
@@ -297,6 +310,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetMemTotalReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetMemTotalRsp reply;
 			Status status = stub_sys->getMemTotal(&context, request, &reply);
@@ -313,6 +327,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			GetEthCtrlInfoReq request;
+			request.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			GetEthCtrlInfoRsp reply;
 			Status status = stub_sys->getEthCtrlInfo(&context, request, &reply);
@@ -327,6 +342,7 @@ class RaltServiceClient {
 		void getRaltStats(){
 			ClientContext context;
 			GetRaltStatsReq req;
+			req.set_ip_addr("10.2.1.240");
 			GetRaltStatsRsp rsp;
 			
 			Status status = stub_ralt->getRaltStats(&context, req, &rsp);
@@ -348,13 +364,14 @@ class RaltServiceClient {
 
 		void ShowFieldValue(std::string strFiledName){
 			ClientContext context;
-			StatsFieldName req;
+			GetStatsFieldReq req;
+			req.set_ip_addr("10.2.1.240");
 			req.set_field_name(strFiledName);
-			StatsFieldValue rsp;
+			GetStatsFieldRsp rsp;
 			
-			Status status = stub_ralt->getStatsFieldValue(&context, req, &rsp);
+			Status status = stub_ralt->getStatsField(&context, req, &rsp);
 			if (status.ok()) {
-				std::cout << "bytes_total: " << rsp.value() << std::endl;
+				std::cout << "file value: " << rsp.value() << std::endl;
 			}
 			else{
 				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
@@ -389,6 +406,7 @@ class RaltServiceClient {
 				
 			// The actual RPC.
 			CacheLookUpReq cacheRequest;
+			cacheRequest.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			CacheResult cacheReply;
 			Status cacheStatus = stub_ralt->showCacheData(&context, cacheRequest, &cacheReply);
@@ -410,6 +428,7 @@ class RaltServiceClient {
 			
 			// The actual RPC.
 			FlowStatLookUpReq flowRequest;
+			flowRequest.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			FlowResult flowReply;
 			Status flowStatus = stub_ralt->showFlowStatData(&context, flowRequest, &flowReply);
@@ -438,6 +457,7 @@ class RaltServiceClient {
 			
 			// The actual RPC.
 			LogInfoLookUpReq logRequest;
+			logRequest.set_ip_addr("10.2.1.240");
 			// Container for the data we expect from the server.
 			LogResult logReply;
 			Status logStatus = stub_ralt->showLogInfoData(&context, logRequest, &logReply);
@@ -454,6 +474,7 @@ class RaltServiceClient {
 		void getRaltLogs(){
 			ClientContext context;
 			GetRaltLogsReq request;
+			request.set_ip_addr("10.2.1.240");
 			std::unique_ptr<ClientReader<RaltLogs> > reader(stub_ralt->getRaltLogs(&context, request));
 			RaltLogs logs;
 			while (reader->Read(&logs)) {
@@ -470,14 +491,15 @@ class RaltServiceClient {
 		void getBasicConfig(){
 			ClientContext context;
 			GetBasicConfigReq request;
+			request.set_ip_addr("10.2.1.240");
 			GetBasicConfigRsp reply;
 			Status status =  stub_ralt->getBasicConfig(&context, request, &reply);
 			if (status.ok()) {
-				std::cout << "logging_enabled:" << reply.logging_enabled() << std::endl;
-				std::cout << "max_space_mb_for_logs:" << reply.max_space_mb_for_logs() << std::endl;
-				std::cout << "rolling_enabled:" << reply.rolling_enabled() << std::endl;
-				std::cout << "server_ports:" << reply.server_ports() << std::endl;
-				std::cout << "storage_cache_size:" << reply.storage_cache_size() << std::endl;
+				std::cout << "logging_enabled:" << reply.basic_config().logging_enabled() << std::endl;
+				std::cout << "max_space_mb_for_logs:" << reply.basic_config().max_space_mb_for_logs() << std::endl;
+				std::cout << "rolling_enabled:" << reply.basic_config().rolling_enabled() << std::endl;
+				std::cout << "server_ports:" << reply.basic_config().server_ports() << std::endl;
+				std::cout << "storage_cache_size:" << reply.basic_config().storage_cache_size() << std::endl;
 			} else {
 				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
 			}
@@ -486,11 +508,14 @@ class RaltServiceClient {
 		void setBasicConfig(){
 			ClientContext context;
 			SetBasicConfigReq request;
-			request.set_logging_enabled(1);
-			request.set_max_space_mb_for_logs(1);
-			request.set_rolling_enabled(1);
-			request.set_server_ports("80:ipv6 8080:ipv6 443:ipv6");
-			request.set_storage_cache_size(500);
+			request.set_ip_addr("10.2.1.240");
+			BasicConfig basic_config;
+			basic_config.set_logging_enabled(1);
+			basic_config.set_max_space_mb_for_logs(1);
+			basic_config.set_rolling_enabled(1);
+			basic_config.set_server_ports("80:ipv6 8080:ipv6 443:ipv6");
+			basic_config.set_storage_cache_size(500);
+			request.set_allocated_basic_config(&basic_config);
 			SetBasicConfigRsp reply;
 			Status status =  stub_ralt->setBasicConfig(&context, request, &reply);
 
@@ -504,6 +529,7 @@ class RaltServiceClient {
 		void getAllDomain(unsigned int page_size, unsigned int page_num){
 			ClientContext context;
 			GetAllDomainReq request;
+			request.set_ip_addr("10.2.1.240");
 			GetAllDomainRsp reply;
 			request.set_page_size(page_size);
 			request.set_page_number(page_num);
@@ -527,23 +553,19 @@ class RaltServiceClient {
 			
     		ClientContext context;
 			UpdateDomainRsp reply;
-			std::unique_ptr<ClientWriter<Domain> > writer(
-        		stub_ralt->updateDomain(&context, &reply));
-
-			Domain domain;
-			domain.set_type(DomainType::enum_member_domain);
-			domain.set_domain_str("www.reyzar.com");
-			domain.set_append_or_replace_str("ipv6.reyzar.com");
-			domain.set_port("80,8080");
-			writer->Write(domain);
-			Domain domain2;
-			domain2.set_type(DomainType::enum_subs_domain);
-			domain2.set_domain_str("10.2.21.143");
-			domain2.set_append_or_replace_str("[240e:ff:e000:9:20c:29ff:fe35:5e1a]");
-			writer->Write(domain2);
-
-			writer->WritesDone();
-			Status status = writer->Finish();
+			UpdateDomainReq request;
+			request.set_ip_addr("10.2.1.240");
+			Domain *domain_member = request.add_domain();
+			domain_member->set_type(DomainType::enum_member_domain);
+			domain_member->set_domain_str("www.reyzar.com");
+			domain_member->set_append_or_replace_str("ipv6.reyzar.com");
+			domain_member->set_port("80,8080");
+			Domain *domain_member2 = request.add_domain();
+			domain_member2->set_type(DomainType::enum_member_domain);
+			domain_member2->set_domain_str("www.reyzar.com");
+			domain_member2->set_append_or_replace_str("ipv6.reyzar.com");
+			domain_member2->set_port("80,8080");
+			Status status =  stub_ralt->updateDomain(&context, request, &reply);
 			if (status.ok()) {
 		      std::cout << "updateDomain rpc succeeded." << std::endl;
 		    } else {
@@ -554,6 +576,7 @@ class RaltServiceClient {
 		void getDomain(const std::string &strDomain, const std::string &strTransDomain, unsigned int page_size, unsigned int page_num){
 			ClientContext context;
 			GetDomainReq request;
+			request.set_ip_addr("10.2.1.240");
 			GetDomainRsp reply;
 			request.set_domain_str(strDomain);
 			request.set_transformed_domain(strTransDomain);
@@ -577,11 +600,14 @@ class RaltServiceClient {
 
 		void addDomain(){
 			ClientContext context;
-			Domain request;
-			request.set_type(DomainType::enum_member_domain);
-			request.set_domain_str("www.reyzar.com");
-			request.set_append_or_replace_str("ipv6.reyzar.com");
-			request.set_port("[8080]");
+			AddDomainReq request;
+			request.set_ip_addr("10.2.1.240");
+			Domain domain;
+			domain.set_type(DomainType::enum_member_domain);
+			domain.set_domain_str("www.reyzar.com");
+			domain.set_append_or_replace_str("ipv6.reyzar.com");
+			domain.set_port("[8080]");
+			request.set_allocated_domain(&domain);
 			AddDomainRsp reply;
 			Status status =  stub_ralt->addDomain(&context, request, &reply);
 			if (status.ok()) {
@@ -594,6 +620,7 @@ class RaltServiceClient {
 		void delDomain(){
 			ClientContext context;
 			DeleteDomainReq request;
+			request.set_ip_addr("10.2.1.240");
 			request.set_domain_str("www.reyzar.com");
 			DeleteDomainRsp reply;
 			Status status =  stub_ralt->deleteDomain(&context, request, &reply);
@@ -607,6 +634,7 @@ class RaltServiceClient {
 		void getMiscData(){
 			ClientContext context;
 			GetMiscReq request;
+			request.set_ip_addr("10.2.1.240");
 			GetMiscRsp reply;
 			Status status =  stub_ralt->getMisc(&context, request, &reply);
 			if (status.ok()) {
@@ -620,13 +648,12 @@ class RaltServiceClient {
 
 		void modMiscData(){
 			ClientContext context;
-			Misc request;
-			request.set_key(MiscKey::enum_ralt_filter_type_default);
-			request.set_value(MiscSwitch::switch_on);
-			//request.set_key(MiscKey::enum_ralt_referer_default);
-			//request.set_value(MiscSwitch::switch_on);
-			//request.set_key(MiscKey::enum_ralt_utf16_to_utf8_default);
-			//request.set_value(MiscSwitch::switch_on);
+			ModMiscOpReq request;
+			request.set_ip_addr("10.2.1.240");
+			Misc misc;
+			misc.set_key(MiscKey::enum_ralt_filter_type_default);
+			misc.set_value(MiscSwitch::switch_on);
+			request.set_allocated_misc(&misc);
 			ModMiscOpRsp reply;
 			Status status =  stub_ralt->modMisc(&context, request, &reply);
 
@@ -640,6 +667,7 @@ class RaltServiceClient {
 		void getRaltStatus(){
 			ClientContext context;
 			RaltStatusReq request;
+			request.set_ip_addr("10.2.1.240");
 			std::unique_ptr<ClientReader<RaltStatus> > reader(stub_ralt->getRaltStatus(&context, request));
 			
 			RaltStatus ralt_status;
@@ -658,6 +686,7 @@ class RaltServiceClient {
 		void execCmd(){
 			ClientContext context;
 			ExecCmdReq request;
+			request.set_ip_addr("10.2.1.240");
 			ExecCmdRsp reply;
 			request.set_ip_addr("10.2.21.143");
 			request.set_cmd(CommandType::ralt_stop);
@@ -676,7 +705,7 @@ class RaltServiceClient {
 };
 
 int main(int argc, char** argv) {
-	RaltServiceClient client(grpc::CreateChannel("10.2.1.114:50052", grpc::InsecureChannelCredentials()));
+	RaltServiceClient client(grpc::CreateChannel("10.2.1.235:50052", grpc::InsecureChannelCredentials()));
 
 	client.getNameAndIpInfo();
 	//client.getDeviceInfo();

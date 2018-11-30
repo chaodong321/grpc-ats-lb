@@ -1,12 +1,36 @@
-[Unit]
-Description=ralt grpc agent
-After=syslog.target network.target auditd.service
+#！/bin/bash
 
-[Service]
-ExecStart=/opt/reyzar/ralt-agent/ralt-agent
-Type=simple
-Restart=on-failure
-RestartSec=5s
+# chkconfig: 2345 82 18
 
-[Install]
-WantedBy=multi-user.target
+ROOT_DIR=/opt/reyzar/ralt-agent
+
+case "$1" in
+	start)
+		nohup $ROOT_DIR/ralt-agent >> /dev/null 2>&1 &
+		;;
+
+	restart)
+		pid=`cat /var/run/ralt-agent.pid`
+		if [ ! -z $pid ]; then
+			kill $pid
+		fi
+		nohup $ROOT_DIR/ralt-agent >> /dev/null 2>&1 &
+		;;
+
+	stop)
+		pid=`cat /var/run/ralt-agent.pid`
+		if [ ! -z $pid ]; then
+			kill $pid
+		fi
+		;;
+
+	help | *)
+		echo "help info: "
+		echo -e "\r"
+		echo "start              start ralt-agent"
+		echo "stop               stop ralt-agent"
+		echo "restart            restart ralt-agent"
+		;;
+esac
+
+exit 0

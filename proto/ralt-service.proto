@@ -5,7 +5,7 @@ package raltservice;
 service RaltService {
 	//ats stats
 	rpc getRaltStats (GetRaltStatsReq) returns (GetRaltStatsRsp) {}
-	rpc getStatsFieldValue (StatsFieldName) returns (StatsFieldValue) {}
+	rpc getStatsField (GetStatsFieldReq) returns (GetStatsFieldRsp) {}
 	rpc getHomePageData (HomePageReq) returns (HomePageRsp) {}
 	rpc showCacheData (CacheLookUpReq) returns (CacheResult) {}
 	//flow related
@@ -20,13 +20,13 @@ service RaltService {
 	rpc setBasicConfig (SetBasicConfigReq) returns (SetBasicConfigRsp) {}
 	//ralt.domain.conf
 	rpc getAllDomain (GetAllDomainReq) returns (GetAllDomainRsp) {}
-	rpc updateDomain (stream Domain) returns (UpdateDomainRsp) {}		//add modify delete
+	rpc updateDomain (UpdateDomainReq) returns (UpdateDomainRsp) {}		//add modify delete
 	rpc getDomain (GetDomainReq) returns (GetDomainRsp) {}
-	rpc addDomain (Domain) returns (AddDomainRsp) {}
+	rpc addDomain (AddDomainReq) returns (AddDomainRsp) {}
 	rpc deleteDomain (DeleteDomainReq) returns (DeleteDomainRsp) {}
 	//ralt.miscellaneous.conf
 	rpc getMisc (GetMiscReq) returns (GetMiscRsp) {}
-	rpc modMisc (Misc) returns (ModMiscOpRsp) {}
+	rpc modMisc (ModMiscOpReq) returns (ModMiscOpRsp) {}
 
 	//ralt status: 
 	rpc getRaltStatus (RaltStatusReq) returns (stream RaltStatus) {}
@@ -51,12 +51,12 @@ message GetRaltStatsRsp{
 	float  flow_bandwidth_hit_ratio = 9;
 }
 
-message StatsFieldName{
+message GetStatsFieldReq{
 	string ip_addr = 1;
 	string field_name = 2;
 }
 
-message StatsFieldValue{
+message GetStatsFieldRsp{
 	string value = 1;
 }
 
@@ -128,23 +128,24 @@ message RaltLogs{
 
 //main for record.conf
 message GetBasicConfigReq{
-	uint32 type = 1; //客户端类型，目前网管约定为1
+	string ip_addr = 1;
 }
 
-message GetBasicConfigRsp {
-	uint32 logging_enabled = 1;
-	uint32 max_space_mb_for_logs = 2;
-	uint32 rolling_enabled = 3;
-	string server_ports = 4;
-	uint32 storage_cache_size = 5;
-}
-
-message SetBasicConfigReq {
+message BasicConfig {
 	uint32 logging_enabled = 1;            //取值：0-不启用日志； 1-开启错误； 2-开启事务日志； 3-错误日志和事务日志一起开启
 	uint32 max_space_mb_for_logs = 2;      //日志最大磁盘空间（单位为mb）
 	uint32 rolling_enabled = 3;            //日志是否备份	0-不开启； 1-开启日志（根据时间间隔备份）；2-开启日志（根据日志文件大小备份）
 	string server_ports = 4;               //ralt服务端口，默认值 8080 8080:ipv6
 	uint32 storage_cache_size = 5;         //缓存磁盘大小，单位为M，默认值 250（最小值为128）
+}
+
+message GetBasicConfigRsp {
+	BasicConfig basic_config = 1;
+}
+
+message SetBasicConfigReq {
+	string ip_addr = 1;
+	BasicConfig basic_config = 2;
 }
 
 message SetBasicConfigRsp{
@@ -165,8 +166,9 @@ message Domain{
 }
 
 message GetAllDomainReq{
-	uint32 page_size = 1;                     //每页会员数
-	uint32 page_number = 2;                   //页数
+	string ip_addr = 1;
+	uint32 page_size = 2;                     //每页会员数
+	uint32 page_number = 3;                   //页数
 }
 
 message GetAllDomainRsp{
@@ -174,15 +176,21 @@ message GetAllDomainRsp{
 	uint32 domain_total = 2;                 //会员总数
 }
 
+message UpdateDomainReq{
+	string ip_addr = 1;
+	repeated Domain domain = 2;
+}
+
 message UpdateDomainRsp{
 	uint32 result = 1;
 }
 
 message GetDomainReq{
-	string domain_str = 1;              //根据域名模糊查询
-	string transformed_domain = 2;      //根据转换域名模糊查询
-	uint32 page_size = 3;                     //每页会员数
-	uint32 page_number = 4;                   //页数
+	string ip_addr = 1;
+	string domain_str = 2;              //根据域名模糊查询
+	string transformed_domain = 3;      //根据转换域名模糊查询
+	uint32 page_size = 4;                     //每页会员数
+	uint32 page_number = 5;                   //页数
 }
 
 message GetDomainRsp{
@@ -190,12 +198,18 @@ message GetDomainRsp{
 	uint32 domain_total = 2;                 //会员总数
 }
 
+message AddDomainReq{
+	string ip_addr = 1;
+	Domain domain = 2;
+}
+
 message AddDomainRsp{
 	uint32 result = 1;
 }
 
 message DeleteDomainReq{
-	string domain_str = 1;
+	string ip_addr = 1;
+	string domain_str = 2;
 }
 
 message DeleteDomainRsp{
@@ -213,7 +227,7 @@ enum MiscSwitch{
 }
 
 message GetMiscReq{
-	uint32 type = 1;
+	string ip_addr = 1;
 }
 
 message GetMiscRsp{
@@ -223,6 +237,11 @@ message GetMiscRsp{
 message Misc{
 	MiscKey key = 1;
 	MiscSwitch value = 2;
+}
+
+message ModMiscOpReq{
+	string ip_addr = 1;
+	Misc misc = 2;
 }
 
 message ModMiscOpRsp{

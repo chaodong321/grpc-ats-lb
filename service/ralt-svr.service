@@ -1,12 +1,37 @@
-[Unit]
-Description=ralt grpc server
-After=syslog.target network.target auditd.service
+#！/bin/bash
 
-[Service]
-ExecStart=/opt/reyzar/ralt-svr/ralt-svr
-Type=simple
-Restart=on-failure
-RestartSec=5s
+# chkconfig: 2345 82 18
 
-[Install]
-WantedBy=multi-user.target
+ROOT_DIR=/opt/reyzar/ralt-svr
+
+case "$1" in
+	start)
+		nohup $ROOT_DIR/ralt-svr >> /dev/null 2>&1 &
+		;;
+
+	restart)
+		pid=`cat /var/run/ralt-svr.pid`
+		if [ ! -z $pid ]; then
+			kill $pid
+		fi
+
+		nohup $ROOT_DIR/ralt-svr >> /dev/null 2>&1 &
+		;;
+
+	stop)
+		pid=`cat /var/run/ralt-svr.pid`
+		if [ ! -z $pid ]; then
+			kill $pid
+		fi
+		;;
+
+	help | *)
+		echo "help info: "
+		echo -e "\r"
+		echo "start              start ralt-svr"
+		echo "stop               stop ralt-svr"
+		echo "restart            restart ralt-svr"
+		;;
+esac
+
+exit 0

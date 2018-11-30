@@ -1,4 +1,5 @@
 #include "sys-agent-impl.h"
+#include "ralt-agent-conf.h"
 #include "util-log.h"
 #include "util-common.h"
 
@@ -6,23 +7,36 @@
 bool SysAgentImpl::getStubByIp(string strIp)
 {
 	LOG_INFO("ip addr: %s", strIp.c_str());
+	string strIpAndPort;
+	vector<RaltServer> &server = RaltAgentConf::GetInstance().GetServer();
+	if(server.size() <= 0){
+		LOG_ERROR("cluster no server");
+		return false;
+	}
+
 	if(strIp.empty()){
-		LOG_INFO("get all ip message");
-		//deal with on server now
-		strIp = "10.2.1.114";
+		strIp = server[0].strIpAddr;
+		LOG_INFO("request ip addr is empty, use the first cluster server: %s", strIp.c_str());
 	}
 
 	if(!UtilCommon::IsIp(strIp.c_str())){
 		LOG_ERROR("the format of ip is error, ip: %s", strIp.c_str());
 		return false;
 	}
-	else{
-		LOG_INFO("create stub");
-		string strIpAndPort = strIp + string(":50053");
-		shared_ptr<Channel> channel(grpc::CreateChannel(strIpAndPort.c_str(), grpc::InsecureChannelCredentials()));
-		stub_sys = SysInfo::NewStub(channel);
-		return true;
+
+	for(const auto it : server){
+		LOG_INFO("server ip: %s", it.strIpAddr.c_str());
+		if(it.strIpAddr.find(strIp) != string::npos){
+			LOG_INFO("ip addr is in cluster");
+			strIpAndPort = it.strIpAddr + string(":") + to_string(it.nPort);
+			break;
+		}
 	}
+
+	LOG_INFO("create stub");
+	shared_ptr<Channel> channel(grpc::CreateChannel(strIpAndPort.c_str(), grpc::InsecureChannelCredentials()));
+	stub_sys = SysInfo::NewStub(channel);
+	return true;
 }
 
 Status SysAgentImpl::getNameAndIpInfo (ServerContext* server_context, const GetNameAndIpInfoReq* request,

@@ -1,0 +1,16 @@
+{
+	"AgentIp": "0.0.0.0",
+	"AgentPort": 50052,
+
+	"Server":[
+		{
+			"ServiceIp": "10.2.1.114",
+			"ServicePort": 50053
+		},
+
+		{
+			"ServiceIp": "10.2.1.240",
+			"ServicePort": 50053
+		}
+	]
+}

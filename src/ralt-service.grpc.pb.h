@@ -41,12 +41,12 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRaltStatsRsp>> PrepareAsyncgetRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRaltStatsRsp>>(PrepareAsyncgetRaltStatsRaw(context, request, cq));
     }
-    virtual ::grpc::Status getStatsFieldValue(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::raltservice::StatsFieldValue* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::StatsFieldValue>> AsyncgetStatsFieldValue(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::StatsFieldValue>>(AsyncgetStatsFieldValueRaw(context, request, cq));
+    virtual ::grpc::Status getStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::raltservice::GetStatsFieldRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetStatsFieldRsp>> AsyncgetStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetStatsFieldRsp>>(AsyncgetStatsFieldRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::StatsFieldValue>> PrepareAsyncgetStatsFieldValue(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::StatsFieldValue>>(PrepareAsyncgetStatsFieldValueRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetStatsFieldRsp>> PrepareAsyncgetStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetStatsFieldRsp>>(PrepareAsyncgetStatsFieldRaw(context, request, cq));
     }
     virtual ::grpc::Status getHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::raltservice::HomePageRsp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::HomePageRsp>> AsyncgetHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::grpc::CompletionQueue* cq) {
@@ -111,14 +111,12 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetAllDomainRsp>> PrepareAsyncgetAllDomain(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetAllDomainRsp>>(PrepareAsyncgetAllDomainRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientWriterInterface< ::raltservice::Domain>> updateDomain(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response) {
-      return std::unique_ptr< ::grpc::ClientWriterInterface< ::raltservice::Domain>>(updateDomainRaw(context, response));
+    virtual ::grpc::Status updateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::raltservice::UpdateDomainRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateDomainRsp>> AsyncupdateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateDomainRsp>>(AsyncupdateDomainRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::raltservice::Domain>> AsyncupdateDomain(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::raltservice::Domain>>(AsyncupdateDomainRaw(context, response, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::raltservice::Domain>> PrepareAsyncupdateDomain(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::raltservice::Domain>>(PrepareAsyncupdateDomainRaw(context, response, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateDomainRsp>> PrepareAsyncupdateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateDomainRsp>>(PrepareAsyncupdateDomainRaw(context, request, cq));
     }
     virtual ::grpc::Status getDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::raltservice::GetDomainRsp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetDomainRsp>> AsyncgetDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) {
@@ -127,11 +125,11 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetDomainRsp>> PrepareAsyncgetDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetDomainRsp>>(PrepareAsyncgetDomainRaw(context, request, cq));
     }
-    virtual ::grpc::Status addDomain(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::raltservice::AddDomainRsp* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>> AsyncaddDomain(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status addDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::raltservice::AddDomainRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>> AsyncaddDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>>(AsyncaddDomainRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>> PrepareAsyncaddDomain(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>> PrepareAsyncaddDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>>(PrepareAsyncaddDomainRaw(context, request, cq));
     }
     virtual ::grpc::Status deleteDomain(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq& request, ::raltservice::DeleteDomainRsp* response) = 0;
@@ -149,11 +147,11 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetMiscRsp>> PrepareAsyncgetMisc(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetMiscRsp>>(PrepareAsyncgetMiscRaw(context, request, cq));
     }
-    virtual ::grpc::Status modMisc(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::raltservice::ModMiscOpRsp* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>> AsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status modMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::raltservice::ModMiscOpRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>> AsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>>(AsyncmodMiscRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>> PrepareAsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>> PrepareAsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>>(PrepareAsyncmodMiscRaw(context, request, cq));
     }
     // ralt status: 
@@ -177,8 +175,8 @@ class RaltService final {
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRaltStatsRsp>* AsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRaltStatsRsp>* PrepareAsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::StatsFieldValue>* AsyncgetStatsFieldValueRaw(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::StatsFieldValue>* PrepareAsyncgetStatsFieldValueRaw(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetStatsFieldRsp>* AsyncgetStatsFieldRaw(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetStatsFieldRsp>* PrepareAsyncgetStatsFieldRaw(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::HomePageRsp>* AsyncgetHomePageDataRaw(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::HomePageRsp>* PrepareAsyncgetHomePageDataRaw(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::CacheResult>* AsyncshowCacheDataRaw(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -196,19 +194,18 @@ class RaltService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::SetBasicConfigRsp>* PrepareAsyncsetBasicConfigRaw(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetAllDomainRsp>* AsyncgetAllDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetAllDomainRsp>* PrepareAsyncgetAllDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientWriterInterface< ::raltservice::Domain>* updateDomainRaw(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response) = 0;
-    virtual ::grpc::ClientAsyncWriterInterface< ::raltservice::Domain>* AsyncupdateDomainRaw(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncWriterInterface< ::raltservice::Domain>* PrepareAsyncupdateDomainRaw(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateDomainRsp>* AsyncupdateDomainRaw(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateDomainRsp>* PrepareAsyncupdateDomainRaw(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetDomainRsp>* AsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetDomainRsp>* PrepareAsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>* AsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>* PrepareAsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>* AsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::AddDomainRsp>* PrepareAsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::DeleteDomainRsp>* AsyncdeleteDomainRaw(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::DeleteDomainRsp>* PrepareAsyncdeleteDomainRaw(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetMiscRsp>* AsyncgetMiscRaw(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetMiscRsp>* PrepareAsyncgetMiscRaw(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>* AsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>* PrepareAsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>* AsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>* PrepareAsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientReaderInterface< ::raltservice::RaltStatus>* getRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::raltservice::RaltStatus>* AsyncgetRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::raltservice::RaltStatus>* PrepareAsyncgetRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -225,12 +222,12 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>> PrepareAsyncgetRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>>(PrepareAsyncgetRaltStatsRaw(context, request, cq));
     }
-    ::grpc::Status getStatsFieldValue(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::raltservice::StatsFieldValue* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::StatsFieldValue>> AsyncgetStatsFieldValue(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::StatsFieldValue>>(AsyncgetStatsFieldValueRaw(context, request, cq));
+    ::grpc::Status getStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::raltservice::GetStatsFieldRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetStatsFieldRsp>> AsyncgetStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetStatsFieldRsp>>(AsyncgetStatsFieldRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::StatsFieldValue>> PrepareAsyncgetStatsFieldValue(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::StatsFieldValue>>(PrepareAsyncgetStatsFieldValueRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetStatsFieldRsp>> PrepareAsyncgetStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetStatsFieldRsp>>(PrepareAsyncgetStatsFieldRaw(context, request, cq));
     }
     ::grpc::Status getHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::raltservice::HomePageRsp* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::HomePageRsp>> AsyncgetHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::grpc::CompletionQueue* cq) {
@@ -290,14 +287,12 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetAllDomainRsp>> PrepareAsyncgetAllDomain(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetAllDomainRsp>>(PrepareAsyncgetAllDomainRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientWriter< ::raltservice::Domain>> updateDomain(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response) {
-      return std::unique_ptr< ::grpc::ClientWriter< ::raltservice::Domain>>(updateDomainRaw(context, response));
+    ::grpc::Status updateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::raltservice::UpdateDomainRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateDomainRsp>> AsyncupdateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateDomainRsp>>(AsyncupdateDomainRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncWriter< ::raltservice::Domain>> AsyncupdateDomain(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::raltservice::Domain>>(AsyncupdateDomainRaw(context, response, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncWriter< ::raltservice::Domain>> PrepareAsyncupdateDomain(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::raltservice::Domain>>(PrepareAsyncupdateDomainRaw(context, response, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateDomainRsp>> PrepareAsyncupdateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateDomainRsp>>(PrepareAsyncupdateDomainRaw(context, request, cq));
     }
     ::grpc::Status getDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::raltservice::GetDomainRsp* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetDomainRsp>> AsyncgetDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) {
@@ -306,11 +301,11 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetDomainRsp>> PrepareAsyncgetDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetDomainRsp>>(PrepareAsyncgetDomainRaw(context, request, cq));
     }
-    ::grpc::Status addDomain(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::raltservice::AddDomainRsp* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>> AsyncaddDomain(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status addDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::raltservice::AddDomainRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>> AsyncaddDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>>(AsyncaddDomainRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>> PrepareAsyncaddDomain(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>> PrepareAsyncaddDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>>(PrepareAsyncaddDomainRaw(context, request, cq));
     }
     ::grpc::Status deleteDomain(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq& request, ::raltservice::DeleteDomainRsp* response) override;
@@ -327,11 +322,11 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetMiscRsp>> PrepareAsyncgetMisc(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetMiscRsp>>(PrepareAsyncgetMiscRaw(context, request, cq));
     }
-    ::grpc::Status modMisc(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::raltservice::ModMiscOpRsp* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>> AsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status modMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::raltservice::ModMiscOpRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>> AsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>>(AsyncmodMiscRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>> PrepareAsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>> PrepareAsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>>(PrepareAsyncmodMiscRaw(context, request, cq));
     }
     std::unique_ptr< ::grpc::ClientReader< ::raltservice::RaltStatus>> getRaltStatus(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request) {
@@ -355,8 +350,8 @@ class RaltService final {
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>* AsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>* PrepareAsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::raltservice::StatsFieldValue>* AsyncgetStatsFieldValueRaw(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::raltservice::StatsFieldValue>* PrepareAsyncgetStatsFieldValueRaw(::grpc::ClientContext* context, const ::raltservice::StatsFieldName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::GetStatsFieldRsp>* AsyncgetStatsFieldRaw(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::GetStatsFieldRsp>* PrepareAsyncgetStatsFieldRaw(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::HomePageRsp>* AsyncgetHomePageDataRaw(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::HomePageRsp>* PrepareAsyncgetHomePageDataRaw(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::CacheResult>* AsyncshowCacheDataRaw(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq& request, ::grpc::CompletionQueue* cq) override;
@@ -374,26 +369,25 @@ class RaltService final {
     ::grpc::ClientAsyncResponseReader< ::raltservice::SetBasicConfigRsp>* PrepareAsyncsetBasicConfigRaw(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetAllDomainRsp>* AsyncgetAllDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetAllDomainRsp>* PrepareAsyncgetAllDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientWriter< ::raltservice::Domain>* updateDomainRaw(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response) override;
-    ::grpc::ClientAsyncWriter< ::raltservice::Domain>* AsyncupdateDomainRaw(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncWriter< ::raltservice::Domain>* PrepareAsyncupdateDomainRaw(::grpc::ClientContext* context, ::raltservice::UpdateDomainRsp* response, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateDomainRsp>* AsyncupdateDomainRaw(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateDomainRsp>* PrepareAsyncupdateDomainRaw(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetDomainRsp>* AsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetDomainRsp>* PrepareAsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>* AsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>* PrepareAsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::Domain& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>* AsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>* PrepareAsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::DeleteDomainRsp>* AsyncdeleteDomainRaw(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::DeleteDomainRsp>* PrepareAsyncdeleteDomainRaw(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetMiscRsp>* AsyncgetMiscRaw(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetMiscRsp>* PrepareAsyncgetMiscRaw(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>* AsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>* PrepareAsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::Misc& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>* AsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>* PrepareAsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientReader< ::raltservice::RaltStatus>* getRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request) override;
     ::grpc::ClientAsyncReader< ::raltservice::RaltStatus>* AsyncgetRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::raltservice::RaltStatus>* PrepareAsyncgetRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::ExecCmdRsp>* AsyncexecCmdRaw(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::ExecCmdRsp>* PrepareAsyncexecCmdRaw(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_getRaltStats_;
-    const ::grpc::internal::RpcMethod rpcmethod_getStatsFieldValue_;
+    const ::grpc::internal::RpcMethod rpcmethod_getStatsField_;
     const ::grpc::internal::RpcMethod rpcmethod_getHomePageData_;
     const ::grpc::internal::RpcMethod rpcmethod_showCacheData_;
     const ::grpc::internal::RpcMethod rpcmethod_showFlowStatData_;
@@ -419,7 +413,7 @@ class RaltService final {
     virtual ~Service();
     // ats stats
     virtual ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response);
-    virtual ::grpc::Status getStatsFieldValue(::grpc::ServerContext* context, const ::raltservice::StatsFieldName* request, ::raltservice::StatsFieldValue* response);
+    virtual ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response);
     virtual ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response);
     virtual ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response);
     // flow related
@@ -433,13 +427,13 @@ class RaltService final {
     virtual ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response);
     // ralt.domain.conf
     virtual ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response);
-    virtual ::grpc::Status updateDomain(::grpc::ServerContext* context, ::grpc::ServerReader< ::raltservice::Domain>* reader, ::raltservice::UpdateDomainRsp* response);
+    virtual ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response);
     virtual ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response);
-    virtual ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::Domain* request, ::raltservice::AddDomainRsp* response);
+    virtual ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response);
     virtual ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response);
     // ralt.miscellaneous.conf
     virtual ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response);
-    virtual ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::Misc* request, ::raltservice::ModMiscOpRsp* response);
+    virtual ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response);
     // ralt status: 
     virtual ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer);
     // exec cmd
@@ -466,22 +460,22 @@ class RaltService final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_getStatsFieldValue : public BaseClass {
+  class WithAsyncMethod_getStatsField : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithAsyncMethod_getStatsFieldValue() {
+    WithAsyncMethod_getStatsField() {
       ::grpc::Service::MarkMethodAsync(1);
     }
-    ~WithAsyncMethod_getStatsFieldValue() override {
+    ~WithAsyncMethod_getStatsField() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getStatsFieldValue(::grpc::ServerContext* context, const ::raltservice::StatsFieldName* request, ::raltservice::StatsFieldValue* response) final override {
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestgetStatsFieldValue(::grpc::ServerContext* context, ::raltservice::StatsFieldName* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::StatsFieldValue>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestgetStatsField(::grpc::ServerContext* context, ::raltservice::GetStatsFieldReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::GetStatsFieldRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -657,12 +651,12 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status updateDomain(::grpc::ServerContext* context, ::grpc::ServerReader< ::raltservice::Domain>* reader, ::raltservice::UpdateDomainRsp* response) final override {
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestupdateDomain(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::raltservice::UpdateDomainRsp, ::raltservice::Domain>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncClientStreaming(10, context, reader, new_call_cq, notification_cq, tag);
+    void RequestupdateDomain(::grpc::ServerContext* context, ::raltservice::UpdateDomainReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::UpdateDomainRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -697,11 +691,11 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::Domain* request, ::raltservice::AddDomainRsp* response) final override {
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestaddDomain(::grpc::ServerContext* context, ::raltservice::Domain* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::AddDomainRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestaddDomain(::grpc::ServerContext* context, ::raltservice::AddDomainReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::AddDomainRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -757,11 +751,11 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::Misc* request, ::raltservice::ModMiscOpRsp* response) final override {
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestmodMisc(::grpc::ServerContext* context, ::raltservice::Misc* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::ModMiscOpRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestmodMisc(::grpc::ServerContext* context, ::raltservice::ModMiscOpReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::ModMiscOpRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -805,7 +799,7 @@ class RaltService final {
       ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_getRaltStats<WithAsyncMethod_getStatsFieldValue<WithAsyncMethod_getHomePageData<WithAsyncMethod_showCacheData<WithAsyncMethod_showFlowStatData<WithAsyncMethod_showLogInfoData<WithAsyncMethod_getRaltLogs<WithAsyncMethod_getBasicConfig<WithAsyncMethod_setBasicConfig<WithAsyncMethod_getAllDomain<WithAsyncMethod_updateDomain<WithAsyncMethod_getDomain<WithAsyncMethod_addDomain<WithAsyncMethod_deleteDomain<WithAsyncMethod_getMisc<WithAsyncMethod_modMisc<WithAsyncMethod_getRaltStatus<WithAsyncMethod_execCmd<Service > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_getRaltStats<WithAsyncMethod_getStatsField<WithAsyncMethod_getHomePageData<WithAsyncMethod_showCacheData<WithAsyncMethod_showFlowStatData<WithAsyncMethod_showLogInfoData<WithAsyncMethod_getRaltLogs<WithAsyncMethod_getBasicConfig<WithAsyncMethod_setBasicConfig<WithAsyncMethod_getAllDomain<WithAsyncMethod_updateDomain<WithAsyncMethod_getDomain<WithAsyncMethod_addDomain<WithAsyncMethod_deleteDomain<WithAsyncMethod_getMisc<WithAsyncMethod_modMisc<WithAsyncMethod_getRaltStatus<WithAsyncMethod_execCmd<Service > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_getRaltStats : public BaseClass {
    private:
@@ -824,18 +818,18 @@ class RaltService final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_getStatsFieldValue : public BaseClass {
+  class WithGenericMethod_getStatsField : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithGenericMethod_getStatsFieldValue() {
+    WithGenericMethod_getStatsField() {
       ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithGenericMethod_getStatsFieldValue() override {
+    ~WithGenericMethod_getStatsField() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getStatsFieldValue(::grpc::ServerContext* context, const ::raltservice::StatsFieldName* request, ::raltservice::StatsFieldValue* response) final override {
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -988,7 +982,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status updateDomain(::grpc::ServerContext* context, ::grpc::ServerReader< ::raltservice::Domain>* reader, ::raltservice::UpdateDomainRsp* response) final override {
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1022,7 +1016,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::Domain* request, ::raltservice::AddDomainRsp* response) final override {
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1073,7 +1067,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::Misc* request, ::raltservice::ModMiscOpRsp* response) final override {
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1133,24 +1127,24 @@ class RaltService final {
     virtual ::grpc::Status StreamedgetRaltStats(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::GetRaltStatsReq,::raltservice::GetRaltStatsRsp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_getStatsFieldValue : public BaseClass {
+  class WithStreamedUnaryMethod_getStatsField : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithStreamedUnaryMethod_getStatsFieldValue() {
+    WithStreamedUnaryMethod_getStatsField() {
       ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::StatsFieldName, ::raltservice::StatsFieldValue>(std::bind(&WithStreamedUnaryMethod_getStatsFieldValue<BaseClass>::StreamedgetStatsFieldValue, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::GetStatsFieldReq, ::raltservice::GetStatsFieldRsp>(std::bind(&WithStreamedUnaryMethod_getStatsField<BaseClass>::StreamedgetStatsField, this, std::placeholders::_1, std::placeholders::_2)));
     }
-    ~WithStreamedUnaryMethod_getStatsFieldValue() override {
+    ~WithStreamedUnaryMethod_getStatsField() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getStatsFieldValue(::grpc::ServerContext* context, const ::raltservice::StatsFieldName* request, ::raltservice::StatsFieldValue* response) final override {
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedgetStatsFieldValue(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::StatsFieldName,::raltservice::StatsFieldValue>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedgetStatsField(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::GetStatsFieldReq,::raltservice::GetStatsFieldRsp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_getHomePageData : public BaseClass {
@@ -1293,6 +1287,26 @@ class RaltService final {
     virtual ::grpc::Status StreamedgetAllDomain(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::GetAllDomainReq,::raltservice::GetAllDomainRsp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_updateDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_updateDomain() {
+      ::grpc::Service::MarkMethodStreamed(10,
+        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::UpdateDomainReq, ::raltservice::UpdateDomainRsp>(std::bind(&WithStreamedUnaryMethod_updateDomain<BaseClass>::StreamedupdateDomain, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_updateDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) final override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedupdateDomain(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::UpdateDomainReq,::raltservice::UpdateDomainRsp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_getDomain : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
@@ -1319,18 +1333,18 @@ class RaltService final {
    public:
     WithStreamedUnaryMethod_addDomain() {
       ::grpc::Service::MarkMethodStreamed(12,
-        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::Domain, ::raltservice::AddDomainRsp>(std::bind(&WithStreamedUnaryMethod_addDomain<BaseClass>::StreamedaddDomain, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::AddDomainReq, ::raltservice::AddDomainRsp>(std::bind(&WithStreamedUnaryMethod_addDomain<BaseClass>::StreamedaddDomain, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_addDomain() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::Domain* request, ::raltservice::AddDomainRsp* response) final override {
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedaddDomain(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::Domain,::raltservice::AddDomainRsp>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedaddDomain(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::AddDomainReq,::raltservice::AddDomainRsp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_deleteDomain : public BaseClass {
@@ -1379,18 +1393,18 @@ class RaltService final {
    public:
     WithStreamedUnaryMethod_modMisc() {
       ::grpc::Service::MarkMethodStreamed(15,
-        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::Misc, ::raltservice::ModMiscOpRsp>(std::bind(&WithStreamedUnaryMethod_modMisc<BaseClass>::StreamedmodMisc, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::ModMiscOpReq, ::raltservice::ModMiscOpRsp>(std::bind(&WithStreamedUnaryMethod_modMisc<BaseClass>::StreamedmodMisc, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_modMisc() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::Misc* request, ::raltservice::ModMiscOpRsp* response) final override {
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedmodMisc(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::Misc,::raltservice::ModMiscOpRsp>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedmodMisc(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::ModMiscOpReq,::raltservice::ModMiscOpRsp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_execCmd : public BaseClass {
@@ -1412,7 +1426,7 @@ class RaltService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedexecCmd(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::ExecCmdReq,::raltservice::ExecCmdRsp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_getRaltStats<WithStreamedUnaryMethod_getStatsFieldValue<WithStreamedUnaryMethod_getHomePageData<WithStreamedUnaryMethod_showCacheData<WithStreamedUnaryMethod_showFlowStatData<WithStreamedUnaryMethod_showLogInfoData<WithStreamedUnaryMethod_getBasicConfig<WithStreamedUnaryMethod_setBasicConfig<WithStreamedUnaryMethod_getAllDomain<WithStreamedUnaryMethod_getDomain<WithStreamedUnaryMethod_addDomain<WithStreamedUnaryMethod_deleteDomain<WithStreamedUnaryMethod_getMisc<WithStreamedUnaryMethod_modMisc<WithStreamedUnaryMethod_execCmd<Service > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_getRaltStats<WithStreamedUnaryMethod_getStatsField<WithStreamedUnaryMethod_getHomePageData<WithStreamedUnaryMethod_showCacheData<WithStreamedUnaryMethod_showFlowStatData<WithStreamedUnaryMethod_showLogInfoData<WithStreamedUnaryMethod_getBasicConfig<WithStreamedUnaryMethod_setBasicConfig<WithStreamedUnaryMethod_getAllDomain<WithStreamedUnaryMethod_updateDomain<WithStreamedUnaryMethod_getDomain<WithStreamedUnaryMethod_addDomain<WithStreamedUnaryMethod_deleteDomain<WithStreamedUnaryMethod_getMisc<WithStreamedUnaryMethod_modMisc<WithStreamedUnaryMethod_execCmd<Service > > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_getRaltLogs : public BaseClass {
    private:
@@ -1454,7 +1468,7 @@ class RaltService final {
     virtual ::grpc::Status StreamedgetRaltStatus(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::raltservice::RaltStatusReq,::raltservice::RaltStatus>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_getRaltLogs<WithSplitStreamingMethod_getRaltStatus<Service > > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_getRaltStats<WithStreamedUnaryMethod_getStatsFieldValue<WithStreamedUnaryMethod_getHomePageData<WithStreamedUnaryMethod_showCacheData<WithStreamedUnaryMethod_showFlowStatData<WithStreamedUnaryMethod_showLogInfoData<WithSplitStreamingMethod_getRaltLogs<WithStreamedUnaryMethod_getBasicConfig<WithStreamedUnaryMethod_setBasicConfig<WithStreamedUnaryMethod_getAllDomain<WithStreamedUnaryMethod_getDomain<WithStreamedUnaryMethod_addDomain<WithStreamedUnaryMethod_deleteDomain<WithStreamedUnaryMethod_getMisc<WithStreamedUnaryMethod_modMisc<WithSplitStreamingMethod_getRaltStatus<WithStreamedUnaryMethod_execCmd<Service > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_getRaltStats<WithStreamedUnaryMethod_getStatsField<WithStreamedUnaryMethod_getHomePageData<WithStreamedUnaryMethod_showCacheData<WithStreamedUnaryMethod_showFlowStatData<WithStreamedUnaryMethod_showLogInfoData<WithSplitStreamingMethod_getRaltLogs<WithStreamedUnaryMethod_getBasicConfig<WithStreamedUnaryMethod_setBasicConfig<WithStreamedUnaryMethod_getAllDomain<WithStreamedUnaryMethod_updateDomain<WithStreamedUnaryMethod_getDomain<WithStreamedUnaryMethod_addDomain<WithStreamedUnaryMethod_deleteDomain<WithStreamedUnaryMethod_getMisc<WithStreamedUnaryMethod_modMisc<WithSplitStreamingMethod_getRaltStatus<WithStreamedUnaryMethod_execCmd<Service > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace raltservice

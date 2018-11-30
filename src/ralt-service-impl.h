@@ -25,8 +25,8 @@ using raltservice::HomePageRsp;
 //stats
 using raltservice::GetRaltStatsReq;
 using raltservice::GetRaltStatsRsp;
-using raltservice::StatsFieldName;
-using raltservice::StatsFieldValue;
+using raltservice::GetStatsFieldReq;
+using raltservice::GetStatsFieldRsp;
 using raltservice::CacheLookUpReq;
 using raltservice::CacheResult;
 using raltservice::FlowStatLookUpReq;
@@ -37,6 +37,7 @@ using raltservice::LogResult;
 using raltservice::GetRaltLogsReq;
 using raltservice::RaltLogs;
 //basic config
+using raltservice::BasicConfig;
 using raltservice::GetBasicConfigReq;
 using raltservice::GetBasicConfigRsp;
 using raltservice::SetBasicConfigReq;
@@ -48,7 +49,9 @@ using raltservice::GetAllDomainReq;
 using raltservice::GetAllDomainRsp;
 using raltservice::GetDomainReq;
 using raltservice::GetDomainRsp;
+using raltservice::UpdateDomainReq;
 using raltservice::UpdateDomainRsp;
+using raltservice::AddDomainReq;
 using raltservice::AddDomainRsp;
 using raltservice::DeleteDomainReq;
 using raltservice::DeleteDomainRsp;
@@ -57,7 +60,7 @@ using raltservice::MiscKey;
 using raltservice::MiscSwitch;
 using raltservice::GetMiscReq;
 using raltservice::GetMiscRsp;
-using raltservice::Misc;
+using raltservice::ModMiscOpReq;
 using raltservice::ModMiscOpRsp;
 //ralt status
 using raltservice::RaltStatusReq;
@@ -75,9 +78,9 @@ public:
 	Status getRaltStats (ServerContext* context, const GetRaltStatsReq* request,
                   GetRaltStatsRsp* reply) override;
 	
-	Status getStatsFieldValue (ServerContext* context, const StatsFieldName* request,
-                  StatsFieldValue* reply) override;
-	
+	Status getStatsField (ServerContext* context, const GetStatsFieldReq* request,
+                  GetStatsFieldRsp* reply) override;
+
 	Status getHomePageData (ServerContext* context, const HomePageReq* request,
                   HomePageRsp* reply) override;
 
@@ -103,13 +106,13 @@ public:
 	Status getAllDomain(ServerContext* context, const GetAllDomainReq* request,
                   GetAllDomainRsp* reply) override;
 
-	Status updateDomain(ServerContext* context, ServerReader<Domain>* request,
+	Status updateDomain(ServerContext* context, const UpdateDomainReq* request,
                   UpdateDomainRsp* reply) override;
 
 	Status getDomain(ServerContext* context, const GetDomainReq* request,
                   GetDomainRsp* reply) override;
 
-	Status addDomain(ServerContext* context, const Domain* request,
+	Status addDomain(ServerContext* context, const AddDomainReq* request,
                   AddDomainRsp* reply) override;
 
 	Status deleteDomain(ServerContext* context, const DeleteDomainReq* request,
@@ -118,7 +121,7 @@ public:
 	Status getMisc(ServerContext* context, const GetMiscReq* request,
                   GetMiscRsp* reply) override;
 
-	Status modMisc(ServerContext* context, const Misc* request,
+	Status modMisc(ServerContext* context, const ModMiscOpReq* request,
                   ModMiscOpRsp* reply) override;
 
 	//command
