@@ -6,15 +6,18 @@
 
 #include "sys-info.pb.h"
 
-#include <grpc++/impl/codegen/async_stream.h>
-#include <grpc++/impl/codegen/async_unary_call.h>
-#include <grpc++/impl/codegen/method_handler_impl.h>
-#include <grpc++/impl/codegen/proto_utils.h>
-#include <grpc++/impl/codegen/rpc_method.h>
-#include <grpc++/impl/codegen/service_type.h>
-#include <grpc++/impl/codegen/status.h>
-#include <grpc++/impl/codegen/stub_options.h>
-#include <grpc++/impl/codegen/sync_stream.h>
+#include <functional>
+#include <grpcpp/impl/codegen/async_generic_service.h>
+#include <grpcpp/impl/codegen/async_stream.h>
+#include <grpcpp/impl/codegen/async_unary_call.h>
+#include <grpcpp/impl/codegen/method_handler_impl.h>
+#include <grpcpp/impl/codegen/proto_utils.h>
+#include <grpcpp/impl/codegen/rpc_method.h>
+#include <grpcpp/impl/codegen/server_callback.h>
+#include <grpcpp/impl/codegen/service_type.h>
+#include <grpcpp/impl/codegen/status.h>
+#include <grpcpp/impl/codegen/stub_options.h>
+#include <grpcpp/impl/codegen/sync_stream.h>
 
 namespace grpc {
 class CompletionQueue;
@@ -124,6 +127,24 @@ class SysInfo final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetEthCtrlInfoRsp>> PrepareAsyncgetEthCtrlInfo(::grpc::ClientContext* context, const ::sysinfo::GetEthCtrlInfoReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetEthCtrlInfoRsp>>(PrepareAsyncgetEthCtrlInfoRaw(context, request, cq));
     }
+    class experimental_async_interface {
+     public:
+      virtual ~experimental_async_interface() {}
+      virtual void getNameAndIpInfo(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getDeviceInfo(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getCpuUsage(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getCpuTemp(::grpc::ClientContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getMemUsage(::grpc::ClientContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getNicInfo(::grpc::ClientContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getHostName(::grpc::ClientContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getIpInfo(::grpc::ClientContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getCpuModel(::grpc::ClientContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getCpuCores(::grpc::ClientContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getMemTotal(::grpc::ClientContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getEthCtrlInfo(::grpc::ClientContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response, std::function<void(::grpc::Status)>) = 0;
+    };
+    virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetNameAndIpInfoRsp>* AsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sysinfo::GetNameAndIpInfoRsp>* PrepareAsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -246,9 +267,33 @@ class SysInfo final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetEthCtrlInfoRsp>> PrepareAsyncgetEthCtrlInfo(::grpc::ClientContext* context, const ::sysinfo::GetEthCtrlInfoReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sysinfo::GetEthCtrlInfoRsp>>(PrepareAsyncgetEthCtrlInfoRaw(context, request, cq));
     }
+    class experimental_async final :
+      public StubInterface::experimental_async_interface {
+     public:
+      void getNameAndIpInfo(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response, std::function<void(::grpc::Status)>) override;
+      void getDeviceInfo(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response, std::function<void(::grpc::Status)>) override;
+      void getDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response, std::function<void(::grpc::Status)>) override;
+      void getCpuUsage(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response, std::function<void(::grpc::Status)>) override;
+      void getCpuTemp(::grpc::ClientContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response, std::function<void(::grpc::Status)>) override;
+      void getMemUsage(::grpc::ClientContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response, std::function<void(::grpc::Status)>) override;
+      void getNicInfo(::grpc::ClientContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response, std::function<void(::grpc::Status)>) override;
+      void getHostName(::grpc::ClientContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response, std::function<void(::grpc::Status)>) override;
+      void getIpInfo(::grpc::ClientContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response, std::function<void(::grpc::Status)>) override;
+      void getCpuModel(::grpc::ClientContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response, std::function<void(::grpc::Status)>) override;
+      void getCpuCores(::grpc::ClientContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response, std::function<void(::grpc::Status)>) override;
+      void getMemTotal(::grpc::ClientContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response, std::function<void(::grpc::Status)>) override;
+      void getEthCtrlInfo(::grpc::ClientContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response, std::function<void(::grpc::Status)>) override;
+     private:
+      friend class Stub;
+      explicit experimental_async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class experimental_async_interface* experimental_async() override { return &async_stub_; }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetNameAndIpInfoRsp>* AsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetNameAndIpInfoRsp>* PrepareAsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceInfoRsp>* AsyncgetDeviceInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::grpc::CompletionQueue* cq) override;
@@ -321,7 +366,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) final override {
+    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -341,7 +386,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) final override {
+    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -361,7 +406,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) final override {
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -381,7 +426,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) final override {
+    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -401,7 +446,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) final override {
+    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -421,7 +466,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) final override {
+    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -441,7 +486,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) final override {
+    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -461,7 +506,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) final override {
+    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -481,7 +526,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) final override {
+    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -501,7 +546,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) final override {
+    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -521,7 +566,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) final override {
+    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -541,7 +586,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) final override {
+    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -561,7 +606,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) final override {
+    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -570,6 +615,332 @@ class SysInfo final {
     }
   };
   typedef WithAsyncMethod_getNameAndIpInfo<WithAsyncMethod_getDeviceInfo<WithAsyncMethod_getDeviceDetail<WithAsyncMethod_getCpuUsage<WithAsyncMethod_getCpuTemp<WithAsyncMethod_getMemUsage<WithAsyncMethod_getNicInfo<WithAsyncMethod_getHostName<WithAsyncMethod_getIpInfo<WithAsyncMethod_getCpuModel<WithAsyncMethod_getCpuCores<WithAsyncMethod_getMemTotal<WithAsyncMethod_getEthCtrlInfo<Service > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getNameAndIpInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getNameAndIpInfo() {
+      ::grpc::Service::experimental().MarkMethodCallback(0,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getNameAndIpInfo<BaseClass>, ::sysinfo::GetNameAndIpInfoReq, ::sysinfo::GetNameAndIpInfoRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetNameAndIpInfoReq* request,
+                 ::sysinfo::GetNameAndIpInfoRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getNameAndIpInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getNameAndIpInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getDeviceInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getDeviceInfo() {
+      ::grpc::Service::experimental().MarkMethodCallback(1,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getDeviceInfo<BaseClass>, ::sysinfo::GetDeviceInfoReq, ::sysinfo::GetDeviceInfoRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetDeviceInfoReq* request,
+                 ::sysinfo::GetDeviceInfoRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getDeviceInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getDeviceInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getDeviceDetail : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getDeviceDetail() {
+      ::grpc::Service::experimental().MarkMethodCallback(2,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getDeviceDetail<BaseClass>, ::sysinfo::GetDeviceDetailReq, ::sysinfo::GetDeviceDetailRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetDeviceDetailReq* request,
+                 ::sysinfo::GetDeviceDetailRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getDeviceDetail(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getDeviceDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getCpuUsage : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getCpuUsage() {
+      ::grpc::Service::experimental().MarkMethodCallback(3,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getCpuUsage<BaseClass>, ::sysinfo::GetCpuUsageReq, ::sysinfo::GetCpuUsageRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetCpuUsageReq* request,
+                 ::sysinfo::GetCpuUsageRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCpuUsage(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getCpuUsage() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getCpuTemp : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getCpuTemp() {
+      ::grpc::Service::experimental().MarkMethodCallback(4,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getCpuTemp<BaseClass>, ::sysinfo::GetCpuTempReq, ::sysinfo::GetCpuTempRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetCpuTempReq* request,
+                 ::sysinfo::GetCpuTempRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCpuTemp(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getCpuTemp() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getMemUsage : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getMemUsage() {
+      ::grpc::Service::experimental().MarkMethodCallback(5,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getMemUsage<BaseClass>, ::sysinfo::GetMemUsageReq, ::sysinfo::GetMemUsageRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetMemUsageReq* request,
+                 ::sysinfo::GetMemUsageRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getMemUsage(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getMemUsage() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getNicInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getNicInfo() {
+      ::grpc::Service::experimental().MarkMethodCallback(6,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getNicInfo<BaseClass>, ::sysinfo::GetNicInfoReq, ::sysinfo::GetNicInfoRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetNicInfoReq* request,
+                 ::sysinfo::GetNicInfoRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getNicInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getNicInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getHostName : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getHostName() {
+      ::grpc::Service::experimental().MarkMethodCallback(7,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getHostName<BaseClass>, ::sysinfo::GetHostNameReq, ::sysinfo::GetHostNameRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetHostNameReq* request,
+                 ::sysinfo::GetHostNameRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getHostName(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getHostName() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getIpInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getIpInfo() {
+      ::grpc::Service::experimental().MarkMethodCallback(8,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getIpInfo<BaseClass>, ::sysinfo::GetIpInfoReq, ::sysinfo::GetIpInfoRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetIpInfoReq* request,
+                 ::sysinfo::GetIpInfoRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getIpInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getIpInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getCpuModel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getCpuModel() {
+      ::grpc::Service::experimental().MarkMethodCallback(9,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getCpuModel<BaseClass>, ::sysinfo::GetCpuModelReq, ::sysinfo::GetCpuModelRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetCpuModelReq* request,
+                 ::sysinfo::GetCpuModelRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCpuModel(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getCpuModel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getCpuCores : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getCpuCores() {
+      ::grpc::Service::experimental().MarkMethodCallback(10,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getCpuCores<BaseClass>, ::sysinfo::GetCpuCoresReq, ::sysinfo::GetCpuCoresRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetCpuCoresReq* request,
+                 ::sysinfo::GetCpuCoresRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCpuCores(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getCpuCores() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getMemTotal : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getMemTotal() {
+      ::grpc::Service::experimental().MarkMethodCallback(11,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getMemTotal<BaseClass>, ::sysinfo::GetMemTotalReq, ::sysinfo::GetMemTotalRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetMemTotalReq* request,
+                 ::sysinfo::GetMemTotalRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getMemTotal(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getMemTotal() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getEthCtrlInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getEthCtrlInfo() {
+      ::grpc::Service::experimental().MarkMethodCallback(12,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getEthCtrlInfo<BaseClass>, ::sysinfo::GetEthCtrlInfoReq, ::sysinfo::GetEthCtrlInfoRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::sysinfo::GetEthCtrlInfoReq* request,
+                 ::sysinfo::GetEthCtrlInfoRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getEthCtrlInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getEthCtrlInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  typedef ExperimentalWithCallbackMethod_getNameAndIpInfo<ExperimentalWithCallbackMethod_getDeviceInfo<ExperimentalWithCallbackMethod_getDeviceDetail<ExperimentalWithCallbackMethod_getCpuUsage<ExperimentalWithCallbackMethod_getCpuTemp<ExperimentalWithCallbackMethod_getMemUsage<ExperimentalWithCallbackMethod_getNicInfo<ExperimentalWithCallbackMethod_getHostName<ExperimentalWithCallbackMethod_getIpInfo<ExperimentalWithCallbackMethod_getCpuModel<ExperimentalWithCallbackMethod_getCpuCores<ExperimentalWithCallbackMethod_getMemTotal<ExperimentalWithCallbackMethod_getEthCtrlInfo<Service > > > > > > > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_getNameAndIpInfo : public BaseClass {
    private:
@@ -582,7 +953,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) final override {
+    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -599,7 +970,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) final override {
+    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -616,7 +987,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) final override {
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -633,7 +1004,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) final override {
+    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -650,7 +1021,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) final override {
+    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -667,7 +1038,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) final override {
+    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -684,7 +1055,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) final override {
+    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -701,7 +1072,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) final override {
+    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -718,7 +1089,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) final override {
+    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -735,7 +1106,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) final override {
+    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -752,7 +1123,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) final override {
+    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -769,7 +1140,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) final override {
+    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -786,10 +1157,595 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) final override {
+    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getNameAndIpInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getNameAndIpInfo() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_getNameAndIpInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetNameAndIpInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getDeviceInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getDeviceInfo() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_getDeviceInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetDeviceInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getDeviceDetail : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getDeviceDetail() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_getDeviceDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetDeviceDetail(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getCpuUsage : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getCpuUsage() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_getCpuUsage() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetCpuUsage(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getCpuTemp : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getCpuTemp() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_getCpuTemp() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetCpuTemp(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getMemUsage : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getMemUsage() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_getMemUsage() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetMemUsage(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getNicInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getNicInfo() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_getNicInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetNicInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getHostName : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getHostName() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_getHostName() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetHostName(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getIpInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getIpInfo() {
+      ::grpc::Service::MarkMethodRaw(8);
+    }
+    ~WithRawMethod_getIpInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetIpInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getCpuModel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getCpuModel() {
+      ::grpc::Service::MarkMethodRaw(9);
+    }
+    ~WithRawMethod_getCpuModel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetCpuModel(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getCpuCores : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getCpuCores() {
+      ::grpc::Service::MarkMethodRaw(10);
+    }
+    ~WithRawMethod_getCpuCores() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetCpuCores(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getMemTotal : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getMemTotal() {
+      ::grpc::Service::MarkMethodRaw(11);
+    }
+    ~WithRawMethod_getMemTotal() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetMemTotal(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getEthCtrlInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getEthCtrlInfo() {
+      ::grpc::Service::MarkMethodRaw(12);
+    }
+    ~WithRawMethod_getEthCtrlInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetEthCtrlInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getNameAndIpInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getNameAndIpInfo() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(0,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getNameAndIpInfo<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getNameAndIpInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getNameAndIpInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getNameAndIpInfo(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getDeviceInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getDeviceInfo() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(1,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getDeviceInfo<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getDeviceInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getDeviceInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getDeviceInfo(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getDeviceDetail : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getDeviceDetail() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(2,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getDeviceDetail<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getDeviceDetail(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getDeviceDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getDeviceDetail(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getCpuUsage : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getCpuUsage() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(3,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getCpuUsage<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCpuUsage(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getCpuUsage() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCpuUsage(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getCpuTemp : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getCpuTemp() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(4,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getCpuTemp<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCpuTemp(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getCpuTemp() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCpuTemp(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getMemUsage : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getMemUsage() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(5,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getMemUsage<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getMemUsage(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getMemUsage() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getMemUsage(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getNicInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getNicInfo() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(6,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getNicInfo<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getNicInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getNicInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getNicInfo(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getHostName : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getHostName() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(7,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getHostName<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getHostName(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getHostName() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getHostName(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getIpInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getIpInfo() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(8,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getIpInfo<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getIpInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getIpInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getIpInfo(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getCpuModel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getCpuModel() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(9,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getCpuModel<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCpuModel(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getCpuModel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCpuModel(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getCpuCores : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getCpuCores() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(10,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getCpuCores<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCpuCores(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getCpuCores() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCpuCores(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getMemTotal : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getMemTotal() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(11,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getMemTotal<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getMemTotal(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getMemTotal() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getMemTotal(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getEthCtrlInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getEthCtrlInfo() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(12,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getEthCtrlInfo<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getEthCtrlInfo(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getEthCtrlInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getEthCtrlInfo(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_getNameAndIpInfo : public BaseClass {
@@ -804,7 +1760,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) final override {
+    ::grpc::Status getNameAndIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -824,7 +1780,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) final override {
+    ::grpc::Status getDeviceInfo(::grpc::ServerContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -844,7 +1800,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) final override {
+    ::grpc::Status getDeviceDetail(::grpc::ServerContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -864,7 +1820,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) final override {
+    ::grpc::Status getCpuUsage(::grpc::ServerContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -884,7 +1840,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) final override {
+    ::grpc::Status getCpuTemp(::grpc::ServerContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -904,7 +1860,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) final override {
+    ::grpc::Status getMemUsage(::grpc::ServerContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -924,7 +1880,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) final override {
+    ::grpc::Status getNicInfo(::grpc::ServerContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -944,7 +1900,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) final override {
+    ::grpc::Status getHostName(::grpc::ServerContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -964,7 +1920,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) final override {
+    ::grpc::Status getIpInfo(::grpc::ServerContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -984,7 +1940,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) final override {
+    ::grpc::Status getCpuModel(::grpc::ServerContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1004,7 +1960,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) final override {
+    ::grpc::Status getCpuCores(::grpc::ServerContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1024,7 +1980,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) final override {
+    ::grpc::Status getMemTotal(::grpc::ServerContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1044,7 +2000,7 @@ class SysInfo final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) final override {
+    ::grpc::Status getEthCtrlInfo(::grpc::ServerContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }

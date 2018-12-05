@@ -533,7 +533,7 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 {
 
 	LOG_INFO("get basic config");
-	BasicConfig basic_config;
+	BasicConfig *basic_config = reply->mutable_basic_config();
 	//logging_enabled
 	string strLoggingEnabledCmd = string(TRAFFIC_CTL)
 		+ string(" config get proxy.config.log.logging_enabled|awk -F ': ' '{printf $2}'");
@@ -541,7 +541,7 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 	if(UtilCommon::ShellCmd(strLoggingEnabledCmd, strLoggingEnabled)){
 		if(!strLoggingEnabled.empty()){
 			LOG_INFO("logging enabled: %s", strLoggingEnabled.c_str());
-			basic_config.set_logging_enabled(atoi(strLoggingEnabled.c_str()));
+			basic_config->set_logging_enabled(atoi(strLoggingEnabled.c_str()));
 		}
 		else{
 			LOG_ERROR("get logging enabled error: %s", strLoggingEnabledCmd.c_str());
@@ -560,7 +560,7 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 	if(UtilCommon::ShellCmd(strLogMaxSpaceCmd, strLogMaxSpace)){
 		if(!strLogMaxSpace.empty()){
 			LOG_INFO("log max space: %s", strLogMaxSpace.c_str());
-			basic_config.set_max_space_mb_for_logs(atoi(strLogMaxSpace.c_str()));
+			basic_config->set_max_space_mb_for_logs(atoi(strLogMaxSpace.c_str()));
 		}
 		else{
 			LOG_ERROR("get log max space error: %s", strLogMaxSpace.c_str());
@@ -579,7 +579,7 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 	if(UtilCommon::ShellCmd(strRollingEnabledCmd, strRollingEnabled)){
 		if(!strRollingEnabled.empty()){
 			LOG_INFO("roll enabled: %s", strRollingEnabled.c_str());
-			basic_config.set_rolling_enabled(atoi(strRollingEnabled.c_str()));
+			basic_config->set_rolling_enabled(atoi(strRollingEnabled.c_str()));
 		}
 		else{
 			LOG_ERROR("get roll enabled error: %s", strRollingEnabled.c_str());
@@ -598,7 +598,7 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 	if(UtilCommon::ShellCmd(strServerPortsCmd, strServerPorts)){
 		if(!strServerPorts.empty()){
 			LOG_INFO("server ports: %s", strServerPorts.c_str());
-			basic_config.set_server_ports(strServerPorts.c_str());
+			basic_config->set_server_ports(strServerPorts.c_str());
 		}
 		else{
 			LOG_ERROR("get server ports error: %s", strServerPorts.c_str());
@@ -619,7 +619,7 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 			LOG_INFO("storage cache size: %s", strStorageCache.c_str());
 			unsigned int nStorageSize;
 			sscanf(strStorageCache.c_str(), "%d[1-9]", &nStorageSize);
-			basic_config.set_storage_cache_size(nStorageSize);
+			basic_config->set_storage_cache_size(nStorageSize);
 		}
 		else{
 			LOG_ERROR("get storage cache size error: %s", strStorageCache.c_str());
@@ -630,8 +630,6 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 		LOG_ERROR("shell cmd error: %s", strStorageCacheCmd.c_str());
 		return Status::CANCELLED;
 	}
-
-	reply->set_allocated_basic_config(&basic_config);
 
 	LOG_INFO("get basic config successfully");
 	return Status::OK;

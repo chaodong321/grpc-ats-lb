@@ -7,7 +7,6 @@
 
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/stubs/port.h>
-#include <google/protobuf/stubs/once.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
@@ -19,6 +18,7 @@
 #include "third_party/protobuf/version.h"
 #endif
 // @@protoc_insertion_point(includes)
+
 namespace sysinfo {
 class GetNameAndIpInfoReqDefaultTypeInternal {
  public:
@@ -152,14 +152,9 @@ class GetEthCtrlInfoRspDefaultTypeInternal {
 } _GetEthCtrlInfoRsp_default_instance_;
 }  // namespace sysinfo
 namespace protobuf_sys_2dinfo_2eproto {
-void InitDefaultsGetNameAndIpInfoReqImpl() {
+static void InitDefaultsGetNameAndIpInfoReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetNameAndIpInfoReq_default_instance_;
     new (ptr) ::sysinfo::GetNameAndIpInfoReq();
@@ -168,19 +163,12 @@ void InitDefaultsGetNameAndIpInfoReqImpl() {
   ::sysinfo::GetNameAndIpInfoReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetNameAndIpInfoReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetNameAndIpInfoReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetNameAndIpInfoReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetNameAndIpInfoReq}, {}};
 
-void InitDefaultsGetNameAndIpInfoRspImpl() {
+static void InitDefaultsGetNameAndIpInfoRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetNameAndIpInfoRsp_default_instance_;
     new (ptr) ::sysinfo::GetNameAndIpInfoRsp();
@@ -189,19 +177,12 @@ void InitDefaultsGetNameAndIpInfoRspImpl() {
   ::sysinfo::GetNameAndIpInfoRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetNameAndIpInfoRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetNameAndIpInfoRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetNameAndIpInfoRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetNameAndIpInfoRsp}, {}};
 
-void InitDefaultsGetDeviceInfoReqImpl() {
+static void InitDefaultsGetDeviceInfoReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetDeviceInfoReq_default_instance_;
     new (ptr) ::sysinfo::GetDeviceInfoReq();
@@ -210,19 +191,12 @@ void InitDefaultsGetDeviceInfoReqImpl() {
   ::sysinfo::GetDeviceInfoReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetDeviceInfoReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetDeviceInfoReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetDeviceInfoReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetDeviceInfoReq}, {}};
 
-void InitDefaultsGetDeviceInfoRspImpl() {
+static void InitDefaultsGetDeviceInfoRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetDeviceInfoRsp_default_instance_;
     new (ptr) ::sysinfo::GetDeviceInfoRsp();
@@ -231,19 +205,12 @@ void InitDefaultsGetDeviceInfoRspImpl() {
   ::sysinfo::GetDeviceInfoRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetDeviceInfoRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetDeviceInfoRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetDeviceInfoRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetDeviceInfoRsp}, {}};
 
-void InitDefaultsGetDeviceDetailReqImpl() {
+static void InitDefaultsGetDeviceDetailReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetDeviceDetailReq_default_instance_;
     new (ptr) ::sysinfo::GetDeviceDetailReq();
@@ -252,19 +219,12 @@ void InitDefaultsGetDeviceDetailReqImpl() {
   ::sysinfo::GetDeviceDetailReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetDeviceDetailReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetDeviceDetailReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetDeviceDetailReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetDeviceDetailReq}, {}};
 
-void InitDefaultsGetDeviceDetailRspImpl() {
+static void InitDefaultsGetDeviceDetailRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetDeviceDetailRsp_default_instance_;
     new (ptr) ::sysinfo::GetDeviceDetailRsp();
@@ -273,19 +233,12 @@ void InitDefaultsGetDeviceDetailRspImpl() {
   ::sysinfo::GetDeviceDetailRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetDeviceDetailRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetDeviceDetailRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetDeviceDetailRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetDeviceDetailRsp}, {}};
 
-void InitDefaultsGetCpuUsageReqImpl() {
+static void InitDefaultsGetCpuUsageReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetCpuUsageReq_default_instance_;
     new (ptr) ::sysinfo::GetCpuUsageReq();
@@ -294,19 +247,12 @@ void InitDefaultsGetCpuUsageReqImpl() {
   ::sysinfo::GetCpuUsageReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetCpuUsageReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetCpuUsageReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuUsageReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuUsageReq}, {}};
 
-void InitDefaultsGetCpuUsageRspImpl() {
+static void InitDefaultsGetCpuUsageRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetCpuUsageRsp_default_instance_;
     new (ptr) ::sysinfo::GetCpuUsageRsp();
@@ -315,19 +261,12 @@ void InitDefaultsGetCpuUsageRspImpl() {
   ::sysinfo::GetCpuUsageRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetCpuUsageRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetCpuUsageRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuUsageRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuUsageRsp}, {}};
 
-void InitDefaultsGetCpuTempReqImpl() {
+static void InitDefaultsGetCpuTempReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetCpuTempReq_default_instance_;
     new (ptr) ::sysinfo::GetCpuTempReq();
@@ -336,19 +275,12 @@ void InitDefaultsGetCpuTempReqImpl() {
   ::sysinfo::GetCpuTempReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetCpuTempReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetCpuTempReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuTempReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuTempReq}, {}};
 
-void InitDefaultsGetCpuTempRspImpl() {
+static void InitDefaultsGetCpuTempRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetCpuTempRsp_default_instance_;
     new (ptr) ::sysinfo::GetCpuTempRsp();
@@ -357,19 +289,12 @@ void InitDefaultsGetCpuTempRspImpl() {
   ::sysinfo::GetCpuTempRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetCpuTempRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetCpuTempRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuTempRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuTempRsp}, {}};
 
-void InitDefaultsGetMemUsageReqImpl() {
+static void InitDefaultsGetMemUsageReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetMemUsageReq_default_instance_;
     new (ptr) ::sysinfo::GetMemUsageReq();
@@ -378,19 +303,12 @@ void InitDefaultsGetMemUsageReqImpl() {
   ::sysinfo::GetMemUsageReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetMemUsageReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetMemUsageReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetMemUsageReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetMemUsageReq}, {}};
 
-void InitDefaultsGetMemUsageRspImpl() {
+static void InitDefaultsGetMemUsageRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetMemUsageRsp_default_instance_;
     new (ptr) ::sysinfo::GetMemUsageRsp();
@@ -399,19 +317,12 @@ void InitDefaultsGetMemUsageRspImpl() {
   ::sysinfo::GetMemUsageRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetMemUsageRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetMemUsageRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetMemUsageRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetMemUsageRsp}, {}};
 
-void InitDefaultsGetNicInfoReqImpl() {
+static void InitDefaultsGetNicInfoReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetNicInfoReq_default_instance_;
     new (ptr) ::sysinfo::GetNicInfoReq();
@@ -420,19 +331,12 @@ void InitDefaultsGetNicInfoReqImpl() {
   ::sysinfo::GetNicInfoReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetNicInfoReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetNicInfoReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetNicInfoReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetNicInfoReq}, {}};
 
-void InitDefaultsGetNicInfoRspImpl() {
+static void InitDefaultsGetNicInfoRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetNicInfoRsp_default_instance_;
     new (ptr) ::sysinfo::GetNicInfoRsp();
@@ -441,19 +345,12 @@ void InitDefaultsGetNicInfoRspImpl() {
   ::sysinfo::GetNicInfoRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetNicInfoRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetNicInfoRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetNicInfoRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetNicInfoRsp}, {}};
 
-void InitDefaultsGetHostNameReqImpl() {
+static void InitDefaultsGetHostNameReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetHostNameReq_default_instance_;
     new (ptr) ::sysinfo::GetHostNameReq();
@@ -462,19 +359,12 @@ void InitDefaultsGetHostNameReqImpl() {
   ::sysinfo::GetHostNameReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetHostNameReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetHostNameReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetHostNameReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetHostNameReq}, {}};
 
-void InitDefaultsGetHostNameRspImpl() {
+static void InitDefaultsGetHostNameRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetHostNameRsp_default_instance_;
     new (ptr) ::sysinfo::GetHostNameRsp();
@@ -483,19 +373,12 @@ void InitDefaultsGetHostNameRspImpl() {
   ::sysinfo::GetHostNameRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetHostNameRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetHostNameRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetHostNameRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetHostNameRsp}, {}};
 
-void InitDefaultsGetIpInfoReqImpl() {
+static void InitDefaultsGetIpInfoReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetIpInfoReq_default_instance_;
     new (ptr) ::sysinfo::GetIpInfoReq();
@@ -504,19 +387,12 @@ void InitDefaultsGetIpInfoReqImpl() {
   ::sysinfo::GetIpInfoReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetIpInfoReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetIpInfoReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetIpInfoReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetIpInfoReq}, {}};
 
-void InitDefaultsGetIpInfoRspImpl() {
+static void InitDefaultsGetIpInfoRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetIpInfoRsp_default_instance_;
     new (ptr) ::sysinfo::GetIpInfoRsp();
@@ -525,19 +401,12 @@ void InitDefaultsGetIpInfoRspImpl() {
   ::sysinfo::GetIpInfoRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetIpInfoRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetIpInfoRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetIpInfoRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetIpInfoRsp}, {}};
 
-void InitDefaultsGetCpuModelReqImpl() {
+static void InitDefaultsGetCpuModelReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetCpuModelReq_default_instance_;
     new (ptr) ::sysinfo::GetCpuModelReq();
@@ -546,19 +415,12 @@ void InitDefaultsGetCpuModelReqImpl() {
   ::sysinfo::GetCpuModelReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetCpuModelReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetCpuModelReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuModelReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuModelReq}, {}};
 
-void InitDefaultsGetCpuModelRspImpl() {
+static void InitDefaultsGetCpuModelRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetCpuModelRsp_default_instance_;
     new (ptr) ::sysinfo::GetCpuModelRsp();
@@ -567,19 +429,12 @@ void InitDefaultsGetCpuModelRspImpl() {
   ::sysinfo::GetCpuModelRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetCpuModelRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetCpuModelRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuModelRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuModelRsp}, {}};
 
-void InitDefaultsGetCpuCoresReqImpl() {
+static void InitDefaultsGetCpuCoresReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetCpuCoresReq_default_instance_;
     new (ptr) ::sysinfo::GetCpuCoresReq();
@@ -588,19 +443,12 @@ void InitDefaultsGetCpuCoresReqImpl() {
   ::sysinfo::GetCpuCoresReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetCpuCoresReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetCpuCoresReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuCoresReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuCoresReq}, {}};
 
-void InitDefaultsGetCpuCoresRspImpl() {
+static void InitDefaultsGetCpuCoresRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetCpuCoresRsp_default_instance_;
     new (ptr) ::sysinfo::GetCpuCoresRsp();
@@ -609,19 +457,12 @@ void InitDefaultsGetCpuCoresRspImpl() {
   ::sysinfo::GetCpuCoresRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetCpuCoresRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetCpuCoresRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetCpuCoresRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetCpuCoresRsp}, {}};
 
-void InitDefaultsGetMemTotalReqImpl() {
+static void InitDefaultsGetMemTotalReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetMemTotalReq_default_instance_;
     new (ptr) ::sysinfo::GetMemTotalReq();
@@ -630,19 +471,12 @@ void InitDefaultsGetMemTotalReqImpl() {
   ::sysinfo::GetMemTotalReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetMemTotalReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetMemTotalReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetMemTotalReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetMemTotalReq}, {}};
 
-void InitDefaultsGetMemTotalRspImpl() {
+static void InitDefaultsGetMemTotalRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetMemTotalRsp_default_instance_;
     new (ptr) ::sysinfo::GetMemTotalRsp();
@@ -651,19 +485,12 @@ void InitDefaultsGetMemTotalRspImpl() {
   ::sysinfo::GetMemTotalRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetMemTotalRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetMemTotalRspImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetMemTotalRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetMemTotalRsp}, {}};
 
-void InitDefaultsGetEthCtrlInfoReqImpl() {
+static void InitDefaultsGetEthCtrlInfoReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetEthCtrlInfoReq_default_instance_;
     new (ptr) ::sysinfo::GetEthCtrlInfoReq();
@@ -672,19 +499,12 @@ void InitDefaultsGetEthCtrlInfoReqImpl() {
   ::sysinfo::GetEthCtrlInfoReq::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetEthCtrlInfoReq() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetEthCtrlInfoReqImpl);
-}
+::google::protobuf::internal::SCCInfo<0> scc_info_GetEthCtrlInfoReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetEthCtrlInfoReq}, {}};
 
-void InitDefaultsGetEthCtrlInfoRspImpl() {
+static void InitDefaultsGetEthCtrlInfoRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::sysinfo::_GetEthCtrlInfoRsp_default_instance_;
     new (ptr) ::sysinfo::GetEthCtrlInfoRsp();
@@ -693,9 +513,36 @@ void InitDefaultsGetEthCtrlInfoRspImpl() {
   ::sysinfo::GetEthCtrlInfoRsp::InitAsDefaultInstance();
 }
 
-void InitDefaultsGetEthCtrlInfoRsp() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGetEthCtrlInfoRspImpl);
+::google::protobuf::internal::SCCInfo<0> scc_info_GetEthCtrlInfoRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetEthCtrlInfoRsp}, {}};
+
+void InitDefaults() {
+  ::google::protobuf::internal::InitSCC(&scc_info_GetNameAndIpInfoReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetNameAndIpInfoRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetDeviceInfoReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetDeviceInfoRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetDeviceDetailReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetDeviceDetailRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuUsageReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuUsageRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuTempReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuTempRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetMemUsageReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetMemUsageRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetNicInfoReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetNicInfoRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetHostNameReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetHostNameRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetIpInfoReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetIpInfoRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuModelReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuModelRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuCoresReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetCpuCoresRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetMemTotalReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetMemTotalRsp.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetEthCtrlInfoReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetEthCtrlInfoRsp.base);
 }
 
 ::google::protobuf::Metadata file_level_metadata[26];
@@ -929,15 +776,14 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 
 void protobuf_AssignDescriptors() {
   AddDescriptors();
-  ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
-      "sys-info.proto", schemas, file_default_instances, TableStruct::offsets, factory,
+      "sys-info.proto", schemas, file_default_instances, TableStruct::offsets,
       file_level_metadata, NULL, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &protobuf_AssignDescriptors);
+  static ::google::protobuf::internal::once_flag once;
+  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
 }
 
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
@@ -1011,8 +857,8 @@ void AddDescriptorsImpl() {
 }
 
 void AddDescriptors() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &AddDescriptorsImpl);
+  static ::google::protobuf::internal::once_flag once;
+  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
 }
 // Force AddDescriptors() to be called at dynamic initialization time.
 struct StaticDescriptorInitializer {
@@ -1033,16 +879,14 @@ const int GetNameAndIpInfoReq::kIpAddrFieldNumber;
 
 GetNameAndIpInfoReq::GetNameAndIpInfoReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNameAndIpInfoReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetNameAndIpInfoReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetNameAndIpInfoReq)
 }
 GetNameAndIpInfoReq::GetNameAndIpInfoReq(const GetNameAndIpInfoReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -1053,7 +897,6 @@ GetNameAndIpInfoReq::GetNameAndIpInfoReq(const GetNameAndIpInfoReq& from)
 
 void GetNameAndIpInfoReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetNameAndIpInfoReq::~GetNameAndIpInfoReq() {
@@ -1066,9 +909,7 @@ void GetNameAndIpInfoReq::SharedDtor() {
 }
 
 void GetNameAndIpInfoReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetNameAndIpInfoReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -1076,17 +917,10 @@ const ::google::protobuf::Descriptor* GetNameAndIpInfoReq::descriptor() {
 }
 
 const GetNameAndIpInfoReq& GetNameAndIpInfoReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNameAndIpInfoReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetNameAndIpInfoReq.base);
   return *internal_default_instance();
 }
 
-GetNameAndIpInfoReq* GetNameAndIpInfoReq::New(::google::protobuf::Arena* arena) const {
-  GetNameAndIpInfoReq* n = new GetNameAndIpInfoReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetNameAndIpInfoReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetNameAndIpInfoReq)
@@ -1104,7 +938,7 @@ bool GetNameAndIpInfoReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetNameAndIpInfoReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -1210,9 +1044,7 @@ size_t GetNameAndIpInfoReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -1268,9 +1100,9 @@ void GetNameAndIpInfoReq::Swap(GetNameAndIpInfoReq* other) {
 }
 void GetNameAndIpInfoReq::InternalSwap(GetNameAndIpInfoReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetNameAndIpInfoReq::GetMetadata() const {
@@ -1290,16 +1122,14 @@ const int GetNameAndIpInfoRsp::kIpInfoFieldNumber;
 
 GetNameAndIpInfoRsp::GetNameAndIpInfoRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNameAndIpInfoRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetNameAndIpInfoRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetNameAndIpInfoRsp)
 }
 GetNameAndIpInfoRsp::GetNameAndIpInfoRsp(const GetNameAndIpInfoRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   host_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.host_name().size() > 0) {
@@ -1315,7 +1145,6 @@ GetNameAndIpInfoRsp::GetNameAndIpInfoRsp(const GetNameAndIpInfoRsp& from)
 void GetNameAndIpInfoRsp::SharedCtor() {
   host_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ip_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetNameAndIpInfoRsp::~GetNameAndIpInfoRsp() {
@@ -1329,9 +1158,7 @@ void GetNameAndIpInfoRsp::SharedDtor() {
 }
 
 void GetNameAndIpInfoRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetNameAndIpInfoRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -1339,17 +1166,10 @@ const ::google::protobuf::Descriptor* GetNameAndIpInfoRsp::descriptor() {
 }
 
 const GetNameAndIpInfoRsp& GetNameAndIpInfoRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNameAndIpInfoRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetNameAndIpInfoRsp.base);
   return *internal_default_instance();
 }
 
-GetNameAndIpInfoRsp* GetNameAndIpInfoRsp::New(::google::protobuf::Arena* arena) const {
-  GetNameAndIpInfoRsp* n = new GetNameAndIpInfoRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetNameAndIpInfoRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetNameAndIpInfoRsp)
@@ -1368,7 +1188,7 @@ bool GetNameAndIpInfoRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetNameAndIpInfoRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -1518,9 +1338,7 @@ size_t GetNameAndIpInfoRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -1580,10 +1398,11 @@ void GetNameAndIpInfoRsp::Swap(GetNameAndIpInfoRsp* other) {
 }
 void GetNameAndIpInfoRsp::InternalSwap(GetNameAndIpInfoRsp* other) {
   using std::swap;
-  host_name_.Swap(&other->host_name_);
-  ip_info_.Swap(&other->ip_info_);
+  host_name_.Swap(&other->host_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  ip_info_.Swap(&other->ip_info_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetNameAndIpInfoRsp::GetMetadata() const {
@@ -1602,16 +1421,14 @@ const int GetDeviceInfoReq::kIpAddrFieldNumber;
 
 GetDeviceInfoReq::GetDeviceInfoReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceInfoReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetDeviceInfoReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetDeviceInfoReq)
 }
 GetDeviceInfoReq::GetDeviceInfoReq(const GetDeviceInfoReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -1622,7 +1439,6 @@ GetDeviceInfoReq::GetDeviceInfoReq(const GetDeviceInfoReq& from)
 
 void GetDeviceInfoReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetDeviceInfoReq::~GetDeviceInfoReq() {
@@ -1635,9 +1451,7 @@ void GetDeviceInfoReq::SharedDtor() {
 }
 
 void GetDeviceInfoReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetDeviceInfoReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -1645,17 +1459,10 @@ const ::google::protobuf::Descriptor* GetDeviceInfoReq::descriptor() {
 }
 
 const GetDeviceInfoReq& GetDeviceInfoReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceInfoReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetDeviceInfoReq.base);
   return *internal_default_instance();
 }
 
-GetDeviceInfoReq* GetDeviceInfoReq::New(::google::protobuf::Arena* arena) const {
-  GetDeviceInfoReq* n = new GetDeviceInfoReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetDeviceInfoReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetDeviceInfoReq)
@@ -1673,7 +1480,7 @@ bool GetDeviceInfoReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetDeviceInfoReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -1779,9 +1586,7 @@ size_t GetDeviceInfoReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -1837,9 +1642,9 @@ void GetDeviceInfoReq::Swap(GetDeviceInfoReq* other) {
 }
 void GetDeviceInfoReq::InternalSwap(GetDeviceInfoReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetDeviceInfoReq::GetMetadata() const {
@@ -1861,16 +1666,14 @@ const int GetDeviceInfoRsp::kEthCtrlInfoFieldNumber;
 
 GetDeviceInfoRsp::GetDeviceInfoRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceInfoRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetDeviceInfoRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetDeviceInfoRsp)
 }
 GetDeviceInfoRsp::GetDeviceInfoRsp(const GetDeviceInfoRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   cpu_model_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.cpu_model().size() > 0) {
@@ -1896,7 +1699,6 @@ void GetDeviceInfoRsp::SharedCtor() {
   cpu_cores_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   mem_total_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   eth_ctrl_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetDeviceInfoRsp::~GetDeviceInfoRsp() {
@@ -1912,9 +1714,7 @@ void GetDeviceInfoRsp::SharedDtor() {
 }
 
 void GetDeviceInfoRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetDeviceInfoRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -1922,17 +1722,10 @@ const ::google::protobuf::Descriptor* GetDeviceInfoRsp::descriptor() {
 }
 
 const GetDeviceInfoRsp& GetDeviceInfoRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceInfoRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetDeviceInfoRsp.base);
   return *internal_default_instance();
 }
 
-GetDeviceInfoRsp* GetDeviceInfoRsp::New(::google::protobuf::Arena* arena) const {
-  GetDeviceInfoRsp* n = new GetDeviceInfoRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetDeviceInfoRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetDeviceInfoRsp)
@@ -1953,7 +1746,7 @@ bool GetDeviceInfoRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetDeviceInfoRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -2191,9 +1984,7 @@ size_t GetDeviceInfoRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -2261,12 +2052,15 @@ void GetDeviceInfoRsp::Swap(GetDeviceInfoRsp* other) {
 }
 void GetDeviceInfoRsp::InternalSwap(GetDeviceInfoRsp* other) {
   using std::swap;
-  cpu_model_.Swap(&other->cpu_model_);
-  cpu_cores_.Swap(&other->cpu_cores_);
-  mem_total_.Swap(&other->mem_total_);
-  eth_ctrl_info_.Swap(&other->eth_ctrl_info_);
+  cpu_model_.Swap(&other->cpu_model_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  cpu_cores_.Swap(&other->cpu_cores_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  mem_total_.Swap(&other->mem_total_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  eth_ctrl_info_.Swap(&other->eth_ctrl_info_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetDeviceInfoRsp::GetMetadata() const {
@@ -2286,16 +2080,14 @@ const int GetDeviceDetailReq::kIsDependOsVersionFieldNumber;
 
 GetDeviceDetailReq::GetDeviceDetailReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceDetailReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetDeviceDetailReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetDeviceDetailReq)
 }
 GetDeviceDetailReq::GetDeviceDetailReq(const GetDeviceDetailReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -2308,7 +2100,6 @@ GetDeviceDetailReq::GetDeviceDetailReq(const GetDeviceDetailReq& from)
 void GetDeviceDetailReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   is_depend_os_version_ = false;
-  _cached_size_ = 0;
 }
 
 GetDeviceDetailReq::~GetDeviceDetailReq() {
@@ -2321,9 +2112,7 @@ void GetDeviceDetailReq::SharedDtor() {
 }
 
 void GetDeviceDetailReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetDeviceDetailReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -2331,17 +2120,10 @@ const ::google::protobuf::Descriptor* GetDeviceDetailReq::descriptor() {
 }
 
 const GetDeviceDetailReq& GetDeviceDetailReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceDetailReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetDeviceDetailReq.base);
   return *internal_default_instance();
 }
 
-GetDeviceDetailReq* GetDeviceDetailReq::New(::google::protobuf::Arena* arena) const {
-  GetDeviceDetailReq* n = new GetDeviceDetailReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetDeviceDetailReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetDeviceDetailReq)
@@ -2360,7 +2142,7 @@ bool GetDeviceDetailReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetDeviceDetailReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -2495,9 +2277,7 @@ size_t GetDeviceDetailReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -2556,10 +2336,10 @@ void GetDeviceDetailReq::Swap(GetDeviceDetailReq* other) {
 }
 void GetDeviceDetailReq::InternalSwap(GetDeviceDetailReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(is_depend_os_version_, other->is_depend_os_version_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetDeviceDetailReq::GetMetadata() const {
@@ -2582,16 +2362,14 @@ const int GetDeviceDetailRsp::kNicInfoFieldNumber;
 
 GetDeviceDetailRsp::GetDeviceDetailRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceDetailRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetDeviceDetailRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetDeviceDetailRsp)
 }
 GetDeviceDetailRsp::GetDeviceDetailRsp(const GetDeviceDetailRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   cpu_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.cpu_usage().size() > 0) {
@@ -2622,7 +2400,6 @@ void GetDeviceDetailRsp::SharedCtor() {
   cpu_temp_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   os_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   nic_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetDeviceDetailRsp::~GetDeviceDetailRsp() {
@@ -2639,9 +2416,7 @@ void GetDeviceDetailRsp::SharedDtor() {
 }
 
 void GetDeviceDetailRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetDeviceDetailRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -2649,17 +2424,10 @@ const ::google::protobuf::Descriptor* GetDeviceDetailRsp::descriptor() {
 }
 
 const GetDeviceDetailRsp& GetDeviceDetailRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetDeviceDetailRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetDeviceDetailRsp.base);
   return *internal_default_instance();
 }
 
-GetDeviceDetailRsp* GetDeviceDetailRsp::New(::google::protobuf::Arena* arena) const {
-  GetDeviceDetailRsp* n = new GetDeviceDetailRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetDeviceDetailRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetDeviceDetailRsp)
@@ -2681,7 +2449,7 @@ bool GetDeviceDetailRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetDeviceDetailRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -2963,9 +2731,7 @@ size_t GetDeviceDetailRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -3037,13 +2803,17 @@ void GetDeviceDetailRsp::Swap(GetDeviceDetailRsp* other) {
 }
 void GetDeviceDetailRsp::InternalSwap(GetDeviceDetailRsp* other) {
   using std::swap;
-  cpu_usage_.Swap(&other->cpu_usage_);
-  mem_usage_.Swap(&other->mem_usage_);
-  cpu_temp_.Swap(&other->cpu_temp_);
-  os_version_.Swap(&other->os_version_);
-  nic_info_.Swap(&other->nic_info_);
+  cpu_usage_.Swap(&other->cpu_usage_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  mem_usage_.Swap(&other->mem_usage_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  cpu_temp_.Swap(&other->cpu_temp_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  os_version_.Swap(&other->os_version_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  nic_info_.Swap(&other->nic_info_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetDeviceDetailRsp::GetMetadata() const {
@@ -3062,16 +2832,14 @@ const int GetCpuUsageReq::kIpAddrFieldNumber;
 
 GetCpuUsageReq::GetCpuUsageReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuUsageReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetCpuUsageReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetCpuUsageReq)
 }
 GetCpuUsageReq::GetCpuUsageReq(const GetCpuUsageReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -3082,7 +2850,6 @@ GetCpuUsageReq::GetCpuUsageReq(const GetCpuUsageReq& from)
 
 void GetCpuUsageReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetCpuUsageReq::~GetCpuUsageReq() {
@@ -3095,9 +2862,7 @@ void GetCpuUsageReq::SharedDtor() {
 }
 
 void GetCpuUsageReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetCpuUsageReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -3105,17 +2870,10 @@ const ::google::protobuf::Descriptor* GetCpuUsageReq::descriptor() {
 }
 
 const GetCpuUsageReq& GetCpuUsageReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuUsageReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetCpuUsageReq.base);
   return *internal_default_instance();
 }
 
-GetCpuUsageReq* GetCpuUsageReq::New(::google::protobuf::Arena* arena) const {
-  GetCpuUsageReq* n = new GetCpuUsageReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetCpuUsageReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetCpuUsageReq)
@@ -3133,7 +2891,7 @@ bool GetCpuUsageReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetCpuUsageReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -3239,9 +2997,7 @@ size_t GetCpuUsageReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -3297,9 +3053,9 @@ void GetCpuUsageReq::Swap(GetCpuUsageReq* other) {
 }
 void GetCpuUsageReq::InternalSwap(GetCpuUsageReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetCpuUsageReq::GetMetadata() const {
@@ -3318,16 +3074,14 @@ const int GetCpuUsageRsp::kCpuUsageFieldNumber;
 
 GetCpuUsageRsp::GetCpuUsageRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuUsageRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetCpuUsageRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetCpuUsageRsp)
 }
 GetCpuUsageRsp::GetCpuUsageRsp(const GetCpuUsageRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   cpu_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.cpu_usage().size() > 0) {
@@ -3338,7 +3092,6 @@ GetCpuUsageRsp::GetCpuUsageRsp(const GetCpuUsageRsp& from)
 
 void GetCpuUsageRsp::SharedCtor() {
   cpu_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetCpuUsageRsp::~GetCpuUsageRsp() {
@@ -3351,9 +3104,7 @@ void GetCpuUsageRsp::SharedDtor() {
 }
 
 void GetCpuUsageRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetCpuUsageRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -3361,17 +3112,10 @@ const ::google::protobuf::Descriptor* GetCpuUsageRsp::descriptor() {
 }
 
 const GetCpuUsageRsp& GetCpuUsageRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuUsageRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetCpuUsageRsp.base);
   return *internal_default_instance();
 }
 
-GetCpuUsageRsp* GetCpuUsageRsp::New(::google::protobuf::Arena* arena) const {
-  GetCpuUsageRsp* n = new GetCpuUsageRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetCpuUsageRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetCpuUsageRsp)
@@ -3389,7 +3133,7 @@ bool GetCpuUsageRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetCpuUsageRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -3495,9 +3239,7 @@ size_t GetCpuUsageRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -3553,9 +3295,9 @@ void GetCpuUsageRsp::Swap(GetCpuUsageRsp* other) {
 }
 void GetCpuUsageRsp::InternalSwap(GetCpuUsageRsp* other) {
   using std::swap;
-  cpu_usage_.Swap(&other->cpu_usage_);
+  cpu_usage_.Swap(&other->cpu_usage_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetCpuUsageRsp::GetMetadata() const {
@@ -3574,16 +3316,14 @@ const int GetCpuTempReq::kIpAddrFieldNumber;
 
 GetCpuTempReq::GetCpuTempReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuTempReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetCpuTempReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetCpuTempReq)
 }
 GetCpuTempReq::GetCpuTempReq(const GetCpuTempReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -3594,7 +3334,6 @@ GetCpuTempReq::GetCpuTempReq(const GetCpuTempReq& from)
 
 void GetCpuTempReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetCpuTempReq::~GetCpuTempReq() {
@@ -3607,9 +3346,7 @@ void GetCpuTempReq::SharedDtor() {
 }
 
 void GetCpuTempReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetCpuTempReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -3617,17 +3354,10 @@ const ::google::protobuf::Descriptor* GetCpuTempReq::descriptor() {
 }
 
 const GetCpuTempReq& GetCpuTempReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuTempReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetCpuTempReq.base);
   return *internal_default_instance();
 }
 
-GetCpuTempReq* GetCpuTempReq::New(::google::protobuf::Arena* arena) const {
-  GetCpuTempReq* n = new GetCpuTempReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetCpuTempReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetCpuTempReq)
@@ -3645,7 +3375,7 @@ bool GetCpuTempReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetCpuTempReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -3751,9 +3481,7 @@ size_t GetCpuTempReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -3809,9 +3537,9 @@ void GetCpuTempReq::Swap(GetCpuTempReq* other) {
 }
 void GetCpuTempReq::InternalSwap(GetCpuTempReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetCpuTempReq::GetMetadata() const {
@@ -3830,16 +3558,14 @@ const int GetCpuTempRsp::kCpuTempFieldNumber;
 
 GetCpuTempRsp::GetCpuTempRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuTempRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetCpuTempRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetCpuTempRsp)
 }
 GetCpuTempRsp::GetCpuTempRsp(const GetCpuTempRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   cpu_temp_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.cpu_temp().size() > 0) {
@@ -3850,7 +3576,6 @@ GetCpuTempRsp::GetCpuTempRsp(const GetCpuTempRsp& from)
 
 void GetCpuTempRsp::SharedCtor() {
   cpu_temp_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetCpuTempRsp::~GetCpuTempRsp() {
@@ -3863,9 +3588,7 @@ void GetCpuTempRsp::SharedDtor() {
 }
 
 void GetCpuTempRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetCpuTempRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -3873,17 +3596,10 @@ const ::google::protobuf::Descriptor* GetCpuTempRsp::descriptor() {
 }
 
 const GetCpuTempRsp& GetCpuTempRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuTempRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetCpuTempRsp.base);
   return *internal_default_instance();
 }
 
-GetCpuTempRsp* GetCpuTempRsp::New(::google::protobuf::Arena* arena) const {
-  GetCpuTempRsp* n = new GetCpuTempRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetCpuTempRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetCpuTempRsp)
@@ -3901,7 +3617,7 @@ bool GetCpuTempRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetCpuTempRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -4007,9 +3723,7 @@ size_t GetCpuTempRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -4065,9 +3779,9 @@ void GetCpuTempRsp::Swap(GetCpuTempRsp* other) {
 }
 void GetCpuTempRsp::InternalSwap(GetCpuTempRsp* other) {
   using std::swap;
-  cpu_temp_.Swap(&other->cpu_temp_);
+  cpu_temp_.Swap(&other->cpu_temp_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetCpuTempRsp::GetMetadata() const {
@@ -4086,16 +3800,14 @@ const int GetMemUsageReq::kIpAddrFieldNumber;
 
 GetMemUsageReq::GetMemUsageReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetMemUsageReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetMemUsageReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetMemUsageReq)
 }
 GetMemUsageReq::GetMemUsageReq(const GetMemUsageReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -4106,7 +3818,6 @@ GetMemUsageReq::GetMemUsageReq(const GetMemUsageReq& from)
 
 void GetMemUsageReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetMemUsageReq::~GetMemUsageReq() {
@@ -4119,9 +3830,7 @@ void GetMemUsageReq::SharedDtor() {
 }
 
 void GetMemUsageReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetMemUsageReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -4129,17 +3838,10 @@ const ::google::protobuf::Descriptor* GetMemUsageReq::descriptor() {
 }
 
 const GetMemUsageReq& GetMemUsageReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetMemUsageReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetMemUsageReq.base);
   return *internal_default_instance();
 }
 
-GetMemUsageReq* GetMemUsageReq::New(::google::protobuf::Arena* arena) const {
-  GetMemUsageReq* n = new GetMemUsageReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetMemUsageReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetMemUsageReq)
@@ -4157,7 +3859,7 @@ bool GetMemUsageReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetMemUsageReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -4263,9 +3965,7 @@ size_t GetMemUsageReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -4321,9 +4021,9 @@ void GetMemUsageReq::Swap(GetMemUsageReq* other) {
 }
 void GetMemUsageReq::InternalSwap(GetMemUsageReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetMemUsageReq::GetMetadata() const {
@@ -4342,16 +4042,14 @@ const int GetMemUsageRsp::kMemUsageFieldNumber;
 
 GetMemUsageRsp::GetMemUsageRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetMemUsageRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetMemUsageRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetMemUsageRsp)
 }
 GetMemUsageRsp::GetMemUsageRsp(const GetMemUsageRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   mem_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.mem_usage().size() > 0) {
@@ -4362,7 +4060,6 @@ GetMemUsageRsp::GetMemUsageRsp(const GetMemUsageRsp& from)
 
 void GetMemUsageRsp::SharedCtor() {
   mem_usage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetMemUsageRsp::~GetMemUsageRsp() {
@@ -4375,9 +4072,7 @@ void GetMemUsageRsp::SharedDtor() {
 }
 
 void GetMemUsageRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetMemUsageRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -4385,17 +4080,10 @@ const ::google::protobuf::Descriptor* GetMemUsageRsp::descriptor() {
 }
 
 const GetMemUsageRsp& GetMemUsageRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetMemUsageRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetMemUsageRsp.base);
   return *internal_default_instance();
 }
 
-GetMemUsageRsp* GetMemUsageRsp::New(::google::protobuf::Arena* arena) const {
-  GetMemUsageRsp* n = new GetMemUsageRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetMemUsageRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetMemUsageRsp)
@@ -4413,7 +4101,7 @@ bool GetMemUsageRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetMemUsageRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -4519,9 +4207,7 @@ size_t GetMemUsageRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -4577,9 +4263,9 @@ void GetMemUsageRsp::Swap(GetMemUsageRsp* other) {
 }
 void GetMemUsageRsp::InternalSwap(GetMemUsageRsp* other) {
   using std::swap;
-  mem_usage_.Swap(&other->mem_usage_);
+  mem_usage_.Swap(&other->mem_usage_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetMemUsageRsp::GetMetadata() const {
@@ -4599,16 +4285,14 @@ const int GetNicInfoReq::kIsDependOsVersionFieldNumber;
 
 GetNicInfoReq::GetNicInfoReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNicInfoReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetNicInfoReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetNicInfoReq)
 }
 GetNicInfoReq::GetNicInfoReq(const GetNicInfoReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -4621,7 +4305,6 @@ GetNicInfoReq::GetNicInfoReq(const GetNicInfoReq& from)
 void GetNicInfoReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   is_depend_os_version_ = false;
-  _cached_size_ = 0;
 }
 
 GetNicInfoReq::~GetNicInfoReq() {
@@ -4634,9 +4317,7 @@ void GetNicInfoReq::SharedDtor() {
 }
 
 void GetNicInfoReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetNicInfoReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -4644,17 +4325,10 @@ const ::google::protobuf::Descriptor* GetNicInfoReq::descriptor() {
 }
 
 const GetNicInfoReq& GetNicInfoReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNicInfoReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetNicInfoReq.base);
   return *internal_default_instance();
 }
 
-GetNicInfoReq* GetNicInfoReq::New(::google::protobuf::Arena* arena) const {
-  GetNicInfoReq* n = new GetNicInfoReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetNicInfoReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetNicInfoReq)
@@ -4673,7 +4347,7 @@ bool GetNicInfoReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetNicInfoReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -4808,9 +4482,7 @@ size_t GetNicInfoReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -4869,10 +4541,10 @@ void GetNicInfoReq::Swap(GetNicInfoReq* other) {
 }
 void GetNicInfoReq::InternalSwap(GetNicInfoReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(is_depend_os_version_, other->is_depend_os_version_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetNicInfoReq::GetMetadata() const {
@@ -4892,16 +4564,14 @@ const int GetNicInfoRsp::kNicInfoFieldNumber;
 
 GetNicInfoRsp::GetNicInfoRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNicInfoRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetNicInfoRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetNicInfoRsp)
 }
 GetNicInfoRsp::GetNicInfoRsp(const GetNicInfoRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   os_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.os_version().size() > 0) {
@@ -4917,7 +4587,6 @@ GetNicInfoRsp::GetNicInfoRsp(const GetNicInfoRsp& from)
 void GetNicInfoRsp::SharedCtor() {
   os_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   nic_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetNicInfoRsp::~GetNicInfoRsp() {
@@ -4931,9 +4600,7 @@ void GetNicInfoRsp::SharedDtor() {
 }
 
 void GetNicInfoRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetNicInfoRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -4941,17 +4608,10 @@ const ::google::protobuf::Descriptor* GetNicInfoRsp::descriptor() {
 }
 
 const GetNicInfoRsp& GetNicInfoRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetNicInfoRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetNicInfoRsp.base);
   return *internal_default_instance();
 }
 
-GetNicInfoRsp* GetNicInfoRsp::New(::google::protobuf::Arena* arena) const {
-  GetNicInfoRsp* n = new GetNicInfoRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetNicInfoRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetNicInfoRsp)
@@ -4970,7 +4630,7 @@ bool GetNicInfoRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetNicInfoRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -5120,9 +4780,7 @@ size_t GetNicInfoRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -5182,10 +4840,11 @@ void GetNicInfoRsp::Swap(GetNicInfoRsp* other) {
 }
 void GetNicInfoRsp::InternalSwap(GetNicInfoRsp* other) {
   using std::swap;
-  os_version_.Swap(&other->os_version_);
-  nic_info_.Swap(&other->nic_info_);
+  os_version_.Swap(&other->os_version_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  nic_info_.Swap(&other->nic_info_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetNicInfoRsp::GetMetadata() const {
@@ -5204,16 +4863,14 @@ const int GetHostNameReq::kIpAddrFieldNumber;
 
 GetHostNameReq::GetHostNameReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetHostNameReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetHostNameReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetHostNameReq)
 }
 GetHostNameReq::GetHostNameReq(const GetHostNameReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -5224,7 +4881,6 @@ GetHostNameReq::GetHostNameReq(const GetHostNameReq& from)
 
 void GetHostNameReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetHostNameReq::~GetHostNameReq() {
@@ -5237,9 +4893,7 @@ void GetHostNameReq::SharedDtor() {
 }
 
 void GetHostNameReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetHostNameReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -5247,17 +4901,10 @@ const ::google::protobuf::Descriptor* GetHostNameReq::descriptor() {
 }
 
 const GetHostNameReq& GetHostNameReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetHostNameReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetHostNameReq.base);
   return *internal_default_instance();
 }
 
-GetHostNameReq* GetHostNameReq::New(::google::protobuf::Arena* arena) const {
-  GetHostNameReq* n = new GetHostNameReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetHostNameReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetHostNameReq)
@@ -5275,7 +4922,7 @@ bool GetHostNameReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetHostNameReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -5381,9 +5028,7 @@ size_t GetHostNameReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -5439,9 +5084,9 @@ void GetHostNameReq::Swap(GetHostNameReq* other) {
 }
 void GetHostNameReq::InternalSwap(GetHostNameReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetHostNameReq::GetMetadata() const {
@@ -5460,16 +5105,14 @@ const int GetHostNameRsp::kHostNameFieldNumber;
 
 GetHostNameRsp::GetHostNameRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetHostNameRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetHostNameRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetHostNameRsp)
 }
 GetHostNameRsp::GetHostNameRsp(const GetHostNameRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   host_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.host_name().size() > 0) {
@@ -5480,7 +5123,6 @@ GetHostNameRsp::GetHostNameRsp(const GetHostNameRsp& from)
 
 void GetHostNameRsp::SharedCtor() {
   host_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetHostNameRsp::~GetHostNameRsp() {
@@ -5493,9 +5135,7 @@ void GetHostNameRsp::SharedDtor() {
 }
 
 void GetHostNameRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetHostNameRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -5503,17 +5143,10 @@ const ::google::protobuf::Descriptor* GetHostNameRsp::descriptor() {
 }
 
 const GetHostNameRsp& GetHostNameRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetHostNameRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetHostNameRsp.base);
   return *internal_default_instance();
 }
 
-GetHostNameRsp* GetHostNameRsp::New(::google::protobuf::Arena* arena) const {
-  GetHostNameRsp* n = new GetHostNameRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetHostNameRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetHostNameRsp)
@@ -5531,7 +5164,7 @@ bool GetHostNameRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetHostNameRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -5637,9 +5270,7 @@ size_t GetHostNameRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -5695,9 +5326,9 @@ void GetHostNameRsp::Swap(GetHostNameRsp* other) {
 }
 void GetHostNameRsp::InternalSwap(GetHostNameRsp* other) {
   using std::swap;
-  host_name_.Swap(&other->host_name_);
+  host_name_.Swap(&other->host_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetHostNameRsp::GetMetadata() const {
@@ -5716,16 +5347,14 @@ const int GetIpInfoReq::kIpAddrFieldNumber;
 
 GetIpInfoReq::GetIpInfoReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetIpInfoReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetIpInfoReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetIpInfoReq)
 }
 GetIpInfoReq::GetIpInfoReq(const GetIpInfoReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -5736,7 +5365,6 @@ GetIpInfoReq::GetIpInfoReq(const GetIpInfoReq& from)
 
 void GetIpInfoReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetIpInfoReq::~GetIpInfoReq() {
@@ -5749,9 +5377,7 @@ void GetIpInfoReq::SharedDtor() {
 }
 
 void GetIpInfoReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetIpInfoReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -5759,17 +5385,10 @@ const ::google::protobuf::Descriptor* GetIpInfoReq::descriptor() {
 }
 
 const GetIpInfoReq& GetIpInfoReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetIpInfoReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetIpInfoReq.base);
   return *internal_default_instance();
 }
 
-GetIpInfoReq* GetIpInfoReq::New(::google::protobuf::Arena* arena) const {
-  GetIpInfoReq* n = new GetIpInfoReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetIpInfoReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetIpInfoReq)
@@ -5787,7 +5406,7 @@ bool GetIpInfoReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetIpInfoReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -5893,9 +5512,7 @@ size_t GetIpInfoReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -5951,9 +5568,9 @@ void GetIpInfoReq::Swap(GetIpInfoReq* other) {
 }
 void GetIpInfoReq::InternalSwap(GetIpInfoReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetIpInfoReq::GetMetadata() const {
@@ -5972,16 +5589,14 @@ const int GetIpInfoRsp::kIpInfoFieldNumber;
 
 GetIpInfoRsp::GetIpInfoRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetIpInfoRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetIpInfoRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetIpInfoRsp)
 }
 GetIpInfoRsp::GetIpInfoRsp(const GetIpInfoRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_info().size() > 0) {
@@ -5992,7 +5607,6 @@ GetIpInfoRsp::GetIpInfoRsp(const GetIpInfoRsp& from)
 
 void GetIpInfoRsp::SharedCtor() {
   ip_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetIpInfoRsp::~GetIpInfoRsp() {
@@ -6005,9 +5619,7 @@ void GetIpInfoRsp::SharedDtor() {
 }
 
 void GetIpInfoRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetIpInfoRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -6015,17 +5627,10 @@ const ::google::protobuf::Descriptor* GetIpInfoRsp::descriptor() {
 }
 
 const GetIpInfoRsp& GetIpInfoRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetIpInfoRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetIpInfoRsp.base);
   return *internal_default_instance();
 }
 
-GetIpInfoRsp* GetIpInfoRsp::New(::google::protobuf::Arena* arena) const {
-  GetIpInfoRsp* n = new GetIpInfoRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetIpInfoRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetIpInfoRsp)
@@ -6043,7 +5648,7 @@ bool GetIpInfoRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetIpInfoRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -6149,9 +5754,7 @@ size_t GetIpInfoRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -6207,9 +5810,9 @@ void GetIpInfoRsp::Swap(GetIpInfoRsp* other) {
 }
 void GetIpInfoRsp::InternalSwap(GetIpInfoRsp* other) {
   using std::swap;
-  ip_info_.Swap(&other->ip_info_);
+  ip_info_.Swap(&other->ip_info_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetIpInfoRsp::GetMetadata() const {
@@ -6228,16 +5831,14 @@ const int GetCpuModelReq::kIpAddrFieldNumber;
 
 GetCpuModelReq::GetCpuModelReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuModelReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetCpuModelReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetCpuModelReq)
 }
 GetCpuModelReq::GetCpuModelReq(const GetCpuModelReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -6248,7 +5849,6 @@ GetCpuModelReq::GetCpuModelReq(const GetCpuModelReq& from)
 
 void GetCpuModelReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetCpuModelReq::~GetCpuModelReq() {
@@ -6261,9 +5861,7 @@ void GetCpuModelReq::SharedDtor() {
 }
 
 void GetCpuModelReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetCpuModelReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -6271,17 +5869,10 @@ const ::google::protobuf::Descriptor* GetCpuModelReq::descriptor() {
 }
 
 const GetCpuModelReq& GetCpuModelReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuModelReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetCpuModelReq.base);
   return *internal_default_instance();
 }
 
-GetCpuModelReq* GetCpuModelReq::New(::google::protobuf::Arena* arena) const {
-  GetCpuModelReq* n = new GetCpuModelReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetCpuModelReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetCpuModelReq)
@@ -6299,7 +5890,7 @@ bool GetCpuModelReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetCpuModelReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -6405,9 +5996,7 @@ size_t GetCpuModelReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -6463,9 +6052,9 @@ void GetCpuModelReq::Swap(GetCpuModelReq* other) {
 }
 void GetCpuModelReq::InternalSwap(GetCpuModelReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetCpuModelReq::GetMetadata() const {
@@ -6484,16 +6073,14 @@ const int GetCpuModelRsp::kCpuModelFieldNumber;
 
 GetCpuModelRsp::GetCpuModelRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuModelRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetCpuModelRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetCpuModelRsp)
 }
 GetCpuModelRsp::GetCpuModelRsp(const GetCpuModelRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   cpu_model_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.cpu_model().size() > 0) {
@@ -6504,7 +6091,6 @@ GetCpuModelRsp::GetCpuModelRsp(const GetCpuModelRsp& from)
 
 void GetCpuModelRsp::SharedCtor() {
   cpu_model_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetCpuModelRsp::~GetCpuModelRsp() {
@@ -6517,9 +6103,7 @@ void GetCpuModelRsp::SharedDtor() {
 }
 
 void GetCpuModelRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetCpuModelRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -6527,17 +6111,10 @@ const ::google::protobuf::Descriptor* GetCpuModelRsp::descriptor() {
 }
 
 const GetCpuModelRsp& GetCpuModelRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuModelRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetCpuModelRsp.base);
   return *internal_default_instance();
 }
 
-GetCpuModelRsp* GetCpuModelRsp::New(::google::protobuf::Arena* arena) const {
-  GetCpuModelRsp* n = new GetCpuModelRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetCpuModelRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetCpuModelRsp)
@@ -6555,7 +6132,7 @@ bool GetCpuModelRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetCpuModelRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -6661,9 +6238,7 @@ size_t GetCpuModelRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -6719,9 +6294,9 @@ void GetCpuModelRsp::Swap(GetCpuModelRsp* other) {
 }
 void GetCpuModelRsp::InternalSwap(GetCpuModelRsp* other) {
   using std::swap;
-  cpu_model_.Swap(&other->cpu_model_);
+  cpu_model_.Swap(&other->cpu_model_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetCpuModelRsp::GetMetadata() const {
@@ -6740,16 +6315,14 @@ const int GetCpuCoresReq::kIpAddrFieldNumber;
 
 GetCpuCoresReq::GetCpuCoresReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuCoresReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetCpuCoresReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetCpuCoresReq)
 }
 GetCpuCoresReq::GetCpuCoresReq(const GetCpuCoresReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -6760,7 +6333,6 @@ GetCpuCoresReq::GetCpuCoresReq(const GetCpuCoresReq& from)
 
 void GetCpuCoresReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetCpuCoresReq::~GetCpuCoresReq() {
@@ -6773,9 +6345,7 @@ void GetCpuCoresReq::SharedDtor() {
 }
 
 void GetCpuCoresReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetCpuCoresReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -6783,17 +6353,10 @@ const ::google::protobuf::Descriptor* GetCpuCoresReq::descriptor() {
 }
 
 const GetCpuCoresReq& GetCpuCoresReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuCoresReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetCpuCoresReq.base);
   return *internal_default_instance();
 }
 
-GetCpuCoresReq* GetCpuCoresReq::New(::google::protobuf::Arena* arena) const {
-  GetCpuCoresReq* n = new GetCpuCoresReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetCpuCoresReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetCpuCoresReq)
@@ -6811,7 +6374,7 @@ bool GetCpuCoresReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetCpuCoresReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -6917,9 +6480,7 @@ size_t GetCpuCoresReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -6975,9 +6536,9 @@ void GetCpuCoresReq::Swap(GetCpuCoresReq* other) {
 }
 void GetCpuCoresReq::InternalSwap(GetCpuCoresReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetCpuCoresReq::GetMetadata() const {
@@ -6996,16 +6557,14 @@ const int GetCpuCoresRsp::kCpuCoresFieldNumber;
 
 GetCpuCoresRsp::GetCpuCoresRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuCoresRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetCpuCoresRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetCpuCoresRsp)
 }
 GetCpuCoresRsp::GetCpuCoresRsp(const GetCpuCoresRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   cpu_cores_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.cpu_cores().size() > 0) {
@@ -7016,7 +6575,6 @@ GetCpuCoresRsp::GetCpuCoresRsp(const GetCpuCoresRsp& from)
 
 void GetCpuCoresRsp::SharedCtor() {
   cpu_cores_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetCpuCoresRsp::~GetCpuCoresRsp() {
@@ -7029,9 +6587,7 @@ void GetCpuCoresRsp::SharedDtor() {
 }
 
 void GetCpuCoresRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetCpuCoresRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -7039,17 +6595,10 @@ const ::google::protobuf::Descriptor* GetCpuCoresRsp::descriptor() {
 }
 
 const GetCpuCoresRsp& GetCpuCoresRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetCpuCoresRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetCpuCoresRsp.base);
   return *internal_default_instance();
 }
 
-GetCpuCoresRsp* GetCpuCoresRsp::New(::google::protobuf::Arena* arena) const {
-  GetCpuCoresRsp* n = new GetCpuCoresRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetCpuCoresRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetCpuCoresRsp)
@@ -7067,7 +6616,7 @@ bool GetCpuCoresRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetCpuCoresRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -7173,9 +6722,7 @@ size_t GetCpuCoresRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -7231,9 +6778,9 @@ void GetCpuCoresRsp::Swap(GetCpuCoresRsp* other) {
 }
 void GetCpuCoresRsp::InternalSwap(GetCpuCoresRsp* other) {
   using std::swap;
-  cpu_cores_.Swap(&other->cpu_cores_);
+  cpu_cores_.Swap(&other->cpu_cores_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetCpuCoresRsp::GetMetadata() const {
@@ -7252,16 +6799,14 @@ const int GetMemTotalReq::kIpAddrFieldNumber;
 
 GetMemTotalReq::GetMemTotalReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetMemTotalReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetMemTotalReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetMemTotalReq)
 }
 GetMemTotalReq::GetMemTotalReq(const GetMemTotalReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -7272,7 +6817,6 @@ GetMemTotalReq::GetMemTotalReq(const GetMemTotalReq& from)
 
 void GetMemTotalReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetMemTotalReq::~GetMemTotalReq() {
@@ -7285,9 +6829,7 @@ void GetMemTotalReq::SharedDtor() {
 }
 
 void GetMemTotalReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetMemTotalReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -7295,17 +6837,10 @@ const ::google::protobuf::Descriptor* GetMemTotalReq::descriptor() {
 }
 
 const GetMemTotalReq& GetMemTotalReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetMemTotalReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetMemTotalReq.base);
   return *internal_default_instance();
 }
 
-GetMemTotalReq* GetMemTotalReq::New(::google::protobuf::Arena* arena) const {
-  GetMemTotalReq* n = new GetMemTotalReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetMemTotalReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetMemTotalReq)
@@ -7323,7 +6858,7 @@ bool GetMemTotalReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetMemTotalReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -7429,9 +6964,7 @@ size_t GetMemTotalReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -7487,9 +7020,9 @@ void GetMemTotalReq::Swap(GetMemTotalReq* other) {
 }
 void GetMemTotalReq::InternalSwap(GetMemTotalReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetMemTotalReq::GetMetadata() const {
@@ -7508,16 +7041,14 @@ const int GetMemTotalRsp::kMemTotalFieldNumber;
 
 GetMemTotalRsp::GetMemTotalRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetMemTotalRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetMemTotalRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetMemTotalRsp)
 }
 GetMemTotalRsp::GetMemTotalRsp(const GetMemTotalRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   mem_total_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.mem_total().size() > 0) {
@@ -7528,7 +7059,6 @@ GetMemTotalRsp::GetMemTotalRsp(const GetMemTotalRsp& from)
 
 void GetMemTotalRsp::SharedCtor() {
   mem_total_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetMemTotalRsp::~GetMemTotalRsp() {
@@ -7541,9 +7071,7 @@ void GetMemTotalRsp::SharedDtor() {
 }
 
 void GetMemTotalRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetMemTotalRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -7551,17 +7079,10 @@ const ::google::protobuf::Descriptor* GetMemTotalRsp::descriptor() {
 }
 
 const GetMemTotalRsp& GetMemTotalRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetMemTotalRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetMemTotalRsp.base);
   return *internal_default_instance();
 }
 
-GetMemTotalRsp* GetMemTotalRsp::New(::google::protobuf::Arena* arena) const {
-  GetMemTotalRsp* n = new GetMemTotalRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetMemTotalRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetMemTotalRsp)
@@ -7579,7 +7100,7 @@ bool GetMemTotalRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetMemTotalRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -7685,9 +7206,7 @@ size_t GetMemTotalRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -7743,9 +7262,9 @@ void GetMemTotalRsp::Swap(GetMemTotalRsp* other) {
 }
 void GetMemTotalRsp::InternalSwap(GetMemTotalRsp* other) {
   using std::swap;
-  mem_total_.Swap(&other->mem_total_);
+  mem_total_.Swap(&other->mem_total_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetMemTotalRsp::GetMetadata() const {
@@ -7764,16 +7283,14 @@ const int GetEthCtrlInfoReq::kIpAddrFieldNumber;
 
 GetEthCtrlInfoReq::GetEthCtrlInfoReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetEthCtrlInfoReq();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetEthCtrlInfoReq.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetEthCtrlInfoReq)
 }
 GetEthCtrlInfoReq::GetEthCtrlInfoReq(const GetEthCtrlInfoReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.ip_addr().size() > 0) {
@@ -7784,7 +7301,6 @@ GetEthCtrlInfoReq::GetEthCtrlInfoReq(const GetEthCtrlInfoReq& from)
 
 void GetEthCtrlInfoReq::SharedCtor() {
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetEthCtrlInfoReq::~GetEthCtrlInfoReq() {
@@ -7797,9 +7313,7 @@ void GetEthCtrlInfoReq::SharedDtor() {
 }
 
 void GetEthCtrlInfoReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetEthCtrlInfoReq::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -7807,17 +7321,10 @@ const ::google::protobuf::Descriptor* GetEthCtrlInfoReq::descriptor() {
 }
 
 const GetEthCtrlInfoReq& GetEthCtrlInfoReq::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetEthCtrlInfoReq();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetEthCtrlInfoReq.base);
   return *internal_default_instance();
 }
 
-GetEthCtrlInfoReq* GetEthCtrlInfoReq::New(::google::protobuf::Arena* arena) const {
-  GetEthCtrlInfoReq* n = new GetEthCtrlInfoReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetEthCtrlInfoReq::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetEthCtrlInfoReq)
@@ -7835,7 +7342,7 @@ bool GetEthCtrlInfoReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetEthCtrlInfoReq)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -7941,9 +7448,7 @@ size_t GetEthCtrlInfoReq::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -7999,9 +7504,9 @@ void GetEthCtrlInfoReq::Swap(GetEthCtrlInfoReq* other) {
 }
 void GetEthCtrlInfoReq::InternalSwap(GetEthCtrlInfoReq* other) {
   using std::swap;
-  ip_addr_.Swap(&other->ip_addr_);
+  ip_addr_.Swap(&other->ip_addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetEthCtrlInfoReq::GetMetadata() const {
@@ -8020,16 +7525,14 @@ const int GetEthCtrlInfoRsp::kEthCtrlInfoFieldNumber;
 
 GetEthCtrlInfoRsp::GetEthCtrlInfoRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetEthCtrlInfoRsp();
-  }
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_sys_2dinfo_2eproto::scc_info_GetEthCtrlInfoRsp.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:sysinfo.GetEthCtrlInfoRsp)
 }
 GetEthCtrlInfoRsp::GetEthCtrlInfoRsp(const GetEthCtrlInfoRsp& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   eth_ctrl_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.eth_ctrl_info().size() > 0) {
@@ -8040,7 +7543,6 @@ GetEthCtrlInfoRsp::GetEthCtrlInfoRsp(const GetEthCtrlInfoRsp& from)
 
 void GetEthCtrlInfoRsp::SharedCtor() {
   eth_ctrl_info_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
 }
 
 GetEthCtrlInfoRsp::~GetEthCtrlInfoRsp() {
@@ -8053,9 +7555,7 @@ void GetEthCtrlInfoRsp::SharedDtor() {
 }
 
 void GetEthCtrlInfoRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
 const ::google::protobuf::Descriptor* GetEthCtrlInfoRsp::descriptor() {
   ::protobuf_sys_2dinfo_2eproto::protobuf_AssignDescriptorsOnce();
@@ -8063,17 +7563,10 @@ const ::google::protobuf::Descriptor* GetEthCtrlInfoRsp::descriptor() {
 }
 
 const GetEthCtrlInfoRsp& GetEthCtrlInfoRsp::default_instance() {
-  ::protobuf_sys_2dinfo_2eproto::InitDefaultsGetEthCtrlInfoRsp();
+  ::google::protobuf::internal::InitSCC(&protobuf_sys_2dinfo_2eproto::scc_info_GetEthCtrlInfoRsp.base);
   return *internal_default_instance();
 }
 
-GetEthCtrlInfoRsp* GetEthCtrlInfoRsp::New(::google::protobuf::Arena* arena) const {
-  GetEthCtrlInfoRsp* n = new GetEthCtrlInfoRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void GetEthCtrlInfoRsp::Clear() {
 // @@protoc_insertion_point(message_clear_start:sysinfo.GetEthCtrlInfoRsp)
@@ -8091,7 +7584,7 @@ bool GetEthCtrlInfoRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:sysinfo.GetEthCtrlInfoRsp)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -8197,9 +7690,7 @@ size_t GetEthCtrlInfoRsp::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -8255,9 +7746,9 @@ void GetEthCtrlInfoRsp::Swap(GetEthCtrlInfoRsp* other) {
 }
 void GetEthCtrlInfoRsp::InternalSwap(GetEthCtrlInfoRsp* other) {
   using std::swap;
-  eth_ctrl_info_.Swap(&other->eth_ctrl_info_);
+  eth_ctrl_info_.Swap(&other->eth_ctrl_info_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata GetEthCtrlInfoRsp::GetMetadata() const {
@@ -8268,5 +7759,87 @@ void GetEthCtrlInfoRsp::InternalSwap(GetEthCtrlInfoRsp* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace sysinfo
+namespace google {
+namespace protobuf {
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetNameAndIpInfoReq* Arena::CreateMaybeMessage< ::sysinfo::GetNameAndIpInfoReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetNameAndIpInfoReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetNameAndIpInfoRsp* Arena::CreateMaybeMessage< ::sysinfo::GetNameAndIpInfoRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetNameAndIpInfoRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetDeviceInfoReq* Arena::CreateMaybeMessage< ::sysinfo::GetDeviceInfoReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetDeviceInfoReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetDeviceInfoRsp* Arena::CreateMaybeMessage< ::sysinfo::GetDeviceInfoRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetDeviceInfoRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetDeviceDetailReq* Arena::CreateMaybeMessage< ::sysinfo::GetDeviceDetailReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetDeviceDetailReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetDeviceDetailRsp* Arena::CreateMaybeMessage< ::sysinfo::GetDeviceDetailRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetDeviceDetailRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetCpuUsageReq* Arena::CreateMaybeMessage< ::sysinfo::GetCpuUsageReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetCpuUsageReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetCpuUsageRsp* Arena::CreateMaybeMessage< ::sysinfo::GetCpuUsageRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetCpuUsageRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetCpuTempReq* Arena::CreateMaybeMessage< ::sysinfo::GetCpuTempReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetCpuTempReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetCpuTempRsp* Arena::CreateMaybeMessage< ::sysinfo::GetCpuTempRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetCpuTempRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetMemUsageReq* Arena::CreateMaybeMessage< ::sysinfo::GetMemUsageReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetMemUsageReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetMemUsageRsp* Arena::CreateMaybeMessage< ::sysinfo::GetMemUsageRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetMemUsageRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetNicInfoReq* Arena::CreateMaybeMessage< ::sysinfo::GetNicInfoReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetNicInfoReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetNicInfoRsp* Arena::CreateMaybeMessage< ::sysinfo::GetNicInfoRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetNicInfoRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetHostNameReq* Arena::CreateMaybeMessage< ::sysinfo::GetHostNameReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetHostNameReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetHostNameRsp* Arena::CreateMaybeMessage< ::sysinfo::GetHostNameRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetHostNameRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetIpInfoReq* Arena::CreateMaybeMessage< ::sysinfo::GetIpInfoReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetIpInfoReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetIpInfoRsp* Arena::CreateMaybeMessage< ::sysinfo::GetIpInfoRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetIpInfoRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetCpuModelReq* Arena::CreateMaybeMessage< ::sysinfo::GetCpuModelReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetCpuModelReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetCpuModelRsp* Arena::CreateMaybeMessage< ::sysinfo::GetCpuModelRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetCpuModelRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetCpuCoresReq* Arena::CreateMaybeMessage< ::sysinfo::GetCpuCoresReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetCpuCoresReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetCpuCoresRsp* Arena::CreateMaybeMessage< ::sysinfo::GetCpuCoresRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetCpuCoresRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetMemTotalReq* Arena::CreateMaybeMessage< ::sysinfo::GetMemTotalReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetMemTotalReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetMemTotalRsp* Arena::CreateMaybeMessage< ::sysinfo::GetMemTotalRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetMemTotalRsp >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetEthCtrlInfoReq* Arena::CreateMaybeMessage< ::sysinfo::GetEthCtrlInfoReq >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetEthCtrlInfoReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::sysinfo::GetEthCtrlInfoRsp* Arena::CreateMaybeMessage< ::sysinfo::GetEthCtrlInfoRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::sysinfo::GetEthCtrlInfoRsp >(arena);
+}
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)

@@ -5,14 +5,17 @@
 #include "ralt-service.pb.h"
 #include "ralt-service.grpc.pb.h"
 
-#include <grpc++/impl/codegen/async_stream.h>
-#include <grpc++/impl/codegen/async_unary_call.h>
-#include <grpc++/impl/codegen/channel_interface.h>
-#include <grpc++/impl/codegen/client_unary_call.h>
-#include <grpc++/impl/codegen/method_handler_impl.h>
-#include <grpc++/impl/codegen/rpc_service_method.h>
-#include <grpc++/impl/codegen/service_type.h>
-#include <grpc++/impl/codegen/sync_stream.h>
+#include <functional>
+#include <grpcpp/impl/codegen/async_stream.h>
+#include <grpcpp/impl/codegen/async_unary_call.h>
+#include <grpcpp/impl/codegen/channel_interface.h>
+#include <grpcpp/impl/codegen/client_unary_call.h>
+#include <grpcpp/impl/codegen/client_callback.h>
+#include <grpcpp/impl/codegen/method_handler_impl.h>
+#include <grpcpp/impl/codegen/rpc_service_method.h>
+#include <grpcpp/impl/codegen/server_callback.h>
+#include <grpcpp/impl/codegen/service_type.h>
+#include <grpcpp/impl/codegen/sync_stream.h>
 namespace raltservice {
 
 static const char* RaltService_method_names[] = {
@@ -37,6 +40,7 @@ static const char* RaltService_method_names[] = {
 };
 
 std::unique_ptr< RaltService::Stub> RaltService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
   std::unique_ptr< RaltService::Stub> stub(new RaltService::Stub(channel));
   return stub;
 }
@@ -66,6 +70,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getRaltStats_, context, request, response);
 }
 
+void RaltService::Stub::experimental_async::getRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getRaltStats_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>* RaltService::Stub::AsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetRaltStatsRsp>::Create(channel_.get(), cq, rpcmethod_getRaltStats_, context, request, true);
 }
@@ -76,6 +84,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
 
 ::grpc::Status RaltService::Stub::getStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::raltservice::GetStatsFieldRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getStatsField_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::getStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getStatsField_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::raltservice::GetStatsFieldRsp>* RaltService::Stub::AsyncgetStatsFieldRaw(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) {
@@ -90,6 +102,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getHomePageData_, context, request, response);
 }
 
+void RaltService::Stub::experimental_async::getHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getHomePageData_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::raltservice::HomePageRsp>* RaltService::Stub::AsyncgetHomePageDataRaw(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::HomePageRsp>::Create(channel_.get(), cq, rpcmethod_getHomePageData_, context, request, true);
 }
@@ -100,6 +116,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
 
 ::grpc::Status RaltService::Stub::showCacheData(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq& request, ::raltservice::CacheResult* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_showCacheData_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::showCacheData(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_showCacheData_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::raltservice::CacheResult>* RaltService::Stub::AsyncshowCacheDataRaw(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq& request, ::grpc::CompletionQueue* cq) {
@@ -114,6 +134,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_showFlowStatData_, context, request, response);
 }
 
+void RaltService::Stub::experimental_async::showFlowStatData(::grpc::ClientContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_showFlowStatData_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::raltservice::FlowResult>* RaltService::Stub::AsyncshowFlowStatDataRaw(::grpc::ClientContext* context, const ::raltservice::FlowStatLookUpReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::FlowResult>::Create(channel_.get(), cq, rpcmethod_showFlowStatData_, context, request, true);
 }
@@ -124,6 +148,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
 
 ::grpc::Status RaltService::Stub::showLogInfoData(::grpc::ClientContext* context, const ::raltservice::LogInfoLookUpReq& request, ::raltservice::LogResult* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_showLogInfoData_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::showLogInfoData(::grpc::ClientContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_showLogInfoData_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::raltservice::LogResult>* RaltService::Stub::AsyncshowLogInfoDataRaw(::grpc::ClientContext* context, const ::raltservice::LogInfoLookUpReq& request, ::grpc::CompletionQueue* cq) {
@@ -150,6 +178,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getBasicConfig_, context, request, response);
 }
 
+void RaltService::Stub::experimental_async::getBasicConfig(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getBasicConfig_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::raltservice::GetBasicConfigRsp>* RaltService::Stub::AsyncgetBasicConfigRaw(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetBasicConfigRsp>::Create(channel_.get(), cq, rpcmethod_getBasicConfig_, context, request, true);
 }
@@ -160,6 +192,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
 
 ::grpc::Status RaltService::Stub::setBasicConfig(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq& request, ::raltservice::SetBasicConfigRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_setBasicConfig_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::setBasicConfig(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_setBasicConfig_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::raltservice::SetBasicConfigRsp>* RaltService::Stub::AsyncsetBasicConfigRaw(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq& request, ::grpc::CompletionQueue* cq) {
@@ -174,6 +210,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getAllDomain_, context, request, response);
 }
 
+void RaltService::Stub::experimental_async::getAllDomain(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getAllDomain_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::raltservice::GetAllDomainRsp>* RaltService::Stub::AsyncgetAllDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetAllDomainRsp>::Create(channel_.get(), cq, rpcmethod_getAllDomain_, context, request, true);
 }
@@ -184,6 +224,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
 
 ::grpc::Status RaltService::Stub::updateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::raltservice::UpdateDomainRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_updateDomain_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::updateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_updateDomain_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateDomainRsp>* RaltService::Stub::AsyncupdateDomainRaw(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq& request, ::grpc::CompletionQueue* cq) {
@@ -198,6 +242,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getDomain_, context, request, response);
 }
 
+void RaltService::Stub::experimental_async::getDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getDomain_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::raltservice::GetDomainRsp>* RaltService::Stub::AsyncgetDomainRaw(::grpc::ClientContext* context, const ::raltservice::GetDomainReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetDomainRsp>::Create(channel_.get(), cq, rpcmethod_getDomain_, context, request, true);
 }
@@ -208,6 +256,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
 
 ::grpc::Status RaltService::Stub::addDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::raltservice::AddDomainRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_addDomain_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::addDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_addDomain_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::raltservice::AddDomainRsp>* RaltService::Stub::AsyncaddDomainRaw(::grpc::ClientContext* context, const ::raltservice::AddDomainReq& request, ::grpc::CompletionQueue* cq) {
@@ -222,6 +274,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_deleteDomain_, context, request, response);
 }
 
+void RaltService::Stub::experimental_async::deleteDomain(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_deleteDomain_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::raltservice::DeleteDomainRsp>* RaltService::Stub::AsyncdeleteDomainRaw(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::DeleteDomainRsp>::Create(channel_.get(), cq, rpcmethod_deleteDomain_, context, request, true);
 }
@@ -234,6 +290,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getMisc_, context, request, response);
 }
 
+void RaltService::Stub::experimental_async::getMisc(::grpc::ClientContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getMisc_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::raltservice::GetMiscRsp>* RaltService::Stub::AsyncgetMiscRaw(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetMiscRsp>::Create(channel_.get(), cq, rpcmethod_getMisc_, context, request, true);
 }
@@ -244,6 +304,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
 
 ::grpc::Status RaltService::Stub::modMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::raltservice::ModMiscOpRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_modMisc_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::modMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_modMisc_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>* RaltService::Stub::AsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) {
@@ -268,6 +332,10 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
 
 ::grpc::Status RaltService::Stub::execCmd(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq& request, ::raltservice::ExecCmdRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_execCmd_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::execCmd(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_execCmd_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::raltservice::ExecCmdRsp>* RaltService::Stub::AsyncexecCmdRaw(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq& request, ::grpc::CompletionQueue* cq) {

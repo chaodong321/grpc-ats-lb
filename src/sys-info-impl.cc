@@ -94,7 +94,7 @@ Status SysInfoImpl::getDeviceDetail (ServerContext* context, const GetDeviceDeta
 {
 	LOG_INFO("get device detail");
 	string strCpuUsage;
-	string strCpuUsageCmd = "mpstat -P ALL |grep -v CPU | awk 'NF > 4'|awk '{print $3,$12}'";
+	string strCpuUsageCmd = "mpstat -P ALL |grep -v CPU | awk 'NF > 4'|awk '{print $3,$NF}'";
 	if(!UtilCommon::ShellCmd(strCpuUsageCmd, strCpuUsage)){
 		LOG_ERROR("shell cmd failed: %s\n", strCpuUsageCmd.c_str());
 		return Status::CANCELLED;
@@ -168,7 +168,7 @@ Status SysInfoImpl::getCpuUsage (ServerContext* context, const GetCpuUsageReq* r
 {
 	LOG_INFO("get cpu usage");
 	string strValue;
-	string strCmd = "mpstat -P ALL |grep -v CPU | awk 'NF > 4'|awk '{print $3,$12}'";
+	string strCmd = "mpstat -P ALL |grep -v CPU | awk 'NF > 4'|awk '{print $3,$NF}'";
 	
 	if(!UtilCommon::ShellCmd(strCmd, strValue)){
 		LOG_ERROR("shell cmd failed: %s\n", strCmd.c_str());

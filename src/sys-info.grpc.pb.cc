@@ -5,14 +5,17 @@
 #include "sys-info.pb.h"
 #include "sys-info.grpc.pb.h"
 
-#include <grpc++/impl/codegen/async_stream.h>
-#include <grpc++/impl/codegen/async_unary_call.h>
-#include <grpc++/impl/codegen/channel_interface.h>
-#include <grpc++/impl/codegen/client_unary_call.h>
-#include <grpc++/impl/codegen/method_handler_impl.h>
-#include <grpc++/impl/codegen/rpc_service_method.h>
-#include <grpc++/impl/codegen/service_type.h>
-#include <grpc++/impl/codegen/sync_stream.h>
+#include <functional>
+#include <grpcpp/impl/codegen/async_stream.h>
+#include <grpcpp/impl/codegen/async_unary_call.h>
+#include <grpcpp/impl/codegen/channel_interface.h>
+#include <grpcpp/impl/codegen/client_unary_call.h>
+#include <grpcpp/impl/codegen/client_callback.h>
+#include <grpcpp/impl/codegen/method_handler_impl.h>
+#include <grpcpp/impl/codegen/rpc_service_method.h>
+#include <grpcpp/impl/codegen/server_callback.h>
+#include <grpcpp/impl/codegen/service_type.h>
+#include <grpcpp/impl/codegen/sync_stream.h>
 namespace sysinfo {
 
 static const char* SysInfo_method_names[] = {
@@ -32,6 +35,7 @@ static const char* SysInfo_method_names[] = {
 };
 
 std::unique_ptr< SysInfo::Stub> SysInfo::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
   std::unique_ptr< SysInfo::Stub> stub(new SysInfo::Stub(channel));
   return stub;
 }
@@ -56,6 +60,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getNameAndIpInfo_, context, request, response);
 }
 
+void SysInfo::Stub::experimental_async::getNameAndIpInfo(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq* request, ::sysinfo::GetNameAndIpInfoRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getNameAndIpInfo_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetNameAndIpInfoRsp>* SysInfo::Stub::AsyncgetNameAndIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNameAndIpInfoReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetNameAndIpInfoRsp>::Create(channel_.get(), cq, rpcmethod_getNameAndIpInfo_, context, request, true);
 }
@@ -66,6 +74,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
 
 ::grpc::Status SysInfo::Stub::getDeviceInfo(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::sysinfo::GetDeviceInfoRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getDeviceInfo_, context, request, response);
+}
+
+void SysInfo::Stub::experimental_async::getDeviceInfo(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq* request, ::sysinfo::GetDeviceInfoRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getDeviceInfo_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceInfoRsp>* SysInfo::Stub::AsyncgetDeviceInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceInfoReq& request, ::grpc::CompletionQueue* cq) {
@@ -80,6 +92,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getDeviceDetail_, context, request, response);
 }
 
+void SysInfo::Stub::experimental_async::getDeviceDetail(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq* request, ::sysinfo::GetDeviceDetailRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getDeviceDetail_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetDeviceDetailRsp>* SysInfo::Stub::AsyncgetDeviceDetailRaw(::grpc::ClientContext* context, const ::sysinfo::GetDeviceDetailReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetDeviceDetailRsp>::Create(channel_.get(), cq, rpcmethod_getDeviceDetail_, context, request, true);
 }
@@ -90,6 +106,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
 
 ::grpc::Status SysInfo::Stub::getCpuUsage(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::sysinfo::GetCpuUsageRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getCpuUsage_, context, request, response);
+}
+
+void SysInfo::Stub::experimental_async::getCpuUsage(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq* request, ::sysinfo::GetCpuUsageRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getCpuUsage_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetCpuUsageRsp>* SysInfo::Stub::AsyncgetCpuUsageRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuUsageReq& request, ::grpc::CompletionQueue* cq) {
@@ -104,6 +124,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getCpuTemp_, context, request, response);
 }
 
+void SysInfo::Stub::experimental_async::getCpuTemp(::grpc::ClientContext* context, const ::sysinfo::GetCpuTempReq* request, ::sysinfo::GetCpuTempRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getCpuTemp_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetCpuTempRsp>* SysInfo::Stub::AsyncgetCpuTempRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuTempReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetCpuTempRsp>::Create(channel_.get(), cq, rpcmethod_getCpuTemp_, context, request, true);
 }
@@ -114,6 +138,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
 
 ::grpc::Status SysInfo::Stub::getMemUsage(::grpc::ClientContext* context, const ::sysinfo::GetMemUsageReq& request, ::sysinfo::GetMemUsageRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getMemUsage_, context, request, response);
+}
+
+void SysInfo::Stub::experimental_async::getMemUsage(::grpc::ClientContext* context, const ::sysinfo::GetMemUsageReq* request, ::sysinfo::GetMemUsageRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getMemUsage_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetMemUsageRsp>* SysInfo::Stub::AsyncgetMemUsageRaw(::grpc::ClientContext* context, const ::sysinfo::GetMemUsageReq& request, ::grpc::CompletionQueue* cq) {
@@ -128,6 +156,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getNicInfo_, context, request, response);
 }
 
+void SysInfo::Stub::experimental_async::getNicInfo(::grpc::ClientContext* context, const ::sysinfo::GetNicInfoReq* request, ::sysinfo::GetNicInfoRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getNicInfo_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetNicInfoRsp>* SysInfo::Stub::AsyncgetNicInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetNicInfoReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetNicInfoRsp>::Create(channel_.get(), cq, rpcmethod_getNicInfo_, context, request, true);
 }
@@ -138,6 +170,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
 
 ::grpc::Status SysInfo::Stub::getHostName(::grpc::ClientContext* context, const ::sysinfo::GetHostNameReq& request, ::sysinfo::GetHostNameRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getHostName_, context, request, response);
+}
+
+void SysInfo::Stub::experimental_async::getHostName(::grpc::ClientContext* context, const ::sysinfo::GetHostNameReq* request, ::sysinfo::GetHostNameRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getHostName_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetHostNameRsp>* SysInfo::Stub::AsyncgetHostNameRaw(::grpc::ClientContext* context, const ::sysinfo::GetHostNameReq& request, ::grpc::CompletionQueue* cq) {
@@ -152,6 +188,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getIpInfo_, context, request, response);
 }
 
+void SysInfo::Stub::experimental_async::getIpInfo(::grpc::ClientContext* context, const ::sysinfo::GetIpInfoReq* request, ::sysinfo::GetIpInfoRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getIpInfo_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetIpInfoRsp>* SysInfo::Stub::AsyncgetIpInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetIpInfoReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetIpInfoRsp>::Create(channel_.get(), cq, rpcmethod_getIpInfo_, context, request, true);
 }
@@ -162,6 +202,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
 
 ::grpc::Status SysInfo::Stub::getCpuModel(::grpc::ClientContext* context, const ::sysinfo::GetCpuModelReq& request, ::sysinfo::GetCpuModelRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getCpuModel_, context, request, response);
+}
+
+void SysInfo::Stub::experimental_async::getCpuModel(::grpc::ClientContext* context, const ::sysinfo::GetCpuModelReq* request, ::sysinfo::GetCpuModelRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getCpuModel_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetCpuModelRsp>* SysInfo::Stub::AsyncgetCpuModelRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuModelReq& request, ::grpc::CompletionQueue* cq) {
@@ -176,6 +220,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getCpuCores_, context, request, response);
 }
 
+void SysInfo::Stub::experimental_async::getCpuCores(::grpc::ClientContext* context, const ::sysinfo::GetCpuCoresReq* request, ::sysinfo::GetCpuCoresRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getCpuCores_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetCpuCoresRsp>* SysInfo::Stub::AsyncgetCpuCoresRaw(::grpc::ClientContext* context, const ::sysinfo::GetCpuCoresReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetCpuCoresRsp>::Create(channel_.get(), cq, rpcmethod_getCpuCores_, context, request, true);
 }
@@ -188,6 +236,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getMemTotal_, context, request, response);
 }
 
+void SysInfo::Stub::experimental_async::getMemTotal(::grpc::ClientContext* context, const ::sysinfo::GetMemTotalReq* request, ::sysinfo::GetMemTotalRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getMemTotal_, context, request, response, std::move(f));
+}
+
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetMemTotalRsp>* SysInfo::Stub::AsyncgetMemTotalRaw(::grpc::ClientContext* context, const ::sysinfo::GetMemTotalReq& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::sysinfo::GetMemTotalRsp>::Create(channel_.get(), cq, rpcmethod_getMemTotal_, context, request, true);
 }
@@ -198,6 +250,10 @@ SysInfo::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
 
 ::grpc::Status SysInfo::Stub::getEthCtrlInfo(::grpc::ClientContext* context, const ::sysinfo::GetEthCtrlInfoReq& request, ::sysinfo::GetEthCtrlInfoRsp* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getEthCtrlInfo_, context, request, response);
+}
+
+void SysInfo::Stub::experimental_async::getEthCtrlInfo(::grpc::ClientContext* context, const ::sysinfo::GetEthCtrlInfoReq* request, ::sysinfo::GetEthCtrlInfoRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getEthCtrlInfo_, context, request, response, std::move(f));
 }
 
 ::grpc::ClientAsyncResponseReader< ::sysinfo::GetEthCtrlInfoRsp>* SysInfo::Stub::AsyncgetEthCtrlInfoRaw(::grpc::ClientContext* context, const ::sysinfo::GetEthCtrlInfoReq& request, ::grpc::CompletionQueue* cq) {

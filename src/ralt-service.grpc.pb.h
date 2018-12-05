@@ -6,15 +6,18 @@
 
 #include "ralt-service.pb.h"
 
-#include <grpc++/impl/codegen/async_stream.h>
-#include <grpc++/impl/codegen/async_unary_call.h>
-#include <grpc++/impl/codegen/method_handler_impl.h>
-#include <grpc++/impl/codegen/proto_utils.h>
-#include <grpc++/impl/codegen/rpc_method.h>
-#include <grpc++/impl/codegen/service_type.h>
-#include <grpc++/impl/codegen/status.h>
-#include <grpc++/impl/codegen/stub_options.h>
-#include <grpc++/impl/codegen/sync_stream.h>
+#include <functional>
+#include <grpcpp/impl/codegen/async_generic_service.h>
+#include <grpcpp/impl/codegen/async_stream.h>
+#include <grpcpp/impl/codegen/async_unary_call.h>
+#include <grpcpp/impl/codegen/method_handler_impl.h>
+#include <grpcpp/impl/codegen/proto_utils.h>
+#include <grpcpp/impl/codegen/rpc_method.h>
+#include <grpcpp/impl/codegen/server_callback.h>
+#include <grpcpp/impl/codegen/service_type.h>
+#include <grpcpp/impl/codegen/status.h>
+#include <grpcpp/impl/codegen/stub_options.h>
+#include <grpcpp/impl/codegen/sync_stream.h>
 
 namespace grpc {
 class CompletionQueue;
@@ -172,6 +175,36 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ExecCmdRsp>> PrepareAsyncexecCmd(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ExecCmdRsp>>(PrepareAsyncexecCmdRaw(context, request, cq));
     }
+    class experimental_async_interface {
+     public:
+      virtual ~experimental_async_interface() {}
+      // ats stats
+      virtual void getRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void showCacheData(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response, std::function<void(::grpc::Status)>) = 0;
+      // flow related
+      virtual void showFlowStatData(::grpc::ClientContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response, std::function<void(::grpc::Status)>) = 0;
+      // logs related
+      virtual void showLogInfoData(::grpc::ClientContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response, std::function<void(::grpc::Status)>) = 0;
+      // configure
+      // basic config, main for record.config
+      virtual void getBasicConfig(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void setBasicConfig(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response, std::function<void(::grpc::Status)>) = 0;
+      // ralt.domain.conf
+      virtual void getAllDomain(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void updateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void addDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void deleteDomain(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response, std::function<void(::grpc::Status)>) = 0;
+      // ralt.miscellaneous.conf
+      virtual void getMisc(::grpc::ClientContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void modMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response, std::function<void(::grpc::Status)>) = 0;
+      // ralt status: 
+      // exec cmd
+      virtual void execCmd(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response, std::function<void(::grpc::Status)>) = 0;
+    };
+    virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRaltStatsRsp>* AsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRaltStatsRsp>* PrepareAsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -345,9 +378,36 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ExecCmdRsp>> PrepareAsyncexecCmd(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ExecCmdRsp>>(PrepareAsyncexecCmdRaw(context, request, cq));
     }
+    class experimental_async final :
+      public StubInterface::experimental_async_interface {
+     public:
+      void getRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response, std::function<void(::grpc::Status)>) override;
+      void getStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response, std::function<void(::grpc::Status)>) override;
+      void getHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response, std::function<void(::grpc::Status)>) override;
+      void showCacheData(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response, std::function<void(::grpc::Status)>) override;
+      void showFlowStatData(::grpc::ClientContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response, std::function<void(::grpc::Status)>) override;
+      void showLogInfoData(::grpc::ClientContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response, std::function<void(::grpc::Status)>) override;
+      void getBasicConfig(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response, std::function<void(::grpc::Status)>) override;
+      void setBasicConfig(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response, std::function<void(::grpc::Status)>) override;
+      void getAllDomain(::grpc::ClientContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response, std::function<void(::grpc::Status)>) override;
+      void updateDomain(::grpc::ClientContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response, std::function<void(::grpc::Status)>) override;
+      void getDomain(::grpc::ClientContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response, std::function<void(::grpc::Status)>) override;
+      void addDomain(::grpc::ClientContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response, std::function<void(::grpc::Status)>) override;
+      void deleteDomain(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response, std::function<void(::grpc::Status)>) override;
+      void getMisc(::grpc::ClientContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response, std::function<void(::grpc::Status)>) override;
+      void modMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response, std::function<void(::grpc::Status)>) override;
+      void execCmd(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response, std::function<void(::grpc::Status)>) override;
+     private:
+      friend class Stub;
+      explicit experimental_async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class experimental_async_interface* experimental_async() override { return &async_stub_; }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>* AsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetRaltStatsRsp>* PrepareAsyncgetRaltStatsRaw(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetStatsFieldRsp>* AsyncgetStatsFieldRaw(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq& request, ::grpc::CompletionQueue* cq) override;
@@ -451,7 +511,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) final override {
+    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -471,7 +531,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) final override {
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -491,7 +551,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) final override {
+    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -511,7 +571,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) final override {
+    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -531,7 +591,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) final override {
+    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -551,7 +611,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) final override {
+    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -571,7 +631,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) final override {
+    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -591,7 +651,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) final override {
+    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -611,7 +671,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) final override {
+    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -631,7 +691,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) final override {
+    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -651,7 +711,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) final override {
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -671,7 +731,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) final override {
+    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -691,7 +751,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) final override {
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -711,7 +771,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) final override {
+    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -731,7 +791,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) final override {
+    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -751,7 +811,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) final override {
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -771,7 +831,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) final override {
+    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -791,7 +851,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) final override {
+    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -800,6 +860,439 @@ class RaltService final {
     }
   };
   typedef WithAsyncMethod_getRaltStats<WithAsyncMethod_getStatsField<WithAsyncMethod_getHomePageData<WithAsyncMethod_showCacheData<WithAsyncMethod_showFlowStatData<WithAsyncMethod_showLogInfoData<WithAsyncMethod_getRaltLogs<WithAsyncMethod_getBasicConfig<WithAsyncMethod_setBasicConfig<WithAsyncMethod_getAllDomain<WithAsyncMethod_updateDomain<WithAsyncMethod_getDomain<WithAsyncMethod_addDomain<WithAsyncMethod_deleteDomain<WithAsyncMethod_getMisc<WithAsyncMethod_modMisc<WithAsyncMethod_getRaltStatus<WithAsyncMethod_execCmd<Service > > > > > > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getRaltStats : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getRaltStats() {
+      ::grpc::Service::experimental().MarkMethodCallback(0,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getRaltStats<BaseClass>, ::raltservice::GetRaltStatsReq, ::raltservice::GetRaltStatsRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::GetRaltStatsReq* request,
+                 ::raltservice::GetRaltStatsRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getRaltStats(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getRaltStats() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getStatsField : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getStatsField() {
+      ::grpc::Service::experimental().MarkMethodCallback(1,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getStatsField<BaseClass>, ::raltservice::GetStatsFieldReq, ::raltservice::GetStatsFieldRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::GetStatsFieldReq* request,
+                 ::raltservice::GetStatsFieldRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getStatsField(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getStatsField() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getHomePageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getHomePageData() {
+      ::grpc::Service::experimental().MarkMethodCallback(2,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getHomePageData<BaseClass>, ::raltservice::HomePageReq, ::raltservice::HomePageRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::HomePageReq* request,
+                 ::raltservice::HomePageRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getHomePageData(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getHomePageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_showCacheData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_showCacheData() {
+      ::grpc::Service::experimental().MarkMethodCallback(3,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_showCacheData<BaseClass>, ::raltservice::CacheLookUpReq, ::raltservice::CacheResult>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::CacheLookUpReq* request,
+                 ::raltservice::CacheResult* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->showCacheData(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_showCacheData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_showFlowStatData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_showFlowStatData() {
+      ::grpc::Service::experimental().MarkMethodCallback(4,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_showFlowStatData<BaseClass>, ::raltservice::FlowStatLookUpReq, ::raltservice::FlowResult>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::FlowStatLookUpReq* request,
+                 ::raltservice::FlowResult* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->showFlowStatData(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_showFlowStatData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_showLogInfoData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_showLogInfoData() {
+      ::grpc::Service::experimental().MarkMethodCallback(5,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_showLogInfoData<BaseClass>, ::raltservice::LogInfoLookUpReq, ::raltservice::LogResult>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::LogInfoLookUpReq* request,
+                 ::raltservice::LogResult* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->showLogInfoData(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_showLogInfoData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getRaltLogs : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getRaltLogs() {
+    }
+    ~ExperimentalWithCallbackMethod_getRaltLogs() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getBasicConfig : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getBasicConfig() {
+      ::grpc::Service::experimental().MarkMethodCallback(7,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getBasicConfig<BaseClass>, ::raltservice::GetBasicConfigReq, ::raltservice::GetBasicConfigRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::GetBasicConfigReq* request,
+                 ::raltservice::GetBasicConfigRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getBasicConfig(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getBasicConfig() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_setBasicConfig : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_setBasicConfig() {
+      ::grpc::Service::experimental().MarkMethodCallback(8,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_setBasicConfig<BaseClass>, ::raltservice::SetBasicConfigReq, ::raltservice::SetBasicConfigRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::SetBasicConfigReq* request,
+                 ::raltservice::SetBasicConfigRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->setBasicConfig(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_setBasicConfig() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getAllDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getAllDomain() {
+      ::grpc::Service::experimental().MarkMethodCallback(9,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getAllDomain<BaseClass>, ::raltservice::GetAllDomainReq, ::raltservice::GetAllDomainRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::GetAllDomainReq* request,
+                 ::raltservice::GetAllDomainRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getAllDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getAllDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_updateDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_updateDomain() {
+      ::grpc::Service::experimental().MarkMethodCallback(10,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_updateDomain<BaseClass>, ::raltservice::UpdateDomainReq, ::raltservice::UpdateDomainRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::UpdateDomainReq* request,
+                 ::raltservice::UpdateDomainRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->updateDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_updateDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getDomain() {
+      ::grpc::Service::experimental().MarkMethodCallback(11,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getDomain<BaseClass>, ::raltservice::GetDomainReq, ::raltservice::GetDomainRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::GetDomainReq* request,
+                 ::raltservice::GetDomainRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_addDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_addDomain() {
+      ::grpc::Service::experimental().MarkMethodCallback(12,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_addDomain<BaseClass>, ::raltservice::AddDomainReq, ::raltservice::AddDomainRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::AddDomainReq* request,
+                 ::raltservice::AddDomainRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->addDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_addDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_deleteDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_deleteDomain() {
+      ::grpc::Service::experimental().MarkMethodCallback(13,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_deleteDomain<BaseClass>, ::raltservice::DeleteDomainReq, ::raltservice::DeleteDomainRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::DeleteDomainReq* request,
+                 ::raltservice::DeleteDomainRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->deleteDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_deleteDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getMisc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getMisc() {
+      ::grpc::Service::experimental().MarkMethodCallback(14,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getMisc<BaseClass>, ::raltservice::GetMiscReq, ::raltservice::GetMiscRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::GetMiscReq* request,
+                 ::raltservice::GetMiscRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getMisc(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getMisc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_modMisc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_modMisc() {
+      ::grpc::Service::experimental().MarkMethodCallback(15,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_modMisc<BaseClass>, ::raltservice::ModMiscOpReq, ::raltservice::ModMiscOpRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::ModMiscOpReq* request,
+                 ::raltservice::ModMiscOpRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->modMisc(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_modMisc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getRaltStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getRaltStatus() {
+    }
+    ~ExperimentalWithCallbackMethod_getRaltStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_execCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_execCmd() {
+      ::grpc::Service::experimental().MarkMethodCallback(17,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_execCmd<BaseClass>, ::raltservice::ExecCmdReq, ::raltservice::ExecCmdRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::ExecCmdReq* request,
+                 ::raltservice::ExecCmdRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->execCmd(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_execCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  typedef ExperimentalWithCallbackMethod_getRaltStats<ExperimentalWithCallbackMethod_getStatsField<ExperimentalWithCallbackMethod_getHomePageData<ExperimentalWithCallbackMethod_showCacheData<ExperimentalWithCallbackMethod_showFlowStatData<ExperimentalWithCallbackMethod_showLogInfoData<ExperimentalWithCallbackMethod_getRaltLogs<ExperimentalWithCallbackMethod_getBasicConfig<ExperimentalWithCallbackMethod_setBasicConfig<ExperimentalWithCallbackMethod_getAllDomain<ExperimentalWithCallbackMethod_updateDomain<ExperimentalWithCallbackMethod_getDomain<ExperimentalWithCallbackMethod_addDomain<ExperimentalWithCallbackMethod_deleteDomain<ExperimentalWithCallbackMethod_getMisc<ExperimentalWithCallbackMethod_modMisc<ExperimentalWithCallbackMethod_getRaltStatus<ExperimentalWithCallbackMethod_execCmd<Service > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_getRaltStats : public BaseClass {
    private:
@@ -812,7 +1305,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) final override {
+    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -829,7 +1322,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) final override {
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -846,7 +1339,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) final override {
+    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -863,7 +1356,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) final override {
+    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -880,7 +1373,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) final override {
+    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -897,7 +1390,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) final override {
+    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -914,7 +1407,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) final override {
+    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -931,7 +1424,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) final override {
+    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -948,7 +1441,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) final override {
+    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -965,7 +1458,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) final override {
+    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -982,7 +1475,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) final override {
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -999,7 +1492,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) final override {
+    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1016,7 +1509,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) final override {
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1033,7 +1526,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) final override {
+    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1050,7 +1543,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) final override {
+    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1067,7 +1560,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) final override {
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1084,7 +1577,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) final override {
+    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1101,10 +1594,802 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) final override {
+    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getRaltStats : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getRaltStats() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_getRaltStats() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetRaltStats(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getStatsField : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getStatsField() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_getStatsField() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetStatsField(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getHomePageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getHomePageData() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_getHomePageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetHomePageData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_showCacheData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_showCacheData() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_showCacheData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestshowCacheData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_showFlowStatData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_showFlowStatData() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_showFlowStatData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestshowFlowStatData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_showLogInfoData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_showLogInfoData() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_showLogInfoData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestshowLogInfoData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getRaltLogs : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getRaltLogs() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_getRaltLogs() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetRaltLogs(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(6, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getBasicConfig : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getBasicConfig() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_getBasicConfig() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetBasicConfig(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_setBasicConfig : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_setBasicConfig() {
+      ::grpc::Service::MarkMethodRaw(8);
+    }
+    ~WithRawMethod_setBasicConfig() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestsetBasicConfig(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getAllDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getAllDomain() {
+      ::grpc::Service::MarkMethodRaw(9);
+    }
+    ~WithRawMethod_getAllDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetAllDomain(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_updateDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_updateDomain() {
+      ::grpc::Service::MarkMethodRaw(10);
+    }
+    ~WithRawMethod_updateDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestupdateDomain(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getDomain() {
+      ::grpc::Service::MarkMethodRaw(11);
+    }
+    ~WithRawMethod_getDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetDomain(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_addDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_addDomain() {
+      ::grpc::Service::MarkMethodRaw(12);
+    }
+    ~WithRawMethod_addDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestaddDomain(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_deleteDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_deleteDomain() {
+      ::grpc::Service::MarkMethodRaw(13);
+    }
+    ~WithRawMethod_deleteDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestdeleteDomain(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getMisc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getMisc() {
+      ::grpc::Service::MarkMethodRaw(14);
+    }
+    ~WithRawMethod_getMisc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetMisc(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_modMisc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_modMisc() {
+      ::grpc::Service::MarkMethodRaw(15);
+    }
+    ~WithRawMethod_modMisc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestmodMisc(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getRaltStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getRaltStatus() {
+      ::grpc::Service::MarkMethodRaw(16);
+    }
+    ~WithRawMethod_getRaltStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetRaltStatus(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(16, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_execCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_execCmd() {
+      ::grpc::Service::MarkMethodRaw(17);
+    }
+    ~WithRawMethod_execCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestexecCmd(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getRaltStats : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getRaltStats() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(0,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getRaltStats<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getRaltStats(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getRaltStats() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getRaltStats(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getStatsField : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getStatsField() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(1,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getStatsField<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getStatsField(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getStatsField() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getStatsField(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getHomePageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getHomePageData() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(2,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getHomePageData<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getHomePageData(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getHomePageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getHomePageData(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_showCacheData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_showCacheData() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(3,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_showCacheData<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->showCacheData(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_showCacheData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void showCacheData(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_showFlowStatData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_showFlowStatData() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(4,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_showFlowStatData<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->showFlowStatData(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_showFlowStatData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void showFlowStatData(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_showLogInfoData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_showLogInfoData() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(5,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_showLogInfoData<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->showLogInfoData(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_showLogInfoData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void showLogInfoData(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getRaltLogs : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getRaltLogs() {
+    }
+    ~ExperimentalWithRawCallbackMethod_getRaltLogs() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getBasicConfig : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getBasicConfig() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(7,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getBasicConfig<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getBasicConfig(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getBasicConfig() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getBasicConfig(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_setBasicConfig : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_setBasicConfig() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(8,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_setBasicConfig<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->setBasicConfig(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_setBasicConfig() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void setBasicConfig(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getAllDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getAllDomain() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(9,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getAllDomain<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getAllDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getAllDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getAllDomain(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_updateDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_updateDomain() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(10,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_updateDomain<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->updateDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_updateDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void updateDomain(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getDomain() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(11,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getDomain<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getDomain(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_addDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_addDomain() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(12,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_addDomain<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->addDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_addDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void addDomain(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_deleteDomain : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_deleteDomain() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(13,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_deleteDomain<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->deleteDomain(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_deleteDomain() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void deleteDomain(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getMisc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getMisc() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(14,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getMisc<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getMisc(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getMisc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getMisc(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_modMisc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_modMisc() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(15,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_modMisc<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->modMisc(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_modMisc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void modMisc(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getRaltStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getRaltStatus() {
+    }
+    ~ExperimentalWithRawCallbackMethod_getRaltStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_execCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_execCmd() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(17,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_execCmd<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->execCmd(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_execCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void execCmd(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_getRaltStats : public BaseClass {
@@ -1119,7 +2404,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) final override {
+    ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1139,7 +2424,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) final override {
+    ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1159,7 +2444,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) final override {
+    ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1179,7 +2464,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) final override {
+    ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1199,7 +2484,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) final override {
+    ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1219,7 +2504,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) final override {
+    ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1239,7 +2524,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) final override {
+    ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1259,7 +2544,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) final override {
+    ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1279,7 +2564,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) final override {
+    ::grpc::Status getAllDomain(::grpc::ServerContext* context, const ::raltservice::GetAllDomainReq* request, ::raltservice::GetAllDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1299,7 +2584,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) final override {
+    ::grpc::Status updateDomain(::grpc::ServerContext* context, const ::raltservice::UpdateDomainReq* request, ::raltservice::UpdateDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1319,7 +2604,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) final override {
+    ::grpc::Status getDomain(::grpc::ServerContext* context, const ::raltservice::GetDomainReq* request, ::raltservice::GetDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1339,7 +2624,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) final override {
+    ::grpc::Status addDomain(::grpc::ServerContext* context, const ::raltservice::AddDomainReq* request, ::raltservice::AddDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1359,7 +2644,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) final override {
+    ::grpc::Status deleteDomain(::grpc::ServerContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1379,7 +2664,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) final override {
+    ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1399,7 +2684,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) final override {
+    ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1419,7 +2704,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) final override {
+    ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1440,7 +2725,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) final override {
+    ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1460,7 +2745,7 @@ class RaltService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) final override {
+    ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
