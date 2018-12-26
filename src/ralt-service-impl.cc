@@ -19,88 +19,181 @@
 #define ATS_ROOT_DIR "/opt/reyzar/can/"
 #define ATS_LOG_DIR "/opt/reyzar/can/var/log/trafficserver/"
 #define TRAFFIC_CTL "/opt/reyzar/can/bin/traffic_ctl"
-#define RECORD_CONFIG_PATH "/opt/reyzar/can/etc/trafficserver/storage.config"
+#define STORAGE_CONFIG_PATH "/opt/reyzar/can/etc/trafficserver/storage.config"
+
+bool RaltServiceImpl::TrafficControlConfigGet(string strConfig, string &strConfigValue)
+{
+	bool bRet = false;
+	string strCmd = string(TRAFFIC_CTL) + string(" config get ")
+		+ strConfig + string("|awk -F ': ' '{printf $2}'");
+	string strCmdValue;
+	LOG_INFO("cmd: %s", strCmd.c_str());
+	if(UtilCommon::ShellCmd(strCmd, strCmdValue)){
+		if(!strCmdValue.empty() && strCmdValue.find("failed") == string::npos){
+			LOG_INFO("cmd value: %s", strCmdValue.c_str());
+			strConfigValue = strCmdValue;
+			bRet = true;
+		}
+		else{
+			LOG_ERROR("error value: %s", strCmdValue.c_str());
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strCmdValue.c_str());
+	}
+	return bRet;
+}
+
+bool RaltServiceImpl::TrafficControlConfigSet(string strConfig, string strConfigValue)
+{
+	bool bRet = false;
+	string strCmdValue;
+	string strCmd = string(TRAFFIC_CTL) + string(" config set ")
+		+ strConfig + string(" \"") + strConfigValue + string("\"");
+
+	LOG_INFO("cmd: %s", strCmd.c_str());
+	if(UtilCommon::ShellCmd(strCmd, strCmdValue)){
+		if(strCmdValue.find("failed") == string::npos){
+			LOG_INFO("cmd execute success");
+			bRet = true;
+		}
+		else{
+			LOG_ERROR("error value: %s", strCmdValue.c_str());
+			bRet = false;
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strCmdValue.c_str());
+		bRet = false;
+	}
+	return bRet;
+}
+
+
+bool RaltServiceImpl::TrafficControlMetricGet(string strConfig, string &strMetricValue)
+{
+	bool bRet = false;
+	string strCmd = string(TRAFFIC_CTL) + string(" metric get ")
+		+ strConfig + string("|awk '{printf $2}'");
+	string strCmdValue;
+	LOG_INFO("cmd: %s", strCmd.c_str());
+	if(UtilCommon::ShellCmd(strCmd, strCmdValue)){
+		if(!strCmdValue.empty() && strCmdValue.find("failed") == string::npos){
+			LOG_INFO("cmd value: %s", strCmdValue.c_str());
+			strMetricValue = strCmdValue;
+			bRet = true;
+		}
+		else{
+			LOG_ERROR("error value: %s", strCmdValue.c_str());
+		}
+	}
+	else{
+		LOG_ERROR("shell cmd error: %s", strCmdValue.c_str());
+	}
+	return bRet;
+}
+
 
 Status RaltServiceImpl::getRaltStats (ServerContext* context,
 	const GetRaltStatsReq* request, GetRaltStatsRsp* reply)
 {
 	LOG_INFO("get ralt stats");
+
+	string strStartTime;
+	if(TrafficControlMetricGet("proxy.node.restarts.proxy.start_time", strStartTime)){
+		LOG_INFO("logging enabled: %s", strStartTime.c_str());
+		reply->set_start_time(atoi(strStartTime.c_str()));
+	}
+
+	time_t current_seconds = time(NULL);
+	reply->set_end_time(current_seconds);
+
+
+	string strIncomingRequests;
+	if(TrafficControlMetricGet("proxy.process.http.incoming_requests", strIncomingRequests)){
+		reply->set_flow_incoming_requests(atoi(strIncomingRequests.c_str()));
+	}
+
+	string strIncomingResponses;
+	if(TrafficControlMetricGet("proxy.process.http.incoming_responses", strIncomingResponses)){
+		reply->set_flow_incoming_responses(atoi(strIncomingResponses.c_str()));
+	}
+
+	string strTotalClientConnectionsIpv4;
+	if(TrafficControlMetricGet("proxy.process.http.total_client_connections_ipv4", strTotalClientConnectionsIpv4)){
+		reply->set_flow_total_client_connections_ipv4(atoi(strTotalClientConnectionsIpv4.c_str()));
+	}
+
+	string strTotalClientConnectionsIpv6;
+	if(TrafficControlMetricGet("proxy.process.http.total_client_connections_ipv6", strTotalClientConnectionsIpv6)){
+		reply->set_flow_total_client_connections_ipv6(atoi(strTotalClientConnectionsIpv6.c_str()));
+	}
+
+	string strTotalClientServerConnections;
+	if(TrafficControlMetricGet("proxy.process.http.total_server_connections", strTotalClientServerConnections)){
+		reply->set_flow_total_server_connections(atoi(strTotalClientServerConnections.c_str()));
+	}
+
+	string strCacheBytesUsed;
+	if(TrafficControlMetricGet("proxy.process.cache.bytes_used", strCacheBytesUsed)){
+		reply->set_cache_used_mb(atoi(strCacheBytesUsed.c_str())/(1024*1024));
+	}
+
+	string strCacheBytesTotal;
+	if(TrafficControlMetricGet("proxy.process.cache.bytes_total", strCacheBytesTotal)){
+		reply->set_cache_total_mb(atoi(strCacheBytesTotal.c_str())/(1024*1024));
+	}
+
+	string strCacheTotalHits;
+	if(TrafficControlMetricGet("proxy.process.cache.cache_total_hits", strCacheTotalHits)){
+		reply->set_cache_total_hits(atoi(strCacheTotalHits.c_str()));
+	}
+
+	string strCacheHitRatio;
+	if(TrafficControlMetricGet("proxy.node.cache_hit_ratio", strCacheHitRatio)){
+		reply->set_cache_total_hits(atof(strCacheHitRatio.c_str()));
+	}
+
+	string strHostDbTotalHits;
+	if(TrafficControlMetricGet("proxy.node.hostdb.total_hits", strHostDbTotalHits)){
+		reply->set_hostdb_total_hits(atoi(strHostDbTotalHits.c_str()));
+	}
+
+	string strHostDbHitRatio;
+	if(TrafficControlMetricGet("proxy.node.hostdb.hit_ratio", strHostDbHitRatio)){
+		reply->set_hostdb_hit_ratio(atof(strHostDbHitRatio.c_str()));
+	}
+
+	string strLogFilesSpaceUsed;
+	if(TrafficControlMetricGet("proxy.process.log.log_files_space_used", strLogFilesSpaceUsed)){
+		reply->set_logs_space_used_mb(atoi(strLogFilesSpaceUsed.c_str())/(1024*1024));
+	}
+
+	string strLogFilesSpaceMax;
+	if(TrafficControlConfigGet("proxy.config.log.max_space_mb_for_logs", strLogFilesSpaceMax)){
+		reply->set_logs_space_total_mb(atoi(strLogFilesSpaceMax.c_str()));
+	}
+
+	LOG_INFO("start time: %u", reply->start_time());
+	LOG_INFO("end time: %lu", reply->end_time());
 	
-	string strValue;
-	string strCmd =  "curl -v http://127.0.0.1:8080/_stats";
-	if(!UtilCommon::ShellCmd(strCmd, strValue)){
-		LOG_ERROR("shell cmd error: %s", strCmd.c_str());
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_stats = json_loads(strValue.c_str(), 0, NULL);
-	if(NULL == j_stats){
-		LOG_ERROR("json_loads failed");
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_global = json_object_get(j_stats,"global");
-	if(NULL == j_global){
-		LOG_ERROR("json_object_get failed");
-		return Status::CANCELLED;
-	}
-
-	json_t *j_cache_bytes_used = json_object_get(j_global,"proxy.process.cache.bytes_used");
-	if(NULL != j_cache_bytes_used)
-		reply->set_cache_used_bytes(atoi(json_string_value(j_cache_bytes_used)));
-
-	json_t *j_cache_bytes_total = json_object_get(j_global,"proxy.process.cache.bytes_total");
-	if(NULL != j_cache_bytes_total)
-		reply->set_cache_total_bytes(atoi(json_string_value(j_cache_bytes_total)));
-
-	json_t *j_flow_completed_requests = json_object_get(j_global,"proxy.process.http.completed_requests");
-	if(NULL != j_flow_completed_requests)
-		reply->set_flow_completed_requests(atoi(json_string_value(j_flow_completed_requests)));
-	
-	json_t *j_flow_incoming_requests = json_object_get(j_global,"proxy.process.http.incoming_requests");
-	if(NULL != j_flow_incoming_requests)
-		reply->set_flow_incoming_requests(atoi(json_string_value(j_flow_incoming_requests)));
-	
-	json_t *j_flow_total_client_connections_ipv4 = json_object_get(j_global,"proxy.process.http.total_client_connections_ipv4");
-	if(NULL != j_flow_total_client_connections_ipv4)
-		reply->set_flow_total_client_connections_ipv4(atoi(json_string_value(j_flow_total_client_connections_ipv4)));
-		
-	json_t *j_flow_total_client_connections_ipv6 = json_object_get(j_global,"proxy.process.http.total_client_connections_ipv6");
-	if(NULL != j_flow_total_client_connections_ipv6)
-		reply->set_flow_total_client_connections_ipv6(atoi(json_string_value(j_flow_total_client_connections_ipv6)));
-
-	json_t *j_flow_bandwidth_hit_ratio = json_object_get(j_global,"proxy.node.bandwidth_hit_ratio");
-	if(NULL != j_flow_bandwidth_hit_ratio)
-		reply->set_flow_bandwidth_hit_ratio(atof(json_string_value(j_flow_bandwidth_hit_ratio)));
-
-	json_t *j_logs_space_used_mb = json_object_get(j_global,"proxy.process.log.log_files_space_used");
-	if(NULL != j_logs_space_used_mb)
-		reply->set_logs_space_used_mb(atoi(json_string_value(j_logs_space_used_mb))/1024);
-
-	//max_space_mb_for_logs
-	string strLogMaxSpaceCmd = string("/opt/reyzar/can/bin/traffic_ctl config get proxy.config.log.max_space_mb_for_logs|awk -F ': ' '{print $2}'");
-	string strLogMaxSpace;
-	if( ! UtilCommon::ShellCmd(strLogMaxSpaceCmd, strLogMaxSpace) ){
-		LOG_ERROR("shell cmd error: %s", strLogMaxSpaceCmd.c_str());
-		return Status::CANCELLED;
-	}
-	if(!strLogMaxSpace.empty()){
-		reply->set_logs_space_total_mb(atoi(strLogMaxSpace.c_str()));
-	}
-	else{
-		LOG_WARN("get logs space total mb failed");
-	}
-
-	LOG_INFO("cache_used_bytes: %llu", reply->cache_used_bytes());
-	LOG_INFO("cache_total_bytes: %llu", reply->cache_total_bytes());
 	LOG_INFO("logs_space_used_mb: %lu", reply->logs_space_used_mb());
 	LOG_INFO("logs_space_total_mb: %lu", reply->logs_space_total_mb());
-	LOG_INFO("flow_completed_requests: %lu", reply->flow_completed_requests());
+	
 	LOG_INFO("flow_incoming_requests: %lu", reply->flow_incoming_requests());
+	LOG_INFO("flow_incoming_responses: %lu", reply->flow_incoming_responses());
 	LOG_INFO("flow_total_client_connections_ipv4: %lu", reply->flow_total_client_connections_ipv4());
 	LOG_INFO("flow_total_client_connections_ipv6: %lu", reply->flow_total_client_connections_ipv6());
-	LOG_INFO("flow_bandwidth_hit_ratio: %f", reply->flow_bandwidth_hit_ratio());
-	
+	LOG_INFO("flow_total_server_connections: %lu", reply->flow_total_server_connections());
+
+	LOG_INFO("cache_used_mb: %llu", reply->cache_used_mb());
+	LOG_INFO("cache_total_mb: %llu", reply->cache_total_mb());
+	LOG_INFO("cache_total_hits: %lu", reply->cache_total_hits());
+	LOG_INFO("cache_hit_ratio: %f", reply->cache_hit_ratio());
+
+	LOG_INFO("hostdb_total_hits: %lu", reply->hostdb_total_hits());
+	LOG_INFO("cache_hit_ratio: %f", reply->cache_hit_ratio());
+
 	LOG_INFO("get ralt stats successfully");
 	return Status::OK;
 }
@@ -112,33 +205,9 @@ Status RaltServiceImpl::getStatsField (ServerContext* context,
 	
 	string strName = request->field_name();
 	LOG_INFO("field name: %s", strName.c_str());
-	if(strName.empty()){
-		LOG_ERROR("file name is empty");
-		return Status::CANCELLED;
-	}
-	
 	string strValue;
-	string strCmd =  "curl -v http://127.0.0.1:8080/_stats";
-	if(!UtilCommon::ShellCmd(strCmd, strValue)){
-		LOG_ERROR("shell cmd error: %s", strCmd.c_str());
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_stats = json_loads(strValue.c_str(), 0, NULL);
-	if(NULL == j_stats){
-		LOG_ERROR("json_loads failed");
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_global = json_object_get(j_stats,"global");
-	if(NULL == j_global){
-		LOG_ERROR("json_object_get failed");
-		return Status::CANCELLED;
-	}
-
-	json_t *j_value = json_object_get(j_global, strName.c_str());
-	if(NULL != j_value){
-		reply->set_value(json_string_value(j_value));
+	if(TrafficControlMetricGet(strName, strValue)){
+		reply->set_value(strValue);
 	}
 
 	LOG_INFO("get stats field value by field name successfully");
@@ -149,50 +218,38 @@ Status RaltServiceImpl::getHomePageData (ServerContext* context,
 	const HomePageReq* request, HomePageRsp* reply)
 {
 	LOG_INFO("get home page data");
-	string strValue;
-	string strCmd =  "curl -v http://127.0.0.1:8080/_stats";
-	if(!UtilCommon::ShellCmd(strCmd, strValue)){
-		LOG_ERROR("shell cmd error: %s", strCmd.c_str());
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_stats = json_loads(strValue.c_str(), 0, NULL);
-	if(NULL == j_stats){
-		LOG_ERROR("json_loads failed");
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_global = json_object_get(j_stats,"global");
-	if(NULL == j_global){
-		LOG_ERROR("json_object_get failed");
-		return Status::CANCELLED;
-	}
 	
 	reply->set_domain_num(RaltDomain::GetInstance()->GetMemberNum());
+
+	string strAppTransforBytes;
+	if(TrafficControlMetricGet("proxy.node.origin_server_total_bytes", strAppTransforBytes)){
+		reply->set_app_transfor_bytes(atoi(strAppTransforBytes.c_str()));
+	}
 	
-	json_t *j_app_transfor_bytes = json_object_get(j_global,"proxy.node.origin_server_total_bytes");
-	if(NULL != j_app_transfor_bytes)
-		reply->set_app_transfor_bytes(atoi(json_string_value(j_app_transfor_bytes)));
-	
-	json_t *j_app_transfor_connections = json_object_get(j_global,"proxy.process.http.incoming_responses");
-	if(NULL != j_app_transfor_connections)
-		reply->set_app_transfor_connections(atoi(json_string_value(j_app_transfor_connections)));
-	
-	json_t *j_cache_total_hits = json_object_get(j_global,"proxy.node.cache_total_hits");
-	if(NULL != j_cache_total_hits)
-		reply->set_cache_total_hits(atoi(json_string_value(j_cache_total_hits)));
-	
-	json_t *j_cache_bytes_total = json_object_get(j_global,"proxy.process.cache.bytes_total");
-	if(NULL != j_cache_bytes_total)
-		reply->set_cache_bytes_total(atoi(json_string_value(j_cache_bytes_total)));
-	
-	json_t *j_cache_bytes_used = json_object_get(j_global,"proxy.process.cache.bytes_used");
-	if(NULL != j_cache_bytes_used)
-		reply->set_cache_bytes_used(atoi(json_string_value(j_cache_bytes_used)));
-	
-	json_t *j_cache_num_docs = json_object_get(j_global,"proxy.node.cache.contents.num_docs");
-	if(NULL != j_cache_num_docs)
-		reply->set_cache_num_docs(atoi(json_string_value(j_cache_num_docs)));
+	string strAppTransforConnections;
+	if(TrafficControlMetricGet("proxy.process.http.total_server_connections", strAppTransforConnections)){
+		reply->set_app_transfor_connections(atoi(strAppTransforConnections.c_str()));
+	}
+
+	string strCacheTotalHits;
+	if(TrafficControlMetricGet("proxy.node.cache_total_hits", strCacheTotalHits)){
+		reply->set_cache_total_hits(atoi(strCacheTotalHits.c_str()));
+	}
+
+	string strCacheBytesTotal;
+	if(TrafficControlMetricGet("proxy.process.cache.bytes_total", strCacheBytesTotal)){
+		reply->set_cache_bytes_total(atoi(strCacheBytesTotal.c_str()));
+	}
+
+	string strCacheBytesUsed;
+	if(TrafficControlMetricGet("proxy.process.cache.bytes_used", strCacheBytesUsed)){
+		reply->set_cache_bytes_used(atoi(strCacheBytesUsed.c_str()));
+	}
+
+	string strCacheNumDocs;
+	if(TrafficControlMetricGet("proxy.node.cache.contents.num_docs", strCacheNumDocs)){
+		reply->set_cache_num_docs(atoi(strCacheNumDocs.c_str()));
+	}
 
 	LOG_INFO("get home page data successfully");
 	return Status::OK;
@@ -201,45 +258,31 @@ Status RaltServiceImpl::getHomePageData (ServerContext* context,
 Status RaltServiceImpl::showCacheData(ServerContext* context, const CacheLookUpReq* request, CacheResult* reply)
 {
 	LOG_INFO("get cache data");
-	string strValue;
-	string strCmd =  "curl -v http://127.0.0.1:8080/_stats";
 
-	if(!UtilCommon::ShellCmd(strCmd, strValue)){
-		LOG_ERROR("shell cmd error: %s", strCmd.c_str());
-		return Status::CANCELLED;
+	string strCacheTotalHits;
+	if(TrafficControlMetricGet("proxy.node.cache_total_hits", strCacheTotalHits)){
+		reply->set_cache_total_hits(atoi(strCacheTotalHits.c_str()));
 	}
 
-	json_t *j_stats = json_loads(strValue.c_str(), 0, NULL);
-	if(NULL == j_stats){
-		LOG_ERROR("json_loads failed");
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_global = json_object_get(j_stats,"global");
-	if(NULL == j_global){
-		LOG_ERROR("json_object_get failed");
-		return Status::CANCELLED;
+	string strCacheBytesTotal;
+	if(TrafficControlMetricGet("proxy.process.cache.bytes_total", strCacheBytesTotal)){
+		reply->set_bytes_total(atoi(strCacheBytesTotal.c_str()));
 	}
 
-	json_t *j_cache_total_hits = json_object_get(j_global,"proxy.node.cache_total_hits");
-	if(NULL != j_cache_total_hits)
-		reply->set_cache_total_hits(atoi(json_string_value(j_cache_total_hits)));
+	string strCacheBytesUsed;
+	if(TrafficControlMetricGet("proxy.process.cache.bytes_used", strCacheBytesUsed)){
+		reply->set_bytes_used(atoi(strCacheBytesUsed.c_str()));
+	}
 
-	json_t *j_bytes_total = json_object_get(j_global,"proxy.process.cache.bytes_total");
-	if(NULL != j_bytes_total)
-		reply->set_bytes_total(atoi(json_string_value(j_bytes_total)));
+	string strCacheNumDocs;
+	if(TrafficControlMetricGet("proxy.node.cache.contents.num_docs", strCacheNumDocs)){
+		reply->set_num_docs(atoi(strCacheNumDocs.c_str()));
+	}
 
-	json_t *j_bytes_used = json_object_get(j_global,"proxy.process.cache.bytes_used");
-	if(NULL != j_bytes_used)
-		reply->set_bytes_used(atoi(json_string_value(j_bytes_used)));
-
-	json_t *j_num_docs = json_object_get(j_global,"proxy.node.cache.contents.num_docs");
-	if(NULL != j_num_docs)
-		reply->set_num_docs(atoi(json_string_value(j_num_docs)));
-	
-	json_t *j_cache_hit_ratio = json_object_get(j_global,"proxy.node.cache_hit_ratio");
-	if(NULL != j_cache_hit_ratio)
-		reply->set_cache_hit_ratio(atof(json_string_value(j_cache_hit_ratio)));
+	string strCacheHitRatio;
+	if(TrafficControlMetricGet("proxy.node.cache_hit_ratio", strCacheHitRatio)){
+		reply->set_cache_hit_ratio(atof(strCacheHitRatio.c_str()));
+	}
 
 	LOG_INFO("get cache data successfully");
 	return Status::OK;
@@ -249,81 +292,66 @@ Status RaltServiceImpl::showFlowStatData(ServerContext* context,
 	const FlowStatLookUpReq* request, FlowResult* reply)
 {
 	LOG_INFO("get flow data");
-	string strValue;
-	string strCmd =  "curl -v http://127.0.0.1:8080/_stats";
-	
-	if(!UtilCommon::ShellCmd(strCmd, strValue)){
-		LOG_ERROR("shell cmd error: %s", strCmd.c_str());
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_stats = json_loads(strValue.c_str(), 0, NULL);
-	if(NULL == j_stats){
-		LOG_ERROR("json_loads failed");
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_global = json_object_get(j_stats,"global");
-	if(NULL == j_global){
-		LOG_ERROR("json_object_get failed");
-		return Status::CANCELLED;
+
+	string strUserAgentCurrentConnectionsCount;
+	if(TrafficControlMetricGet("proxy.node.http.user_agent_current_connections_count", strUserAgentCurrentConnectionsCount)){
+		reply->set_user_agent_current_connections_count(atoi(strUserAgentCurrentConnectionsCount.c_str()));
 	}
 
-	json_t *j_user_agent_current_connections_count = json_object_get(j_global,"proxy.node.http.user_agent_current_connections_count");
-	if(NULL != j_user_agent_current_connections_count)
-		reply->set_user_agent_current_connections_count(atoi(json_string_value(j_user_agent_current_connections_count)));
-	
-	json_t *j_origin_server_current_connections_count = json_object_get(j_global,"proxy.node.http.origin_server_current_connections_count");
-	if(NULL != j_origin_server_current_connections_count)
-		reply->set_origin_server_current_connections_count(atoi(json_string_value(j_origin_server_current_connections_count)));
-	
-	json_t *j_completed_requests = json_object_get(j_global,"proxy.process.http.completed_requests");
-	if(NULL != j_completed_requests)
-		reply->set_completed_requests(atoi(json_string_value(j_completed_requests)));
-	
-	json_t *j_total_incoming_connections = json_object_get(j_global,"proxy.process.http.total_incoming_connections");
-	if(NULL != j_total_incoming_connections)
-		reply->set_total_incoming_connections(atoi(json_string_value(j_total_incoming_connections)));
-	
-	json_t *j_incoming_requests = json_object_get(j_global,"proxy.process.http.incoming_requests");
-	if(NULL != j_incoming_requests)
-		reply->set_incoming_requests(atoi(json_string_value(j_incoming_requests)));
-	
-	json_t *j_outgoing_requests = json_object_get(j_global,"proxy.process.http.outgoing_requests");
-	if(NULL != j_outgoing_requests)
-		reply->set_outgoing_requests(atoi(json_string_value(j_outgoing_requests)));
-	
-	json_t *j_incoming_responses = json_object_get(j_global,"proxy.process.http.incoming_responses");
-	if(NULL != j_incoming_responses)
-		reply->set_incoming_responses(atoi(json_string_value(j_incoming_responses)));
-	
-	json_t *j_total_client_connections = json_object_get(j_global,"proxy.process.http.total_client_connections");
-	if(NULL != j_total_client_connections)
-		reply->set_total_client_connections(atoi(json_string_value(j_total_client_connections)));
-	
-	json_t *j_total_client_connections_ipv4 = json_object_get(j_global,"proxy.process.http.total_client_connections_ipv4");
-	if(NULL != j_total_client_connections_ipv4)
-		reply->set_total_client_connections_ipv4(atoi(json_string_value(j_total_client_connections_ipv4)));
-		
-	json_t *j_total_client_connections_ipv6 = json_object_get(j_global,"proxy.process.http.total_client_connections_ipv6");
-	if(NULL != j_total_client_connections_ipv6)
-		reply->set_total_client_connections_ipv6(atoi(json_string_value(j_total_client_connections_ipv6)));
-	
-	json_t *j_total_server_connections = json_object_get(j_global,"proxy.process.http.total_server_connections");
-	if(NULL != j_total_server_connections)
-		reply->set_total_server_connections(atoi(json_string_value(j_total_server_connections)));
-	
-	json_t *j_user_agent_total_bytes = json_object_get(j_global,"proxy.node.user_agent_total_bytes");
-	if(NULL != j_user_agent_total_bytes)
-		reply->set_user_agent_total_bytes(atoi(json_string_value(j_user_agent_total_bytes)));
-	
-	json_t *j_origin_server_total_bytes = json_object_get(j_global,"proxy.node.origin_server_total_bytes");
-	if(NULL != j_origin_server_total_bytes)
-		reply->set_origin_server_total_bytes(atoi(json_string_value(j_origin_server_total_bytes)));
+	string strServerAgentCurrentConnectionsCount;
+	if(TrafficControlMetricGet("proxy.node.http.origin_server_current_connections_count", strServerAgentCurrentConnectionsCount)){
+		reply->set_origin_server_current_connections_count(atoi(strServerAgentCurrentConnectionsCount.c_str()));
+	}
 
-	json_t *j_bandwidth_hit_ratio = json_object_get(j_global,"proxy.node.bandwidth_hit_ratio");
-	if(NULL != j_bandwidth_hit_ratio)
-		reply->set_bandwidth_hit_ratio(atof(json_string_value(j_bandwidth_hit_ratio)));
+	string strCompletedRequest;
+	if(TrafficControlMetricGet("proxy.process.http.completed_requests", strCompletedRequest)){
+		reply->set_completed_requests(atoi(strCompletedRequest.c_str()));
+	}
+
+	string strTotalIncomintConnections;
+	if(TrafficControlMetricGet("proxy.process.http.total_incoming_connections", strTotalIncomintConnections)){
+		reply->set_total_incoming_connections(atoi(strTotalIncomintConnections.c_str()));
+	}
+
+	string strIncomingRequests;
+	if(TrafficControlMetricGet("proxy.process.http.incoming_requests", strIncomingRequests)){
+		reply->set_incoming_requests(atoi(strIncomingRequests.c_str()));
+	}
+
+	string strIncomingResponses;
+	if(TrafficControlMetricGet("proxy.process.http.incoming_responses", strIncomingResponses)){
+		reply->set_incoming_responses(atoi(strIncomingResponses.c_str()));
+	}
+
+	string strTotalClientConnections;
+	if(TrafficControlMetricGet("proxy.process.http.total_client_connections", strTotalClientConnections)){
+		reply->set_total_client_connections(atoi(strTotalClientConnections.c_str()));
+	}
+
+	string strTotalClientConnectionsIpv4;
+	if(TrafficControlMetricGet("proxy.process.http.total_client_connections_ipv4", strTotalClientConnectionsIpv4)){
+		reply->set_total_client_connections_ipv4(atoi(strTotalClientConnectionsIpv4.c_str()));
+	}
+
+	string strTotalClientConnectionsIpv6;
+	if(TrafficControlMetricGet("proxy.process.http.total_client_connections_ipv6", strTotalClientConnectionsIpv6)){
+		reply->set_total_client_connections_ipv6(atoi(strTotalClientConnectionsIpv6.c_str()));
+	}
+
+	string strTotalServerConnections;
+	if(TrafficControlMetricGet("proxy.process.http.total_server_connections", strTotalServerConnections)){
+		reply->set_total_server_connections(atoi(strTotalServerConnections.c_str()));
+	}
+
+	string strUserAgentTotalBytes;
+	if(TrafficControlMetricGet("proxy.node.user_agent_total_bytes", strUserAgentTotalBytes)){
+		reply->set_user_agent_total_bytes(atoi(strUserAgentTotalBytes.c_str()));
+	}
+
+	string strBandWidthHitRatio;
+	if(TrafficControlMetricGet("proxy.node.bandwidth_hit_ratio", strBandWidthHitRatio)){
+		reply->set_bandwidth_hit_ratio(atof(strBandWidthHitRatio.c_str()));
+	}
 
 	LOG_INFO("get flow data successfully");
 	return Status::OK;
@@ -333,29 +361,11 @@ Status RaltServiceImpl::showLogInfoData(ServerContext* context,
 	const LogInfoLookUpReq* request, LogResult* reply)
 {
 	LOG_INFO("get log info");
-	string strValue;
-	string strCmd =  "curl -v http://127.0.0.1:8080/_stats";
-	
-	if(!UtilCommon::ShellCmd(strCmd, strValue)){
-		LOG_ERROR("shell cmd error: %s", strCmd.c_str());
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_stats = json_loads(strValue.c_str(), 0, NULL);
-	if(NULL == j_stats){
-		LOG_ERROR("json_loads failed");
-		return Status::CANCELLED;
-	}
-	
-	json_t *j_global = json_object_get(j_stats,"global");
-	if(NULL == j_global){
-		LOG_ERROR("json_object_get failed");
-		return Status::CANCELLED;
-	}
 
-	json_t *j_log_files_space_used = json_object_get(j_global,"proxy.process.log.log_files_space_used");
-	if(NULL != j_log_files_space_used)
-		reply->set_log_files_space_mb_used(atoi(json_string_value(j_log_files_space_used))/1024);
+	string strLogFilesSpaceUsed;
+	if(TrafficControlMetricGet("proxy.process.log.log_files_space_used", strLogFilesSpaceUsed)){
+		reply->set_log_files_space_mb_used(atoi(strLogFilesSpaceUsed.c_str())/(1024*1024));
+	}
 
 	//max_space_mb_for_logs
 	string strLogMaxSpaceCmd = string("/opt/reyzar/can/bin/traffic_ctl config get proxy.config.log.max_space_mb_for_logs|awk -F ': ' '{print $2}'");
@@ -414,7 +424,6 @@ Status RaltServiceImpl::getRaltLogs(ServerContext* context,
 			LOG_DEBUG("access log file: %s", strAbsolutePath.c_str());
 		}
 	}
-
 	
 	if(!vDefaultFile.empty()){
 		vLogFiles.assign(vDefaultFile.begin(), vDefaultFile.end());
@@ -457,75 +466,6 @@ Status RaltServiceImpl::getRaltLogs(ServerContext* context,
 
 	LOG_INFO("get ralt logs successfully");
 	return Status::OK;
-
-/*
-	const char *proc_run_dir = get_current_dir_name();
-	
-	const char *dir = "/opt/reyzar/can/var/log/trafficserver/";
-	DIR *dp;
-    struct dirent *entry;
-    struct stat statbuf;
-	if ( (dp = opendir(dir)) == NULL ) {  
-        fprintf(stderr, "Can`t open directory %s\n", dir);  
-		return Status::OK;
-    }
-	
-	if(chdir(dir) != 0){
-		return Status::OK;
-	}
-
-	time_t now;
-	struct tm *timenow;
-	time(&now);
-	timenow = localtime(&now);
-	char format_time[32];
-	snprintf(format_time, "%d-%d-%d", timenow->tm_year+1900, timenow-> tm_mon+1,  timenow-> tm_mday);
-	
-	string strDirName = string("bak/") + string(format_time);
-	bool is_create_log_dir = false;
-	while ( (entry = readdir(dp)) != NULL ) {
-		if( stat(entry->d_name, &statbuf) < 0 || S_ISDIR(statbuf.st_mode) || statbuf.st_size <= 0){
-			continue;
-		}
-
-		string strFileName(entry->d_name);
-		if( strFileName.rfind(".old") == (strFileName.length()-sizeof(".old")) 
-				&& strFileName.find("error") != 0 && strFileName.find("squid") != 0 ) {
-
-			
-		}
-		else if (strFileName.find("access_") == 0){
-			
-		}
-		else{
-			continue;
-		}
-
-		if( !is_create_log_dir ){
-			is_create_log_dir = true;
-			if(mkdir("bak/", 0644) != 0){
-				chdir(proc_run_dir);
-				return Status::OK;
-			}
-		}
-
-		ifstream in(entry->d_name);
-	    istreambuf_iterator<char> begin(in);
-	    istreambuf_iterator<char> end;
-	    string strFileContent(begin, end);
-	    in >> strFileContent;
-		
-		RaltLogs logs;
-		logs.set_logs(strFileContent);
-		reply->Write(logs);
-		
-		if( rename(entry->d_name, "bak/") != 0 ){
-			break;
-		}
-	}
-	chdir(proc_run_dir);
-	return Status::OK;
-	*/
 }
 
 Status RaltServiceImpl::getBasicConfig(ServerContext* context,
@@ -535,83 +475,44 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 	LOG_INFO("get basic config");
 	BasicConfig *basic_config = reply->mutable_basic_config();
 	//logging_enabled
-	string strLoggingEnabledCmd = string(TRAFFIC_CTL)
-		+ string(" config get proxy.config.log.logging_enabled|awk -F ': ' '{printf $2}'");
 	string strLoggingEnabled;
-	if(UtilCommon::ShellCmd(strLoggingEnabledCmd, strLoggingEnabled)){
-		if(!strLoggingEnabled.empty()){
-			LOG_INFO("logging enabled: %s", strLoggingEnabled.c_str());
-			basic_config->set_logging_enabled(atoi(strLoggingEnabled.c_str()));
-		}
-		else{
-			LOG_ERROR("get logging enabled error: %s", strLoggingEnabledCmd.c_str());
-			return Status::CANCELLED;
-		}
+	if(TrafficControlConfigGet("proxy.config.log.logging_enabled", strLoggingEnabled)){
+		LOG_INFO("logging enabled: %s", strLoggingEnabled.c_str());
+		basic_config->set_logging_enabled(atoi(strLoggingEnabled.c_str()));
 	}
 	else{
-		LOG_ERROR("shell cmd error: %s", strLoggingEnabledCmd.c_str());
-		return Status::CANCELLED;
-	}
-	
-	//max_space_mb_for_logs
-	string strLogMaxSpaceCmd = string(TRAFFIC_CTL)
-		+ string(" config get proxy.config.log.max_space_mb_for_logs|awk -F ': ' '{printf $2}'");
-	string strLogMaxSpace;
-	if(UtilCommon::ShellCmd(strLogMaxSpaceCmd, strLogMaxSpace)){
-		if(!strLogMaxSpace.empty()){
-			LOG_INFO("log max space: %s", strLogMaxSpace.c_str());
-			basic_config->set_max_space_mb_for_logs(atoi(strLogMaxSpace.c_str()));
-		}
-		else{
-			LOG_ERROR("get log max space error: %s", strLogMaxSpace.c_str());
-			return Status::CANCELLED;
-		}
-	}
-	else{
-		LOG_ERROR("shell cmd error: %s", strLogMaxSpaceCmd.c_str());
-		return Status::CANCELLED;
-	}
-	
-	//rolling_enabled
-	string strRollingEnabledCmd = string(TRAFFIC_CTL) 
-		+ string(" config get proxy.config.log.rolling_enabled|awk -F ': ' '{printf $2}'");
-	string strRollingEnabled;
-	if(UtilCommon::ShellCmd(strRollingEnabledCmd, strRollingEnabled)){
-		if(!strRollingEnabled.empty()){
-			LOG_INFO("roll enabled: %s", strRollingEnabled.c_str());
-			basic_config->set_rolling_enabled(atoi(strRollingEnabled.c_str()));
-		}
-		else{
-			LOG_ERROR("get roll enabled error: %s", strRollingEnabled.c_str());
-			return Status::CANCELLED;
-		}
-	}
-	else{
-		LOG_ERROR("shell cmd error: %s", strRollingEnabledCmd.c_str());
 		return Status::CANCELLED;
 	}
 
-	//server_ports
-	string strServerPortsCmd = string(TRAFFIC_CTL)
-		+ string(" config get proxy.config.http.server_ports|awk -F ': ' '{printf $2}'");
-	string strServerPorts;
-	if(UtilCommon::ShellCmd(strServerPortsCmd, strServerPorts)){
-		if(!strServerPorts.empty()){
-			LOG_INFO("server ports: %s", strServerPorts.c_str());
-			basic_config->set_server_ports(strServerPorts.c_str());
-		}
-		else{
-			LOG_ERROR("get server ports error: %s", strServerPorts.c_str());
-			return Status::CANCELLED;
-		}
+	string strLogMaxSpace;
+	if(TrafficControlConfigGet("proxy.config.log.max_space_mb_for_logs", strLogMaxSpace)){
+		LOG_INFO("log max space: %s", strLogMaxSpace.c_str());
+		basic_config->set_max_space_mb_for_logs(atoi(strLogMaxSpace.c_str()));
 	}
 	else{
-		LOG_ERROR("shell cmd error: %s", strServerPortsCmd.c_str());
+		return Status::CANCELLED;
+	}
+
+	string strRollingEnabled;
+	if(TrafficControlConfigGet("proxy.config.log.rolling_enabled", strRollingEnabled)){
+		LOG_INFO("roll enabled: %s", strRollingEnabled.c_str());
+		basic_config->set_rolling_enabled(atoi(strRollingEnabled.c_str()));
+	}
+	else{
+		return Status::CANCELLED;
+	}
+
+	string strServerPorts;
+	if(TrafficControlConfigGet("proxy.config.http.server_ports", strServerPorts)){
+		LOG_INFO("server ports: %s", strServerPorts.c_str());
+		basic_config->set_server_ports(strServerPorts.c_str());
+	}
+	else{
 		return Status::CANCELLED;
 	}
 
 	//storage cache size
-	string strStorageCacheCmd = string("cat ") + string(RECORD_CONFIG_PATH)
+	string strStorageCacheCmd = string("cat ") + string(STORAGE_CONFIG_PATH)
 		+ string(" | grep -v '#' | awk '{printf $2}'");
 	string strStorageCache;
 	if(UtilCommon::ShellCmd(strStorageCacheCmd, strStorageCache)){
@@ -631,6 +532,34 @@ Status RaltServiceImpl::getBasicConfig(ServerContext* context,
 		return Status::CANCELLED;
 	}
 
+
+	string strHttpCacheEnabled;
+	if(TrafficControlConfigGet("proxy.config.http.cache.http", strHttpCacheEnabled)){
+		LOG_INFO("http cache enabled: %s", strHttpCacheEnabled.c_str());
+		basic_config->set_http_cache_enabled(atoi(strHttpCacheEnabled.c_str()));
+	}
+	else{
+		return Status::CANCELLED;
+	}
+
+	string strConnectionsThrottle;
+	if(TrafficControlConfigGet("proxy.config.net.connections_throttle", strConnectionsThrottle)){
+		LOG_INFO("connections throttle: %s", strConnectionsThrottle.c_str());
+		basic_config->set_connections_throttle(atoi(strConnectionsThrottle.c_str()));
+	}
+	else{
+		return Status::CANCELLED;
+	}
+
+	string strIpResolve;
+	if(TrafficControlConfigGet("proxy.config.hostdb.ip_resolve", strIpResolve)){
+		LOG_INFO("ip resolve: %s", strIpResolve.c_str());
+		basic_config->set_ip_resolve(strIpResolve);
+	}
+	else{
+		return Status::CANCELLED;
+	}
+
 	LOG_INFO("get basic config successfully");
 	return Status::OK;
 }
@@ -646,86 +575,72 @@ Status RaltServiceImpl::setBasicConfig(ServerContext* context,
 	LOG_INFO("server_ports: %s", basic_config.server_ports().c_str());
 	LOG_INFO("storage_cache_size: %dM", basic_config.storage_cache_size());
 
+	string strLoggingEnabled = to_string(basic_config.logging_enabled());
+	if(TrafficControlConfigSet("proxy.config.log.logging_enabled", strLoggingEnabled)){
+		LOG_INFO("set logging enabled successfully");
+	}
+	else{
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+	string strMaxSpaceMbForLogs = to_string(basic_config.max_space_mb_for_logs());
+	if(TrafficControlConfigSet("proxy.config.log.max_space_mb_for_logs", strMaxSpaceMbForLogs)){
+		LOG_INFO("set max space mb for logs successfully");
+	}
+	else{
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+	string strRollingEnabled = to_string(basic_config.rolling_enabled());
+	if(TrafficControlConfigSet("proxy.config.log.rolling_enabled", strRollingEnabled)){
+		LOG_INFO("set log rolling enabled successfully");
+	}
+	else{
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+
+	string strServerPorts = basic_config.server_ports();
+	if(TrafficControlConfigSet("proxy.config.http.server_ports", strServerPorts)){
+		LOG_INFO("set server port successfully");
+	}
+	else{
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+	string strHttpCacheEnabled = to_string(basic_config.http_cache_enabled());
+	if(TrafficControlConfigSet("proxy.config.http.cache.http", strHttpCacheEnabled)){
+		LOG_INFO("set http cache enabled successfully");
+	}
+	else{
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+	string strConnectionsThrottle = to_string(basic_config.connections_throttle());
+	if(TrafficControlConfigSet("proxy.config.net.connections_throttle", strConnectionsThrottle)){
+		LOG_INFO("set connections throttle successfully");
+	}
+	else{
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
+	string strIpResolve = basic_config.ip_resolve();
+	if(TrafficControlConfigSet("proxy.config.hostdb.ip_resolve", strIpResolve)){
+		LOG_INFO("set ip resolve successfully");
+	}
+	else{
+		reply->set_result(1);
+		return Status::CANCELLED;
+	}
+
 	string strRet;
-	string strLoggingEnabledCmd = string(TRAFFIC_CTL)
-		+ string(" config set proxy.config.log.logging_enabled ")
-		+ to_string(basic_config.logging_enabled());
-	if(UtilCommon::ShellCmd(strLoggingEnabledCmd, strRet)){
-		if(strRet.find("failed") == string::npos){
-			LOG_INFO("set logging enabled successfully");
-		}
-		else{
-			LOG_ERROR("%s", strRet.c_str());
-			reply->set_result(1);
-			return Status::CANCELLED;
-		}
-	}
-	else{
-		LOG_ERROR("shell cmd error: %s", strLoggingEnabledCmd.c_str());
-		return Status::CANCELLED;
-	}
-
-	string strMaxSpaceMbForLogsCmd = string(TRAFFIC_CTL)
-		+ string(" config set proxy.config.log.max_space_mb_for_logs ")
-		+ to_string(basic_config.max_space_mb_for_logs());
-
-	if(UtilCommon::ShellCmd(strMaxSpaceMbForLogsCmd, strRet)){
-		if(strRet.find("failed") == string::npos){
-			LOG_INFO("set max space mb for logs successfully");
-		}
-		else{
-			LOG_ERROR("%s", strRet.c_str());
-			reply->set_result(1);
-			return Status::CANCELLED;
-		}
-	}
-	else{
-		LOG_ERROR("shell cmd error: %s", strMaxSpaceMbForLogsCmd.c_str());
-		reply->set_result(1);
-		return Status::CANCELLED;
-	}
-
-	string strRollingEnabledCmd = string(TRAFFIC_CTL)
-		+ string(" config set proxy.config.log.rolling_enabled ")
-		+ to_string(basic_config.rolling_enabled());
-
-	if(UtilCommon::ShellCmd(strRollingEnabledCmd, strRet)){
-		if(strRet.find("failed") == string::npos){
-			LOG_INFO("set log rolling enabled successfully");
-		}
-		else{
-			LOG_ERROR("%s", strRet.c_str());
-			reply->set_result(1);
-			return Status::CANCELLED;
-		}
-	}
-	else{
-		LOG_ERROR("shell cmd error: %s", strRollingEnabledCmd.c_str());
-		reply->set_result(1);
-		return Status::CANCELLED;
-	}
-
-	string strServerPortCmd = string(TRAFFIC_CTL)
-		+ string(" config set proxy.config.http.server_ports '")
-		+ basic_config.server_ports() + string("'");
-
-	if(UtilCommon::ShellCmd(strServerPortCmd, strRet)){
-		if(strRet.find("failed") == string::npos){
-			LOG_INFO("set server port successfully");
-		}
-		else{
-			LOG_ERROR("%s", strRet.c_str());
-			reply->set_result(1);
-			return Status::CANCELLED;
-		}
-	}
-	else{
-		LOG_ERROR("shell cmd error: %s", strServerPortCmd.c_str());
-		reply->set_result(1);
-		return Status::CANCELLED;
-	}
-
-	string strDelStorageCmd = string("sed -i '/#/!d' ") + (RECORD_CONFIG_PATH);
+	string strDelStorageCmd = string("sed -i '/#/!d' ") + string(STORAGE_CONFIG_PATH);
 	if(UtilCommon::ShellCmd(strDelStorageCmd, strRet)){
 		if(!strRet.empty()){
 			LOG_ERROR("%s", strRet.c_str());
@@ -739,7 +654,7 @@ Status RaltServiceImpl::setBasicConfig(ServerContext* context,
 		return Status::CANCELLED;
 	}
 	string strAppendStorageCmd = string("sed -i '$a var/trafficserver ") +
-	     to_string(basic_config.storage_cache_size())+string("M' ") + (RECORD_CONFIG_PATH);
+	     to_string(basic_config.storage_cache_size())+string("M' ") + (STORAGE_CONFIG_PATH);
 	if(UtilCommon::ShellCmd(strAppendStorageCmd, strRet)){
 		if(!strRet.empty()){
 			LOG_ERROR("%s", strRet.c_str());

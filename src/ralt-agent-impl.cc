@@ -3,14 +3,14 @@
 #include "util-log.h"
 #include "util-common.h"
 
-bool RaltAgentImpl::getStubByIp(string strIp)
+unique_ptr<RaltService::Stub> RaltAgentImpl::getStubByIp(string strIp)
 {
 	LOG_INFO("ip addr: %s", strIp.c_str());
-	string strIpAndPort;
+	
 	vector<RaltServer> &server = RaltAgentConf::GetInstance().GetServer();
 	if(server.size() <= 0){
 		LOG_ERROR("cluster no server");
-		return false;
+		return nullptr;
 	}
 
 	if(strIp.empty()){
@@ -20,9 +20,10 @@ bool RaltAgentImpl::getStubByIp(string strIp)
 
 	if(!UtilCommon::IsIp(strIp.c_str())){
 		LOG_ERROR("the format of ip is error, ip: %s", strIp.c_str());
-		return false;
+		return nullptr;
 	}
 
+	string strIpAndPort;
 	for(const auto it : server){
 		LOG_INFO("server ip: %s", it.strIpAddr.c_str());
 		if(it.strIpAddr.find(strIp) != string::npos){
@@ -32,22 +33,27 @@ bool RaltAgentImpl::getStubByIp(string strIp)
 		}
 	}
 
+	if(strIpAndPort.empty()){
+		return nullptr;
+	}
+
 	LOG_INFO("create stub");
 	shared_ptr<Channel> channel(grpc::CreateChannel(strIpAndPort.c_str(), grpc::InsecureChannelCredentials()));
-	stub_ralt = RaltService::NewStub(channel);
-	return true;
+	unique_ptr<RaltService::Stub> stub = RaltService::NewStub(channel);
+	return stub;
 }
 
 Status RaltAgentImpl::getRaltStats (ServerContext* server_context, const GetRaltStatsReq* request,
     GetRaltStatsRsp* reply)
 {
 	LOG_INFO("get ralt stats");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_ralt->getRaltStats(&client_context, *request, reply);
+    Status status = stub->getRaltStats(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get ralt stats successfully");
 	} else {
@@ -61,12 +67,13 @@ Status RaltAgentImpl::getStatsField (ServerContext* server_context, const GetSta
     GetStatsFieldRsp* reply)
 {
 	LOG_INFO("get stats field value");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-	Status status = stub_ralt->getStatsField(&client_context, *request, reply);
+	Status status = stub->getStatsField(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get stats field value successfully");
 	} else {
@@ -86,12 +93,15 @@ Status RaltAgentImpl::getHomePageData (ServerContext* server_context, const Home
 	{
 		strIpAddr = server[0].strIpAddr;
 	}
-	if(!getStubByIp(strIpAddr)){
+
+	unique_ptr<RaltService::Stub> stub = getStubByIp(strIpAddr);
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 	
+	
 	ClientContext client_context;
-    Status status = stub_ralt->getHomePageData(&client_context, *request, reply);
+    Status status = stub->getHomePageData(&client_context, *request, reply);
 	if (status.ok()) {
 		vector<RaltServer> &server = RaltAgentConf::GetInstance().GetServer();
 		reply->set_cluster_device(server.size());
@@ -107,12 +117,13 @@ Status RaltAgentImpl::showCacheData(ServerContext* server_context, const CacheLo
     CacheResult* reply)
 {
 	LOG_INFO("get cache data");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_ralt->showCacheData(&client_context, *request, reply);
+    Status status = stub->showCacheData(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get cache data successfully");
 	} else {
@@ -126,12 +137,13 @@ Status RaltAgentImpl::showFlowStatData(ServerContext* server_context, const Flow
     FlowResult* reply)
 {
 	LOG_INFO("get flow data");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_ralt->showFlowStatData(&client_context, *request, reply);
+    Status status = stub->showFlowStatData(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get flow data successfully");
 	} else {
@@ -145,12 +157,13 @@ Status RaltAgentImpl::showLogInfoData(ServerContext* server_context, const LogIn
     LogResult* reply)
 {
 	LOG_INFO("get log data");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_ralt->showLogInfoData(&client_context, *request, reply);
+    Status status = stub->showLogInfoData(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get log data successfully");
 	} else {
@@ -164,12 +177,13 @@ Status RaltAgentImpl::getRaltLogs(ServerContext* server_context, const GetRaltLo
     ServerWriter<RaltLogs>* reply)
 {
 	LOG_INFO("get ralt logs");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-	std::unique_ptr<ClientReader<RaltLogs> > reader(stub_ralt->getRaltLogs(&client_context, *request));
+	std::unique_ptr<ClientReader<RaltLogs> > reader(stub->getRaltLogs(&client_context, *request));
 	RaltLogs logs;
 	while (reader->Read(&logs)) {
 		reply->Write(logs);
@@ -189,12 +203,13 @@ Status RaltAgentImpl::getBasicConfig(ServerContext* server_context, const GetBas
     GetBasicConfigRsp* reply)
 {
 	LOG_INFO("get basic config");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_ralt->getBasicConfig(&client_context, *request, reply);
+    Status status = stub->getBasicConfig(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get basic config successfully");
 	} else {
@@ -208,12 +223,13 @@ Status RaltAgentImpl::setBasicConfig(ServerContext* server_context, const SetBas
     SetBasicConfigRsp* reply)
 {
 	LOG_INFO("set basic config value");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_ralt->setBasicConfig(&client_context, *request, reply);
+    Status status = stub->setBasicConfig(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("set basic config successfully");
 	} else {
@@ -227,12 +243,13 @@ Status RaltAgentImpl::getAllDomain(ServerContext* server_context, const GetAllDo
     GetAllDomainRsp* reply)
 {
 	LOG_INFO("get all domain");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_ralt->getAllDomain(&client_context, *request, reply);
+    Status status = stub->getAllDomain(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get all domain successfully");
 	} else {
@@ -246,12 +263,13 @@ Status RaltAgentImpl::updateDomain(ServerContext* server_context, const UpdateDo
     UpdateDomainRsp* reply)
 {
 	LOG_INFO("update domain");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 	
 	ClientContext client_context;
-    Status status = stub_ralt->updateDomain(&client_context, *request, reply);
+    Status status = stub->updateDomain(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("update domain successfully");
 	} else {
@@ -265,12 +283,13 @@ Status RaltAgentImpl::getDomain(ServerContext* server_context, const GetDomainRe
     GetDomainRsp* reply)
 {
 	LOG_INFO("get domain");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 	
 	ClientContext client_context;
-    Status status = stub_ralt->getDomain(&client_context, *request, reply);
+    Status status = stub->getDomain(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get domain successfully");
 	} else {
@@ -284,12 +303,13 @@ Status RaltAgentImpl::addDomain(ServerContext* server_context, const AddDomainRe
     AddDomainRsp* reply)
 {
 	LOG_INFO("add domain");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 	
 	ClientContext client_context;
-    Status status = stub_ralt->addDomain(&client_context, *request, reply);
+    Status status = stub->addDomain(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("add domain successfully");
 	} else {
@@ -303,12 +323,13 @@ Status RaltAgentImpl::deleteDomain(ServerContext* server_context, const DeleteDo
     DeleteDomainRsp* reply)
 {
 	LOG_INFO("delete domain");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 	
 	ClientContext client_context;
-    Status status = stub_ralt->deleteDomain(&client_context, *request, reply);
+    Status status = stub->deleteDomain(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("delete domain successfully");
 	} else {
@@ -322,12 +343,13 @@ Status RaltAgentImpl::getMisc(ServerContext* server_context, const GetMiscReq* r
     GetMiscRsp* reply)
 {
 	LOG_INFO("get misc");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 	
 	ClientContext client_context;
-    Status status = stub_ralt->getMisc(&client_context, *request, reply);
+    Status status = stub->getMisc(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get misc successfully");
 	} else {
@@ -341,12 +363,13 @@ Status RaltAgentImpl::modMisc(ServerContext* server_context, const ModMiscOpReq*
     ModMiscOpRsp* reply)
 {
 	LOG_INFO("mod misc");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 	
 	ClientContext client_context;
-    Status status = stub_ralt->modMisc(&client_context, *request, reply);
+    Status status = stub->modMisc(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("mod misc successfully");
 	} else {
@@ -361,12 +384,13 @@ Status RaltAgentImpl::getRaltStatus(ServerContext* server_context, const RaltSta
     ServerWriter<RaltStatus>* reply)
 {
 	LOG_INFO("get ralt status");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-	std::unique_ptr<ClientReader<RaltStatus> > reader(stub_ralt->getRaltStatus(&client_context, *request));
+	std::unique_ptr<ClientReader<RaltStatus> > reader(stub->getRaltStatus(&client_context, *request));
 	RaltStatus ralt_status;
 	while (reader->Read(&ralt_status)) {
 		reply->Write(ralt_status);
@@ -385,12 +409,13 @@ Status RaltAgentImpl::execCmd(ServerContext* server_context, const ExecCmdReq* r
     ExecCmdRsp* reply)
 {
 	LOG_INFO("exec cmd");	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_ralt->execCmd(&client_context, *request, reply);
+    Status status = stub->execCmd(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("exec cmd successfully");
 	} else {

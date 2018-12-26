@@ -832,15 +832,21 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, cache_used_bytes_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, cache_total_bytes_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, start_time_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, end_time_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, logs_space_used_mb_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, logs_space_total_mb_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, flow_completed_requests_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, flow_incoming_requests_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, flow_incoming_responses_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, flow_total_client_connections_ipv4_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, flow_total_client_connections_ipv6_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, flow_bandwidth_hit_ratio_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, flow_total_server_connections_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, cache_used_mb_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, cache_total_mb_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, cache_total_hits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, cache_hit_ratio_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, hostdb_total_hits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetRaltStatsRsp, hostdb_hit_ratio_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetStatsFieldReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -955,6 +961,9 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::BasicConfig, rolling_enabled_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::BasicConfig, server_ports_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::BasicConfig, storage_cache_size_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::BasicConfig, http_cache_enabled_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::BasicConfig, connections_throttle_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::BasicConfig, ip_resolve_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raltservice::GetBasicConfigRsp, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1116,43 +1125,43 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::raltservice::GetRaltStatsReq)},
   { 6, -1, sizeof(::raltservice::GetRaltStatsRsp)},
-  { 20, -1, sizeof(::raltservice::GetStatsFieldReq)},
-  { 27, -1, sizeof(::raltservice::GetStatsFieldRsp)},
-  { 33, -1, sizeof(::raltservice::HomePageReq)},
-  { 39, -1, sizeof(::raltservice::HomePageRsp)},
-  { 52, -1, sizeof(::raltservice::CacheLookUpReq)},
-  { 58, -1, sizeof(::raltservice::CacheResult)},
-  { 68, -1, sizeof(::raltservice::FlowStatLookUpReq)},
-  { 74, -1, sizeof(::raltservice::FlowResult)},
-  { 93, -1, sizeof(::raltservice::LogInfoLookUpReq)},
-  { 99, -1, sizeof(::raltservice::LogResult)},
-  { 106, -1, sizeof(::raltservice::GetRaltLogsReq)},
-  { 112, -1, sizeof(::raltservice::RaltLogs)},
-  { 118, -1, sizeof(::raltservice::GetBasicConfigReq)},
-  { 124, -1, sizeof(::raltservice::BasicConfig)},
-  { 134, -1, sizeof(::raltservice::GetBasicConfigRsp)},
-  { 140, -1, sizeof(::raltservice::SetBasicConfigReq)},
-  { 147, -1, sizeof(::raltservice::SetBasicConfigRsp)},
-  { 153, -1, sizeof(::raltservice::Domain)},
-  { 162, -1, sizeof(::raltservice::GetAllDomainReq)},
-  { 170, -1, sizeof(::raltservice::GetAllDomainRsp)},
-  { 177, -1, sizeof(::raltservice::UpdateDomainReq)},
-  { 184, -1, sizeof(::raltservice::UpdateDomainRsp)},
-  { 190, -1, sizeof(::raltservice::GetDomainReq)},
-  { 200, -1, sizeof(::raltservice::GetDomainRsp)},
-  { 207, -1, sizeof(::raltservice::AddDomainReq)},
-  { 214, -1, sizeof(::raltservice::AddDomainRsp)},
-  { 220, -1, sizeof(::raltservice::DeleteDomainReq)},
-  { 227, -1, sizeof(::raltservice::DeleteDomainRsp)},
-  { 233, -1, sizeof(::raltservice::GetMiscReq)},
-  { 239, -1, sizeof(::raltservice::GetMiscRsp)},
-  { 245, -1, sizeof(::raltservice::Misc)},
-  { 252, -1, sizeof(::raltservice::ModMiscOpReq)},
-  { 259, -1, sizeof(::raltservice::ModMiscOpRsp)},
-  { 265, -1, sizeof(::raltservice::RaltStatusReq)},
-  { 271, -1, sizeof(::raltservice::RaltStatus)},
-  { 278, -1, sizeof(::raltservice::ExecCmdReq)},
-  { 285, -1, sizeof(::raltservice::ExecCmdRsp)},
+  { 26, -1, sizeof(::raltservice::GetStatsFieldReq)},
+  { 33, -1, sizeof(::raltservice::GetStatsFieldRsp)},
+  { 39, -1, sizeof(::raltservice::HomePageReq)},
+  { 45, -1, sizeof(::raltservice::HomePageRsp)},
+  { 58, -1, sizeof(::raltservice::CacheLookUpReq)},
+  { 64, -1, sizeof(::raltservice::CacheResult)},
+  { 74, -1, sizeof(::raltservice::FlowStatLookUpReq)},
+  { 80, -1, sizeof(::raltservice::FlowResult)},
+  { 99, -1, sizeof(::raltservice::LogInfoLookUpReq)},
+  { 105, -1, sizeof(::raltservice::LogResult)},
+  { 112, -1, sizeof(::raltservice::GetRaltLogsReq)},
+  { 118, -1, sizeof(::raltservice::RaltLogs)},
+  { 124, -1, sizeof(::raltservice::GetBasicConfigReq)},
+  { 130, -1, sizeof(::raltservice::BasicConfig)},
+  { 143, -1, sizeof(::raltservice::GetBasicConfigRsp)},
+  { 149, -1, sizeof(::raltservice::SetBasicConfigReq)},
+  { 156, -1, sizeof(::raltservice::SetBasicConfigRsp)},
+  { 162, -1, sizeof(::raltservice::Domain)},
+  { 171, -1, sizeof(::raltservice::GetAllDomainReq)},
+  { 179, -1, sizeof(::raltservice::GetAllDomainRsp)},
+  { 186, -1, sizeof(::raltservice::UpdateDomainReq)},
+  { 193, -1, sizeof(::raltservice::UpdateDomainRsp)},
+  { 199, -1, sizeof(::raltservice::GetDomainReq)},
+  { 209, -1, sizeof(::raltservice::GetDomainRsp)},
+  { 216, -1, sizeof(::raltservice::AddDomainReq)},
+  { 223, -1, sizeof(::raltservice::AddDomainRsp)},
+  { 229, -1, sizeof(::raltservice::DeleteDomainReq)},
+  { 236, -1, sizeof(::raltservice::DeleteDomainRsp)},
+  { 242, -1, sizeof(::raltservice::GetMiscReq)},
+  { 248, -1, sizeof(::raltservice::GetMiscRsp)},
+  { 254, -1, sizeof(::raltservice::Misc)},
+  { 261, -1, sizeof(::raltservice::ModMiscOpReq)},
+  { 268, -1, sizeof(::raltservice::ModMiscOpRsp)},
+  { 274, -1, sizeof(::raltservice::RaltStatusReq)},
+  { 280, -1, sizeof(::raltservice::RaltStatus)},
+  { 287, -1, sizeof(::raltservice::ExecCmdReq)},
+  { 294, -1, sizeof(::raltservice::ExecCmdRsp)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1219,129 +1228,135 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\022ralt-service.proto\022\013raltservice\"\"\n\017Get"
-      "RaltStatsReq\022\017\n\007ip_addr\030\001 \001(\t\"\272\002\n\017GetRal"
-      "tStatsRsp\022\030\n\020cache_used_bytes\030\001 \001(\004\022\031\n\021c"
-      "ache_total_bytes\030\002 \001(\004\022\032\n\022logs_space_use"
-      "d_mb\030\003 \001(\r\022\033\n\023logs_space_total_mb\030\004 \001(\r\022"
-      "\037\n\027flow_completed_requests\030\005 \001(\r\022\036\n\026flow"
-      "_incoming_requests\030\006 \001(\r\022*\n\"flow_total_c"
-      "lient_connections_ipv4\030\007 \001(\r\022*\n\"flow_tot"
-      "al_client_connections_ipv6\030\010 \001(\r\022 \n\030flow"
-      "_bandwidth_hit_ratio\030\t \001(\002\"7\n\020GetStatsFi"
-      "eldReq\022\017\n\007ip_addr\030\001 \001(\t\022\022\n\nfield_name\030\002 "
-      "\001(\t\"!\n\020GetStatsFieldRsp\022\r\n\005value\030\001 \001(\t\"\033"
-      "\n\013HomePageReq\022\014\n\004type\030\001 \001(\r\"\336\001\n\013HomePage"
-      "Rsp\022\022\n\ndomain_num\030\001 \001(\r\022\026\n\016cluster_devic"
-      "e\030\002 \001(\r\022\032\n\022app_transfor_bytes\030\003 \001(\004\022 \n\030a"
-      "pp_transfor_connections\030\004 \001(\r\022\030\n\020cache_t"
-      "otal_hits\030\005 \001(\r\022\031\n\021cache_bytes_total\030\006 \001"
-      "(\004\022\030\n\020cache_bytes_used\030\007 \001(\004\022\026\n\016cache_nu"
-      "m_docs\030\010 \001(\r\"!\n\016CacheLookUpReq\022\017\n\007ip_add"
-      "r\030\001 \001(\t\"{\n\013CacheResult\022\030\n\020cache_total_hi"
-      "ts\030\001 \001(\r\022\023\n\013bytes_total\030\002 \001(\004\022\022\n\nbytes_u"
-      "sed\030\003 \001(\004\022\020\n\010num_docs\030\004 \001(\r\022\027\n\017cache_hit"
-      "_ratio\030\005 \001(\002\"$\n\021FlowStatLookUpReq\022\017\n\007ip_"
-      "addr\030\001 \001(\t\"\357\003\n\nFlowResult\022,\n$user_agent_"
-      "current_connections_count\030\001 \001(\r\022/\n\'origi"
-      "n_server_current_connections_count\030\002 \001(\r"
-      "\022\032\n\022completed_requests\030\003 \001(\r\022\"\n\032total_in"
-      "coming_connections\030\004 \001(\r\022\031\n\021incoming_req"
-      "uests\030\005 \001(\r\022\031\n\021outgoing_requests\030\006 \001(\r\022\032"
-      "\n\022incoming_responses\030\007 \001(\r\022 \n\030total_clie"
-      "nt_connections\030\010 \001(\r\022%\n\035total_client_con"
-      "nections_ipv4\030\t \001(\r\022%\n\035total_client_conn"
-      "ections_ipv6\030\n \001(\r\022 \n\030total_server_conne"
-      "ctions\030\013 \001(\r\022\036\n\026user_agent_total_bytes\030\014"
-      " \001(\004\022!\n\031origin_server_total_bytes\030\r \001(\004\022"
-      "\033\n\023bandwidth_hit_ratio\030\016 \001(\002\"#\n\020LogInfoL"
-      "ookUpReq\022\017\n\007ip_addr\030\001 \001(\t\"K\n\tLogResult\022\037"
-      "\n\027log_files_space_mb_used\030\001 \001(\r\022\035\n\025max_s"
-      "pace_mb_for_logs\030\002 \001(\r\"!\n\016GetRaltLogsReq"
-      "\022\017\n\007ip_addr\030\001 \001(\t\"\030\n\010RaltLogs\022\014\n\004logs\030\001 "
-      "\001(\014\"$\n\021GetBasicConfigReq\022\017\n\007ip_addr\030\001 \001("
-      "\t\"\220\001\n\013BasicConfig\022\027\n\017logging_enabled\030\001 \001"
-      "(\r\022\035\n\025max_space_mb_for_logs\030\002 \001(\r\022\027\n\017rol"
-      "ling_enabled\030\003 \001(\r\022\024\n\014server_ports\030\004 \001(\t"
-      "\022\032\n\022storage_cache_size\030\005 \001(\r\"C\n\021GetBasic"
-      "ConfigRsp\022.\n\014basic_config\030\001 \001(\0132\030.raltse"
-      "rvice.BasicConfig\"T\n\021SetBasicConfigReq\022\017"
-      "\n\007ip_addr\030\001 \001(\t\022.\n\014basic_config\030\002 \001(\0132\030."
-      "raltservice.BasicConfig\"#\n\021SetBasicConfi"
-      "gRsp\022\016\n\006result\030\001 \001(\r\"p\n\006Domain\022%\n\004type\030\001"
-      " \001(\0162\027.raltservice.DomainType\022\022\n\ndomain_"
-      "str\030\002 \001(\t\022\035\n\025append_or_replace_str\030\003 \001(\t"
-      "\022\014\n\004port\030\004 \001(\t\"J\n\017GetAllDomainReq\022\017\n\007ip_"
-      "addr\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(\r\022\023\n\013page_nu"
-      "mber\030\003 \001(\r\"L\n\017GetAllDomainRsp\022#\n\006domain\030"
-      "\001 \003(\0132\023.raltservice.Domain\022\024\n\014domain_tot"
-      "al\030\002 \001(\r\"G\n\017UpdateDomainReq\022\017\n\007ip_addr\030\001"
-      " \001(\t\022#\n\006domain\030\002 \003(\0132\023.raltservice.Domai"
-      "n\"!\n\017UpdateDomainRsp\022\016\n\006result\030\001 \001(\r\"w\n\014"
-      "GetDomainReq\022\017\n\007ip_addr\030\001 \001(\t\022\022\n\ndomain_"
-      "str\030\002 \001(\t\022\032\n\022transformed_domain\030\003 \001(\t\022\021\n"
-      "\tpage_size\030\004 \001(\r\022\023\n\013page_number\030\005 \001(\r\"I\n"
-      "\014GetDomainRsp\022#\n\006domain\030\001 \003(\0132\023.raltserv"
-      "ice.Domain\022\024\n\014domain_total\030\002 \001(\r\"D\n\014AddD"
-      "omainReq\022\017\n\007ip_addr\030\001 \001(\t\022#\n\006domain\030\002 \001("
-      "\0132\023.raltservice.Domain\"\036\n\014AddDomainRsp\022\016"
-      "\n\006result\030\001 \001(\r\"6\n\017DeleteDomainReq\022\017\n\007ip_"
-      "addr\030\001 \001(\t\022\022\n\ndomain_str\030\002 \001(\t\"!\n\017Delete"
-      "DomainRsp\022\016\n\006result\030\001 \001(\r\"\035\n\nGetMiscReq\022"
-      "\017\n\007ip_addr\030\001 \001(\t\"G\n\nGetMiscRsp\0229\n\030ralt_f"
-      "ilter_type_default\030\001 \001(\0162\027.raltservice.M"
-      "iscSwitch\"Q\n\004Misc\022!\n\003key\030\001 \001(\0162\024.raltser"
-      "vice.MiscKey\022&\n\005value\030\002 \001(\0162\027.raltservic"
-      "e.MiscSwitch\"@\n\014ModMiscOpReq\022\017\n\007ip_addr\030"
-      "\001 \001(\t\022\037\n\004misc\030\002 \001(\0132\021.raltservice.Misc\"\036"
-      "\n\014ModMiscOpRsp\022\016\n\006result\030\001 \001(\r\" \n\rRaltSt"
-      "atusReq\022\017\n\007ip_addr\030\001 \001(\t\"-\n\nRaltStatus\022\017"
-      "\n\007ip_addr\030\001 \001(\t\022\016\n\006status\030\002 \001(\r\"D\n\nExecC"
-      "mdReq\022\017\n\007ip_addr\030\001 \001(\t\022%\n\003cmd\030\002 \001(\0162\030.ra"
-      "ltservice.CommandType\"\034\n\nExecCmdRsp\022\016\n\006r"
-      "esult\030\001 \001(\r*:\n\nDomainType\022\026\n\022enum_member"
-      "_domain\020\000\022\024\n\020enum_subs_domain\020\001*,\n\007MiscK"
-      "ey\022!\n\035enum_ralt_filter_type_default\020\000*+\n"
-      "\nMiscSwitch\022\016\n\nswitch_off\020\000\022\r\n\tswitch_on"
-      "\020\001*b\n\013CommandType\022\016\n\nralt_start\020\000\022\r\n\tral"
-      "t_stop\020\001\022\020\n\014ralt_restart\020\002\022\017\n\013cache_clea"
-      "r\020\003\022\021\n\rreload_config\020\0042\310\n\n\013RaltService\022L"
-      "\n\014getRaltStats\022\034.raltservice.GetRaltStat"
-      "sReq\032\034.raltservice.GetRaltStatsRsp\"\000\022O\n\r"
-      "getStatsField\022\035.raltservice.GetStatsFiel"
-      "dReq\032\035.raltservice.GetStatsFieldRsp\"\000\022G\n"
-      "\017getHomePageData\022\030.raltservice.HomePageR"
-      "eq\032\030.raltservice.HomePageRsp\"\000\022H\n\rshowCa"
-      "cheData\022\033.raltservice.CacheLookUpReq\032\030.r"
-      "altservice.CacheResult\"\000\022M\n\020showFlowStat"
-      "Data\022\036.raltservice.FlowStatLookUpReq\032\027.r"
-      "altservice.FlowResult\"\000\022J\n\017showLogInfoDa"
-      "ta\022\035.raltservice.LogInfoLookUpReq\032\026.ralt"
-      "service.LogResult\"\000\022E\n\013getRaltLogs\022\033.ral"
-      "tservice.GetRaltLogsReq\032\025.raltservice.Ra"
-      "ltLogs\"\0000\001\022R\n\016getBasicConfig\022\036.raltservi"
-      "ce.GetBasicConfigReq\032\036.raltservice.GetBa"
-      "sicConfigRsp\"\000\022R\n\016setBasicConfig\022\036.ralts"
-      "ervice.SetBasicConfigReq\032\036.raltservice.S"
-      "etBasicConfigRsp\"\000\022L\n\014getAllDomain\022\034.ral"
-      "tservice.GetAllDomainReq\032\034.raltservice.G"
-      "etAllDomainRsp\"\000\022L\n\014updateDomain\022\034.ralts"
-      "ervice.UpdateDomainReq\032\034.raltservice.Upd"
-      "ateDomainRsp\"\000\022C\n\tgetDomain\022\031.raltservic"
-      "e.GetDomainReq\032\031.raltservice.GetDomainRs"
-      "p\"\000\022C\n\taddDomain\022\031.raltservice.AddDomain"
-      "Req\032\031.raltservice.AddDomainRsp\"\000\022L\n\014dele"
-      "teDomain\022\034.raltservice.DeleteDomainReq\032\034"
-      ".raltservice.DeleteDomainRsp\"\000\022=\n\007getMis"
-      "c\022\027.raltservice.GetMiscReq\032\027.raltservice"
-      ".GetMiscRsp\"\000\022A\n\007modMisc\022\031.raltservice.M"
-      "odMiscOpReq\032\031.raltservice.ModMiscOpRsp\"\000"
-      "\022H\n\rgetRaltStatus\022\032.raltservice.RaltStat"
-      "usReq\032\027.raltservice.RaltStatus\"\0000\001\022=\n\007ex"
-      "ecCmd\022\027.raltservice.ExecCmdReq\032\027.raltser"
-      "vice.ExecCmdRsp\"\000b\006proto3"
+      "RaltStatsReq\022\017\n\007ip_addr\030\001 \001(\t\"\307\003\n\017GetRal"
+      "tStatsRsp\022\022\n\nstart_time\030\001 \001(\r\022\020\n\010end_tim"
+      "e\030\002 \001(\r\022\032\n\022logs_space_used_mb\030\003 \001(\r\022\033\n\023l"
+      "ogs_space_total_mb\030\004 \001(\r\022\036\n\026flow_incomin"
+      "g_requests\030\005 \001(\r\022\037\n\027flow_incoming_respon"
+      "ses\030\006 \001(\r\022*\n\"flow_total_client_connectio"
+      "ns_ipv4\030\007 \001(\r\022*\n\"flow_total_client_conne"
+      "ctions_ipv6\030\010 \001(\r\022%\n\035flow_total_server_c"
+      "onnections\030\t \001(\r\022\025\n\rcache_used_mb\030\n \001(\004\022"
+      "\026\n\016cache_total_mb\030\013 \001(\004\022\030\n\020cache_total_h"
+      "its\030\014 \001(\r\022\027\n\017cache_hit_ratio\030\r \001(\002\022\031\n\021ho"
+      "stdb_total_hits\030\016 \001(\r\022\030\n\020hostdb_hit_rati"
+      "o\030\017 \001(\002\"7\n\020GetStatsFieldReq\022\017\n\007ip_addr\030\001"
+      " \001(\t\022\022\n\nfield_name\030\002 \001(\t\"!\n\020GetStatsFiel"
+      "dRsp\022\r\n\005value\030\001 \001(\t\"\033\n\013HomePageReq\022\014\n\004ty"
+      "pe\030\001 \001(\r\"\336\001\n\013HomePageRsp\022\022\n\ndomain_num\030\001"
+      " \001(\r\022\026\n\016cluster_device\030\002 \001(\r\022\032\n\022app_tran"
+      "sfor_bytes\030\003 \001(\004\022 \n\030app_transfor_connect"
+      "ions\030\004 \001(\r\022\030\n\020cache_total_hits\030\005 \001(\r\022\031\n\021"
+      "cache_bytes_total\030\006 \001(\004\022\030\n\020cache_bytes_u"
+      "sed\030\007 \001(\004\022\026\n\016cache_num_docs\030\010 \001(\r\"!\n\016Cac"
+      "heLookUpReq\022\017\n\007ip_addr\030\001 \001(\t\"{\n\013CacheRes"
+      "ult\022\030\n\020cache_total_hits\030\001 \001(\r\022\023\n\013bytes_t"
+      "otal\030\002 \001(\004\022\022\n\nbytes_used\030\003 \001(\004\022\020\n\010num_do"
+      "cs\030\004 \001(\r\022\027\n\017cache_hit_ratio\030\005 \001(\002\"$\n\021Flo"
+      "wStatLookUpReq\022\017\n\007ip_addr\030\001 \001(\t\"\357\003\n\nFlow"
+      "Result\022,\n$user_agent_current_connections"
+      "_count\030\001 \001(\r\022/\n\'origin_server_current_co"
+      "nnections_count\030\002 \001(\r\022\032\n\022completed_reque"
+      "sts\030\003 \001(\r\022\"\n\032total_incoming_connections\030"
+      "\004 \001(\r\022\031\n\021incoming_requests\030\005 \001(\r\022\031\n\021outg"
+      "oing_requests\030\006 \001(\r\022\032\n\022incoming_response"
+      "s\030\007 \001(\r\022 \n\030total_client_connections\030\010 \001("
+      "\r\022%\n\035total_client_connections_ipv4\030\t \001(\r"
+      "\022%\n\035total_client_connections_ipv6\030\n \001(\r\022"
+      " \n\030total_server_connections\030\013 \001(\r\022\036\n\026use"
+      "r_agent_total_bytes\030\014 \001(\004\022!\n\031origin_serv"
+      "er_total_bytes\030\r \001(\004\022\033\n\023bandwidth_hit_ra"
+      "tio\030\016 \001(\002\"#\n\020LogInfoLookUpReq\022\017\n\007ip_addr"
+      "\030\001 \001(\t\"K\n\tLogResult\022\037\n\027log_files_space_m"
+      "b_used\030\001 \001(\r\022\035\n\025max_space_mb_for_logs\030\002 "
+      "\001(\r\"!\n\016GetRaltLogsReq\022\017\n\007ip_addr\030\001 \001(\t\"\030"
+      "\n\010RaltLogs\022\014\n\004logs\030\001 \001(\014\"$\n\021GetBasicConf"
+      "igReq\022\017\n\007ip_addr\030\001 \001(\t\"\336\001\n\013BasicConfig\022\027"
+      "\n\017logging_enabled\030\001 \001(\r\022\035\n\025max_space_mb_"
+      "for_logs\030\002 \001(\r\022\027\n\017rolling_enabled\030\003 \001(\r\022"
+      "\024\n\014server_ports\030\004 \001(\t\022\032\n\022storage_cache_s"
+      "ize\030\005 \001(\r\022\032\n\022http_cache_enabled\030\006 \001(\r\022\034\n"
+      "\024connections_throttle\030\007 \001(\r\022\022\n\nip_resolv"
+      "e\030\010 \001(\t\"C\n\021GetBasicConfigRsp\022.\n\014basic_co"
+      "nfig\030\001 \001(\0132\030.raltservice.BasicConfig\"T\n\021"
+      "SetBasicConfigReq\022\017\n\007ip_addr\030\001 \001(\t\022.\n\014ba"
+      "sic_config\030\002 \001(\0132\030.raltservice.BasicConf"
+      "ig\"#\n\021SetBasicConfigRsp\022\016\n\006result\030\001 \001(\r\""
+      "p\n\006Domain\022%\n\004type\030\001 \001(\0162\027.raltservice.Do"
+      "mainType\022\022\n\ndomain_str\030\002 \001(\t\022\035\n\025append_o"
+      "r_replace_str\030\003 \001(\t\022\014\n\004port\030\004 \001(\t\"J\n\017Get"
+      "AllDomainReq\022\017\n\007ip_addr\030\001 \001(\t\022\021\n\tpage_si"
+      "ze\030\002 \001(\r\022\023\n\013page_number\030\003 \001(\r\"L\n\017GetAllD"
+      "omainRsp\022#\n\006domain\030\001 \003(\0132\023.raltservice.D"
+      "omain\022\024\n\014domain_total\030\002 \001(\r\"G\n\017UpdateDom"
+      "ainReq\022\017\n\007ip_addr\030\001 \001(\t\022#\n\006domain\030\002 \003(\0132"
+      "\023.raltservice.Domain\"!\n\017UpdateDomainRsp\022"
+      "\016\n\006result\030\001 \001(\r\"w\n\014GetDomainReq\022\017\n\007ip_ad"
+      "dr\030\001 \001(\t\022\022\n\ndomain_str\030\002 \001(\t\022\032\n\022transfor"
+      "med_domain\030\003 \001(\t\022\021\n\tpage_size\030\004 \001(\r\022\023\n\013p"
+      "age_number\030\005 \001(\r\"I\n\014GetDomainRsp\022#\n\006doma"
+      "in\030\001 \003(\0132\023.raltservice.Domain\022\024\n\014domain_"
+      "total\030\002 \001(\r\"D\n\014AddDomainReq\022\017\n\007ip_addr\030\001"
+      " \001(\t\022#\n\006domain\030\002 \001(\0132\023.raltservice.Domai"
+      "n\"\036\n\014AddDomainRsp\022\016\n\006result\030\001 \001(\r\"6\n\017Del"
+      "eteDomainReq\022\017\n\007ip_addr\030\001 \001(\t\022\022\n\ndomain_"
+      "str\030\002 \001(\t\"!\n\017DeleteDomainRsp\022\016\n\006result\030\001"
+      " \001(\r\"\035\n\nGetMiscReq\022\017\n\007ip_addr\030\001 \001(\t\"G\n\nG"
+      "etMiscRsp\0229\n\030ralt_filter_type_default\030\001 "
+      "\001(\0162\027.raltservice.MiscSwitch\"Q\n\004Misc\022!\n\003"
+      "key\030\001 \001(\0162\024.raltservice.MiscKey\022&\n\005value"
+      "\030\002 \001(\0162\027.raltservice.MiscSwitch\"@\n\014ModMi"
+      "scOpReq\022\017\n\007ip_addr\030\001 \001(\t\022\037\n\004misc\030\002 \001(\0132\021"
+      ".raltservice.Misc\"\036\n\014ModMiscOpRsp\022\016\n\006res"
+      "ult\030\001 \001(\r\" \n\rRaltStatusReq\022\017\n\007ip_addr\030\001 "
+      "\001(\t\"-\n\nRaltStatus\022\017\n\007ip_addr\030\001 \001(\t\022\016\n\006st"
+      "atus\030\002 \001(\r\"D\n\nExecCmdReq\022\017\n\007ip_addr\030\001 \001("
+      "\t\022%\n\003cmd\030\002 \001(\0162\030.raltservice.CommandType"
+      "\"\034\n\nExecCmdRsp\022\016\n\006result\030\001 \001(\r*:\n\nDomain"
+      "Type\022\026\n\022enum_member_domain\020\000\022\024\n\020enum_sub"
+      "s_domain\020\001*,\n\007MiscKey\022!\n\035enum_ralt_filte"
+      "r_type_default\020\000*+\n\nMiscSwitch\022\016\n\nswitch"
+      "_off\020\000\022\r\n\tswitch_on\020\001*b\n\013CommandType\022\016\n\n"
+      "ralt_start\020\000\022\r\n\tralt_stop\020\001\022\020\n\014ralt_rest"
+      "art\020\002\022\017\n\013cache_clear\020\003\022\021\n\rreload_config\020"
+      "\0042\310\n\n\013RaltService\022L\n\014getRaltStats\022\034.ralt"
+      "service.GetRaltStatsReq\032\034.raltservice.Ge"
+      "tRaltStatsRsp\"\000\022O\n\rgetStatsField\022\035.ralts"
+      "ervice.GetStatsFieldReq\032\035.raltservice.Ge"
+      "tStatsFieldRsp\"\000\022G\n\017getHomePageData\022\030.ra"
+      "ltservice.HomePageReq\032\030.raltservice.Home"
+      "PageRsp\"\000\022H\n\rshowCacheData\022\033.raltservice"
+      ".CacheLookUpReq\032\030.raltservice.CacheResul"
+      "t\"\000\022M\n\020showFlowStatData\022\036.raltservice.Fl"
+      "owStatLookUpReq\032\027.raltservice.FlowResult"
+      "\"\000\022J\n\017showLogInfoData\022\035.raltservice.LogI"
+      "nfoLookUpReq\032\026.raltservice.LogResult\"\000\022E"
+      "\n\013getRaltLogs\022\033.raltservice.GetRaltLogsR"
+      "eq\032\025.raltservice.RaltLogs\"\0000\001\022R\n\016getBasi"
+      "cConfig\022\036.raltservice.GetBasicConfigReq\032"
+      "\036.raltservice.GetBasicConfigRsp\"\000\022R\n\016set"
+      "BasicConfig\022\036.raltservice.SetBasicConfig"
+      "Req\032\036.raltservice.SetBasicConfigRsp\"\000\022L\n"
+      "\014getAllDomain\022\034.raltservice.GetAllDomain"
+      "Req\032\034.raltservice.GetAllDomainRsp\"\000\022L\n\014u"
+      "pdateDomain\022\034.raltservice.UpdateDomainRe"
+      "q\032\034.raltservice.UpdateDomainRsp\"\000\022C\n\tget"
+      "Domain\022\031.raltservice.GetDomainReq\032\031.ralt"
+      "service.GetDomainRsp\"\000\022C\n\taddDomain\022\031.ra"
+      "ltservice.AddDomainReq\032\031.raltservice.Add"
+      "DomainRsp\"\000\022L\n\014deleteDomain\022\034.raltservic"
+      "e.DeleteDomainReq\032\034.raltservice.DeleteDo"
+      "mainRsp\"\000\022=\n\007getMisc\022\027.raltservice.GetMi"
+      "scReq\032\027.raltservice.GetMiscRsp\"\000\022A\n\007modM"
+      "isc\022\031.raltservice.ModMiscOpReq\032\031.raltser"
+      "vice.ModMiscOpRsp\"\000\022H\n\rgetRaltStatus\022\032.r"
+      "altservice.RaltStatusReq\032\027.raltservice.R"
+      "altStatus\"\0000\001\022=\n\007execCmd\022\027.raltservice.E"
+      "xecCmdReq\032\027.raltservice.ExecCmdRsp\"\000b\006pr"
+      "oto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 4825);
+      descriptor, 5044);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ralt-service.proto", &protobuf_RegisterTypes);
 }
@@ -1664,15 +1679,21 @@ void GetRaltStatsReq::InternalSwap(GetRaltStatsReq* other) {
 void GetRaltStatsRsp::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetRaltStatsRsp::kCacheUsedBytesFieldNumber;
-const int GetRaltStatsRsp::kCacheTotalBytesFieldNumber;
+const int GetRaltStatsRsp::kStartTimeFieldNumber;
+const int GetRaltStatsRsp::kEndTimeFieldNumber;
 const int GetRaltStatsRsp::kLogsSpaceUsedMbFieldNumber;
 const int GetRaltStatsRsp::kLogsSpaceTotalMbFieldNumber;
-const int GetRaltStatsRsp::kFlowCompletedRequestsFieldNumber;
 const int GetRaltStatsRsp::kFlowIncomingRequestsFieldNumber;
+const int GetRaltStatsRsp::kFlowIncomingResponsesFieldNumber;
 const int GetRaltStatsRsp::kFlowTotalClientConnectionsIpv4FieldNumber;
 const int GetRaltStatsRsp::kFlowTotalClientConnectionsIpv6FieldNumber;
-const int GetRaltStatsRsp::kFlowBandwidthHitRatioFieldNumber;
+const int GetRaltStatsRsp::kFlowTotalServerConnectionsFieldNumber;
+const int GetRaltStatsRsp::kCacheUsedMbFieldNumber;
+const int GetRaltStatsRsp::kCacheTotalMbFieldNumber;
+const int GetRaltStatsRsp::kCacheTotalHitsFieldNumber;
+const int GetRaltStatsRsp::kCacheHitRatioFieldNumber;
+const int GetRaltStatsRsp::kHostdbTotalHitsFieldNumber;
+const int GetRaltStatsRsp::kHostdbHitRatioFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 GetRaltStatsRsp::GetRaltStatsRsp()
@@ -1686,16 +1707,16 @@ GetRaltStatsRsp::GetRaltStatsRsp(const GetRaltStatsRsp& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&cache_used_bytes_, &from.cache_used_bytes_,
-    static_cast<size_t>(reinterpret_cast<char*>(&flow_bandwidth_hit_ratio_) -
-    reinterpret_cast<char*>(&cache_used_bytes_)) + sizeof(flow_bandwidth_hit_ratio_));
+  ::memcpy(&start_time_, &from.start_time_,
+    static_cast<size_t>(reinterpret_cast<char*>(&hostdb_hit_ratio_) -
+    reinterpret_cast<char*>(&start_time_)) + sizeof(hostdb_hit_ratio_));
   // @@protoc_insertion_point(copy_constructor:raltservice.GetRaltStatsRsp)
 }
 
 void GetRaltStatsRsp::SharedCtor() {
-  ::memset(&cache_used_bytes_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&flow_bandwidth_hit_ratio_) -
-      reinterpret_cast<char*>(&cache_used_bytes_)) + sizeof(flow_bandwidth_hit_ratio_));
+  ::memset(&start_time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&hostdb_hit_ratio_) -
+      reinterpret_cast<char*>(&start_time_)) + sizeof(hostdb_hit_ratio_));
 }
 
 GetRaltStatsRsp::~GetRaltStatsRsp() {
@@ -1726,9 +1747,9 @@ void GetRaltStatsRsp::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&cache_used_bytes_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&flow_bandwidth_hit_ratio_) -
-      reinterpret_cast<char*>(&cache_used_bytes_)) + sizeof(flow_bandwidth_hit_ratio_));
+  ::memset(&start_time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&hostdb_hit_ratio_) -
+      reinterpret_cast<char*>(&start_time_)) + sizeof(hostdb_hit_ratio_));
   _internal_metadata_.Clear();
 }
 
@@ -1742,28 +1763,28 @@ bool GetRaltStatsRsp::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint64 cache_used_bytes = 1;
+      // uint32 start_time = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &cache_used_bytes_)));
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &start_time_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint64 cache_total_bytes = 2;
+      // uint32 end_time = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &cache_total_bytes_)));
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &end_time_)));
         } else {
           goto handle_unusual;
         }
@@ -1798,28 +1819,28 @@ bool GetRaltStatsRsp::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 flow_completed_requests = 5;
+      // uint32 flow_incoming_requests = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &flow_completed_requests_)));
+                 input, &flow_incoming_requests_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint32 flow_incoming_requests = 6;
+      // uint32 flow_incoming_responses = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &flow_incoming_requests_)));
+                 input, &flow_incoming_responses_)));
         } else {
           goto handle_unusual;
         }
@@ -1854,14 +1875,98 @@ bool GetRaltStatsRsp::MergePartialFromCodedStream(
         break;
       }
 
-      // float flow_bandwidth_hit_ratio = 9;
+      // uint32 flow_total_server_connections = 9;
       case 9: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(77u /* 77 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(72u /* 72 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &flow_total_server_connections_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 cache_used_mb = 10;
+      case 10: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(80u /* 80 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &cache_used_mb_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 cache_total_mb = 11;
+      case 11: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(88u /* 88 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &cache_total_mb_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 cache_total_hits = 12;
+      case 12: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(96u /* 96 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &cache_total_hits_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // float cache_hit_ratio = 13;
+      case 13: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(109u /* 109 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &flow_bandwidth_hit_ratio_)));
+                 input, &cache_hit_ratio_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 hostdb_total_hits = 14;
+      case 14: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(112u /* 112 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &hostdb_total_hits_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // float hostdb_hit_ratio = 15;
+      case 15: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(125u /* 125 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &hostdb_hit_ratio_)));
         } else {
           goto handle_unusual;
         }
@@ -1894,14 +1999,14 @@ void GetRaltStatsRsp::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 cache_used_bytes = 1;
-  if (this->cache_used_bytes() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->cache_used_bytes(), output);
+  // uint32 start_time = 1;
+  if (this->start_time() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->start_time(), output);
   }
 
-  // uint64 cache_total_bytes = 2;
-  if (this->cache_total_bytes() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->cache_total_bytes(), output);
+  // uint32 end_time = 2;
+  if (this->end_time() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->end_time(), output);
   }
 
   // uint32 logs_space_used_mb = 3;
@@ -1914,14 +2019,14 @@ void GetRaltStatsRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->logs_space_total_mb(), output);
   }
 
-  // uint32 flow_completed_requests = 5;
-  if (this->flow_completed_requests() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->flow_completed_requests(), output);
+  // uint32 flow_incoming_requests = 5;
+  if (this->flow_incoming_requests() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->flow_incoming_requests(), output);
   }
 
-  // uint32 flow_incoming_requests = 6;
-  if (this->flow_incoming_requests() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->flow_incoming_requests(), output);
+  // uint32 flow_incoming_responses = 6;
+  if (this->flow_incoming_responses() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->flow_incoming_responses(), output);
   }
 
   // uint32 flow_total_client_connections_ipv4 = 7;
@@ -1934,9 +2039,39 @@ void GetRaltStatsRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->flow_total_client_connections_ipv6(), output);
   }
 
-  // float flow_bandwidth_hit_ratio = 9;
-  if (this->flow_bandwidth_hit_ratio() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(9, this->flow_bandwidth_hit_ratio(), output);
+  // uint32 flow_total_server_connections = 9;
+  if (this->flow_total_server_connections() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->flow_total_server_connections(), output);
+  }
+
+  // uint64 cache_used_mb = 10;
+  if (this->cache_used_mb() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(10, this->cache_used_mb(), output);
+  }
+
+  // uint64 cache_total_mb = 11;
+  if (this->cache_total_mb() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(11, this->cache_total_mb(), output);
+  }
+
+  // uint32 cache_total_hits = 12;
+  if (this->cache_total_hits() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->cache_total_hits(), output);
+  }
+
+  // float cache_hit_ratio = 13;
+  if (this->cache_hit_ratio() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(13, this->cache_hit_ratio(), output);
+  }
+
+  // uint32 hostdb_total_hits = 14;
+  if (this->hostdb_total_hits() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(14, this->hostdb_total_hits(), output);
+  }
+
+  // float hostdb_hit_ratio = 15;
+  if (this->hostdb_hit_ratio() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(15, this->hostdb_hit_ratio(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1953,14 +2088,14 @@ void GetRaltStatsRsp::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 cache_used_bytes = 1;
-  if (this->cache_used_bytes() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->cache_used_bytes(), target);
+  // uint32 start_time = 1;
+  if (this->start_time() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->start_time(), target);
   }
 
-  // uint64 cache_total_bytes = 2;
-  if (this->cache_total_bytes() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->cache_total_bytes(), target);
+  // uint32 end_time = 2;
+  if (this->end_time() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->end_time(), target);
   }
 
   // uint32 logs_space_used_mb = 3;
@@ -1973,14 +2108,14 @@ void GetRaltStatsRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->logs_space_total_mb(), target);
   }
 
-  // uint32 flow_completed_requests = 5;
-  if (this->flow_completed_requests() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->flow_completed_requests(), target);
+  // uint32 flow_incoming_requests = 5;
+  if (this->flow_incoming_requests() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->flow_incoming_requests(), target);
   }
 
-  // uint32 flow_incoming_requests = 6;
-  if (this->flow_incoming_requests() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->flow_incoming_requests(), target);
+  // uint32 flow_incoming_responses = 6;
+  if (this->flow_incoming_responses() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->flow_incoming_responses(), target);
   }
 
   // uint32 flow_total_client_connections_ipv4 = 7;
@@ -1993,9 +2128,39 @@ void GetRaltStatsRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->flow_total_client_connections_ipv6(), target);
   }
 
-  // float flow_bandwidth_hit_ratio = 9;
-  if (this->flow_bandwidth_hit_ratio() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(9, this->flow_bandwidth_hit_ratio(), target);
+  // uint32 flow_total_server_connections = 9;
+  if (this->flow_total_server_connections() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->flow_total_server_connections(), target);
+  }
+
+  // uint64 cache_used_mb = 10;
+  if (this->cache_used_mb() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(10, this->cache_used_mb(), target);
+  }
+
+  // uint64 cache_total_mb = 11;
+  if (this->cache_total_mb() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(11, this->cache_total_mb(), target);
+  }
+
+  // uint32 cache_total_hits = 12;
+  if (this->cache_total_hits() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(12, this->cache_total_hits(), target);
+  }
+
+  // float cache_hit_ratio = 13;
+  if (this->cache_hit_ratio() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(13, this->cache_hit_ratio(), target);
+  }
+
+  // uint32 hostdb_total_hits = 14;
+  if (this->hostdb_total_hits() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(14, this->hostdb_total_hits(), target);
+  }
+
+  // float hostdb_hit_ratio = 15;
+  if (this->hostdb_hit_ratio() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(15, this->hostdb_hit_ratio(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2015,18 +2180,18 @@ size_t GetRaltStatsRsp::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // uint64 cache_used_bytes = 1;
-  if (this->cache_used_bytes() != 0) {
+  // uint32 start_time = 1;
+  if (this->start_time() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->cache_used_bytes());
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->start_time());
   }
 
-  // uint64 cache_total_bytes = 2;
-  if (this->cache_total_bytes() != 0) {
+  // uint32 end_time = 2;
+  if (this->end_time() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->cache_total_bytes());
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->end_time());
   }
 
   // uint32 logs_space_used_mb = 3;
@@ -2043,18 +2208,18 @@ size_t GetRaltStatsRsp::ByteSizeLong() const {
         this->logs_space_total_mb());
   }
 
-  // uint32 flow_completed_requests = 5;
-  if (this->flow_completed_requests() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->flow_completed_requests());
-  }
-
-  // uint32 flow_incoming_requests = 6;
+  // uint32 flow_incoming_requests = 5;
   if (this->flow_incoming_requests() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->flow_incoming_requests());
+  }
+
+  // uint32 flow_incoming_responses = 6;
+  if (this->flow_incoming_responses() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->flow_incoming_responses());
   }
 
   // uint32 flow_total_client_connections_ipv4 = 7;
@@ -2071,8 +2236,48 @@ size_t GetRaltStatsRsp::ByteSizeLong() const {
         this->flow_total_client_connections_ipv6());
   }
 
-  // float flow_bandwidth_hit_ratio = 9;
-  if (this->flow_bandwidth_hit_ratio() != 0) {
+  // uint64 cache_used_mb = 10;
+  if (this->cache_used_mb() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->cache_used_mb());
+  }
+
+  // uint32 flow_total_server_connections = 9;
+  if (this->flow_total_server_connections() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->flow_total_server_connections());
+  }
+
+  // uint32 cache_total_hits = 12;
+  if (this->cache_total_hits() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->cache_total_hits());
+  }
+
+  // uint64 cache_total_mb = 11;
+  if (this->cache_total_mb() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->cache_total_mb());
+  }
+
+  // float cache_hit_ratio = 13;
+  if (this->cache_hit_ratio() != 0) {
+    total_size += 1 + 4;
+  }
+
+  // uint32 hostdb_total_hits = 14;
+  if (this->hostdb_total_hits() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->hostdb_total_hits());
+  }
+
+  // float hostdb_hit_ratio = 15;
+  if (this->hostdb_hit_ratio() != 0) {
     total_size += 1 + 4;
   }
 
@@ -2103,11 +2308,11 @@ void GetRaltStatsRsp::MergeFrom(const GetRaltStatsRsp& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.cache_used_bytes() != 0) {
-    set_cache_used_bytes(from.cache_used_bytes());
+  if (from.start_time() != 0) {
+    set_start_time(from.start_time());
   }
-  if (from.cache_total_bytes() != 0) {
-    set_cache_total_bytes(from.cache_total_bytes());
+  if (from.end_time() != 0) {
+    set_end_time(from.end_time());
   }
   if (from.logs_space_used_mb() != 0) {
     set_logs_space_used_mb(from.logs_space_used_mb());
@@ -2115,11 +2320,11 @@ void GetRaltStatsRsp::MergeFrom(const GetRaltStatsRsp& from) {
   if (from.logs_space_total_mb() != 0) {
     set_logs_space_total_mb(from.logs_space_total_mb());
   }
-  if (from.flow_completed_requests() != 0) {
-    set_flow_completed_requests(from.flow_completed_requests());
-  }
   if (from.flow_incoming_requests() != 0) {
     set_flow_incoming_requests(from.flow_incoming_requests());
+  }
+  if (from.flow_incoming_responses() != 0) {
+    set_flow_incoming_responses(from.flow_incoming_responses());
   }
   if (from.flow_total_client_connections_ipv4() != 0) {
     set_flow_total_client_connections_ipv4(from.flow_total_client_connections_ipv4());
@@ -2127,8 +2332,26 @@ void GetRaltStatsRsp::MergeFrom(const GetRaltStatsRsp& from) {
   if (from.flow_total_client_connections_ipv6() != 0) {
     set_flow_total_client_connections_ipv6(from.flow_total_client_connections_ipv6());
   }
-  if (from.flow_bandwidth_hit_ratio() != 0) {
-    set_flow_bandwidth_hit_ratio(from.flow_bandwidth_hit_ratio());
+  if (from.cache_used_mb() != 0) {
+    set_cache_used_mb(from.cache_used_mb());
+  }
+  if (from.flow_total_server_connections() != 0) {
+    set_flow_total_server_connections(from.flow_total_server_connections());
+  }
+  if (from.cache_total_hits() != 0) {
+    set_cache_total_hits(from.cache_total_hits());
+  }
+  if (from.cache_total_mb() != 0) {
+    set_cache_total_mb(from.cache_total_mb());
+  }
+  if (from.cache_hit_ratio() != 0) {
+    set_cache_hit_ratio(from.cache_hit_ratio());
+  }
+  if (from.hostdb_total_hits() != 0) {
+    set_hostdb_total_hits(from.hostdb_total_hits());
+  }
+  if (from.hostdb_hit_ratio() != 0) {
+    set_hostdb_hit_ratio(from.hostdb_hit_ratio());
   }
 }
 
@@ -2156,15 +2379,21 @@ void GetRaltStatsRsp::Swap(GetRaltStatsRsp* other) {
 }
 void GetRaltStatsRsp::InternalSwap(GetRaltStatsRsp* other) {
   using std::swap;
-  swap(cache_used_bytes_, other->cache_used_bytes_);
-  swap(cache_total_bytes_, other->cache_total_bytes_);
+  swap(start_time_, other->start_time_);
+  swap(end_time_, other->end_time_);
   swap(logs_space_used_mb_, other->logs_space_used_mb_);
   swap(logs_space_total_mb_, other->logs_space_total_mb_);
-  swap(flow_completed_requests_, other->flow_completed_requests_);
   swap(flow_incoming_requests_, other->flow_incoming_requests_);
+  swap(flow_incoming_responses_, other->flow_incoming_responses_);
   swap(flow_total_client_connections_ipv4_, other->flow_total_client_connections_ipv4_);
   swap(flow_total_client_connections_ipv6_, other->flow_total_client_connections_ipv6_);
-  swap(flow_bandwidth_hit_ratio_, other->flow_bandwidth_hit_ratio_);
+  swap(cache_used_mb_, other->cache_used_mb_);
+  swap(flow_total_server_connections_, other->flow_total_server_connections_);
+  swap(cache_total_hits_, other->cache_total_hits_);
+  swap(cache_total_mb_, other->cache_total_mb_);
+  swap(cache_hit_ratio_, other->cache_hit_ratio_);
+  swap(hostdb_total_hits_, other->hostdb_total_hits_);
+  swap(hostdb_hit_ratio_, other->hostdb_hit_ratio_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -6201,6 +6430,9 @@ const int BasicConfig::kMaxSpaceMbForLogsFieldNumber;
 const int BasicConfig::kRollingEnabledFieldNumber;
 const int BasicConfig::kServerPortsFieldNumber;
 const int BasicConfig::kStorageCacheSizeFieldNumber;
+const int BasicConfig::kHttpCacheEnabledFieldNumber;
+const int BasicConfig::kConnectionsThrottleFieldNumber;
+const int BasicConfig::kIpResolveFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 BasicConfig::BasicConfig()
@@ -6218,17 +6450,22 @@ BasicConfig::BasicConfig(const BasicConfig& from)
   if (from.server_ports().size() > 0) {
     server_ports_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.server_ports_);
   }
+  ip_resolve_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.ip_resolve().size() > 0) {
+    ip_resolve_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_resolve_);
+  }
   ::memcpy(&logging_enabled_, &from.logging_enabled_,
-    static_cast<size_t>(reinterpret_cast<char*>(&storage_cache_size_) -
-    reinterpret_cast<char*>(&logging_enabled_)) + sizeof(storage_cache_size_));
+    static_cast<size_t>(reinterpret_cast<char*>(&connections_throttle_) -
+    reinterpret_cast<char*>(&logging_enabled_)) + sizeof(connections_throttle_));
   // @@protoc_insertion_point(copy_constructor:raltservice.BasicConfig)
 }
 
 void BasicConfig::SharedCtor() {
   server_ports_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ip_resolve_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&logging_enabled_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&storage_cache_size_) -
-      reinterpret_cast<char*>(&logging_enabled_)) + sizeof(storage_cache_size_));
+      reinterpret_cast<char*>(&connections_throttle_) -
+      reinterpret_cast<char*>(&logging_enabled_)) + sizeof(connections_throttle_));
 }
 
 BasicConfig::~BasicConfig() {
@@ -6238,6 +6475,7 @@ BasicConfig::~BasicConfig() {
 
 void BasicConfig::SharedDtor() {
   server_ports_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ip_resolve_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void BasicConfig::SetCachedSize(int size) const {
@@ -6261,9 +6499,10 @@ void BasicConfig::Clear() {
   (void) cached_has_bits;
 
   server_ports_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ip_resolve_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&logging_enabled_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&storage_cache_size_) -
-      reinterpret_cast<char*>(&logging_enabled_)) + sizeof(storage_cache_size_));
+      reinterpret_cast<char*>(&connections_throttle_) -
+      reinterpret_cast<char*>(&logging_enabled_)) + sizeof(connections_throttle_));
   _internal_metadata_.Clear();
 }
 
@@ -6349,6 +6588,50 @@ bool BasicConfig::MergePartialFromCodedStream(
         break;
       }
 
+      // uint32 http_cache_enabled = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &http_cache_enabled_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 connections_throttle = 7;
+      case 7: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &connections_throttle_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string ip_resolve = 8;
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_ip_resolve()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->ip_resolve().data(), static_cast<int>(this->ip_resolve().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "raltservice.BasicConfig.ip_resolve"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -6405,6 +6688,26 @@ void BasicConfig::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->storage_cache_size(), output);
   }
 
+  // uint32 http_cache_enabled = 6;
+  if (this->http_cache_enabled() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->http_cache_enabled(), output);
+  }
+
+  // uint32 connections_throttle = 7;
+  if (this->connections_throttle() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->connections_throttle(), output);
+  }
+
+  // string ip_resolve = 8;
+  if (this->ip_resolve().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip_resolve().data(), static_cast<int>(this->ip_resolve().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "raltservice.BasicConfig.ip_resolve");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      8, this->ip_resolve(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -6450,6 +6753,27 @@ void BasicConfig::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->storage_cache_size(), target);
   }
 
+  // uint32 http_cache_enabled = 6;
+  if (this->http_cache_enabled() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->http_cache_enabled(), target);
+  }
+
+  // uint32 connections_throttle = 7;
+  if (this->connections_throttle() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->connections_throttle(), target);
+  }
+
+  // string ip_resolve = 8;
+  if (this->ip_resolve().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip_resolve().data(), static_cast<int>(this->ip_resolve().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "raltservice.BasicConfig.ip_resolve");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        8, this->ip_resolve(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -6472,6 +6796,13 @@ size_t BasicConfig::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->server_ports());
+  }
+
+  // string ip_resolve = 8;
+  if (this->ip_resolve().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->ip_resolve());
   }
 
   // uint32 logging_enabled = 1;
@@ -6500,6 +6831,20 @@ size_t BasicConfig::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->storage_cache_size());
+  }
+
+  // uint32 http_cache_enabled = 6;
+  if (this->http_cache_enabled() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->http_cache_enabled());
+  }
+
+  // uint32 connections_throttle = 7;
+  if (this->connections_throttle() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->connections_throttle());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -6533,6 +6878,10 @@ void BasicConfig::MergeFrom(const BasicConfig& from) {
 
     server_ports_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.server_ports_);
   }
+  if (from.ip_resolve().size() > 0) {
+
+    ip_resolve_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_resolve_);
+  }
   if (from.logging_enabled() != 0) {
     set_logging_enabled(from.logging_enabled());
   }
@@ -6544,6 +6893,12 @@ void BasicConfig::MergeFrom(const BasicConfig& from) {
   }
   if (from.storage_cache_size() != 0) {
     set_storage_cache_size(from.storage_cache_size());
+  }
+  if (from.http_cache_enabled() != 0) {
+    set_http_cache_enabled(from.http_cache_enabled());
+  }
+  if (from.connections_throttle() != 0) {
+    set_connections_throttle(from.connections_throttle());
   }
 }
 
@@ -6573,10 +6928,14 @@ void BasicConfig::InternalSwap(BasicConfig* other) {
   using std::swap;
   server_ports_.Swap(&other->server_ports_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
+  ip_resolve_.Swap(&other->ip_resolve_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(logging_enabled_, other->logging_enabled_);
   swap(max_space_mb_for_logs_, other->max_space_mb_for_logs_);
   swap(rolling_enabled_, other->rolling_enabled_);
   swap(storage_cache_size_, other->storage_cache_size_);
+  swap(http_cache_enabled_, other->http_cache_enabled_);
+  swap(connections_throttle_, other->connections_throttle_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 

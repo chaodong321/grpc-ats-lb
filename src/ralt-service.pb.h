@@ -496,17 +496,17 @@ class GetRaltStatsRsp : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // uint64 cache_used_bytes = 1;
-  void clear_cache_used_bytes();
-  static const int kCacheUsedBytesFieldNumber = 1;
-  ::google::protobuf::uint64 cache_used_bytes() const;
-  void set_cache_used_bytes(::google::protobuf::uint64 value);
+  // uint32 start_time = 1;
+  void clear_start_time();
+  static const int kStartTimeFieldNumber = 1;
+  ::google::protobuf::uint32 start_time() const;
+  void set_start_time(::google::protobuf::uint32 value);
 
-  // uint64 cache_total_bytes = 2;
-  void clear_cache_total_bytes();
-  static const int kCacheTotalBytesFieldNumber = 2;
-  ::google::protobuf::uint64 cache_total_bytes() const;
-  void set_cache_total_bytes(::google::protobuf::uint64 value);
+  // uint32 end_time = 2;
+  void clear_end_time();
+  static const int kEndTimeFieldNumber = 2;
+  ::google::protobuf::uint32 end_time() const;
+  void set_end_time(::google::protobuf::uint32 value);
 
   // uint32 logs_space_used_mb = 3;
   void clear_logs_space_used_mb();
@@ -520,17 +520,17 @@ class GetRaltStatsRsp : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 logs_space_total_mb() const;
   void set_logs_space_total_mb(::google::protobuf::uint32 value);
 
-  // uint32 flow_completed_requests = 5;
-  void clear_flow_completed_requests();
-  static const int kFlowCompletedRequestsFieldNumber = 5;
-  ::google::protobuf::uint32 flow_completed_requests() const;
-  void set_flow_completed_requests(::google::protobuf::uint32 value);
-
-  // uint32 flow_incoming_requests = 6;
+  // uint32 flow_incoming_requests = 5;
   void clear_flow_incoming_requests();
-  static const int kFlowIncomingRequestsFieldNumber = 6;
+  static const int kFlowIncomingRequestsFieldNumber = 5;
   ::google::protobuf::uint32 flow_incoming_requests() const;
   void set_flow_incoming_requests(::google::protobuf::uint32 value);
+
+  // uint32 flow_incoming_responses = 6;
+  void clear_flow_incoming_responses();
+  static const int kFlowIncomingResponsesFieldNumber = 6;
+  ::google::protobuf::uint32 flow_incoming_responses() const;
+  void set_flow_incoming_responses(::google::protobuf::uint32 value);
 
   // uint32 flow_total_client_connections_ipv4 = 7;
   void clear_flow_total_client_connections_ipv4();
@@ -544,25 +544,67 @@ class GetRaltStatsRsp : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 flow_total_client_connections_ipv6() const;
   void set_flow_total_client_connections_ipv6(::google::protobuf::uint32 value);
 
-  // float flow_bandwidth_hit_ratio = 9;
-  void clear_flow_bandwidth_hit_ratio();
-  static const int kFlowBandwidthHitRatioFieldNumber = 9;
-  float flow_bandwidth_hit_ratio() const;
-  void set_flow_bandwidth_hit_ratio(float value);
+  // uint64 cache_used_mb = 10;
+  void clear_cache_used_mb();
+  static const int kCacheUsedMbFieldNumber = 10;
+  ::google::protobuf::uint64 cache_used_mb() const;
+  void set_cache_used_mb(::google::protobuf::uint64 value);
+
+  // uint32 flow_total_server_connections = 9;
+  void clear_flow_total_server_connections();
+  static const int kFlowTotalServerConnectionsFieldNumber = 9;
+  ::google::protobuf::uint32 flow_total_server_connections() const;
+  void set_flow_total_server_connections(::google::protobuf::uint32 value);
+
+  // uint32 cache_total_hits = 12;
+  void clear_cache_total_hits();
+  static const int kCacheTotalHitsFieldNumber = 12;
+  ::google::protobuf::uint32 cache_total_hits() const;
+  void set_cache_total_hits(::google::protobuf::uint32 value);
+
+  // uint64 cache_total_mb = 11;
+  void clear_cache_total_mb();
+  static const int kCacheTotalMbFieldNumber = 11;
+  ::google::protobuf::uint64 cache_total_mb() const;
+  void set_cache_total_mb(::google::protobuf::uint64 value);
+
+  // float cache_hit_ratio = 13;
+  void clear_cache_hit_ratio();
+  static const int kCacheHitRatioFieldNumber = 13;
+  float cache_hit_ratio() const;
+  void set_cache_hit_ratio(float value);
+
+  // uint32 hostdb_total_hits = 14;
+  void clear_hostdb_total_hits();
+  static const int kHostdbTotalHitsFieldNumber = 14;
+  ::google::protobuf::uint32 hostdb_total_hits() const;
+  void set_hostdb_total_hits(::google::protobuf::uint32 value);
+
+  // float hostdb_hit_ratio = 15;
+  void clear_hostdb_hit_ratio();
+  static const int kHostdbHitRatioFieldNumber = 15;
+  float hostdb_hit_ratio() const;
+  void set_hostdb_hit_ratio(float value);
 
   // @@protoc_insertion_point(class_scope:raltservice.GetRaltStatsRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 cache_used_bytes_;
-  ::google::protobuf::uint64 cache_total_bytes_;
+  ::google::protobuf::uint32 start_time_;
+  ::google::protobuf::uint32 end_time_;
   ::google::protobuf::uint32 logs_space_used_mb_;
   ::google::protobuf::uint32 logs_space_total_mb_;
-  ::google::protobuf::uint32 flow_completed_requests_;
   ::google::protobuf::uint32 flow_incoming_requests_;
+  ::google::protobuf::uint32 flow_incoming_responses_;
   ::google::protobuf::uint32 flow_total_client_connections_ipv4_;
   ::google::protobuf::uint32 flow_total_client_connections_ipv6_;
-  float flow_bandwidth_hit_ratio_;
+  ::google::protobuf::uint64 cache_used_mb_;
+  ::google::protobuf::uint32 flow_total_server_connections_;
+  ::google::protobuf::uint32 cache_total_hits_;
+  ::google::protobuf::uint64 cache_total_mb_;
+  float cache_hit_ratio_;
+  ::google::protobuf::uint32 hostdb_total_hits_;
+  float hostdb_hit_ratio_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
 };
@@ -2262,6 +2304,20 @@ class BasicConfig : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::std::string* release_server_ports();
   void set_allocated_server_ports(::std::string* server_ports);
 
+  // string ip_resolve = 8;
+  void clear_ip_resolve();
+  static const int kIpResolveFieldNumber = 8;
+  const ::std::string& ip_resolve() const;
+  void set_ip_resolve(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_resolve(::std::string&& value);
+  #endif
+  void set_ip_resolve(const char* value);
+  void set_ip_resolve(const char* value, size_t size);
+  ::std::string* mutable_ip_resolve();
+  ::std::string* release_ip_resolve();
+  void set_allocated_ip_resolve(::std::string* ip_resolve);
+
   // uint32 logging_enabled = 1;
   void clear_logging_enabled();
   static const int kLoggingEnabledFieldNumber = 1;
@@ -2286,15 +2342,30 @@ class BasicConfig : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::uint32 storage_cache_size() const;
   void set_storage_cache_size(::google::protobuf::uint32 value);
 
+  // uint32 http_cache_enabled = 6;
+  void clear_http_cache_enabled();
+  static const int kHttpCacheEnabledFieldNumber = 6;
+  ::google::protobuf::uint32 http_cache_enabled() const;
+  void set_http_cache_enabled(::google::protobuf::uint32 value);
+
+  // uint32 connections_throttle = 7;
+  void clear_connections_throttle();
+  static const int kConnectionsThrottleFieldNumber = 7;
+  ::google::protobuf::uint32 connections_throttle() const;
+  void set_connections_throttle(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:raltservice.BasicConfig)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr server_ports_;
+  ::google::protobuf::internal::ArenaStringPtr ip_resolve_;
   ::google::protobuf::uint32 logging_enabled_;
   ::google::protobuf::uint32 max_space_mb_for_logs_;
   ::google::protobuf::uint32 rolling_enabled_;
   ::google::protobuf::uint32 storage_cache_size_;
+  ::google::protobuf::uint32 http_cache_enabled_;
+  ::google::protobuf::uint32 connections_throttle_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
 };
@@ -5046,32 +5117,32 @@ inline void GetRaltStatsReq::set_allocated_ip_addr(::std::string* ip_addr) {
 
 // GetRaltStatsRsp
 
-// uint64 cache_used_bytes = 1;
-inline void GetRaltStatsRsp::clear_cache_used_bytes() {
-  cache_used_bytes_ = GOOGLE_ULONGLONG(0);
+// uint32 start_time = 1;
+inline void GetRaltStatsRsp::clear_start_time() {
+  start_time_ = 0u;
 }
-inline ::google::protobuf::uint64 GetRaltStatsRsp::cache_used_bytes() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.cache_used_bytes)
-  return cache_used_bytes_;
+inline ::google::protobuf::uint32 GetRaltStatsRsp::start_time() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.start_time)
+  return start_time_;
 }
-inline void GetRaltStatsRsp::set_cache_used_bytes(::google::protobuf::uint64 value) {
+inline void GetRaltStatsRsp::set_start_time(::google::protobuf::uint32 value) {
   
-  cache_used_bytes_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.cache_used_bytes)
+  start_time_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.start_time)
 }
 
-// uint64 cache_total_bytes = 2;
-inline void GetRaltStatsRsp::clear_cache_total_bytes() {
-  cache_total_bytes_ = GOOGLE_ULONGLONG(0);
+// uint32 end_time = 2;
+inline void GetRaltStatsRsp::clear_end_time() {
+  end_time_ = 0u;
 }
-inline ::google::protobuf::uint64 GetRaltStatsRsp::cache_total_bytes() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.cache_total_bytes)
-  return cache_total_bytes_;
+inline ::google::protobuf::uint32 GetRaltStatsRsp::end_time() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.end_time)
+  return end_time_;
 }
-inline void GetRaltStatsRsp::set_cache_total_bytes(::google::protobuf::uint64 value) {
+inline void GetRaltStatsRsp::set_end_time(::google::protobuf::uint32 value) {
   
-  cache_total_bytes_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.cache_total_bytes)
+  end_time_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.end_time)
 }
 
 // uint32 logs_space_used_mb = 3;
@@ -5102,21 +5173,7 @@ inline void GetRaltStatsRsp::set_logs_space_total_mb(::google::protobuf::uint32 
   // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.logs_space_total_mb)
 }
 
-// uint32 flow_completed_requests = 5;
-inline void GetRaltStatsRsp::clear_flow_completed_requests() {
-  flow_completed_requests_ = 0u;
-}
-inline ::google::protobuf::uint32 GetRaltStatsRsp::flow_completed_requests() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_completed_requests)
-  return flow_completed_requests_;
-}
-inline void GetRaltStatsRsp::set_flow_completed_requests(::google::protobuf::uint32 value) {
-  
-  flow_completed_requests_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_completed_requests)
-}
-
-// uint32 flow_incoming_requests = 6;
+// uint32 flow_incoming_requests = 5;
 inline void GetRaltStatsRsp::clear_flow_incoming_requests() {
   flow_incoming_requests_ = 0u;
 }
@@ -5128,6 +5185,20 @@ inline void GetRaltStatsRsp::set_flow_incoming_requests(::google::protobuf::uint
   
   flow_incoming_requests_ = value;
   // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_incoming_requests)
+}
+
+// uint32 flow_incoming_responses = 6;
+inline void GetRaltStatsRsp::clear_flow_incoming_responses() {
+  flow_incoming_responses_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::flow_incoming_responses() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_incoming_responses)
+  return flow_incoming_responses_;
+}
+inline void GetRaltStatsRsp::set_flow_incoming_responses(::google::protobuf::uint32 value) {
+  
+  flow_incoming_responses_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_incoming_responses)
 }
 
 // uint32 flow_total_client_connections_ipv4 = 7;
@@ -5158,18 +5229,102 @@ inline void GetRaltStatsRsp::set_flow_total_client_connections_ipv6(::google::pr
   // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_total_client_connections_ipv6)
 }
 
-// float flow_bandwidth_hit_ratio = 9;
-inline void GetRaltStatsRsp::clear_flow_bandwidth_hit_ratio() {
-  flow_bandwidth_hit_ratio_ = 0;
+// uint32 flow_total_server_connections = 9;
+inline void GetRaltStatsRsp::clear_flow_total_server_connections() {
+  flow_total_server_connections_ = 0u;
 }
-inline float GetRaltStatsRsp::flow_bandwidth_hit_ratio() const {
-  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_bandwidth_hit_ratio)
-  return flow_bandwidth_hit_ratio_;
+inline ::google::protobuf::uint32 GetRaltStatsRsp::flow_total_server_connections() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.flow_total_server_connections)
+  return flow_total_server_connections_;
 }
-inline void GetRaltStatsRsp::set_flow_bandwidth_hit_ratio(float value) {
+inline void GetRaltStatsRsp::set_flow_total_server_connections(::google::protobuf::uint32 value) {
   
-  flow_bandwidth_hit_ratio_ = value;
-  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_bandwidth_hit_ratio)
+  flow_total_server_connections_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.flow_total_server_connections)
+}
+
+// uint64 cache_used_mb = 10;
+inline void GetRaltStatsRsp::clear_cache_used_mb() {
+  cache_used_mb_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetRaltStatsRsp::cache_used_mb() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.cache_used_mb)
+  return cache_used_mb_;
+}
+inline void GetRaltStatsRsp::set_cache_used_mb(::google::protobuf::uint64 value) {
+  
+  cache_used_mb_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.cache_used_mb)
+}
+
+// uint64 cache_total_mb = 11;
+inline void GetRaltStatsRsp::clear_cache_total_mb() {
+  cache_total_mb_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetRaltStatsRsp::cache_total_mb() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.cache_total_mb)
+  return cache_total_mb_;
+}
+inline void GetRaltStatsRsp::set_cache_total_mb(::google::protobuf::uint64 value) {
+  
+  cache_total_mb_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.cache_total_mb)
+}
+
+// uint32 cache_total_hits = 12;
+inline void GetRaltStatsRsp::clear_cache_total_hits() {
+  cache_total_hits_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::cache_total_hits() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.cache_total_hits)
+  return cache_total_hits_;
+}
+inline void GetRaltStatsRsp::set_cache_total_hits(::google::protobuf::uint32 value) {
+  
+  cache_total_hits_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.cache_total_hits)
+}
+
+// float cache_hit_ratio = 13;
+inline void GetRaltStatsRsp::clear_cache_hit_ratio() {
+  cache_hit_ratio_ = 0;
+}
+inline float GetRaltStatsRsp::cache_hit_ratio() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.cache_hit_ratio)
+  return cache_hit_ratio_;
+}
+inline void GetRaltStatsRsp::set_cache_hit_ratio(float value) {
+  
+  cache_hit_ratio_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.cache_hit_ratio)
+}
+
+// uint32 hostdb_total_hits = 14;
+inline void GetRaltStatsRsp::clear_hostdb_total_hits() {
+  hostdb_total_hits_ = 0u;
+}
+inline ::google::protobuf::uint32 GetRaltStatsRsp::hostdb_total_hits() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.hostdb_total_hits)
+  return hostdb_total_hits_;
+}
+inline void GetRaltStatsRsp::set_hostdb_total_hits(::google::protobuf::uint32 value) {
+  
+  hostdb_total_hits_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.hostdb_total_hits)
+}
+
+// float hostdb_hit_ratio = 15;
+inline void GetRaltStatsRsp::clear_hostdb_hit_ratio() {
+  hostdb_hit_ratio_ = 0;
+}
+inline float GetRaltStatsRsp::hostdb_hit_ratio() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRaltStatsRsp.hostdb_hit_ratio)
+  return hostdb_hit_ratio_;
+}
+inline void GetRaltStatsRsp::set_hostdb_hit_ratio(float value) {
+  
+  hostdb_hit_ratio_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.GetRaltStatsRsp.hostdb_hit_ratio)
 }
 
 // -------------------------------------------------------------------
@@ -6232,6 +6387,87 @@ inline void BasicConfig::set_storage_cache_size(::google::protobuf::uint32 value
   
   storage_cache_size_ = value;
   // @@protoc_insertion_point(field_set:raltservice.BasicConfig.storage_cache_size)
+}
+
+// uint32 http_cache_enabled = 6;
+inline void BasicConfig::clear_http_cache_enabled() {
+  http_cache_enabled_ = 0u;
+}
+inline ::google::protobuf::uint32 BasicConfig::http_cache_enabled() const {
+  // @@protoc_insertion_point(field_get:raltservice.BasicConfig.http_cache_enabled)
+  return http_cache_enabled_;
+}
+inline void BasicConfig::set_http_cache_enabled(::google::protobuf::uint32 value) {
+  
+  http_cache_enabled_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.BasicConfig.http_cache_enabled)
+}
+
+// uint32 connections_throttle = 7;
+inline void BasicConfig::clear_connections_throttle() {
+  connections_throttle_ = 0u;
+}
+inline ::google::protobuf::uint32 BasicConfig::connections_throttle() const {
+  // @@protoc_insertion_point(field_get:raltservice.BasicConfig.connections_throttle)
+  return connections_throttle_;
+}
+inline void BasicConfig::set_connections_throttle(::google::protobuf::uint32 value) {
+  
+  connections_throttle_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.BasicConfig.connections_throttle)
+}
+
+// string ip_resolve = 8;
+inline void BasicConfig::clear_ip_resolve() {
+  ip_resolve_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BasicConfig::ip_resolve() const {
+  // @@protoc_insertion_point(field_get:raltservice.BasicConfig.ip_resolve)
+  return ip_resolve_.GetNoArena();
+}
+inline void BasicConfig::set_ip_resolve(const ::std::string& value) {
+  
+  ip_resolve_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.BasicConfig.ip_resolve)
+}
+#if LANG_CXX11
+inline void BasicConfig::set_ip_resolve(::std::string&& value) {
+  
+  ip_resolve_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.BasicConfig.ip_resolve)
+}
+#endif
+inline void BasicConfig::set_ip_resolve(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_resolve_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.BasicConfig.ip_resolve)
+}
+inline void BasicConfig::set_ip_resolve(const char* value, size_t size) {
+  
+  ip_resolve_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.BasicConfig.ip_resolve)
+}
+inline ::std::string* BasicConfig::mutable_ip_resolve() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.BasicConfig.ip_resolve)
+  return ip_resolve_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BasicConfig::release_ip_resolve() {
+  // @@protoc_insertion_point(field_release:raltservice.BasicConfig.ip_resolve)
+  
+  return ip_resolve_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BasicConfig::set_allocated_ip_resolve(::std::string* ip_resolve) {
+  if (ip_resolve != NULL) {
+    
+  } else {
+    
+  }
+  ip_resolve_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_resolve);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.BasicConfig.ip_resolve)
 }
 
 // -------------------------------------------------------------------

@@ -40,15 +40,25 @@ message GetRaltStatsReq {
 }
 
 message GetRaltStatsRsp{
-	uint64 cache_used_bytes = 1;
-	uint64 cache_total_bytes = 2;
-	uint32 logs_space_used_mb = 3;
-	uint32 logs_space_total_mb = 4;
-	uint32 flow_completed_requests = 5;
-	uint32 flow_incoming_requests = 6;
-	uint32 flow_total_client_connections_ipv4 = 7;
-	uint32 flow_total_client_connections_ipv6 = 8;
-	float  flow_bandwidth_hit_ratio = 9;
+	uint32 start_time = 1;                               //开始时间
+	uint32 end_time = 2;                                 //结束时间
+
+	uint32 logs_space_used_mb = 3;                       //日志使用大小(单位mb)
+	uint32 logs_space_total_mb = 4;                      //日志空间大小(单位mb)
+
+	uint32 flow_incoming_requests = 5;                   //客户端请求数（浏览器-->ATS）
+	uint32 flow_incoming_responses = 6;                  //ATS响应数（ATS-->浏览器）
+	uint32 flow_total_client_connections_ipv4 = 7;       //ipv4客户端连接数
+	uint32 flow_total_client_connections_ipv6 = 8;       //ipv6客户端连接数
+	uint32 flow_total_server_connections = 9;            //回源连接数
+
+	uint64 cache_used_mb = 10;                           //缓存使用大小(单位mb)
+	uint64 cache_total_mb = 11;                          //缓存空间大小(单位mb)
+	uint32 cache_total_hits = 12;                        //缓存命中总数
+	float  cache_hit_ratio = 13;                         //缓存命中率
+
+	uint32 hostdb_total_hits = 14;                       //DNS缓存命中总数
+	float  hostdb_hit_ratio = 15;                        //DNS缓存命中率
 }
 
 message GetStatsFieldReq{
@@ -136,7 +146,10 @@ message BasicConfig {
 	uint32 max_space_mb_for_logs = 2;      //日志最大磁盘空间（单位为mb）
 	uint32 rolling_enabled = 3;            //日志是否备份	0-不开启； 1-开启日志（根据时间间隔备份）；2-开启日志（根据日志文件大小备份）
 	string server_ports = 4;               //ralt服务端口，默认值 8080 8080:ipv6
-	uint32 storage_cache_size = 5;         //缓存磁盘大小，单位为M，默认值 250（最小值为128）
+	uint32 storage_cache_size = 5;         //缓存磁盘大小，单位为mb，默认值 250（最小值为128）
+	uint32 http_cache_enabled = 6;         //缓存开关，0：不开启 1：开启
+	uint32 connections_throttle = 7;       //最大并发量
+	string ip_resolve = 8;                 //回源网络类型
 }
 
 message GetBasicConfigRsp {

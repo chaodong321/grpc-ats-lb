@@ -347,15 +347,21 @@ class RaltServiceClient {
 			
 			Status status = stub_ralt->getRaltStats(&context, req, &rsp);
 			if (status.ok()) {
-				std::cout << "cache_used_bytes: " << rsp.cache_used_bytes() << std::endl;
-				std::cout << "cache_total_bytes: " << rsp.cache_total_bytes() << std::endl;
+				std::cout << "start_time: " << rsp.start_time() << std::endl;
+				std::cout << "end_time: " << rsp.end_time() << std::endl;
 				std::cout << "logs_space_used_mb: " << rsp.logs_space_used_mb() << std::endl;
 				std::cout << "logs_space_total_mb: " << rsp.logs_space_total_mb() << std::endl;
-				std::cout << "flow_completed_requests: " << rsp.flow_completed_requests() << std::endl;
 				std::cout << "flow_incoming_requests: " << rsp.flow_incoming_requests() << std::endl;
+				std::cout << "flow_incoming_responses: " << rsp.flow_incoming_responses() << std::endl;
 				std::cout << "flow_total_client_connections_ipv4: " << rsp.flow_total_client_connections_ipv4() << std::endl;
 				std::cout << "flow_total_client_connections_ipv6: " << rsp.flow_total_client_connections_ipv6() << std::endl;
-				std::cout << "flow_bandwidth_hit_ratio: " << rsp.flow_bandwidth_hit_ratio() << std::endl;
+				std::cout << "flow_total_server_connections: " << rsp.flow_total_server_connections() << std::endl;
+				std::cout << "cache_used_mb: " << rsp.cache_used_mb() << std::endl;
+				std::cout << "cache_total_mb: " << rsp.cache_total_mb() << std::endl;
+				std::cout << "cache_total_hits: " << rsp.cache_total_hits() << std::endl;
+				std::cout << "cache_hit_ratio: " << rsp.cache_hit_ratio() << std::endl;
+				std::cout << "hostdb_total_hits: " << rsp.hostdb_total_hits() << std::endl;
+				std::cout << "hostdb_hit_ratio: " << rsp.hostdb_hit_ratio() << std::endl;
 			}
 			else{
 				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
@@ -500,6 +506,9 @@ class RaltServiceClient {
 				std::cout << "rolling_enabled:" << reply.basic_config().rolling_enabled() << std::endl;
 				std::cout << "server_ports:" << reply.basic_config().server_ports() << std::endl;
 				std::cout << "storage_cache_size:" << reply.basic_config().storage_cache_size() << std::endl;
+				std::cout << "http_cache_enabled:" << reply.basic_config().http_cache_enabled() << std::endl;
+				std::cout << "connections_throttle:" << reply.basic_config().connections_throttle() << std::endl;
+				std::cout << "ip_resolve:" << reply.basic_config().ip_resolve() << std::endl;
 			} else {
 				std::cout << status.error_code() << ": " << status.error_message() << std::endl;
 			}
@@ -509,16 +518,19 @@ class RaltServiceClient {
 			ClientContext context;
 			SetBasicConfigReq request;
 			request.set_ip_addr("10.2.1.240");
-			BasicConfig basic_config;
-			basic_config.set_logging_enabled(1);
-			basic_config.set_max_space_mb_for_logs(1);
-			basic_config.set_rolling_enabled(1);
-			basic_config.set_server_ports("80:ipv6 8080:ipv6 443:ipv6");
-			basic_config.set_storage_cache_size(500);
-			request.set_allocated_basic_config(&basic_config);
+			BasicConfig *basic_config = request.mutable_basic_config();
+			basic_config->set_logging_enabled(1);
+			basic_config->set_max_space_mb_for_logs(1);
+			basic_config->set_rolling_enabled(1);
+			basic_config->set_server_ports("80:ipv6 8080:ipv6 443:ipv6");
+			basic_config->set_storage_cache_size(500);
+			basic_config->set_http_cache_enabled(0);
+			basic_config->set_connections_throttle(70000);
+			basic_config->set_ip_resolve("ipv4;ipv6;none");
 			SetBasicConfigRsp reply;
+			std::cout << "start set basic config" << std::endl;
 			Status status =  stub_ralt->setBasicConfig(&context, request, &reply);
-
+			std::cout << "end set basic config" << std::endl;
 			if (status.ok()) {
 				printf("modify success\n");
 			} else {
@@ -705,9 +717,9 @@ class RaltServiceClient {
 };
 
 int main(int argc, char** argv) {
-	RaltServiceClient client(grpc::CreateChannel("10.2.1.235:50052", grpc::InsecureChannelCredentials()));
+	RaltServiceClient client(grpc::CreateChannel("10.2.1.240:50053", grpc::InsecureChannelCredentials()));
 
-	client.getNameAndIpInfo();
+	//client.getNameAndIpInfo();
 	//client.getDeviceInfo();
 	//client.getDeviceDetail(true);
 	//client.getCpuUsage();
@@ -721,7 +733,7 @@ int main(int argc, char** argv) {
 	//client.getMemTotal();
 	//client.getEthCtrlInfo();
 
-	//client.getRaltStats();
+	client.getRaltStats();
 	//client.ShowFieldValue("proxy.process.cache.bytes_total");
 	//client.showHomePageData();
 	//client.showCache();

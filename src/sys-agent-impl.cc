@@ -4,14 +4,14 @@
 #include "util-common.h"
 
 
-bool SysAgentImpl::getStubByIp(string strIp)
+unique_ptr< SysInfo::Stub> SysAgentImpl::getStubByIp(string strIp)
 {
 	LOG_INFO("ip addr: %s", strIp.c_str());
 	string strIpAndPort;
 	vector<RaltServer> &server = RaltAgentConf::GetInstance().GetServer();
 	if(server.size() <= 0){
 		LOG_ERROR("cluster no server");
-		return false;
+		return nullptr;
 	}
 
 	if(strIp.empty()){
@@ -21,7 +21,7 @@ bool SysAgentImpl::getStubByIp(string strIp)
 
 	if(!UtilCommon::IsIp(strIp.c_str())){
 		LOG_ERROR("the format of ip is error, ip: %s", strIp.c_str());
-		return false;
+		return nullptr;
 	}
 
 	for(const auto it : server){
@@ -35,21 +35,22 @@ bool SysAgentImpl::getStubByIp(string strIp)
 
 	LOG_INFO("create stub");
 	shared_ptr<Channel> channel(grpc::CreateChannel(strIpAndPort.c_str(), grpc::InsecureChannelCredentials()));
-	stub_sys = SysInfo::NewStub(channel);
-	return true;
+	unique_ptr< SysInfo::Stub> stub = SysInfo::NewStub(channel);
+	return stub;
 }
 
 Status SysAgentImpl::getNameAndIpInfo (ServerContext* server_context, const GetNameAndIpInfoReq* request,
     GetNameAndIpInfoRsp* reply)
 {
 	LOG_INFO("get host name ip info");
-	
-	if(!getStubByIp(request->ip_addr())){
+
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status = stub_sys->getNameAndIpInfo(&client_context, *request, reply);
+    Status status = stub->getNameAndIpInfo(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get host name ip successfully");
 	} else {
@@ -64,12 +65,13 @@ Status SysAgentImpl::getDeviceInfo (ServerContext* server_context, const GetDevi
 {
 	LOG_INFO("get device info info");
 	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 	
 	ClientContext client_context;
-    Status status= stub_sys->getDeviceInfo(&client_context, *request, reply);
+    Status status= stub->getDeviceInfo(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get device info successfully");
 	} else {
@@ -84,12 +86,13 @@ Status SysAgentImpl::getDeviceDetail (ServerContext* server_context, const GetDe
 {
 	LOG_INFO("get device detail");
 	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getDeviceDetail(&client_context, *request, reply);
+    Status status= stub->getDeviceDetail(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get device detail successfully");
 	} else {
@@ -104,12 +107,13 @@ Status SysAgentImpl::getCpuUsage (ServerContext* server_context, const GetCpuUsa
 {
 	LOG_INFO("get cpu usage");
 	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getCpuUsage(&client_context, *request, reply);
+    Status status= stub->getCpuUsage(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get cpu usage successfully");
 	} else {
@@ -124,12 +128,13 @@ Status SysAgentImpl::getCpuTemp (ServerContext* server_context, const GetCpuTemp
 {
 	LOG_INFO("get cpu temp");
 	
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getCpuTemp(&client_context, *request, reply);
+    Status status= stub->getCpuTemp(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get cpu temp successfully");
 	} else {
@@ -143,12 +148,13 @@ Status SysAgentImpl::getMemUsage (ServerContext* server_context, const GetMemUsa
     GetMemUsageRsp* reply)
 {
 	LOG_INFO("get cpu temp");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getMemUsage(&client_context, *request, reply);
+    Status status= stub->getMemUsage(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get mem usage successfully");
 	} else {
@@ -162,12 +168,13 @@ Status SysAgentImpl::getNicInfo (ServerContext* server_context, const GetNicInfo
     GetNicInfoRsp* reply)
 {
 	LOG_INFO("get nic info");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getNicInfo(&client_context, *request, reply);
+    Status status= stub->getNicInfo(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get nic info successfully");
 	} else {
@@ -181,12 +188,13 @@ Status SysAgentImpl::getHostName (ServerContext* server_context, const GetHostNa
     GetHostNameRsp* reply)
 {
 	LOG_INFO("get host name");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getHostName(&client_context, *request, reply);
+    Status status= stub->getHostName(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get host name successfully");
 	} else {
@@ -200,12 +208,13 @@ Status SysAgentImpl::getIpInfo (ServerContext* server_context, const GetIpInfoRe
     GetIpInfoRsp* reply)
 {
 	LOG_INFO("get ip info");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getIpInfo(&client_context, *request, reply);
+    Status status= stub->getIpInfo(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get ip info successfully");
 	} else {
@@ -219,12 +228,13 @@ Status SysAgentImpl::getCpuModel (ServerContext* server_context, const GetCpuMod
     GetCpuModelRsp* reply)
 {
 	LOG_INFO("get cpu model");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getCpuModel(&client_context, *request, reply);
+    Status status= stub->getCpuModel(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get cpu model successfully");
 	} else {
@@ -238,12 +248,13 @@ Status SysAgentImpl::getCpuCores (ServerContext* server_context, const GetCpuCor
     GetCpuCoresRsp* reply)
 {
 	LOG_INFO("get cpu cores");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getCpuCores(&client_context, *request, reply);
+    Status status= stub->getCpuCores(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get cpu cores successfully");
 	} else {
@@ -257,12 +268,13 @@ Status SysAgentImpl::getMemTotal (ServerContext* server_context, const GetMemTot
     GetMemTotalRsp* reply)
 {
 	LOG_INFO("get mem total");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getMemTotal(&client_context, *request, reply);
+    Status status= stub->getMemTotal(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get mem total successfully");
 	} else {
@@ -276,12 +288,13 @@ Status SysAgentImpl::getEthCtrlInfo (ServerContext* server_context, const GetEth
     GetEthCtrlInfoRsp* reply)
 {
 	LOG_INFO("get ethernet controler info");
-	if(!getStubByIp(request->ip_addr())){
+	unique_ptr< SysInfo::Stub> stub = getStubByIp(request->ip_addr());
+	if(nullptr == stub){
 		return Status::CANCELLED;
 	}
 
 	ClientContext client_context;
-    Status status= stub_sys->getEthCtrlInfo(&client_context, *request, reply);
+    Status status= stub->getEthCtrlInfo(&client_context, *request, reply);
 	if (status.ok()) {
 		LOG_INFO("get ethernet controler info successfully");
 	} else {

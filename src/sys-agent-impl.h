@@ -55,7 +55,7 @@ class SysAgentImpl final : public SysInfo::Service {
 public:
 	SysAgentImpl()     {}
 
-	bool getStubByIp(string strIp);
+	unique_ptr< SysInfo::Stub> getStubByIp(string strIp);
 
 	Status getNameAndIpInfo (ServerContext* server_context, const GetNameAndIpInfoReq* request,
                   GetNameAndIpInfoRsp* reply) override;
@@ -96,9 +96,6 @@ public:
 	Status getEthCtrlInfo (ServerContext* server_context, const GetEthCtrlInfoReq* request,
                   GetEthCtrlInfoRsp* reply) override;
 
-private:
-	unique_ptr<SysInfo::Stub> stub_sys;
-	//ClientContext client_context;
 };
 
 #endif

@@ -1,9 +1,9 @@
 .PHONY: all clean
 
-CC = g++ -g
-CXXFLAGS := -std=c++11
+CC = g++
+CXXFLAGS := -g -std=c++11
 LDFLAGS := -L. 
-LIBS := -lgrpc++ -lprotobuf -ljansson -lpthread -lgrpc++_reflection
+LIBS := -lgrpc++ -lgrpc++_reflection -lprotobuf -ljansson -lpthread
 
 SERVER := ralt-svr
 CLIENT := ralt-client
@@ -29,7 +29,7 @@ $(AGENT): $(COMM_SRCS) $(AGENT_SRCS)
 	$(CC) $(CXXFLAGS) $(LDFLAGS) $(LIBS) -o $@ $^
 
 %.o:%.cc
-	$(CC) $(CXXFLAGS) $(LDFLAGS) $(LIBS) -c $< -o $@
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 proto:
 	protoc -I ../proto --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../proto/sys-info.proto

@@ -41,7 +41,6 @@ using raltservice::LogResult;
 using raltservice::GetRaltLogsReq;
 using raltservice::RaltLogs;
 //basic config
-//basic config
 using raltservice::GetBasicConfigReq;
 using raltservice::GetBasicConfigRsp;
 using raltservice::SetBasicConfigReq;
@@ -80,7 +79,7 @@ class RaltAgentImpl final : public RaltService::Service {
 public:	
 	RaltAgentImpl(){}
 
-	bool getStubByIp(string strIp);
+	unique_ptr<RaltService::Stub> getStubByIp(string strIp);
 
 	Status getRaltStats (ServerContext* server_context, const GetRaltStatsReq* request,
                   GetRaltStatsRsp* reply) override;
@@ -137,9 +136,6 @@ public:
 	Status execCmd(ServerContext* server_context, const ExecCmdReq* request,
                   ExecCmdRsp* reply) override;
 
-private:
-	std::unique_ptr<RaltService::Stub> stub_ralt;
-	//ClientContext client_context;
 };
 
 #endif
