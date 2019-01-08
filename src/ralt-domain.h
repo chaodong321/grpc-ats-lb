@@ -7,37 +7,37 @@
 using namespace std;
 
 enum DOMAIN_TYPE{
-	DOMAIN_MEMBER,
-	DOMAIN_SUBS
+    DOMAIN_MEMBER,
+    DOMAIN_SUBS
 };
 
 typedef struct _DomainValue
 {
-	int type;
-	string str_domain;  // domain menber
-	string str_append_or_replace;  // append or replace string
-	string str_port;    // domain port
+    int type;
+    string str_domain;  // domain menber
+    string str_append_or_replace;  // append or replace string
+    string str_port;    // domain port
 }DomainValue;
 
 class RaltDomain{
 public:
-	static RaltDomain* GetInstance();
-	bool ParseDomainConf();
-	int GetMemberNum();
-	map<string, DomainValue>& GetAllDomain();
-	void UpdateDomain(const map<string, DomainValue>* domainMap);
-	void GetDomain(const string &strDomain, const string &strTransDomain,
-		map<string, DomainValue> &domainMap);
-	void AddDomain(const DomainValue *domain);
-	void DelDomain(string strDomain);
+    static RaltDomain* GetInstance();
+    bool ParseDomainConf();
+    int GetMemberNum();
+    map<string, DomainValue>& GetAllDomain();
+    void UpdateDomain(const map<string, DomainValue>* domainMap);
+    void GetDomain(const string &strDomain, const string &strTransDomain,
+        map<string, DomainValue> &domainMap);
+    void AddDomain(const DomainValue *domain);
+    void DelDomain(string strDomain);
 
 private:
-	RaltDomain();
-	~RaltDomain();
+    RaltDomain();
+    ~RaltDomain();
 
 private:
-	int m_nMemberNum;
-	map<string, DomainValue> m_DomainMap;
+    int m_nMemberNum;
+    map<string, DomainValue> m_DomainMap;
 };
 
 #endif

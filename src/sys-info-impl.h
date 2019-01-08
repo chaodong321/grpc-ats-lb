@@ -54,43 +54,43 @@ using namespace std;
 class SysInfoImpl final : public SysInfo::Service {
 public:
 
-	Status getNameAndIpInfo (ServerContext* context, const GetNameAndIpInfoReq* request,
+    Status getNameAndIpInfo (ServerContext* context, const GetNameAndIpInfoReq* request,
                   GetNameAndIpInfoRsp* reply) override;
 
-	Status getDeviceInfo (ServerContext* context, const GetDeviceInfoReq* request,
+    Status getDeviceInfo (ServerContext* context, const GetDeviceInfoReq* request,
                   GetDeviceInfoRsp* reply) override;
 
-	Status getDeviceDetail (ServerContext* context, const GetDeviceDetailReq* request,
+    Status getDeviceDetail (ServerContext* context, const GetDeviceDetailReq* request,
                   GetDeviceDetailRsp* reply) override;
-	
-	Status getCpuUsage (ServerContext* context, const GetCpuUsageReq* request,
+    
+    Status getCpuUsage (ServerContext* context, const GetCpuUsageReq* request,
                   GetCpuUsageRsp* reply) override;
-	
-	Status getCpuTemp (ServerContext* context, const GetCpuTempReq* request,
+    
+    Status getCpuTemp (ServerContext* context, const GetCpuTempReq* request,
                   GetCpuTempRsp* reply) override;
-	
-	Status getMemUsage (ServerContext* context, const GetMemUsageReq* request,
+    
+    Status getMemUsage (ServerContext* context, const GetMemUsageReq* request,
                   GetMemUsageRsp* reply) override;
-	
-	Status getNicInfo (ServerContext* context, const GetNicInfoReq* request,
+    
+    Status getNicInfo (ServerContext* context, const GetNicInfoReq* request,
                   GetNicInfoRsp* reply) override;
 
-	Status getHostName (ServerContext* context, const GetHostNameReq* request,
+    Status getHostName (ServerContext* context, const GetHostNameReq* request,
                   GetHostNameRsp* reply) override;
 
-	Status getIpInfo (ServerContext* context, const GetIpInfoReq* request,
+    Status getIpInfo (ServerContext* context, const GetIpInfoReq* request,
                   GetIpInfoRsp* reply) override;
-	
-	Status getCpuModel (ServerContext* context, const GetCpuModelReq* request,
+    
+    Status getCpuModel (ServerContext* context, const GetCpuModelReq* request,
                   GetCpuModelRsp* reply) override;
-	
-	Status getCpuCores (ServerContext* context, const GetCpuCoresReq* request,
+    
+    Status getCpuCores (ServerContext* context, const GetCpuCoresReq* request,
                   GetCpuCoresRsp* reply) override;
-	
-	Status getMemTotal (ServerContext* context, const GetMemTotalReq* request,
+    
+    Status getMemTotal (ServerContext* context, const GetMemTotalReq* request,
                   GetMemTotalRsp* reply) override;
-	
-	Status getEthCtrlInfo (ServerContext* context, const GetEthCtrlInfoReq* request,
+    
+    Status getEthCtrlInfo (ServerContext* context, const GetEthCtrlInfoReq* request,
                   GetEthCtrlInfoRsp* reply) override;
 
 };

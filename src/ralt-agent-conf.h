@@ -7,27 +7,27 @@
 using namespace std;
 
 typedef struct RaltServer_{
-	string strIpAddr;
-	unsigned int nPort;
+    string strIpAddr;
+    unsigned int nPort;
 }RaltServer;
 
 class RaltAgentConf
 {
 public:
-	static RaltAgentConf& GetInstance();
-	bool LoadConf(string strConfPath);
-	string GetIpAddr();
-	unsigned int GetPort();
-	vector<RaltServer>& GetServer();
+    static RaltAgentConf& GetInstance();
+    bool LoadConf(string strConfPath);
+    string GetIpAddr();
+    unsigned int GetPort();
+    vector<RaltServer>& GetServer();
 
 private:
-	string strIpAddr;
-	unsigned int nPort;
-	vector<RaltServer> vRaltServer;
+    string strIpAddr;
+    unsigned int nPort;
+    vector<RaltServer> vRaltServer;
 
 private:
-	RaltAgentConf();
-	~RaltAgentConf();
+    RaltAgentConf();
+    ~RaltAgentConf();
 };
 
 #endif

@@ -20,7 +20,7 @@
  */
 int PidfileCreate(const char *pidfile)
 {
-	int pidfd = 0;
+    int pidfd = 0;
     char val[16];
 
     size_t len = snprintf(val, sizeof(val), "%u\n", (uintmax_t)getpid());

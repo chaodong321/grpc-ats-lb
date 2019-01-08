@@ -6,14 +6,14 @@
 class UtilCommon
 {
 public:
-	static char *SkipSpaceLeft(char *str_in);
-	static const char* ToNextChar(const char *begin, const char *end, const char *chars, int nchar);
-	static const char* ToNextNotChar(const char *begin, const char *end, const char *chars, int nchar);
-	static bool ShellCmd(std::string &strCmd,std::string &strRet);
-	static bool GetLine(std::string&strValue, std::string&strLine);
-	static std::string &Trim(std::string &s);
-	static bool IsIp(const char *ip);
-	static bool IsIp6(const char *ip6);
+    static char *SkipSpaceLeft(char *str_in);
+    static const char* ToNextChar(const char *begin, const char *end, const char *chars, int nchar);
+    static const char* ToNextNotChar(const char *begin, const char *end, const char *chars, int nchar);
+    static bool ShellCmd(std::string &strCmd,std::string &strRet);
+    static bool GetLine(std::string&strValue, std::string&strLine);
+    static std::string &Trim(std::string &s);
+    static bool IsIp(const char *ip);
+    static bool IsIp6(const char *ip6);
 };
 
 #endif

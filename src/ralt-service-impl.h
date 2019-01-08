@@ -73,67 +73,67 @@ using raltservice::ExecCmdRsp;
 using namespace std;
 
 class RaltServiceImpl final : public RaltService::Service {
-public:	
-	bool TrafficControlConfigGet(string strConfig, string &strConfigValue);
-	bool TrafficControlConfigSet(string strConfig, string strConfigValue);
-	bool TrafficControlMetricGet(string strConfig, string &strMetricValue);
-	
-	//stats
-	Status getRaltStats (ServerContext* context, const GetRaltStatsReq* request,
-		GetRaltStatsRsp* reply) override;
-	
-	Status getStatsField (ServerContext* context, const GetStatsFieldReq* request,
-		GetStatsFieldRsp* reply) override;
+public: 
+    bool TrafficControlConfigGet(string strConfig, string &strConfigValue);
+    bool TrafficControlConfigSet(string strConfig, string strConfigValue);
+    bool TrafficControlMetricGet(string strConfig, string &strMetricValue);
+    
+    //stats
+    Status getRaltStats (ServerContext* context, const GetRaltStatsReq* request,
+        GetRaltStatsRsp* reply) override;
+    
+    Status getStatsField (ServerContext* context, const GetStatsFieldReq* request,
+        GetStatsFieldRsp* reply) override;
 
-	Status getHomePageData (ServerContext* context, const HomePageReq* request,
-		HomePageRsp* reply) override;
+    Status getHomePageData (ServerContext* context, const HomePageReq* request,
+        HomePageRsp* reply) override;
 
-	Status showCacheData(ServerContext* context, const CacheLookUpReq* request,
-		CacheResult* reply) override;
+    Status showCacheData(ServerContext* context, const CacheLookUpReq* request,
+        CacheResult* reply) override;
 
-	Status showFlowStatData(ServerContext* context, const FlowStatLookUpReq* request,
-		FlowResult* reply) override;
+    Status showFlowStatData(ServerContext* context, const FlowStatLookUpReq* request,
+        FlowResult* reply) override;
 
-	Status showLogInfoData(ServerContext* context, const LogInfoLookUpReq* request,
-		LogResult* reply) override;
-	
-	Status getRaltLogs(ServerContext* context, const GetRaltLogsReq* request,
-		ServerWriter<RaltLogs>* reply) override;
+    Status showLogInfoData(ServerContext* context, const LogInfoLookUpReq* request,
+        LogResult* reply) override;
+    
+    Status getRaltLogs(ServerContext* context, const GetRaltLogsReq* request,
+        ServerWriter<RaltLogs>* reply) override;
 
-	//configure
-	Status getBasicConfig(ServerContext* context, const GetBasicConfigReq* request,
-		GetBasicConfigRsp* reply) override;
+    //configure
+    Status getBasicConfig(ServerContext* context, const GetBasicConfigReq* request,
+        GetBasicConfigRsp* reply) override;
 
-	Status setBasicConfig(ServerContext* context, const SetBasicConfigReq* request,
-		SetBasicConfigRsp* reply) override;
+    Status setBasicConfig(ServerContext* context, const SetBasicConfigReq* request,
+        SetBasicConfigRsp* reply) override;
 
-	Status getAllDomain(ServerContext* context, const GetAllDomainReq* request,
-		GetAllDomainRsp* reply) override;
+    Status getAllDomain(ServerContext* context, const GetAllDomainReq* request,
+        GetAllDomainRsp* reply) override;
 
-	Status updateDomain(ServerContext* context, const UpdateDomainReq* request,
-		UpdateDomainRsp* reply) override;
+    Status updateDomain(ServerContext* context, const UpdateDomainReq* request,
+        UpdateDomainRsp* reply) override;
 
-	Status getDomain(ServerContext* context, const GetDomainReq* request,
-		GetDomainRsp* reply) override;
+    Status getDomain(ServerContext* context, const GetDomainReq* request,
+        GetDomainRsp* reply) override;
 
-	Status addDomain(ServerContext* context, const AddDomainReq* request,
-		AddDomainRsp* reply) override;
+    Status addDomain(ServerContext* context, const AddDomainReq* request,
+        AddDomainRsp* reply) override;
 
-	Status deleteDomain(ServerContext* context, const DeleteDomainReq* request,
-		DeleteDomainRsp* reply) override;
+    Status deleteDomain(ServerContext* context, const DeleteDomainReq* request,
+        DeleteDomainRsp* reply) override;
 
-	Status getMisc(ServerContext* context, const GetMiscReq* request,
-		GetMiscRsp* reply) override;
+    Status getMisc(ServerContext* context, const GetMiscReq* request,
+        GetMiscRsp* reply) override;
 
-	Status modMisc(ServerContext* context, const ModMiscOpReq* request,
-		ModMiscOpRsp* reply) override;
+    Status modMisc(ServerContext* context, const ModMiscOpReq* request,
+        ModMiscOpRsp* reply) override;
 
-	//command
-	Status getRaltStatus(ServerContext* context, const RaltStatusReq* request,
-		ServerWriter<RaltStatus>* reply) override;
+    //command
+    Status getRaltStatus(ServerContext* context, const RaltStatusReq* request,
+        ServerWriter<RaltStatus>* reply) override;
 
-	Status execCmd(ServerContext* context, const ExecCmdReq* request,
-		ExecCmdRsp* reply) override;
+    Status execCmd(ServerContext* context, const ExecCmdReq* request,
+        ExecCmdRsp* reply) override;
 
 };
 

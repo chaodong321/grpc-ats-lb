@@ -32,16 +32,16 @@ int MayDaemonize()
 
 void RunServer() {
 
-	string strAgent = RaltAgentConf::GetInstance().GetIpAddr() + ":"
-		+ to_string(RaltAgentConf::GetInstance().GetPort());
-	
-	SysAgentImpl sys_agent;
-	RaltAgentImpl ralt_agent;
-	
-	ServerBuilder builder;
-	builder.AddListeningPort(strAgent, grpc::InsecureServerCredentials());
+    string strAgent = RaltAgentConf::GetInstance().GetIpAddr() + ":"
+        + to_string(RaltAgentConf::GetInstance().GetPort());
+    
+    SysAgentImpl sys_agent;
+    RaltAgentImpl ralt_agent;
+    
+    ServerBuilder builder;
+    builder.AddListeningPort(strAgent, grpc::InsecureServerCredentials());
     builder.RegisterService(&sys_agent);
-	builder.RegisterService(&ralt_agent);
+    builder.RegisterService(&ralt_agent);
     unique_ptr<Server> server(builder.BuildAndStart());
 
     LOG_INFO("ralt agent listening on: %s", strAgent.c_str());
@@ -57,9 +57,9 @@ int main(int argc, char *argv[])
 
     LOG_INIT(LOG_FILE_NAME, LOG_BUF_SIZE, LOG_SPLIT_SIZE, LOG_MAX_QUEUE_SIZE);
 
-	if(!RaltAgentConf::GetInstance().LoadConf(RALT_AGENT_CONF_PATH)){
-		return 0;
-	}
+    if(!RaltAgentConf::GetInstance().LoadConf(RALT_AGENT_CONF_PATH)){
+        return 0;
+    }
 
     RunServer();
 
