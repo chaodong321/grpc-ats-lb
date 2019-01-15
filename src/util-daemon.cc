@@ -90,8 +90,6 @@ void Daemonize (void)
         //printf(SC_ERR_DAEMON, "Error forking the process");
         exit(0);
     } else if (pid == 0) {
-        /* Child continues here */
-        char *daemondir;
 
         umask(022);
 

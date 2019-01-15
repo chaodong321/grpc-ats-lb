@@ -59,8 +59,8 @@ bool RaltAgentConf::LoadConf(string strConfPath)
         unsigned int size = json_array_size(j_servers);
         LOG_INFO("server number: %u", size);
 
-        int index = 0;
-        for(index = 0;index < size;index++){
+        unsigned int index = 0;
+        for(index = 0; index < size; index++){
             RaltServer server;
             json_t *j_server = json_array_get(j_servers,index);
             if(NULL == j_server)

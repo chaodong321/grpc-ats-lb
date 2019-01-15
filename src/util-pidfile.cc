@@ -23,7 +23,7 @@ int PidfileCreate(const char *pidfile)
     int pidfd = 0;
     char val[16];
 
-    size_t len = snprintf(val, sizeof(val), "%u\n", (uintmax_t)getpid());
+    size_t len = snprintf(val, sizeof(val), "%lu\n", (uintmax_t)getpid());
     if (len <= 0) {
         printf("Pid error (%s)\n", strerror(errno));
         return(-1);
@@ -44,7 +44,7 @@ int PidfileCreate(const char *pidfile)
         return(-1);
     } else if ((size_t)r != len) {
         printf("unable to write pidfile: wrote"
-                " %u of %u bytes.\n", (intmax_t)r, (uintmax_t)len);
+                " %lu of %lu bytes.\n", (intmax_t)r, (uintmax_t)len);
         close(pidfd);
         return(-1);
     }

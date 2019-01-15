@@ -44,29 +44,29 @@ bool Log::init(const char* file_name, int log_buf_size, int split_lines, int max
  
     m_log_buf_size = log_buf_size;
     m_buf = new char[m_log_buf_size];
-    memset(m_buf, '\0', sizeof(m_buf));
+    memset(m_buf, '\0', sizeof(*m_buf));
     m_split_lines = split_lines;
  
     time_t t = time(NULL);
     struct tm* sys_tm = localtime(&t);
     struct tm my_tm = *sys_tm;
     const char *p = strrchr(file_name, '/');
-    char log_full_name[256] = {0};
+    char log_full_name[sizeof(dir_name)+sizeof(log_name)+32] = {0};
     if(p == NULL)
     {
-        snprintf(log_full_name, 255, "%d_%02d_%02d_%s",my_tm.tm_year+1900, my_tm.tm_mon+1, my_tm.tm_mday, file_name);   
+        snprintf(log_full_name, sizeof(log_full_name)-1, "%d_%02d_%02d_%s",my_tm.tm_year+1900, my_tm.tm_mon+1, my_tm.tm_mday, file_name);   
     }
     else
     {
         strncpy(log_name, p+1, sizeof(log_name)-1);
         strncpy(dir_name, file_name, p - file_name + 1);
-        char create_dir_cmd[256] = {0};
+        char create_dir_cmd[sizeof(dir_name)+16] = {0};
         snprintf(create_dir_cmd, sizeof(create_dir_cmd), "mkdir -p %s", dir_name);
         if(system(create_dir_cmd) == -1){
             perror("mkdir");
             exit(-1);
         }
-        snprintf(log_full_name, 255, "%s%d_%02d_%02d_%s",dir_name, my_tm.tm_year+1900, my_tm.tm_mon+1, my_tm.tm_mday, log_name ); 
+        snprintf(log_full_name, sizeof(log_full_name)-1, "%s%d_%02d_%02d_%s",dir_name, my_tm.tm_year+1900, my_tm.tm_mon+1, my_tm.tm_mday, log_name ); 
     }
  
     m_today = my_tm.tm_mday;
@@ -102,20 +102,20 @@ void Log::write_log(int level, const char* file, const char* func, int line, con
     m_count++;
     if(m_today != my_tm.tm_mday || m_count % m_split_lines == 0) //everyday log
     {
-        char new_log[256] = {0};
+        char new_log[sizeof(dir_name)+sizeof(log_name)+32] = {0};
         fflush(m_fp);
         fclose(m_fp);
         char tail[16] = {0};
         snprintf(tail, 16,  "%d_%02d_%02d_", my_tm.tm_year+1900, my_tm.tm_mon+1, my_tm.tm_mday);
         if(m_today != my_tm.tm_mday)
         {
-            snprintf(new_log, 255, "%s%s%s", dir_name, tail, log_name);
+            snprintf(new_log, sizeof(new_log)-1, "%s%s%s", dir_name, tail, log_name);
             m_today = my_tm.tm_mday;
             m_count = 0;
         }
         else
         {
-            snprintf(new_log, 255, "%s%s%s.%d", dir_name, tail, log_name, m_count/m_split_lines);
+            snprintf(new_log, sizeof(new_log)-1, "%s%s%s.%lld", dir_name, tail, log_name, m_count/m_split_lines);
         }
         m_fp = fopen(new_log, "a");
     }
@@ -126,7 +126,7 @@ void Log::write_log(int level, const char* file, const char* func, int line, con
     
     string log_str;
     pthread_mutex_lock(m_mutex);
-    int n = snprintf(m_buf, 512, "%d-%02d-%02d %02d:%02d:%02d.%06d [%s@%s:%d] %s ",
+    int n = snprintf(m_buf, 512, "%d-%02d-%02d %02d:%02d:%02d.%06ld [%s@%s:%d] %s ",
             my_tm.tm_year+1900, my_tm.tm_mon+1, my_tm.tm_mday,
             my_tm.tm_hour, my_tm.tm_min, my_tm.tm_sec, now.tv_usec, 
             func, file, line, s);

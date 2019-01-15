@@ -1,7 +1,7 @@
 .PHONY: all clean
 
 CC = g++
-CXXFLAGS := -g -std=c++11
+CXXFLAGS := -g -Wall -std=c++11
 LDFLAGS := -L. 
 LIBS := -lgrpc++ -lgrpc++_reflection -lprotobuf -ljansson -lpthread
 

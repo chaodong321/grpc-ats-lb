@@ -26,6 +26,7 @@ class Log
         {
             prctl(PR_SET_NAME, FLUSH_LOG_THREAD_NAME);
             Log::get_instance()->async_write_log();
+			return NULL;
         }
  
         bool init(const char* file_name, int log_buf_size = 8192, int split_lines = 5000000, int max_queue_size = 0);
@@ -37,7 +38,7 @@ class Log
     private:
         Log();
         virtual ~Log();
-        void *async_write_log()
+        void async_write_log()
         {
             string single_log;
             while(m_log_queue->pop(single_log))
