@@ -96,14 +96,14 @@ bool UtilCommon::GetLine(std::string&strValue, std::string&strLine)
 std::string &UtilCommon::Trim(std::string &s)
 {
     int i=0;
-    while((s[i]==' ') || (s[i]=='	') || (s[i]=='\n') || (s[i]=='\r'))
+    while((s[i]==' ') || (s[i]=='\t') || (s[i]=='\n') || (s[i]=='\r'))
     {
         i++;
     }
     s=s.substr(i);
     
     i=s.size()-1;    
-    while((s[i]==' ') || (s[i]=='	') || (s[i]=='\n') || (s[i]=='\r'))
+    while((s[i]==' ') || (s[i]=='\t') || (s[i]=='\n') || (s[i]=='\r'))
     {
         i--;
     }

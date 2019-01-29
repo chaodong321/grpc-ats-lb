@@ -35,6 +35,10 @@ static const char* RaltService_method_names[] = {
   "/raltservice.RaltService/deleteDomain",
   "/raltservice.RaltService/getMisc",
   "/raltservice.RaltService/modMisc",
+  "/raltservice.RaltService/getRule",
+  "/raltservice.RaltService/updateRule",
+  "/raltservice.RaltService/getCacheUrl",
+  "/raltservice.RaltService/isUrlInCache",
   "/raltservice.RaltService/getRaltStatus",
   "/raltservice.RaltService/execCmd",
 };
@@ -62,8 +66,12 @@ RaltService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_deleteDomain_(RaltService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_getMisc_(RaltService_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_modMisc_(RaltService_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getRaltStatus_(RaltService_method_names[16], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_execCmd_(RaltService_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getRule_(RaltService_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_updateRule_(RaltService_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getCacheUrl_(RaltService_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_isUrlInCache_(RaltService_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getRaltStatus_(RaltService_method_names[20], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_execCmd_(RaltService_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status RaltService::Stub::getRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::raltservice::GetRaltStatsRsp* response) {
@@ -318,6 +326,70 @@ void RaltService::Stub::experimental_async::modMisc(::grpc::ClientContext* conte
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::ModMiscOpRsp>::Create(channel_.get(), cq, rpcmethod_modMisc_, context, request, false);
 }
 
+::grpc::Status RaltService::Stub::getRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::raltservice::GetRuleRsp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getRule_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::getRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getRule_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::GetRuleRsp>* RaltService::Stub::AsyncgetRuleRaw(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetRuleRsp>::Create(channel_.get(), cq, rpcmethod_getRule_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::GetRuleRsp>* RaltService::Stub::PrepareAsyncgetRuleRaw(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetRuleRsp>::Create(channel_.get(), cq, rpcmethod_getRule_, context, request, false);
+}
+
+::grpc::Status RaltService::Stub::updateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::raltservice::UpdateRuleRsp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_updateRule_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::updateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_updateRule_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::UpdateRuleRsp>* RaltService::Stub::AsyncupdateRuleRaw(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::UpdateRuleRsp>::Create(channel_.get(), cq, rpcmethod_updateRule_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::UpdateRuleRsp>* RaltService::Stub::PrepareAsyncupdateRuleRaw(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::UpdateRuleRsp>::Create(channel_.get(), cq, rpcmethod_updateRule_, context, request, false);
+}
+
+::grpc::Status RaltService::Stub::getCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::raltservice::GetCacheUrlRsp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getCacheUrl_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::getCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getCacheUrl_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::GetCacheUrlRsp>* RaltService::Stub::AsyncgetCacheUrlRaw(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetCacheUrlRsp>::Create(channel_.get(), cq, rpcmethod_getCacheUrl_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::GetCacheUrlRsp>* RaltService::Stub::PrepareAsyncgetCacheUrlRaw(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::GetCacheUrlRsp>::Create(channel_.get(), cq, rpcmethod_getCacheUrl_, context, request, false);
+}
+
+::grpc::Status RaltService::Stub::isUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::raltservice::IsUrlInCacheRsp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_isUrlInCache_, context, request, response);
+}
+
+void RaltService::Stub::experimental_async::isUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_isUrlInCache_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::IsUrlInCacheRsp>* RaltService::Stub::AsyncisUrlInCacheRaw(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::IsUrlInCacheRsp>::Create(channel_.get(), cq, rpcmethod_isUrlInCache_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::raltservice::IsUrlInCacheRsp>* RaltService::Stub::PrepareAsyncisUrlInCacheRaw(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::raltservice::IsUrlInCacheRsp>::Create(channel_.get(), cq, rpcmethod_isUrlInCache_, context, request, false);
+}
+
 ::grpc::ClientReader< ::raltservice::RaltStatus>* RaltService::Stub::getRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request) {
   return ::grpc::internal::ClientReaderFactory< ::raltservice::RaltStatus>::Create(channel_.get(), rpcmethod_getRaltStatus_, context, request);
 }
@@ -429,11 +501,31 @@ RaltService::Service::Service() {
           std::mem_fn(&RaltService::Service::modMisc), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RaltService_method_names[16],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetRuleReq, ::raltservice::GetRuleRsp>(
+          std::mem_fn(&RaltService::Service::getRule), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RaltService_method_names[17],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::UpdateRuleReq, ::raltservice::UpdateRuleRsp>(
+          std::mem_fn(&RaltService::Service::updateRule), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RaltService_method_names[18],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::GetCacheUrlReq, ::raltservice::GetCacheUrlRsp>(
+          std::mem_fn(&RaltService::Service::getCacheUrl), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RaltService_method_names[19],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::IsUrlInCacheReq, ::raltservice::IsUrlInCacheRsp>(
+          std::mem_fn(&RaltService::Service::isUrlInCache), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RaltService_method_names[20],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< RaltService::Service, ::raltservice::RaltStatusReq, ::raltservice::RaltStatus>(
           std::mem_fn(&RaltService::Service::getRaltStatus), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RaltService_method_names[17],
+      RaltService_method_names[21],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RaltService::Service, ::raltservice::ExecCmdReq, ::raltservice::ExecCmdRsp>(
           std::mem_fn(&RaltService::Service::execCmd), this)));
@@ -548,6 +640,34 @@ RaltService::Service::~Service() {
 }
 
 ::grpc::Status RaltService::Service::modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RaltService::Service::getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RaltService::Service::updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RaltService::Service::getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RaltService::Service::isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response) {
   (void) context;
   (void) request;
   (void) response;

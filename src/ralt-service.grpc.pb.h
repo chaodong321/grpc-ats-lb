@@ -36,7 +36,7 @@ class RaltService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // ats stats
+    // statistics
     virtual ::grpc::Status getRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::raltservice::GetRaltStatsRsp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRaltStatsRsp>> AsyncgetRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRaltStatsRsp>>(AsyncgetRaltStatsRaw(context, request, cq));
@@ -58,6 +58,7 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::HomePageRsp>> PrepareAsyncgetHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::HomePageRsp>>(PrepareAsyncgetHomePageDataRaw(context, request, cq));
     }
+    // cache
     virtual ::grpc::Status showCacheData(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq& request, ::raltservice::CacheResult* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::CacheResult>> AsyncshowCacheData(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::CacheResult>>(AsyncshowCacheDataRaw(context, request, cq));
@@ -65,7 +66,7 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::CacheResult>> PrepareAsyncshowCacheData(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::CacheResult>>(PrepareAsyncshowCacheDataRaw(context, request, cq));
     }
-    // flow related
+    // flow
     virtual ::grpc::Status showFlowStatData(::grpc::ClientContext* context, const ::raltservice::FlowStatLookUpReq& request, ::raltservice::FlowResult* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::FlowResult>> AsyncshowFlowStatData(::grpc::ClientContext* context, const ::raltservice::FlowStatLookUpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::FlowResult>>(AsyncshowFlowStatDataRaw(context, request, cq));
@@ -73,7 +74,7 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::FlowResult>> PrepareAsyncshowFlowStatData(::grpc::ClientContext* context, const ::raltservice::FlowStatLookUpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::FlowResult>>(PrepareAsyncshowFlowStatDataRaw(context, request, cq));
     }
-    // logs related
+    // logs
     virtual ::grpc::Status showLogInfoData(::grpc::ClientContext* context, const ::raltservice::LogInfoLookUpReq& request, ::raltservice::LogResult* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::LogResult>> AsyncshowLogInfoData(::grpc::ClientContext* context, const ::raltservice::LogInfoLookUpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::LogResult>>(AsyncshowLogInfoDataRaw(context, request, cq));
@@ -90,7 +91,7 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::raltservice::RaltLogs>> PrepareAsyncgetRaltLogs(::grpc::ClientContext* context, const ::raltservice::GetRaltLogsReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::raltservice::RaltLogs>>(PrepareAsyncgetRaltLogsRaw(context, request, cq));
     }
-    // configure
+    // configuration
     // basic config, main for record.config
     virtual ::grpc::Status getBasicConfig(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq& request, ::raltservice::GetBasicConfigRsp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetBasicConfigRsp>> AsyncgetBasicConfig(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq& request, ::grpc::CompletionQueue* cq) {
@@ -157,7 +158,37 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>> PrepareAsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>>(PrepareAsyncmodMiscRaw(context, request, cq));
     }
-    // ralt status: 
+    // ralt.rule.conf
+    virtual ::grpc::Status getRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::raltservice::GetRuleRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRuleRsp>> AsyncgetRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRuleRsp>>(AsyncgetRuleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRuleRsp>> PrepareAsyncgetRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRuleRsp>>(PrepareAsyncgetRuleRaw(context, request, cq));
+    }
+    virtual ::grpc::Status updateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::raltservice::UpdateRuleRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateRuleRsp>> AsyncupdateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateRuleRsp>>(AsyncupdateRuleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateRuleRsp>> PrepareAsyncupdateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateRuleRsp>>(PrepareAsyncupdateRuleRaw(context, request, cq));
+    }
+    // cache operate
+    virtual ::grpc::Status getCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::raltservice::GetCacheUrlRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetCacheUrlRsp>> AsyncgetCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetCacheUrlRsp>>(AsyncgetCacheUrlRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetCacheUrlRsp>> PrepareAsyncgetCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetCacheUrlRsp>>(PrepareAsyncgetCacheUrlRaw(context, request, cq));
+    }
+    virtual ::grpc::Status isUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::raltservice::IsUrlInCacheRsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::IsUrlInCacheRsp>> AsyncisUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::IsUrlInCacheRsp>>(AsyncisUrlInCacheRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::IsUrlInCacheRsp>> PrepareAsyncisUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::IsUrlInCacheRsp>>(PrepareAsyncisUrlInCacheRaw(context, request, cq));
+    }
+    // command
     std::unique_ptr< ::grpc::ClientReaderInterface< ::raltservice::RaltStatus>> getRaltStatus(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::raltservice::RaltStatus>>(getRaltStatusRaw(context, request));
     }
@@ -178,16 +209,17 @@ class RaltService final {
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
-      // ats stats
+      // statistics
       virtual void getRaltStats(::grpc::ClientContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void getStatsField(::grpc::ClientContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void getHomePageData(::grpc::ClientContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response, std::function<void(::grpc::Status)>) = 0;
+      // cache
       virtual void showCacheData(::grpc::ClientContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response, std::function<void(::grpc::Status)>) = 0;
-      // flow related
+      // flow
       virtual void showFlowStatData(::grpc::ClientContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response, std::function<void(::grpc::Status)>) = 0;
-      // logs related
+      // logs
       virtual void showLogInfoData(::grpc::ClientContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response, std::function<void(::grpc::Status)>) = 0;
-      // configure
+      // configuration
       // basic config, main for record.config
       virtual void getBasicConfig(::grpc::ClientContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void setBasicConfig(::grpc::ClientContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response, std::function<void(::grpc::Status)>) = 0;
@@ -200,7 +232,13 @@ class RaltService final {
       // ralt.miscellaneous.conf
       virtual void getMisc(::grpc::ClientContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void modMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response, std::function<void(::grpc::Status)>) = 0;
-      // ralt status: 
+      // ralt.rule.conf
+      virtual void getRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void updateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response, std::function<void(::grpc::Status)>) = 0;
+      // cache operate
+      virtual void getCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void isUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response, std::function<void(::grpc::Status)>) = 0;
+      // command
       // exec cmd
       virtual void execCmd(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response, std::function<void(::grpc::Status)>) = 0;
     };
@@ -239,6 +277,14 @@ class RaltService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetMiscRsp>* PrepareAsyncgetMiscRaw(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>* AsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::ModMiscOpRsp>* PrepareAsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRuleRsp>* AsyncgetRuleRaw(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetRuleRsp>* PrepareAsyncgetRuleRaw(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateRuleRsp>* AsyncupdateRuleRaw(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::UpdateRuleRsp>* PrepareAsyncupdateRuleRaw(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetCacheUrlRsp>* AsyncgetCacheUrlRaw(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::GetCacheUrlRsp>* PrepareAsyncgetCacheUrlRaw(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::IsUrlInCacheRsp>* AsyncisUrlInCacheRaw(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::raltservice::IsUrlInCacheRsp>* PrepareAsyncisUrlInCacheRaw(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientReaderInterface< ::raltservice::RaltStatus>* getRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::raltservice::RaltStatus>* AsyncgetRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::raltservice::RaltStatus>* PrepareAsyncgetRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -362,6 +408,34 @@ class RaltService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>> PrepareAsyncmodMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>>(PrepareAsyncmodMiscRaw(context, request, cq));
     }
+    ::grpc::Status getRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::raltservice::GetRuleRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetRuleRsp>> AsyncgetRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetRuleRsp>>(AsyncgetRuleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetRuleRsp>> PrepareAsyncgetRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetRuleRsp>>(PrepareAsyncgetRuleRaw(context, request, cq));
+    }
+    ::grpc::Status updateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::raltservice::UpdateRuleRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateRuleRsp>> AsyncupdateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateRuleRsp>>(AsyncupdateRuleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateRuleRsp>> PrepareAsyncupdateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateRuleRsp>>(PrepareAsyncupdateRuleRaw(context, request, cq));
+    }
+    ::grpc::Status getCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::raltservice::GetCacheUrlRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetCacheUrlRsp>> AsyncgetCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetCacheUrlRsp>>(AsyncgetCacheUrlRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetCacheUrlRsp>> PrepareAsyncgetCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::GetCacheUrlRsp>>(PrepareAsyncgetCacheUrlRaw(context, request, cq));
+    }
+    ::grpc::Status isUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::raltservice::IsUrlInCacheRsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::IsUrlInCacheRsp>> AsyncisUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::IsUrlInCacheRsp>>(AsyncisUrlInCacheRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::IsUrlInCacheRsp>> PrepareAsyncisUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::raltservice::IsUrlInCacheRsp>>(PrepareAsyncisUrlInCacheRaw(context, request, cq));
+    }
     std::unique_ptr< ::grpc::ClientReader< ::raltservice::RaltStatus>> getRaltStatus(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request) {
       return std::unique_ptr< ::grpc::ClientReader< ::raltservice::RaltStatus>>(getRaltStatusRaw(context, request));
     }
@@ -396,6 +470,10 @@ class RaltService final {
       void deleteDomain(::grpc::ClientContext* context, const ::raltservice::DeleteDomainReq* request, ::raltservice::DeleteDomainRsp* response, std::function<void(::grpc::Status)>) override;
       void getMisc(::grpc::ClientContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response, std::function<void(::grpc::Status)>) override;
       void modMisc(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response, std::function<void(::grpc::Status)>) override;
+      void getRule(::grpc::ClientContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response, std::function<void(::grpc::Status)>) override;
+      void updateRule(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response, std::function<void(::grpc::Status)>) override;
+      void getCacheUrl(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response, std::function<void(::grpc::Status)>) override;
+      void isUrlInCache(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response, std::function<void(::grpc::Status)>) override;
       void execCmd(::grpc::ClientContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response, std::function<void(::grpc::Status)>) override;
      private:
       friend class Stub;
@@ -441,6 +519,14 @@ class RaltService final {
     ::grpc::ClientAsyncResponseReader< ::raltservice::GetMiscRsp>* PrepareAsyncgetMiscRaw(::grpc::ClientContext* context, const ::raltservice::GetMiscReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>* AsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::raltservice::ModMiscOpRsp>* PrepareAsyncmodMiscRaw(::grpc::ClientContext* context, const ::raltservice::ModMiscOpReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::GetRuleRsp>* AsyncgetRuleRaw(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::GetRuleRsp>* PrepareAsyncgetRuleRaw(::grpc::ClientContext* context, const ::raltservice::GetRuleReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateRuleRsp>* AsyncupdateRuleRaw(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::UpdateRuleRsp>* PrepareAsyncupdateRuleRaw(::grpc::ClientContext* context, const ::raltservice::UpdateRuleReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::GetCacheUrlRsp>* AsyncgetCacheUrlRaw(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::GetCacheUrlRsp>* PrepareAsyncgetCacheUrlRaw(::grpc::ClientContext* context, const ::raltservice::GetCacheUrlReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::IsUrlInCacheRsp>* AsyncisUrlInCacheRaw(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::raltservice::IsUrlInCacheRsp>* PrepareAsyncisUrlInCacheRaw(::grpc::ClientContext* context, const ::raltservice::IsUrlInCacheReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientReader< ::raltservice::RaltStatus>* getRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request) override;
     ::grpc::ClientAsyncReader< ::raltservice::RaltStatus>* AsyncgetRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::raltservice::RaltStatus>* PrepareAsyncgetRaltStatusRaw(::grpc::ClientContext* context, const ::raltservice::RaltStatusReq& request, ::grpc::CompletionQueue* cq) override;
@@ -462,6 +548,10 @@ class RaltService final {
     const ::grpc::internal::RpcMethod rpcmethod_deleteDomain_;
     const ::grpc::internal::RpcMethod rpcmethod_getMisc_;
     const ::grpc::internal::RpcMethod rpcmethod_modMisc_;
+    const ::grpc::internal::RpcMethod rpcmethod_getRule_;
+    const ::grpc::internal::RpcMethod rpcmethod_updateRule_;
+    const ::grpc::internal::RpcMethod rpcmethod_getCacheUrl_;
+    const ::grpc::internal::RpcMethod rpcmethod_isUrlInCache_;
     const ::grpc::internal::RpcMethod rpcmethod_getRaltStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_execCmd_;
   };
@@ -471,17 +561,18 @@ class RaltService final {
    public:
     Service();
     virtual ~Service();
-    // ats stats
+    // statistics
     virtual ::grpc::Status getRaltStats(::grpc::ServerContext* context, const ::raltservice::GetRaltStatsReq* request, ::raltservice::GetRaltStatsRsp* response);
     virtual ::grpc::Status getStatsField(::grpc::ServerContext* context, const ::raltservice::GetStatsFieldReq* request, ::raltservice::GetStatsFieldRsp* response);
     virtual ::grpc::Status getHomePageData(::grpc::ServerContext* context, const ::raltservice::HomePageReq* request, ::raltservice::HomePageRsp* response);
+    // cache
     virtual ::grpc::Status showCacheData(::grpc::ServerContext* context, const ::raltservice::CacheLookUpReq* request, ::raltservice::CacheResult* response);
-    // flow related
+    // flow
     virtual ::grpc::Status showFlowStatData(::grpc::ServerContext* context, const ::raltservice::FlowStatLookUpReq* request, ::raltservice::FlowResult* response);
-    // logs related
+    // logs
     virtual ::grpc::Status showLogInfoData(::grpc::ServerContext* context, const ::raltservice::LogInfoLookUpReq* request, ::raltservice::LogResult* response);
     virtual ::grpc::Status getRaltLogs(::grpc::ServerContext* context, const ::raltservice::GetRaltLogsReq* request, ::grpc::ServerWriter< ::raltservice::RaltLogs>* writer);
-    // configure
+    // configuration
     // basic config, main for record.config
     virtual ::grpc::Status getBasicConfig(::grpc::ServerContext* context, const ::raltservice::GetBasicConfigReq* request, ::raltservice::GetBasicConfigRsp* response);
     virtual ::grpc::Status setBasicConfig(::grpc::ServerContext* context, const ::raltservice::SetBasicConfigReq* request, ::raltservice::SetBasicConfigRsp* response);
@@ -494,7 +585,13 @@ class RaltService final {
     // ralt.miscellaneous.conf
     virtual ::grpc::Status getMisc(::grpc::ServerContext* context, const ::raltservice::GetMiscReq* request, ::raltservice::GetMiscRsp* response);
     virtual ::grpc::Status modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response);
-    // ralt status: 
+    // ralt.rule.conf
+    virtual ::grpc::Status getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response);
+    virtual ::grpc::Status updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response);
+    // cache operate
+    virtual ::grpc::Status getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response);
+    virtual ::grpc::Status isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response);
+    // command
     virtual ::grpc::Status getRaltStatus(::grpc::ServerContext* context, const ::raltservice::RaltStatusReq* request, ::grpc::ServerWriter< ::raltservice::RaltStatus>* writer);
     // exec cmd
     virtual ::grpc::Status execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response);
@@ -820,12 +917,92 @@ class RaltService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_getRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_getRule() {
+      ::grpc::Service::MarkMethodAsync(16);
+    }
+    ~WithAsyncMethod_getRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetRule(::grpc::ServerContext* context, ::raltservice::GetRuleReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::GetRuleRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_updateRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_updateRule() {
+      ::grpc::Service::MarkMethodAsync(17);
+    }
+    ~WithAsyncMethod_updateRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestupdateRule(::grpc::ServerContext* context, ::raltservice::UpdateRuleReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::UpdateRuleRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_getCacheUrl : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_getCacheUrl() {
+      ::grpc::Service::MarkMethodAsync(18);
+    }
+    ~WithAsyncMethod_getCacheUrl() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetCacheUrl(::grpc::ServerContext* context, ::raltservice::GetCacheUrlReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::GetCacheUrlRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_isUrlInCache : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_isUrlInCache() {
+      ::grpc::Service::MarkMethodAsync(19);
+    }
+    ~WithAsyncMethod_isUrlInCache() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestisUrlInCache(::grpc::ServerContext* context, ::raltservice::IsUrlInCacheReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::IsUrlInCacheRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_getRaltStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_getRaltStatus() {
-      ::grpc::Service::MarkMethodAsync(16);
+      ::grpc::Service::MarkMethodAsync(20);
     }
     ~WithAsyncMethod_getRaltStatus() override {
       BaseClassMustBeDerivedFromService(this);
@@ -836,7 +1013,7 @@ class RaltService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetRaltStatus(::grpc::ServerContext* context, ::raltservice::RaltStatusReq* request, ::grpc::ServerAsyncWriter< ::raltservice::RaltStatus>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(16, context, request, writer, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncServerStreaming(20, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -845,7 +1022,7 @@ class RaltService final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_execCmd() {
-      ::grpc::Service::MarkMethodAsync(17);
+      ::grpc::Service::MarkMethodAsync(21);
     }
     ~WithAsyncMethod_execCmd() override {
       BaseClassMustBeDerivedFromService(this);
@@ -856,10 +1033,10 @@ class RaltService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestexecCmd(::grpc::ServerContext* context, ::raltservice::ExecCmdReq* request, ::grpc::ServerAsyncResponseWriter< ::raltservice::ExecCmdRsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_getRaltStats<WithAsyncMethod_getStatsField<WithAsyncMethod_getHomePageData<WithAsyncMethod_showCacheData<WithAsyncMethod_showFlowStatData<WithAsyncMethod_showLogInfoData<WithAsyncMethod_getRaltLogs<WithAsyncMethod_getBasicConfig<WithAsyncMethod_setBasicConfig<WithAsyncMethod_getAllDomain<WithAsyncMethod_updateDomain<WithAsyncMethod_getDomain<WithAsyncMethod_addDomain<WithAsyncMethod_deleteDomain<WithAsyncMethod_getMisc<WithAsyncMethod_modMisc<WithAsyncMethod_getRaltStatus<WithAsyncMethod_execCmd<Service > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_getRaltStats<WithAsyncMethod_getStatsField<WithAsyncMethod_getHomePageData<WithAsyncMethod_showCacheData<WithAsyncMethod_showFlowStatData<WithAsyncMethod_showLogInfoData<WithAsyncMethod_getRaltLogs<WithAsyncMethod_getBasicConfig<WithAsyncMethod_setBasicConfig<WithAsyncMethod_getAllDomain<WithAsyncMethod_updateDomain<WithAsyncMethod_getDomain<WithAsyncMethod_addDomain<WithAsyncMethod_deleteDomain<WithAsyncMethod_getMisc<WithAsyncMethod_modMisc<WithAsyncMethod_getRule<WithAsyncMethod_updateRule<WithAsyncMethod_getCacheUrl<WithAsyncMethod_isUrlInCache<WithAsyncMethod_getRaltStatus<WithAsyncMethod_execCmd<Service > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_getRaltStats : public BaseClass {
    private:
@@ -1252,6 +1429,106 @@ class RaltService final {
     virtual void modMisc(::grpc::ServerContext* context, const ::raltservice::ModMiscOpReq* request, ::raltservice::ModMiscOpRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getRule() {
+      ::grpc::Service::experimental().MarkMethodCallback(16,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getRule<BaseClass>, ::raltservice::GetRuleReq, ::raltservice::GetRuleRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::GetRuleReq* request,
+                 ::raltservice::GetRuleRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getRule(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_updateRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_updateRule() {
+      ::grpc::Service::experimental().MarkMethodCallback(17,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_updateRule<BaseClass>, ::raltservice::UpdateRuleReq, ::raltservice::UpdateRuleRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::UpdateRuleReq* request,
+                 ::raltservice::UpdateRuleRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->updateRule(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_updateRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getCacheUrl : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_getCacheUrl() {
+      ::grpc::Service::experimental().MarkMethodCallback(18,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_getCacheUrl<BaseClass>, ::raltservice::GetCacheUrlReq, ::raltservice::GetCacheUrlRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::GetCacheUrlReq* request,
+                 ::raltservice::GetCacheUrlRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCacheUrl(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_getCacheUrl() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_isUrlInCache : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_isUrlInCache() {
+      ::grpc::Service::experimental().MarkMethodCallback(19,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_isUrlInCache<BaseClass>, ::raltservice::IsUrlInCacheReq, ::raltservice::IsUrlInCacheRsp>(
+          [this](::grpc::ServerContext* context,
+                 const ::raltservice::IsUrlInCacheReq* request,
+                 ::raltservice::IsUrlInCacheRsp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->isUrlInCache(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithCallbackMethod_isUrlInCache() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_getRaltStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
@@ -1273,7 +1550,7 @@ class RaltService final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     ExperimentalWithCallbackMethod_execCmd() {
-      ::grpc::Service::experimental().MarkMethodCallback(17,
+      ::grpc::Service::experimental().MarkMethodCallback(21,
         new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithCallbackMethod_execCmd<BaseClass>, ::raltservice::ExecCmdReq, ::raltservice::ExecCmdRsp>(
           [this](::grpc::ServerContext* context,
                  const ::raltservice::ExecCmdReq* request,
@@ -1292,7 +1569,7 @@ class RaltService final {
     }
     virtual void execCmd(::grpc::ServerContext* context, const ::raltservice::ExecCmdReq* request, ::raltservice::ExecCmdRsp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
-  typedef ExperimentalWithCallbackMethod_getRaltStats<ExperimentalWithCallbackMethod_getStatsField<ExperimentalWithCallbackMethod_getHomePageData<ExperimentalWithCallbackMethod_showCacheData<ExperimentalWithCallbackMethod_showFlowStatData<ExperimentalWithCallbackMethod_showLogInfoData<ExperimentalWithCallbackMethod_getRaltLogs<ExperimentalWithCallbackMethod_getBasicConfig<ExperimentalWithCallbackMethod_setBasicConfig<ExperimentalWithCallbackMethod_getAllDomain<ExperimentalWithCallbackMethod_updateDomain<ExperimentalWithCallbackMethod_getDomain<ExperimentalWithCallbackMethod_addDomain<ExperimentalWithCallbackMethod_deleteDomain<ExperimentalWithCallbackMethod_getMisc<ExperimentalWithCallbackMethod_modMisc<ExperimentalWithCallbackMethod_getRaltStatus<ExperimentalWithCallbackMethod_execCmd<Service > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_getRaltStats<ExperimentalWithCallbackMethod_getStatsField<ExperimentalWithCallbackMethod_getHomePageData<ExperimentalWithCallbackMethod_showCacheData<ExperimentalWithCallbackMethod_showFlowStatData<ExperimentalWithCallbackMethod_showLogInfoData<ExperimentalWithCallbackMethod_getRaltLogs<ExperimentalWithCallbackMethod_getBasicConfig<ExperimentalWithCallbackMethod_setBasicConfig<ExperimentalWithCallbackMethod_getAllDomain<ExperimentalWithCallbackMethod_updateDomain<ExperimentalWithCallbackMethod_getDomain<ExperimentalWithCallbackMethod_addDomain<ExperimentalWithCallbackMethod_deleteDomain<ExperimentalWithCallbackMethod_getMisc<ExperimentalWithCallbackMethod_modMisc<ExperimentalWithCallbackMethod_getRule<ExperimentalWithCallbackMethod_updateRule<ExperimentalWithCallbackMethod_getCacheUrl<ExperimentalWithCallbackMethod_isUrlInCache<ExperimentalWithCallbackMethod_getRaltStatus<ExperimentalWithCallbackMethod_execCmd<Service > > > > > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_getRaltStats : public BaseClass {
    private:
@@ -1566,12 +1843,80 @@ class RaltService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_getRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_getRule() {
+      ::grpc::Service::MarkMethodGeneric(16);
+    }
+    ~WithGenericMethod_getRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_updateRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_updateRule() {
+      ::grpc::Service::MarkMethodGeneric(17);
+    }
+    ~WithGenericMethod_updateRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_getCacheUrl : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_getCacheUrl() {
+      ::grpc::Service::MarkMethodGeneric(18);
+    }
+    ~WithGenericMethod_getCacheUrl() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_isUrlInCache : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_isUrlInCache() {
+      ::grpc::Service::MarkMethodGeneric(19);
+    }
+    ~WithGenericMethod_isUrlInCache() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_getRaltStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_getRaltStatus() {
-      ::grpc::Service::MarkMethodGeneric(16);
+      ::grpc::Service::MarkMethodGeneric(20);
     }
     ~WithGenericMethod_getRaltStatus() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1588,7 +1933,7 @@ class RaltService final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_execCmd() {
-      ::grpc::Service::MarkMethodGeneric(17);
+      ::grpc::Service::MarkMethodGeneric(21);
     }
     ~WithGenericMethod_execCmd() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1920,12 +2265,92 @@ class RaltService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_getRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getRule() {
+      ::grpc::Service::MarkMethodRaw(16);
+    }
+    ~WithRawMethod_getRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetRule(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_updateRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_updateRule() {
+      ::grpc::Service::MarkMethodRaw(17);
+    }
+    ~WithRawMethod_updateRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestupdateRule(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getCacheUrl : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_getCacheUrl() {
+      ::grpc::Service::MarkMethodRaw(18);
+    }
+    ~WithRawMethod_getCacheUrl() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetCacheUrl(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_isUrlInCache : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_isUrlInCache() {
+      ::grpc::Service::MarkMethodRaw(19);
+    }
+    ~WithRawMethod_isUrlInCache() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestisUrlInCache(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_getRaltStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_getRaltStatus() {
-      ::grpc::Service::MarkMethodRaw(16);
+      ::grpc::Service::MarkMethodRaw(20);
     }
     ~WithRawMethod_getRaltStatus() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1936,7 +2361,7 @@ class RaltService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestgetRaltStatus(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(16, context, request, writer, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncServerStreaming(20, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1945,7 +2370,7 @@ class RaltService final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_execCmd() {
-      ::grpc::Service::MarkMethodRaw(17);
+      ::grpc::Service::MarkMethodRaw(21);
     }
     ~WithRawMethod_execCmd() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1956,7 +2381,7 @@ class RaltService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestexecCmd(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2351,6 +2776,106 @@ class RaltService final {
     virtual void modMisc(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getRule() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(16,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getRule<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getRule(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getRule(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_updateRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_updateRule() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(17,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_updateRule<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->updateRule(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_updateRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void updateRule(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getCacheUrl : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getCacheUrl() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(18,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_getCacheUrl<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getCacheUrl(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_getCacheUrl() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getCacheUrl(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_isUrlInCache : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_isUrlInCache() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(19,
+        new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_isUrlInCache<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->isUrlInCache(context, request, response, controller);
+                 }, this));
+    }
+    ~ExperimentalWithRawCallbackMethod_isUrlInCache() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void isUrlInCache(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_getRaltStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
@@ -2372,7 +2897,7 @@ class RaltService final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     ExperimentalWithRawCallbackMethod_execCmd() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(17,
+      ::grpc::Service::experimental().MarkMethodRawCallback(21,
         new ::grpc::internal::CallbackUnaryHandler< ExperimentalWithRawCallbackMethod_execCmd<BaseClass>, ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -2692,12 +3217,92 @@ class RaltService final {
     virtual ::grpc::Status StreamedmodMisc(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::ModMiscOpReq,::raltservice::ModMiscOpRsp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_getRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_getRule() {
+      ::grpc::Service::MarkMethodStreamed(16,
+        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::GetRuleReq, ::raltservice::GetRuleRsp>(std::bind(&WithStreamedUnaryMethod_getRule<BaseClass>::StreamedgetRule, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_getRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status getRule(::grpc::ServerContext* context, const ::raltservice::GetRuleReq* request, ::raltservice::GetRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedgetRule(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::GetRuleReq,::raltservice::GetRuleRsp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_updateRule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_updateRule() {
+      ::grpc::Service::MarkMethodStreamed(17,
+        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::UpdateRuleReq, ::raltservice::UpdateRuleRsp>(std::bind(&WithStreamedUnaryMethod_updateRule<BaseClass>::StreamedupdateRule, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_updateRule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status updateRule(::grpc::ServerContext* context, const ::raltservice::UpdateRuleReq* request, ::raltservice::UpdateRuleRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedupdateRule(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::UpdateRuleReq,::raltservice::UpdateRuleRsp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_getCacheUrl : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_getCacheUrl() {
+      ::grpc::Service::MarkMethodStreamed(18,
+        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::GetCacheUrlReq, ::raltservice::GetCacheUrlRsp>(std::bind(&WithStreamedUnaryMethod_getCacheUrl<BaseClass>::StreamedgetCacheUrl, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_getCacheUrl() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status getCacheUrl(::grpc::ServerContext* context, const ::raltservice::GetCacheUrlReq* request, ::raltservice::GetCacheUrlRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedgetCacheUrl(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::GetCacheUrlReq,::raltservice::GetCacheUrlRsp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_isUrlInCache : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_isUrlInCache() {
+      ::grpc::Service::MarkMethodStreamed(19,
+        new ::grpc::internal::StreamedUnaryHandler< ::raltservice::IsUrlInCacheReq, ::raltservice::IsUrlInCacheRsp>(std::bind(&WithStreamedUnaryMethod_isUrlInCache<BaseClass>::StreamedisUrlInCache, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_isUrlInCache() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status isUrlInCache(::grpc::ServerContext* context, const ::raltservice::IsUrlInCacheReq* request, ::raltservice::IsUrlInCacheRsp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedisUrlInCache(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::IsUrlInCacheReq,::raltservice::IsUrlInCacheRsp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_execCmd : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_execCmd() {
-      ::grpc::Service::MarkMethodStreamed(17,
+      ::grpc::Service::MarkMethodStreamed(21,
         new ::grpc::internal::StreamedUnaryHandler< ::raltservice::ExecCmdReq, ::raltservice::ExecCmdRsp>(std::bind(&WithStreamedUnaryMethod_execCmd<BaseClass>::StreamedexecCmd, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_execCmd() override {
@@ -2711,7 +3316,7 @@ class RaltService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedexecCmd(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::raltservice::ExecCmdReq,::raltservice::ExecCmdRsp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_getRaltStats<WithStreamedUnaryMethod_getStatsField<WithStreamedUnaryMethod_getHomePageData<WithStreamedUnaryMethod_showCacheData<WithStreamedUnaryMethod_showFlowStatData<WithStreamedUnaryMethod_showLogInfoData<WithStreamedUnaryMethod_getBasicConfig<WithStreamedUnaryMethod_setBasicConfig<WithStreamedUnaryMethod_getAllDomain<WithStreamedUnaryMethod_updateDomain<WithStreamedUnaryMethod_getDomain<WithStreamedUnaryMethod_addDomain<WithStreamedUnaryMethod_deleteDomain<WithStreamedUnaryMethod_getMisc<WithStreamedUnaryMethod_modMisc<WithStreamedUnaryMethod_execCmd<Service > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_getRaltStats<WithStreamedUnaryMethod_getStatsField<WithStreamedUnaryMethod_getHomePageData<WithStreamedUnaryMethod_showCacheData<WithStreamedUnaryMethod_showFlowStatData<WithStreamedUnaryMethod_showLogInfoData<WithStreamedUnaryMethod_getBasicConfig<WithStreamedUnaryMethod_setBasicConfig<WithStreamedUnaryMethod_getAllDomain<WithStreamedUnaryMethod_updateDomain<WithStreamedUnaryMethod_getDomain<WithStreamedUnaryMethod_addDomain<WithStreamedUnaryMethod_deleteDomain<WithStreamedUnaryMethod_getMisc<WithStreamedUnaryMethod_modMisc<WithStreamedUnaryMethod_getRule<WithStreamedUnaryMethod_updateRule<WithStreamedUnaryMethod_getCacheUrl<WithStreamedUnaryMethod_isUrlInCache<WithStreamedUnaryMethod_execCmd<Service > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_getRaltLogs : public BaseClass {
    private:
@@ -2738,7 +3343,7 @@ class RaltService final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithSplitStreamingMethod_getRaltStatus() {
-      ::grpc::Service::MarkMethodStreamed(16,
+      ::grpc::Service::MarkMethodStreamed(20,
         new ::grpc::internal::SplitServerStreamingHandler< ::raltservice::RaltStatusReq, ::raltservice::RaltStatus>(std::bind(&WithSplitStreamingMethod_getRaltStatus<BaseClass>::StreamedgetRaltStatus, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithSplitStreamingMethod_getRaltStatus() override {
@@ -2753,7 +3358,7 @@ class RaltService final {
     virtual ::grpc::Status StreamedgetRaltStatus(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::raltservice::RaltStatusReq,::raltservice::RaltStatus>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_getRaltLogs<WithSplitStreamingMethod_getRaltStatus<Service > > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_getRaltStats<WithStreamedUnaryMethod_getStatsField<WithStreamedUnaryMethod_getHomePageData<WithStreamedUnaryMethod_showCacheData<WithStreamedUnaryMethod_showFlowStatData<WithStreamedUnaryMethod_showLogInfoData<WithSplitStreamingMethod_getRaltLogs<WithStreamedUnaryMethod_getBasicConfig<WithStreamedUnaryMethod_setBasicConfig<WithStreamedUnaryMethod_getAllDomain<WithStreamedUnaryMethod_updateDomain<WithStreamedUnaryMethod_getDomain<WithStreamedUnaryMethod_addDomain<WithStreamedUnaryMethod_deleteDomain<WithStreamedUnaryMethod_getMisc<WithStreamedUnaryMethod_modMisc<WithSplitStreamingMethod_getRaltStatus<WithStreamedUnaryMethod_execCmd<Service > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_getRaltStats<WithStreamedUnaryMethod_getStatsField<WithStreamedUnaryMethod_getHomePageData<WithStreamedUnaryMethod_showCacheData<WithStreamedUnaryMethod_showFlowStatData<WithStreamedUnaryMethod_showLogInfoData<WithSplitStreamingMethod_getRaltLogs<WithStreamedUnaryMethod_getBasicConfig<WithStreamedUnaryMethod_setBasicConfig<WithStreamedUnaryMethod_getAllDomain<WithStreamedUnaryMethod_updateDomain<WithStreamedUnaryMethod_getDomain<WithStreamedUnaryMethod_addDomain<WithStreamedUnaryMethod_deleteDomain<WithStreamedUnaryMethod_getMisc<WithStreamedUnaryMethod_modMisc<WithStreamedUnaryMethod_getRule<WithStreamedUnaryMethod_updateRule<WithStreamedUnaryMethod_getCacheUrl<WithStreamedUnaryMethod_isUrlInCache<WithSplitStreamingMethod_getRaltStatus<WithStreamedUnaryMethod_execCmd<Service > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace raltservice

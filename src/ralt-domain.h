@@ -6,9 +6,12 @@
 
 using namespace std;
 
-enum DOMAIN_TYPE{
-    DOMAIN_MEMBER,
-    DOMAIN_SUBS
+//该enum与ralt-service.proto的enum DomainType一致（会涉及强制转换）
+enum {
+	RALT_MEMBER_DOMAIN,
+	RALT_SUBS_DOMAIN,
+	RALT_SUBS_DOMAIN_6TO4,
+	RALT_SUBS_DOMAIN_4TO6
 };
 
 typedef struct _DomainValue

@@ -3,6 +3,8 @@
 #include "ralt-service-impl.h"
 #include "ralt-domain.h"
 #include "misc-conf.h"
+#include "ralt-rule.h"
+#include "ralt-cache.h"
 #include <unistd.h>
 #include <dirent.h>  
 #include <string.h>  
@@ -818,6 +820,92 @@ Status RaltServiceImpl::modMisc(ServerContext* context, const ModMiscOpReq* requ
     MiscConf::GetInstance()->ModMisc((MISC_TYPE)request->misc().key(), (MISC_VALUE)request->misc().value());
     reply->set_result(0);
     LOG_INFO("modify misc successfully");
+    return Status::OK;
+}
+
+Status RaltServiceImpl::getRule(ServerContext* context, const GetRuleReq* request,
+    GetRuleRsp* reply)
+{
+    LOG_INFO("get rule");
+    multimap<RULE_TYPE, RuleValue> ruleMap = RaltRule::GetInstance()->GetRule();
+
+    for(const auto it : ruleMap)
+    {
+        string strRelateDomain;
+        for(const auto relate_domain_it : it.second.vRelateDomain){
+            if(strRelateDomain.empty()){
+                strRelateDomain = to_string(relate_domain_it);
+            }
+            else{
+                strRelateDomain = strRelateDomain + "," + to_string(relate_domain_it);
+            }
+        }
+
+        Rule *rule = reply->add_rule();
+        rule->set_type((raltservice::RuleType)it.second.type);
+        rule->set_search(it.second.strSearch);
+        rule->set_replace(it.second.strReplace);
+        rule->set_append(it.second.strAppend);
+        rule->set_ralt_domain(strRelateDomain);
+
+        LOG_INFO("%u\t%s\t%s\t%s\t%s", 
+            it.second.type, it.second.strSearch.c_str(), it.second.strReplace.c_str(), 
+            it.second.strAppend.c_str(), strRelateDomain.c_str());
+    }
+    LOG_INFO("get rule successfully");
+    return Status::OK;
+}
+
+Status RaltServiceImpl::updateRule(ServerContext* context, const UpdateRuleReq* request,
+   UpdateRuleRsp* reply)
+{
+    LOG_INFO("update rule");
+    multimap<RULE_TYPE, RuleValue> ruleMap;
+    ::google::protobuf::RepeatedPtrField<Rule> rules=request->rule();
+     for (const auto& rule : rules){
+        RuleValue value;
+        value.type = (RULE_TYPE)rule.type();
+        value.strSearch = rule.search();
+        value.strReplace = rule.replace();
+        value.strAppend = rule.append();
+        string strRelateDomain = rule.ralt_domain();
+        vector<char> vSepration;
+        vSepration.push_back(',');
+        vSepration.push_back(' ');
+        value.vRelateDomain = RaltRule::GetInstance()->GetMinElement(vSepration, strRelateDomain);
+        pair<RULE_TYPE, RuleValue> rule_pair(value.type, value);
+        ruleMap.insert(rule_pair);
+    }
+    RaltRule::GetInstance()->UpdateRule(ruleMap);
+    reply->set_result(0);
+    LOG_INFO("update all domain successfully");
+    return Status::OK;
+}
+
+Status RaltServiceImpl::getCacheUrl(ServerContext* context, const GetCacheUrlReq* request,
+   GetCacheUrlRsp* reply)
+{
+    LOG_INFO("get cache url");
+    string strRegex = "*";
+    string strAllUrl = RaltCache::GetInstance()->GetRegexCacheUrl(strRegex);
+    reply->set_all_url(strAllUrl.c_str());
+    LOG_INFO("%s", strAllUrl.c_str());
+    LOG_INFO("get cache url successfully");
+    return Status::OK;
+}
+
+Status RaltServiceImpl::isUrlInCache(ServerContext* context, const IsUrlInCacheReq* request,
+    IsUrlInCacheRsp* reply)
+{
+    LOG_INFO("is cache url");
+    if(RaltCache::GetInstance()->IsUrlInCache(request->url())){
+        reply->set_result(0);
+        LOG_INFO("url in cache");
+    }
+    else{
+        reply->set_result(1);
+        LOG_INFO("url not in cache");
+    }
     return Status::OK;
 }
 

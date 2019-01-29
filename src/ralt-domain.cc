@@ -67,144 +67,173 @@ bool RaltDomain::ParseDomainConf()
     int domain_counts = 0;
 
     while (fs2.getline(buf, 8192)) {
-        DomainValue member;
         LOG_INFO("ralt domain line: %s", buf);
+        
+        DomainValue member;
+        member.type = -1;
+        const char *key_word = NULL;
+        
         if ( strncmp(UtilCommon::SkipSpaceLeft(buf), "ralt_member_domain", strlen("ralt_member_domain")) == 0 
-                && ( (!_member_limit) || domain_counts < _member_limit ) ){
-                
-            const char *begin = UtilCommon::SkipSpaceLeft(buf) + strlen("ralt_member_domain");
-            
-            begin = UtilCommon::ToNextNotChar(begin, buf + 8191, "*. \t", 4);
-            const char *end = UtilCommon::ToNextChar(begin, buf + 8191, " \t;", 3);
-
-            if ( end - begin > 0 )
-            {
-                member.type = DOMAIN_MEMBER;
-                member.str_domain.assign(begin, end - begin);
-                LOG_INFO("domain: %s", member.str_domain.c_str());
-
-                if( m_DomainMap.find(member.str_domain) != m_DomainMap.end() )
-                {
-                    continue;
-                }
-
-                begin = UtilCommon::ToNextNotChar(end, buf + 8191, "*. \t", 4);
-                end = UtilCommon::ToNextChar(begin, buf + 8191, " \t;", 3);
-
-                member.str_append_or_replace = string(begin, end - begin);
-                LOG_INFO("append or replace string: %s", member.str_append_or_replace.c_str());
-
-                begin = UtilCommon::ToNextNotChar(end, buf + 8191, "*[ \t", 4);
-                end = UtilCommon::ToNextChar(begin, buf + 8191, "] \t;", 3);
-
-                member.str_port = string(begin,end - begin);
-                LOG_INFO("port: %s", member.str_append_or_replace.c_str());
-
-                m_DomainMap.insert(make_pair(member.str_domain, member));
-                m_nMemberNum++;
-
-            }
+                && ( (!_member_limit) || domain_counts < _member_limit ) )
+        {
+            key_word = "ralt_member_domain";
+            member.type = RALT_MEMBER_DOMAIN;
         }
-        else if( strncmp(UtilCommon::SkipSpaceLeft(buf), "ralt_subs_domain", strlen("ralt_subs_domain")) == 0){
-
-            LOG_INFO("find ralt_subs_domain");
-            member.type = DOMAIN_SUBS;
-            
-            //Do not set the port separately
-            string strLine(buf);
-            size_t first_square = strLine.find("]");
-            size_t second_square = strLine.find("[", first_square+1);
-            size_t third_square = strLine.find("]", first_square+1);
-
-            if(first_square == string::npos 
-                || second_square == string::npos 
-                || third_square == string::npos){
+        else if (strncmp(UtilCommon::SkipSpaceLeft(buf), "ralt_subs_domain_4to6", strlen("ralt_subs_domain_4to6")) == 0) {
+            key_word = "ralt_subs_domain_4to6";
+            member.type = RALT_SUBS_DOMAIN_4TO6;
+        }
+        else if (strncmp(UtilCommon::SkipSpaceLeft(buf), "ralt_subs_domain_6to4", strlen("ralt_subs_domain_6to4")) == 0) {
+            key_word = "ralt_subs_domain_6to4";
+            member.type = RALT_SUBS_DOMAIN_6TO4;
+        }
+        else if (strncmp(UtilCommon::SkipSpaceLeft(buf), "ralt_subs_domain", strlen("ralt_subs_domain")) == 0) {
+            std::string line(buf);
+            //line.erase(std::remove(line.begin(), line.end(), '/'), line.end());
+            size_t frist_right_brackets = line.find("]");
+            size_t next_left_brackets = line.find("[", frist_right_brackets+1);
+            size_t second_right_brackets = line.find("]", frist_right_brackets+1);
+            if(frist_right_brackets == string::npos 
+                || next_left_brackets == string::npos 
+                || second_right_brackets == string::npos){
                 continue;
             }
 
-            if(third_square < second_square){
+            key_word = "ralt_subs_domain";
+            if(second_right_brackets < next_left_brackets){
                 //the 6/4 format
-                LOG_INFO("[v6] [v4] format");
-                const char *begin = UtilCommon::SkipSpaceLeft(buf) + strlen("ralt_subs_domain");
-                //make a Good compatibility with the old product nginx ,so we must support for:
-                //ralt_subs_domain        [//192.168.52.132] [//[111::16]];
-                begin = UtilCommon::ToNextNotChar(begin, buf + 8191, " \t[", 3);
-                const char *end = UtilCommon::ToNextChar(begin, buf + 8191, " \t]", 3);
-
-                if (strncmp(begin, "//[", 3) == 0)
-                    begin += 2;
-
-                //the pattern string is "[[", not "[ ["
-                if (strncmp(begin -2 , "[[", 2) == 0)
-                    begin--;
-
-                //the pattern string is "]]", not "] ]"
-                if (strncmp(end,"]]",2) == 0)
-                    ++end;
-
-                if (strncmp(end,"]:",2) == 0) {
-                    end += 2;
-                    end = UtilCommon::ToNextChar(end, buf + 8191, "]", 1);
-                }
-
-                member.str_domain = string(begin, end - begin);
-                LOG_INFO("domain: %s", member.str_domain.c_str());
-
-                begin = UtilCommon::ToNextChar(end, buf + 8191, "\t[", 3);
-                end = UtilCommon::ToNextChar(begin, buf + 8191, "\t]", 3);
-
-                //make a Good compatibility with the old product nginx ,so we must support for:
-                //ralt_subs_domain        [//192.168.52.132] [//[111::16]];
-                begin++;
-                if(strncmp(begin,"//",2) == 0)
-                    begin += 2;
-
-                member.str_append_or_replace = string(begin, end - begin);
-                LOG_INFO("append or replace string: %s", member.str_append_or_replace.c_str());
-
-                m_DomainMap.insert(make_pair(member.str_domain, member));
+                member.type = RALT_SUBS_DOMAIN_6TO4;
             }
             else{
                 //[v4] [v6] or [string] [string]
-                LOG_INFO("[v4] [v6] or [string] [string]");
-                const char *begin = UtilCommon::SkipSpaceLeft(buf) + strlen("ralt_subs_domain");
-                begin = UtilCommon::ToNextNotChar(begin, buf + 8191, " \t[", 3);
-                const char *end = UtilCommon::ToNextChar(begin, buf + 8191, " \t]", 3);
-
-                //make a Good compatibility with the old product nginx ,so we must support for:
-                //ralt_subs_domain        [//192.168.52.132] [//[111::16]];
-                if(strncmp(begin,"//",2) == 0)
-                    begin += 2;
-
-                member.str_domain = string(begin, end - begin);
-                LOG_INFO("member.str_domain:%s", member.str_domain.c_str());
-
-                begin = UtilCommon::ToNextNotChar(end, buf + 8191, "] \t[", 4);
-                end = UtilCommon::ToNextChar(begin, buf + 8191, ";]\n \t", 5);
-
-                //make a Good compatibility with the old product nginx ,so we must support for:
-                //ralt_subs_domain        [//192.168.52.132] [//[111::16]];
-
-                if (strncmp(begin, "//[", 3) == 0)
-                    begin += 2;
-
-                //the pattern string is "[[", not "[ ["
-                if (strncmp(begin -2 , "[[", 2) == 0)
-                    begin--;
-
-                //the pattern string is "]]", not "] ]"
-                if (strncmp(end,"]]",2) == 0)
-                    ++end;
-
-                if (strncmp(end,"]:",2) == 0) {
-                    end += 2;
-                    end = UtilCommon::ToNextChar(end, buf + 8191, "]", 1);
-                }
-
-                member.str_append_or_replace = string(begin, end - begin);
-                LOG_INFO("member.str_append_or_replace:%s", member.str_append_or_replace.c_str());
-                m_DomainMap.insert(make_pair(member.str_domain, member));
+                member.type = RALT_SUBS_DOMAIN;
             }
+        }
+
+        switch(member.type){
+            case RALT_MEMBER_DOMAIN:
+                {
+                    const char *begin = UtilCommon::SkipSpaceLeft(buf) + strlen(key_word);
+                
+                    begin = UtilCommon::ToNextNotChar(begin, buf + 8191, "*. \t", 4);
+                    const char *end = UtilCommon::ToNextChar(begin, buf + 8191, " \t;", 3);
+
+                    if ( end - begin > 0 )
+                    {
+                        member.str_domain.assign(begin, end - begin);
+                        
+
+                        if( m_DomainMap.find(member.str_domain) != m_DomainMap.end() )
+                        {
+                            continue;
+                        }
+
+                        begin = UtilCommon::ToNextNotChar(end, buf + 8191, "*. \t", 4);
+                        end = UtilCommon::ToNextChar(begin, buf + 8191, " \t;", 3);
+
+                        member.str_append_or_replace = string(begin, end - begin);
+                       
+
+                        begin = UtilCommon::ToNextNotChar(end, buf + 8191, "*[ \t", 4);
+                        end = UtilCommon::ToNextChar(begin, buf + 8191, "] \t;", 3);
+
+                        member.str_port = string(begin,end - begin);
+                        
+                        LOG_INFO("domain: %s", member.str_domain.c_str());
+                        LOG_INFO("append or replace string: %s", member.str_append_or_replace.c_str());
+                        LOG_INFO("port: %s", member.str_append_or_replace.c_str());
+                        m_DomainMap.insert(make_pair(member.str_domain, member));
+                        m_nMemberNum++;
+
+                    }
+                }
+                break;
+            case RALT_SUBS_DOMAIN_6TO4:
+                {
+                    const char *begin = UtilCommon::SkipSpaceLeft(buf) + strlen(key_word);
+                    begin = UtilCommon::ToNextNotChar(begin, buf + 8191, " \t[", 3);
+                    const char *end = UtilCommon::ToNextChar(begin, buf + 8191, "\t]", 3);
+
+                    //make a Good compatibility with the old product nginx ,so we must support for:
+                    //ralt_subs_domain        [//192.168.52.132] [//[111::16]];
+                    if(strncmp(begin,"//",2) == 0)
+                        begin += 2;
+
+                    member.str_domain = string(begin, end - begin);
+
+                    begin = UtilCommon::ToNextNotChar(end, buf + 8191, "] \t[", 4);
+                    end = UtilCommon::ToNextChar(begin, buf + 8191, ";]\n\t", 5);
+
+                    //make a Good compatibility with the old product nginx ,so we must support for:
+                    //ralt_subs_domain        [//192.168.52.132] [//[111::16]];
+
+                    if (strncmp(begin, "//[", 3) == 0)
+                        begin += 2;
+
+                    //the pattern string is "[[", not "[ ["
+                    if (strncmp(begin -2 , "[[", 2) == 0)
+                        begin--;
+
+                    //the pattern string is "]]", not "] ]"
+                    if (strncmp(end,"]]",2) == 0)
+                        ++end;
+
+                    if (strncmp(end,"]:",2) == 0) {
+                        end += 2;
+                        end = UtilCommon::ToNextChar(end, buf + 8191, "]", 1);
+                    }
+
+                    member.str_append_or_replace = string(begin, end - begin);
+
+                    LOG_INFO("search: %s", member.str_domain.c_str());
+                    LOG_INFO("replace: %s", member.str_append_or_replace.c_str());
+                    m_DomainMap.insert(make_pair(member.str_domain, member));
+                }
+                break;
+            case RALT_SUBS_DOMAIN:
+            case RALT_SUBS_DOMAIN_4TO6:
+                {
+                    const char *begin = UtilCommon::SkipSpaceLeft(buf) + strlen(key_word);
+                    //make a Good compatibility with the old product nginx ,so we must support for:
+                    //ralt_subs_domain        [//192.168.52.132] [//[111::16]];
+                    begin = UtilCommon::ToNextNotChar(begin, buf + 8191, " \t[", 3);
+                    const char *end = UtilCommon::ToNextChar(begin, buf + 8191, " \t]", 3);
+
+                    if (strncmp(begin, "//[", 3) == 0)
+                        begin += 2;
+
+                    //the pattern string is "[[", not "[ ["
+                    if (strncmp(begin -2 , "[[", 2) == 0)
+                        begin--;
+
+                    //the pattern string is "]]", not "] ]"
+                    if (strncmp(end,"]]",2) == 0)
+                        ++end;
+
+                    if (strncmp(end,"]:",2) == 0) {
+                        end += 2;
+                        end = UtilCommon::ToNextChar(end, buf + 8191, "]", 1);
+                    }
+
+                    member.str_domain = string(begin, end - begin);
+
+                    begin = UtilCommon::ToNextChar(end, buf + 8191, "\t[", 3);
+                    end = UtilCommon::ToNextChar(begin, buf + 8191, "\t]", 3);
+
+                    //make a Good compatibility with the old product nginx ,so we must support for:
+                    //ralt_subs_domain        [//192.168.52.132] [//[111::16]];
+                    begin++;
+                    if(strncmp(begin,"//",2) == 0)
+                        begin += 2;
+
+                    member.str_append_or_replace = string(begin, end - begin);
+
+                    LOG_INFO("member.str_append_or_replace:%s", member.str_append_or_replace.c_str());
+                    m_DomainMap.insert(make_pair(member.str_domain, member));
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -217,13 +246,11 @@ int RaltDomain::GetMemberNum()
     return m_nMemberNum;
 }
 
-
 map<string, DomainValue>& RaltDomain::GetAllDomain()
 {
     ParseDomainConf();
     return m_DomainMap;
 }
-
 
 void RaltDomain::UpdateDomain(const map<string, DomainValue>* domainMap)
 {
@@ -242,22 +269,47 @@ void RaltDomain::UpdateDomain(const map<string, DomainValue>* domainMap)
         LOG_INFO("port: %s", it.second.str_port.c_str());
 
         string strDomainType, strMember, strAppendOrReplace, strPort;
-        
-        if(DOMAIN_MEMBER == it.second.type){
-            strDomainType.assign("ralt_member_domain");
-            strMember.assign(it.second.str_domain);
-            strAppendOrReplace.assign(it.second.str_append_or_replace);
-            strPort = string("[") + it.second.str_port + string("]");
+
+        int unknowm = 0;
+        switch(it.second.type){
+            case RALT_MEMBER_DOMAIN:
+                {
+                    strDomainType.assign("ralt_member_domain");
+                    strMember.assign(it.second.str_domain);
+                    strAppendOrReplace.assign(it.second.str_append_or_replace);
+                    strPort = string("[") + it.second.str_port + string("]");
+                }
+                break;
+            case RALT_SUBS_DOMAIN:
+                {
+                    strDomainType.assign("ralt_subs_domain");
+                    strMember = string("[") + it.second.str_domain + string("]");
+                    strAppendOrReplace = string("[") + it.second.str_append_or_replace + string("]");
+                    strPort = string("[") + it.second.str_port + string("]");
+                }
+                break;
+            case RALT_SUBS_DOMAIN_6TO4:
+                {
+                    strDomainType.assign("ralt_subs_domain_6to4");
+                    strMember = string("[") + it.second.str_domain + string("]");
+                    strAppendOrReplace = string("[") + it.second.str_append_or_replace + string("]");
+                    strPort = string("[") + it.second.str_port + string("]");
+                }
+                break;
+            case RALT_SUBS_DOMAIN_4TO6:
+                {
+                    strDomainType.assign("ralt_subs_domain_4to6");
+                    strMember = string("[") + it.second.str_domain + string("]");
+                    strAppendOrReplace = string("[") + it.second.str_append_or_replace + string("]");
+                    strPort = string("[") + it.second.str_port + string("]");
+                }
+                break;
+            default:
+                unknowm = 1;
+                break;
         }
-        else if(DOMAIN_SUBS == it.second.type){
-            
-            strDomainType.assign("ralt_subs_domain");
-            strMember = string("[") + it.second.str_domain + string("]");
-            strAppendOrReplace = string("[") + it.second.str_append_or_replace + string("]");
-            strPort = string("[") + it.second.str_port + string("]");
-            
-        }
-        else{
+
+        if(unknowm){
             continue;
         }
 
@@ -282,33 +334,50 @@ void RaltDomain::GetDomain(const string &strDomain, const string &strTransDomain
     map<string, DomainValue> &domainMap)
 {
     ParseDomainConf();
+    unsigned int search_type = 0; //默认查询所有
     if( !strDomain.empty() && !strTransDomain.empty()){
-        for(const auto it:  m_DomainMap){
-            if(it.first.find(strDomain) != string::npos && it.second.type == DOMAIN_MEMBER
-                && it.second.str_append_or_replace.find(strTransDomain)!= string::npos){
-                domainMap[it.first] = m_DomainMap[it.first];
-            }
-        }
+        //域名与域名替换串共同模糊查询
+        search_type = 1;
     }
     else if(!strDomain.empty() && strTransDomain.empty()){
-        for(const auto it:  m_DomainMap){
-            if(it.first.find(strDomain) != string::npos && it.second.type == DOMAIN_MEMBER){
-                domainMap[it.first] = m_DomainMap[it.first];
-            }
-        }
+        //只根据域名模糊查询
+        search_type = 2;
     }
     else if(strDomain.empty() && !strTransDomain.empty()){
-        for(const auto it:  m_DomainMap){
-            if(it.second.type == DOMAIN_MEMBER 
-                && it.second.str_append_or_replace.find(strTransDomain) != string::npos){
-                domainMap[it.second.str_domain] = m_DomainMap[it.second.str_domain];
-            }
-        }
+        //只根据域名替换串模糊查询
+        search_type = 3;
     }
-    else{
-        for(const auto it:  m_DomainMap){
-            if(it.second.type == DOMAIN_MEMBER){
-                domainMap[it.second.str_domain] = m_DomainMap[it.second.str_domain];
+
+    for(const auto it:  m_DomainMap){
+        if(it.second.type == RALT_MEMBER_DOMAIN){      //只查询会员，不查询字符串替换
+
+            switch(search_type){
+                case 1:
+                    {
+                        if(it.first.find(strDomain) != string::npos
+                            && it.second.str_append_or_replace.find(strTransDomain)!= string::npos){
+
+                            domainMap[it.first] = m_DomainMap[it.first];
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        if(it.first.find(strDomain) != string::npos){
+                            domainMap[it.first] = m_DomainMap[it.first];
+                        }
+                    }
+                    break;
+                case 3:
+                    {
+                        if(it.second.str_append_or_replace.find(strTransDomain) != string::npos){
+                            domainMap[it.first] = m_DomainMap[it.second.str_domain];
+                        }
+                    }
+                    break;
+                default:
+                    domainMap[it.first] = m_DomainMap[it.second.str_domain];
+                    break;
             }
         }
     }
@@ -324,15 +393,23 @@ void RaltDomain::AddDomain(const DomainValue *domain)
     m_nMemberNum++;
 
     string strType;
-    if(DOMAIN_SUBS == domain->type){
-        strType = "ralt_subs_domain";
-    }
-    else{
-        strType = "ralt_member_domain";     //default
+    switch(domain->type){
+        case RALT_MEMBER_DOMAIN:
+            strType = "ralt_member_domain";
+            break;
+        case RALT_SUBS_DOMAIN_4TO6:
+            strType = "ralt_subs_domain_4to6";
+            break;
+        case RALT_SUBS_DOMAIN_6TO4:
+            strType = "ralt_subs_domain_6to4";
+            break;
+        default:
+            strType = "ralt_subs_domain";
+            break;
     }
     
     string strDomainMember = strType + string(" ") + domain->str_domain + string("  ") 
-                                    + domain->str_append_or_replace + " " + domain->str_port;
+        + domain->str_append_or_replace + " " + domain->str_port;
     
     ofstream of;
     of.open(RALT_DOMAIN_CONF_PATH, ios::app);

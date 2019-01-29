@@ -379,6 +379,86 @@ Status RaltAgentImpl::modMisc(ServerContext* server_context, const ModMiscOpReq*
     return status;
 }
 
+Status RaltAgentImpl::getRule(ServerContext* context, const GetRuleReq* request,
+        GetRuleRsp* reply)
+{
+    LOG_INFO("get rule");
+    unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+    if(nullptr == stub){
+        return Status::CANCELLED;
+    }
+
+    ClientContext client_context;
+    Status status = stub->getRule(&client_context, *request, reply);
+    if (status.ok()) {
+        LOG_INFO("get rule successfully");
+    } else {
+        LOG_INFO("error code:%d, error message: %s", status.error_code(), status.error_message().c_str());
+        LOG_INFO("get rule failed");
+    }
+    return status;
+}
+
+Status RaltAgentImpl::updateRule(ServerContext* context, const UpdateRuleReq* request,
+    UpdateRuleRsp* reply)
+{
+    LOG_INFO("update rule");   
+    unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+    if(nullptr == stub){
+        return Status::CANCELLED;
+    }
+
+    ClientContext client_context;
+    Status status = stub->updateRule(&client_context, *request, reply);
+    if (status.ok()) {
+        LOG_INFO("update rule successfully");
+    } else {
+        LOG_INFO("error code:%d, error message: %s", status.error_code(), status.error_message().c_str());
+        LOG_INFO("update rule failed");
+    }
+    return status;
+}
+
+Status RaltAgentImpl::getCacheUrl(ServerContext* context, const GetCacheUrlReq* request,
+    GetCacheUrlRsp* reply)
+{
+    LOG_INFO("get cache url");
+    unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+    if(nullptr == stub){
+        return Status::CANCELLED;
+    }
+    
+    ClientContext client_context;
+    Status status = stub->getCacheUrl(&client_context, *request, reply);
+    if (status.ok()) {
+        LOG_INFO("get cache url successfully");
+    } else {
+        LOG_INFO("error code:%d, error message: %s", status.error_code(), status.error_message().c_str());
+        LOG_INFO("get cache url failed");
+    }
+    return status;
+}
+
+Status RaltAgentImpl::isUrlInCache(ServerContext* context, const IsUrlInCacheReq* request,
+    IsUrlInCacheRsp* reply)
+{
+    LOG_INFO("is cache url");   
+    unique_ptr<RaltService::Stub> stub = getStubByIp(request->ip_addr());
+    if(nullptr == stub){
+        return Status::CANCELLED;
+    }
+    
+    ClientContext client_context;
+    Status status = stub->isUrlInCache(&client_context, *request, reply);
+    if (status.ok()) {
+        LOG_INFO("is cache url successfully");
+    } else {
+        LOG_INFO("error code:%d, error message: %s", status.error_code(), status.error_message().c_str());
+        LOG_INFO("is cache url failed");
+    }
+    return status;
+}
+
 //command
 Status RaltAgentImpl::getRaltStatus(ServerContext* server_context, const RaltStatusReq* request,
     ServerWriter<RaltStatus>* reply)

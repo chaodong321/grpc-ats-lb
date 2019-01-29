@@ -95,6 +95,18 @@ using raltservice::GetMiscReq;
 using raltservice::GetMiscRsp;
 using raltservice::ModMiscOpReq;
 using raltservice::ModMiscOpRsp;
+//ralt rule
+using raltservice::RuleType;
+using raltservice::Rule;
+using raltservice::GetRuleReq;
+using raltservice::GetRuleRsp;
+using raltservice::UpdateRuleReq;
+using raltservice::UpdateRuleRsp;
+//cache operate
+using raltservice::GetCacheUrlReq;
+using raltservice::GetCacheUrlRsp;
+using raltservice::IsUrlInCacheReq;
+using raltservice::IsUrlInCacheRsp;
 //ralt status
 using raltservice::RaltStatusReq;
 using raltservice::RaltStatus;
@@ -577,6 +589,10 @@ class RaltServiceClient {
             domain_member2->set_domain_str("www.reyzar.com");
             domain_member2->set_append_or_replace_str("ipv6.reyzar.com");
             domain_member2->set_port("80,8080");
+            Domain *sub_domain1 = request.add_domain();
+            sub_domain1->set_type(DomainType::enum_subs_domain);
+            sub_domain1->set_domain_str("http:\\/\\/");
+            sub_domain1->set_append_or_replace_str("http://");
             Status status =  stub_ralt->updateDomain(&context, request, &reply);
             if (status.ok()) {
               std::cout << "updateDomain rpc succeeded." << std::endl;
@@ -676,6 +692,77 @@ class RaltServiceClient {
             }
         }
 
+        void getRule(){
+            ClientContext context;
+            GetRuleReq request;
+            request.set_ip_addr("10.2.1.240");
+            GetRuleRsp reply;
+
+            Status status =  stub_ralt->getRule(&context, request, &reply);
+            if (status.ok()) {
+                std::cout << "getRule rpc succeeded." << std::endl;
+                ::google::protobuf::RepeatedPtrField<Rule> rules=reply.rule();
+                for (const auto& rule : rules){
+                    std::cout << rule.type() << "\t" << rule.search() << "\t" << rule.replace() << "\t" << rule.append() << "\t" << rule.ralt_domain()  << std::endl;
+                }
+            } else {
+                std::cout << "getRule rpc failed." << std::endl;
+            }
+        }
+
+        void updateRule(){
+            ClientContext context;
+            UpdateRuleRsp reply;
+            UpdateRuleReq request;
+            request.set_ip_addr("10.2.1.240");
+            Rule *rule1 = request.add_rule();
+            rule1->set_type(RuleType::enum_top_level_domain);
+            rule1->set_search(".com");
+            rule1->set_replace(".ex1");
+            rule1->set_append("$");
+            rule1->set_ralt_domain("1,2,3");
+            
+            request.set_ip_addr("10.2.1.240");
+            Rule *rule2 = request.add_rule();
+            rule2->set_type(RuleType::enum_ipv4_addr);
+            rule2->set_search("\"1");
+            rule2->set_replace("*");
+            rule2->set_append("$");
+            Status status =  stub_ralt->updateRule(&context, request, &reply);
+            if (status.ok()) {
+              std::cout << "updateRule rpc succeeded." << std::endl;
+            } else {
+              std::cout << "updateRule rpc failed." << std::endl;
+            }
+        }
+
+        void getCacheUrl(){
+            ClientContext context;
+            GetCacheUrlReq request;
+            request.set_ip_addr("10.2.1.240");
+            GetCacheUrlRsp reply;
+            Status status =  stub_ralt->getCacheUrl(&context, request, &reply);
+            if (status.ok()) {
+                std::cout << "cache: " << reply.all_url() << std::endl;
+            } else {
+                std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+            }
+        }
+
+        void isUrlInCache(){
+            ClientContext context;
+            IsUrlInCacheReq request;
+            request.set_ip_addr("10.2.1.240");
+            request.set_url("http://www.reyzar.com/js/front/main.js");
+            IsUrlInCacheRsp reply;
+            Status status =  stub_ralt->isUrlInCache(&context, request, &reply);
+            if (status.ok()) {
+                std::cout << "result: " << reply.result() << std::endl;
+            } else {
+                std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+            }
+        }
+
         void getRaltStatus(){
             ClientContext context;
             RaltStatusReq request;
@@ -733,7 +820,7 @@ int main(int argc, char** argv) {
     //client.getMemTotal();
     //client.getEthCtrlInfo();
 
-    client.getRaltStats();
+    //client.getRaltStats();
     //client.ShowFieldValue("proxy.process.cache.bytes_total");
     //client.showHomePageData();
     //client.showCache();
@@ -753,6 +840,11 @@ int main(int argc, char** argv) {
     //client.getMiscData();
     //client.modMiscData();
     //client.getMiscData();
+
+    client.getRule();
+    //client.updateRule();
+    //client.getCacheUrl();
+    //client.isUrlInCache();
 
     //client.getRaltStatus();
     //client.execCmd();

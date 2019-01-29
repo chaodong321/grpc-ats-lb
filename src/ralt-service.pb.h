@@ -39,7 +39,7 @@ namespace protobuf_ralt_2dservice_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[39];
+  static const ::google::protobuf::internal::ParseTable schema[48];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -95,6 +95,12 @@ extern GetBasicConfigReqDefaultTypeInternal _GetBasicConfigReq_default_instance_
 class GetBasicConfigRsp;
 class GetBasicConfigRspDefaultTypeInternal;
 extern GetBasicConfigRspDefaultTypeInternal _GetBasicConfigRsp_default_instance_;
+class GetCacheUrlReq;
+class GetCacheUrlReqDefaultTypeInternal;
+extern GetCacheUrlReqDefaultTypeInternal _GetCacheUrlReq_default_instance_;
+class GetCacheUrlRsp;
+class GetCacheUrlRspDefaultTypeInternal;
+extern GetCacheUrlRspDefaultTypeInternal _GetCacheUrlRsp_default_instance_;
 class GetDomainReq;
 class GetDomainReqDefaultTypeInternal;
 extern GetDomainReqDefaultTypeInternal _GetDomainReq_default_instance_;
@@ -116,6 +122,12 @@ extern GetRaltStatsReqDefaultTypeInternal _GetRaltStatsReq_default_instance_;
 class GetRaltStatsRsp;
 class GetRaltStatsRspDefaultTypeInternal;
 extern GetRaltStatsRspDefaultTypeInternal _GetRaltStatsRsp_default_instance_;
+class GetRuleReq;
+class GetRuleReqDefaultTypeInternal;
+extern GetRuleReqDefaultTypeInternal _GetRuleReq_default_instance_;
+class GetRuleRsp;
+class GetRuleRspDefaultTypeInternal;
+extern GetRuleRspDefaultTypeInternal _GetRuleRsp_default_instance_;
 class GetStatsFieldReq;
 class GetStatsFieldReqDefaultTypeInternal;
 extern GetStatsFieldReqDefaultTypeInternal _GetStatsFieldReq_default_instance_;
@@ -128,6 +140,12 @@ extern HomePageReqDefaultTypeInternal _HomePageReq_default_instance_;
 class HomePageRsp;
 class HomePageRspDefaultTypeInternal;
 extern HomePageRspDefaultTypeInternal _HomePageRsp_default_instance_;
+class IsUrlInCacheReq;
+class IsUrlInCacheReqDefaultTypeInternal;
+extern IsUrlInCacheReqDefaultTypeInternal _IsUrlInCacheReq_default_instance_;
+class IsUrlInCacheRsp;
+class IsUrlInCacheRspDefaultTypeInternal;
+extern IsUrlInCacheRspDefaultTypeInternal _IsUrlInCacheRsp_default_instance_;
 class LogInfoLookUpReq;
 class LogInfoLookUpReqDefaultTypeInternal;
 extern LogInfoLookUpReqDefaultTypeInternal _LogInfoLookUpReq_default_instance_;
@@ -152,6 +170,9 @@ extern RaltStatusDefaultTypeInternal _RaltStatus_default_instance_;
 class RaltStatusReq;
 class RaltStatusReqDefaultTypeInternal;
 extern RaltStatusReqDefaultTypeInternal _RaltStatusReq_default_instance_;
+class Rule;
+class RuleDefaultTypeInternal;
+extern RuleDefaultTypeInternal _Rule_default_instance_;
 class SetBasicConfigReq;
 class SetBasicConfigReqDefaultTypeInternal;
 extern SetBasicConfigReqDefaultTypeInternal _SetBasicConfigReq_default_instance_;
@@ -164,6 +185,12 @@ extern UpdateDomainReqDefaultTypeInternal _UpdateDomainReq_default_instance_;
 class UpdateDomainRsp;
 class UpdateDomainRspDefaultTypeInternal;
 extern UpdateDomainRspDefaultTypeInternal _UpdateDomainRsp_default_instance_;
+class UpdateRuleReq;
+class UpdateRuleReqDefaultTypeInternal;
+extern UpdateRuleReqDefaultTypeInternal _UpdateRuleReq_default_instance_;
+class UpdateRuleRsp;
+class UpdateRuleRspDefaultTypeInternal;
+extern UpdateRuleRspDefaultTypeInternal _UpdateRuleRsp_default_instance_;
 }  // namespace raltservice
 namespace google {
 namespace protobuf {
@@ -183,6 +210,8 @@ template<> ::raltservice::GetAllDomainReq* Arena::CreateMaybeMessage<::raltservi
 template<> ::raltservice::GetAllDomainRsp* Arena::CreateMaybeMessage<::raltservice::GetAllDomainRsp>(Arena*);
 template<> ::raltservice::GetBasicConfigReq* Arena::CreateMaybeMessage<::raltservice::GetBasicConfigReq>(Arena*);
 template<> ::raltservice::GetBasicConfigRsp* Arena::CreateMaybeMessage<::raltservice::GetBasicConfigRsp>(Arena*);
+template<> ::raltservice::GetCacheUrlReq* Arena::CreateMaybeMessage<::raltservice::GetCacheUrlReq>(Arena*);
+template<> ::raltservice::GetCacheUrlRsp* Arena::CreateMaybeMessage<::raltservice::GetCacheUrlRsp>(Arena*);
 template<> ::raltservice::GetDomainReq* Arena::CreateMaybeMessage<::raltservice::GetDomainReq>(Arena*);
 template<> ::raltservice::GetDomainRsp* Arena::CreateMaybeMessage<::raltservice::GetDomainRsp>(Arena*);
 template<> ::raltservice::GetMiscReq* Arena::CreateMaybeMessage<::raltservice::GetMiscReq>(Arena*);
@@ -190,10 +219,14 @@ template<> ::raltservice::GetMiscRsp* Arena::CreateMaybeMessage<::raltservice::G
 template<> ::raltservice::GetRaltLogsReq* Arena::CreateMaybeMessage<::raltservice::GetRaltLogsReq>(Arena*);
 template<> ::raltservice::GetRaltStatsReq* Arena::CreateMaybeMessage<::raltservice::GetRaltStatsReq>(Arena*);
 template<> ::raltservice::GetRaltStatsRsp* Arena::CreateMaybeMessage<::raltservice::GetRaltStatsRsp>(Arena*);
+template<> ::raltservice::GetRuleReq* Arena::CreateMaybeMessage<::raltservice::GetRuleReq>(Arena*);
+template<> ::raltservice::GetRuleRsp* Arena::CreateMaybeMessage<::raltservice::GetRuleRsp>(Arena*);
 template<> ::raltservice::GetStatsFieldReq* Arena::CreateMaybeMessage<::raltservice::GetStatsFieldReq>(Arena*);
 template<> ::raltservice::GetStatsFieldRsp* Arena::CreateMaybeMessage<::raltservice::GetStatsFieldRsp>(Arena*);
 template<> ::raltservice::HomePageReq* Arena::CreateMaybeMessage<::raltservice::HomePageReq>(Arena*);
 template<> ::raltservice::HomePageRsp* Arena::CreateMaybeMessage<::raltservice::HomePageRsp>(Arena*);
+template<> ::raltservice::IsUrlInCacheReq* Arena::CreateMaybeMessage<::raltservice::IsUrlInCacheReq>(Arena*);
+template<> ::raltservice::IsUrlInCacheRsp* Arena::CreateMaybeMessage<::raltservice::IsUrlInCacheRsp>(Arena*);
 template<> ::raltservice::LogInfoLookUpReq* Arena::CreateMaybeMessage<::raltservice::LogInfoLookUpReq>(Arena*);
 template<> ::raltservice::LogResult* Arena::CreateMaybeMessage<::raltservice::LogResult>(Arena*);
 template<> ::raltservice::Misc* Arena::CreateMaybeMessage<::raltservice::Misc>(Arena*);
@@ -202,10 +235,13 @@ template<> ::raltservice::ModMiscOpRsp* Arena::CreateMaybeMessage<::raltservice:
 template<> ::raltservice::RaltLogs* Arena::CreateMaybeMessage<::raltservice::RaltLogs>(Arena*);
 template<> ::raltservice::RaltStatus* Arena::CreateMaybeMessage<::raltservice::RaltStatus>(Arena*);
 template<> ::raltservice::RaltStatusReq* Arena::CreateMaybeMessage<::raltservice::RaltStatusReq>(Arena*);
+template<> ::raltservice::Rule* Arena::CreateMaybeMessage<::raltservice::Rule>(Arena*);
 template<> ::raltservice::SetBasicConfigReq* Arena::CreateMaybeMessage<::raltservice::SetBasicConfigReq>(Arena*);
 template<> ::raltservice::SetBasicConfigRsp* Arena::CreateMaybeMessage<::raltservice::SetBasicConfigRsp>(Arena*);
 template<> ::raltservice::UpdateDomainReq* Arena::CreateMaybeMessage<::raltservice::UpdateDomainReq>(Arena*);
 template<> ::raltservice::UpdateDomainRsp* Arena::CreateMaybeMessage<::raltservice::UpdateDomainRsp>(Arena*);
+template<> ::raltservice::UpdateRuleReq* Arena::CreateMaybeMessage<::raltservice::UpdateRuleReq>(Arena*);
+template<> ::raltservice::UpdateRuleRsp* Arena::CreateMaybeMessage<::raltservice::UpdateRuleRsp>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace raltservice {
@@ -271,6 +307,39 @@ inline bool MiscSwitch_Parse(
     const ::std::string& name, MiscSwitch* value) {
   return ::google::protobuf::internal::ParseNamedEnum<MiscSwitch>(
     MiscSwitch_descriptor(), name, value);
+}
+enum RuleType {
+  enum_begin = 0,
+  enum_top_level_domain = 1,
+  enum_hex_domain = 2,
+  enum_js_buildin_var = 3,
+  enum_ipv4_addr = 4,
+  enum_email_atsign = 5,
+  enum_no_modify = 6,
+  enum_unhandle_protocol = 7,
+  enum_assist_char = 8,
+  enum_subs_string = 9,
+  enum_rsubs_string = 10,
+  enum_ipv6_addr = 11,
+  enum_just_replace = 12,
+  enum_just_restore = 13,
+  RuleType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  RuleType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool RuleType_IsValid(int value);
+const RuleType RuleType_MIN = enum_begin;
+const RuleType RuleType_MAX = enum_just_restore;
+const int RuleType_ARRAYSIZE = RuleType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* RuleType_descriptor();
+inline const ::std::string& RuleType_Name(RuleType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    RuleType_descriptor(), value);
+}
+inline bool RuleType_Parse(
+    const ::std::string& name, RuleType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<RuleType>(
+    RuleType_descriptor(), name, value);
 }
 enum CommandType {
   ralt_start = 0,
@@ -4601,6 +4670,1067 @@ class ModMiscOpRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // -------------------------------------------------------------------
 
+class Rule : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.Rule) */ {
+ public:
+  Rule();
+  virtual ~Rule();
+
+  Rule(const Rule& from);
+
+  inline Rule& operator=(const Rule& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Rule(Rule&& from) noexcept
+    : Rule() {
+    *this = ::std::move(from);
+  }
+
+  inline Rule& operator=(Rule&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Rule& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Rule* internal_default_instance() {
+    return reinterpret_cast<const Rule*>(
+               &_Rule_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    35;
+
+  void Swap(Rule* other);
+  friend void swap(Rule& a, Rule& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Rule* New() const final {
+    return CreateMaybeMessage<Rule>(NULL);
+  }
+
+  Rule* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Rule>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const Rule& from);
+  void MergeFrom(const Rule& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Rule* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string search = 2;
+  void clear_search();
+  static const int kSearchFieldNumber = 2;
+  const ::std::string& search() const;
+  void set_search(const ::std::string& value);
+  #if LANG_CXX11
+  void set_search(::std::string&& value);
+  #endif
+  void set_search(const char* value);
+  void set_search(const char* value, size_t size);
+  ::std::string* mutable_search();
+  ::std::string* release_search();
+  void set_allocated_search(::std::string* search);
+
+  // string replace = 3;
+  void clear_replace();
+  static const int kReplaceFieldNumber = 3;
+  const ::std::string& replace() const;
+  void set_replace(const ::std::string& value);
+  #if LANG_CXX11
+  void set_replace(::std::string&& value);
+  #endif
+  void set_replace(const char* value);
+  void set_replace(const char* value, size_t size);
+  ::std::string* mutable_replace();
+  ::std::string* release_replace();
+  void set_allocated_replace(::std::string* replace);
+
+  // string append = 4;
+  void clear_append();
+  static const int kAppendFieldNumber = 4;
+  const ::std::string& append() const;
+  void set_append(const ::std::string& value);
+  #if LANG_CXX11
+  void set_append(::std::string&& value);
+  #endif
+  void set_append(const char* value);
+  void set_append(const char* value, size_t size);
+  ::std::string* mutable_append();
+  ::std::string* release_append();
+  void set_allocated_append(::std::string* append);
+
+  // string ralt_domain = 5;
+  void clear_ralt_domain();
+  static const int kRaltDomainFieldNumber = 5;
+  const ::std::string& ralt_domain() const;
+  void set_ralt_domain(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ralt_domain(::std::string&& value);
+  #endif
+  void set_ralt_domain(const char* value);
+  void set_ralt_domain(const char* value, size_t size);
+  ::std::string* mutable_ralt_domain();
+  ::std::string* release_ralt_domain();
+  void set_allocated_ralt_domain(::std::string* ralt_domain);
+
+  // .raltservice.RuleType type = 1;
+  void clear_type();
+  static const int kTypeFieldNumber = 1;
+  ::raltservice::RuleType type() const;
+  void set_type(::raltservice::RuleType value);
+
+  // @@protoc_insertion_point(class_scope:raltservice.Rule)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr search_;
+  ::google::protobuf::internal::ArenaStringPtr replace_;
+  ::google::protobuf::internal::ArenaStringPtr append_;
+  ::google::protobuf::internal::ArenaStringPtr ralt_domain_;
+  int type_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetRuleReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetRuleReq) */ {
+ public:
+  GetRuleReq();
+  virtual ~GetRuleReq();
+
+  GetRuleReq(const GetRuleReq& from);
+
+  inline GetRuleReq& operator=(const GetRuleReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetRuleReq(GetRuleReq&& from) noexcept
+    : GetRuleReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GetRuleReq& operator=(GetRuleReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetRuleReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetRuleReq* internal_default_instance() {
+    return reinterpret_cast<const GetRuleReq*>(
+               &_GetRuleReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    36;
+
+  void Swap(GetRuleReq* other);
+  friend void swap(GetRuleReq& a, GetRuleReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetRuleReq* New() const final {
+    return CreateMaybeMessage<GetRuleReq>(NULL);
+  }
+
+  GetRuleReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<GetRuleReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const GetRuleReq& from);
+  void MergeFrom(const GetRuleReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetRuleReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // @@protoc_insertion_point(class_scope:raltservice.GetRuleReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetRuleRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetRuleRsp) */ {
+ public:
+  GetRuleRsp();
+  virtual ~GetRuleRsp();
+
+  GetRuleRsp(const GetRuleRsp& from);
+
+  inline GetRuleRsp& operator=(const GetRuleRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetRuleRsp(GetRuleRsp&& from) noexcept
+    : GetRuleRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetRuleRsp& operator=(GetRuleRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetRuleRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetRuleRsp* internal_default_instance() {
+    return reinterpret_cast<const GetRuleRsp*>(
+               &_GetRuleRsp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    37;
+
+  void Swap(GetRuleRsp* other);
+  friend void swap(GetRuleRsp& a, GetRuleRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetRuleRsp* New() const final {
+    return CreateMaybeMessage<GetRuleRsp>(NULL);
+  }
+
+  GetRuleRsp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<GetRuleRsp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const GetRuleRsp& from);
+  void MergeFrom(const GetRuleRsp& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetRuleRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .raltservice.Rule rule = 1;
+  int rule_size() const;
+  void clear_rule();
+  static const int kRuleFieldNumber = 1;
+  ::raltservice::Rule* mutable_rule(int index);
+  ::google::protobuf::RepeatedPtrField< ::raltservice::Rule >*
+      mutable_rule();
+  const ::raltservice::Rule& rule(int index) const;
+  ::raltservice::Rule* add_rule();
+  const ::google::protobuf::RepeatedPtrField< ::raltservice::Rule >&
+      rule() const;
+
+  // @@protoc_insertion_point(class_scope:raltservice.GetRuleRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::raltservice::Rule > rule_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class UpdateRuleReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.UpdateRuleReq) */ {
+ public:
+  UpdateRuleReq();
+  virtual ~UpdateRuleReq();
+
+  UpdateRuleReq(const UpdateRuleReq& from);
+
+  inline UpdateRuleReq& operator=(const UpdateRuleReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UpdateRuleReq(UpdateRuleReq&& from) noexcept
+    : UpdateRuleReq() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateRuleReq& operator=(UpdateRuleReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UpdateRuleReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const UpdateRuleReq* internal_default_instance() {
+    return reinterpret_cast<const UpdateRuleReq*>(
+               &_UpdateRuleReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    38;
+
+  void Swap(UpdateRuleReq* other);
+  friend void swap(UpdateRuleReq& a, UpdateRuleReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UpdateRuleReq* New() const final {
+    return CreateMaybeMessage<UpdateRuleReq>(NULL);
+  }
+
+  UpdateRuleReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<UpdateRuleReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const UpdateRuleReq& from);
+  void MergeFrom(const UpdateRuleReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateRuleReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .raltservice.Rule rule = 2;
+  int rule_size() const;
+  void clear_rule();
+  static const int kRuleFieldNumber = 2;
+  ::raltservice::Rule* mutable_rule(int index);
+  ::google::protobuf::RepeatedPtrField< ::raltservice::Rule >*
+      mutable_rule();
+  const ::raltservice::Rule& rule(int index) const;
+  ::raltservice::Rule* add_rule();
+  const ::google::protobuf::RepeatedPtrField< ::raltservice::Rule >&
+      rule() const;
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // @@protoc_insertion_point(class_scope:raltservice.UpdateRuleReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::raltservice::Rule > rule_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class UpdateRuleRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.UpdateRuleRsp) */ {
+ public:
+  UpdateRuleRsp();
+  virtual ~UpdateRuleRsp();
+
+  UpdateRuleRsp(const UpdateRuleRsp& from);
+
+  inline UpdateRuleRsp& operator=(const UpdateRuleRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UpdateRuleRsp(UpdateRuleRsp&& from) noexcept
+    : UpdateRuleRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateRuleRsp& operator=(UpdateRuleRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UpdateRuleRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const UpdateRuleRsp* internal_default_instance() {
+    return reinterpret_cast<const UpdateRuleRsp*>(
+               &_UpdateRuleRsp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    39;
+
+  void Swap(UpdateRuleRsp* other);
+  friend void swap(UpdateRuleRsp& a, UpdateRuleRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UpdateRuleRsp* New() const final {
+    return CreateMaybeMessage<UpdateRuleRsp>(NULL);
+  }
+
+  UpdateRuleRsp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<UpdateRuleRsp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const UpdateRuleRsp& from);
+  void MergeFrom(const UpdateRuleRsp& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateRuleRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 result = 1;
+  void clear_result();
+  static const int kResultFieldNumber = 1;
+  ::google::protobuf::uint32 result() const;
+  void set_result(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:raltservice.UpdateRuleRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 result_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetCacheUrlReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetCacheUrlReq) */ {
+ public:
+  GetCacheUrlReq();
+  virtual ~GetCacheUrlReq();
+
+  GetCacheUrlReq(const GetCacheUrlReq& from);
+
+  inline GetCacheUrlReq& operator=(const GetCacheUrlReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetCacheUrlReq(GetCacheUrlReq&& from) noexcept
+    : GetCacheUrlReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GetCacheUrlReq& operator=(GetCacheUrlReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetCacheUrlReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetCacheUrlReq* internal_default_instance() {
+    return reinterpret_cast<const GetCacheUrlReq*>(
+               &_GetCacheUrlReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    40;
+
+  void Swap(GetCacheUrlReq* other);
+  friend void swap(GetCacheUrlReq& a, GetCacheUrlReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetCacheUrlReq* New() const final {
+    return CreateMaybeMessage<GetCacheUrlReq>(NULL);
+  }
+
+  GetCacheUrlReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<GetCacheUrlReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const GetCacheUrlReq& from);
+  void MergeFrom(const GetCacheUrlReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetCacheUrlReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // @@protoc_insertion_point(class_scope:raltservice.GetCacheUrlReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetCacheUrlRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.GetCacheUrlRsp) */ {
+ public:
+  GetCacheUrlRsp();
+  virtual ~GetCacheUrlRsp();
+
+  GetCacheUrlRsp(const GetCacheUrlRsp& from);
+
+  inline GetCacheUrlRsp& operator=(const GetCacheUrlRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetCacheUrlRsp(GetCacheUrlRsp&& from) noexcept
+    : GetCacheUrlRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetCacheUrlRsp& operator=(GetCacheUrlRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetCacheUrlRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetCacheUrlRsp* internal_default_instance() {
+    return reinterpret_cast<const GetCacheUrlRsp*>(
+               &_GetCacheUrlRsp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    41;
+
+  void Swap(GetCacheUrlRsp* other);
+  friend void swap(GetCacheUrlRsp& a, GetCacheUrlRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetCacheUrlRsp* New() const final {
+    return CreateMaybeMessage<GetCacheUrlRsp>(NULL);
+  }
+
+  GetCacheUrlRsp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<GetCacheUrlRsp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const GetCacheUrlRsp& from);
+  void MergeFrom(const GetCacheUrlRsp& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetCacheUrlRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string all_url = 1;
+  void clear_all_url();
+  static const int kAllUrlFieldNumber = 1;
+  const ::std::string& all_url() const;
+  void set_all_url(const ::std::string& value);
+  #if LANG_CXX11
+  void set_all_url(::std::string&& value);
+  #endif
+  void set_all_url(const char* value);
+  void set_all_url(const char* value, size_t size);
+  ::std::string* mutable_all_url();
+  ::std::string* release_all_url();
+  void set_allocated_all_url(::std::string* all_url);
+
+  // @@protoc_insertion_point(class_scope:raltservice.GetCacheUrlRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr all_url_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class IsUrlInCacheReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.IsUrlInCacheReq) */ {
+ public:
+  IsUrlInCacheReq();
+  virtual ~IsUrlInCacheReq();
+
+  IsUrlInCacheReq(const IsUrlInCacheReq& from);
+
+  inline IsUrlInCacheReq& operator=(const IsUrlInCacheReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  IsUrlInCacheReq(IsUrlInCacheReq&& from) noexcept
+    : IsUrlInCacheReq() {
+    *this = ::std::move(from);
+  }
+
+  inline IsUrlInCacheReq& operator=(IsUrlInCacheReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const IsUrlInCacheReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const IsUrlInCacheReq* internal_default_instance() {
+    return reinterpret_cast<const IsUrlInCacheReq*>(
+               &_IsUrlInCacheReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    42;
+
+  void Swap(IsUrlInCacheReq* other);
+  friend void swap(IsUrlInCacheReq& a, IsUrlInCacheReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline IsUrlInCacheReq* New() const final {
+    return CreateMaybeMessage<IsUrlInCacheReq>(NULL);
+  }
+
+  IsUrlInCacheReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<IsUrlInCacheReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const IsUrlInCacheReq& from);
+  void MergeFrom(const IsUrlInCacheReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(IsUrlInCacheReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string ip_addr = 1;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 1;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  #if LANG_CXX11
+  void set_ip_addr(::std::string&& value);
+  #endif
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // string url = 2;
+  void clear_url();
+  static const int kUrlFieldNumber = 2;
+  const ::std::string& url() const;
+  void set_url(const ::std::string& value);
+  #if LANG_CXX11
+  void set_url(::std::string&& value);
+  #endif
+  void set_url(const char* value);
+  void set_url(const char* value, size_t size);
+  ::std::string* mutable_url();
+  ::std::string* release_url();
+  void set_allocated_url(::std::string* url);
+
+  // @@protoc_insertion_point(class_scope:raltservice.IsUrlInCacheReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  ::google::protobuf::internal::ArenaStringPtr url_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class IsUrlInCacheRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.IsUrlInCacheRsp) */ {
+ public:
+  IsUrlInCacheRsp();
+  virtual ~IsUrlInCacheRsp();
+
+  IsUrlInCacheRsp(const IsUrlInCacheRsp& from);
+
+  inline IsUrlInCacheRsp& operator=(const IsUrlInCacheRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  IsUrlInCacheRsp(IsUrlInCacheRsp&& from) noexcept
+    : IsUrlInCacheRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline IsUrlInCacheRsp& operator=(IsUrlInCacheRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const IsUrlInCacheRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const IsUrlInCacheRsp* internal_default_instance() {
+    return reinterpret_cast<const IsUrlInCacheRsp*>(
+               &_IsUrlInCacheRsp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    43;
+
+  void Swap(IsUrlInCacheRsp* other);
+  friend void swap(IsUrlInCacheRsp& a, IsUrlInCacheRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline IsUrlInCacheRsp* New() const final {
+    return CreateMaybeMessage<IsUrlInCacheRsp>(NULL);
+  }
+
+  IsUrlInCacheRsp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<IsUrlInCacheRsp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const IsUrlInCacheRsp& from);
+  void MergeFrom(const IsUrlInCacheRsp& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(IsUrlInCacheRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 result = 1;
+  void clear_result();
+  static const int kResultFieldNumber = 1;
+  ::google::protobuf::uint32 result() const;
+  void set_result(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:raltservice.IsUrlInCacheRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 result_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ralt_2dservice_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class RaltStatusReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:raltservice.RaltStatusReq) */ {
  public:
   RaltStatusReq();
@@ -4636,7 +5766,7 @@ class RaltStatusReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_RaltStatusReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    44;
 
   void Swap(RaltStatusReq* other);
   friend void swap(RaltStatusReq& a, RaltStatusReq& b) {
@@ -4747,7 +5877,7 @@ class RaltStatus : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_RaltStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    45;
 
   void Swap(RaltStatus* other);
   friend void swap(RaltStatus& a, RaltStatus& b) {
@@ -4865,7 +5995,7 @@ class ExecCmdReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_ExecCmdReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    46;
 
   void Swap(ExecCmdReq* other);
   friend void swap(ExecCmdReq& a, ExecCmdReq& b) {
@@ -4983,7 +6113,7 @@ class ExecCmdRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_ExecCmdRsp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    47;
 
   void Swap(ExecCmdRsp* other);
   friend void swap(ExecCmdRsp& a, ExecCmdRsp& b) {
@@ -7806,6 +8936,674 @@ inline void ModMiscOpRsp::set_result(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// Rule
+
+// .raltservice.RuleType type = 1;
+inline void Rule::clear_type() {
+  type_ = 0;
+}
+inline ::raltservice::RuleType Rule::type() const {
+  // @@protoc_insertion_point(field_get:raltservice.Rule.type)
+  return static_cast< ::raltservice::RuleType >(type_);
+}
+inline void Rule::set_type(::raltservice::RuleType value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.Rule.type)
+}
+
+// string search = 2;
+inline void Rule::clear_search() {
+  search_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Rule::search() const {
+  // @@protoc_insertion_point(field_get:raltservice.Rule.search)
+  return search_.GetNoArena();
+}
+inline void Rule::set_search(const ::std::string& value) {
+  
+  search_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.Rule.search)
+}
+#if LANG_CXX11
+inline void Rule::set_search(::std::string&& value) {
+  
+  search_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.Rule.search)
+}
+#endif
+inline void Rule::set_search(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  search_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.Rule.search)
+}
+inline void Rule::set_search(const char* value, size_t size) {
+  
+  search_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.Rule.search)
+}
+inline ::std::string* Rule::mutable_search() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.Rule.search)
+  return search_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Rule::release_search() {
+  // @@protoc_insertion_point(field_release:raltservice.Rule.search)
+  
+  return search_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Rule::set_allocated_search(::std::string* search) {
+  if (search != NULL) {
+    
+  } else {
+    
+  }
+  search_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), search);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.Rule.search)
+}
+
+// string replace = 3;
+inline void Rule::clear_replace() {
+  replace_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Rule::replace() const {
+  // @@protoc_insertion_point(field_get:raltservice.Rule.replace)
+  return replace_.GetNoArena();
+}
+inline void Rule::set_replace(const ::std::string& value) {
+  
+  replace_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.Rule.replace)
+}
+#if LANG_CXX11
+inline void Rule::set_replace(::std::string&& value) {
+  
+  replace_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.Rule.replace)
+}
+#endif
+inline void Rule::set_replace(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  replace_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.Rule.replace)
+}
+inline void Rule::set_replace(const char* value, size_t size) {
+  
+  replace_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.Rule.replace)
+}
+inline ::std::string* Rule::mutable_replace() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.Rule.replace)
+  return replace_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Rule::release_replace() {
+  // @@protoc_insertion_point(field_release:raltservice.Rule.replace)
+  
+  return replace_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Rule::set_allocated_replace(::std::string* replace) {
+  if (replace != NULL) {
+    
+  } else {
+    
+  }
+  replace_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), replace);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.Rule.replace)
+}
+
+// string append = 4;
+inline void Rule::clear_append() {
+  append_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Rule::append() const {
+  // @@protoc_insertion_point(field_get:raltservice.Rule.append)
+  return append_.GetNoArena();
+}
+inline void Rule::set_append(const ::std::string& value) {
+  
+  append_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.Rule.append)
+}
+#if LANG_CXX11
+inline void Rule::set_append(::std::string&& value) {
+  
+  append_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.Rule.append)
+}
+#endif
+inline void Rule::set_append(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  append_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.Rule.append)
+}
+inline void Rule::set_append(const char* value, size_t size) {
+  
+  append_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.Rule.append)
+}
+inline ::std::string* Rule::mutable_append() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.Rule.append)
+  return append_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Rule::release_append() {
+  // @@protoc_insertion_point(field_release:raltservice.Rule.append)
+  
+  return append_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Rule::set_allocated_append(::std::string* append) {
+  if (append != NULL) {
+    
+  } else {
+    
+  }
+  append_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), append);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.Rule.append)
+}
+
+// string ralt_domain = 5;
+inline void Rule::clear_ralt_domain() {
+  ralt_domain_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Rule::ralt_domain() const {
+  // @@protoc_insertion_point(field_get:raltservice.Rule.ralt_domain)
+  return ralt_domain_.GetNoArena();
+}
+inline void Rule::set_ralt_domain(const ::std::string& value) {
+  
+  ralt_domain_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.Rule.ralt_domain)
+}
+#if LANG_CXX11
+inline void Rule::set_ralt_domain(::std::string&& value) {
+  
+  ralt_domain_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.Rule.ralt_domain)
+}
+#endif
+inline void Rule::set_ralt_domain(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ralt_domain_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.Rule.ralt_domain)
+}
+inline void Rule::set_ralt_domain(const char* value, size_t size) {
+  
+  ralt_domain_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.Rule.ralt_domain)
+}
+inline ::std::string* Rule::mutable_ralt_domain() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.Rule.ralt_domain)
+  return ralt_domain_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Rule::release_ralt_domain() {
+  // @@protoc_insertion_point(field_release:raltservice.Rule.ralt_domain)
+  
+  return ralt_domain_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Rule::set_allocated_ralt_domain(::std::string* ralt_domain) {
+  if (ralt_domain != NULL) {
+    
+  } else {
+    
+  }
+  ralt_domain_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ralt_domain);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.Rule.ralt_domain)
+}
+
+// -------------------------------------------------------------------
+
+// GetRuleReq
+
+// string ip_addr = 1;
+inline void GetRuleReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetRuleReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRuleReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void GetRuleReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.GetRuleReq.ip_addr)
+}
+#if LANG_CXX11
+inline void GetRuleReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetRuleReq.ip_addr)
+}
+#endif
+inline void GetRuleReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.GetRuleReq.ip_addr)
+}
+inline void GetRuleReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetRuleReq.ip_addr)
+}
+inline ::std::string* GetRuleReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.GetRuleReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetRuleReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.GetRuleReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetRuleReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetRuleReq.ip_addr)
+}
+
+// -------------------------------------------------------------------
+
+// GetRuleRsp
+
+// repeated .raltservice.Rule rule = 1;
+inline int GetRuleRsp::rule_size() const {
+  return rule_.size();
+}
+inline void GetRuleRsp::clear_rule() {
+  rule_.Clear();
+}
+inline ::raltservice::Rule* GetRuleRsp::mutable_rule(int index) {
+  // @@protoc_insertion_point(field_mutable:raltservice.GetRuleRsp.rule)
+  return rule_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::raltservice::Rule >*
+GetRuleRsp::mutable_rule() {
+  // @@protoc_insertion_point(field_mutable_list:raltservice.GetRuleRsp.rule)
+  return &rule_;
+}
+inline const ::raltservice::Rule& GetRuleRsp::rule(int index) const {
+  // @@protoc_insertion_point(field_get:raltservice.GetRuleRsp.rule)
+  return rule_.Get(index);
+}
+inline ::raltservice::Rule* GetRuleRsp::add_rule() {
+  // @@protoc_insertion_point(field_add:raltservice.GetRuleRsp.rule)
+  return rule_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::raltservice::Rule >&
+GetRuleRsp::rule() const {
+  // @@protoc_insertion_point(field_list:raltservice.GetRuleRsp.rule)
+  return rule_;
+}
+
+// -------------------------------------------------------------------
+
+// UpdateRuleReq
+
+// string ip_addr = 1;
+inline void UpdateRuleReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UpdateRuleReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.UpdateRuleReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void UpdateRuleReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.UpdateRuleReq.ip_addr)
+}
+#if LANG_CXX11
+inline void UpdateRuleReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.UpdateRuleReq.ip_addr)
+}
+#endif
+inline void UpdateRuleReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.UpdateRuleReq.ip_addr)
+}
+inline void UpdateRuleReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.UpdateRuleReq.ip_addr)
+}
+inline ::std::string* UpdateRuleReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.UpdateRuleReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UpdateRuleReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.UpdateRuleReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UpdateRuleReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.UpdateRuleReq.ip_addr)
+}
+
+// repeated .raltservice.Rule rule = 2;
+inline int UpdateRuleReq::rule_size() const {
+  return rule_.size();
+}
+inline void UpdateRuleReq::clear_rule() {
+  rule_.Clear();
+}
+inline ::raltservice::Rule* UpdateRuleReq::mutable_rule(int index) {
+  // @@protoc_insertion_point(field_mutable:raltservice.UpdateRuleReq.rule)
+  return rule_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::raltservice::Rule >*
+UpdateRuleReq::mutable_rule() {
+  // @@protoc_insertion_point(field_mutable_list:raltservice.UpdateRuleReq.rule)
+  return &rule_;
+}
+inline const ::raltservice::Rule& UpdateRuleReq::rule(int index) const {
+  // @@protoc_insertion_point(field_get:raltservice.UpdateRuleReq.rule)
+  return rule_.Get(index);
+}
+inline ::raltservice::Rule* UpdateRuleReq::add_rule() {
+  // @@protoc_insertion_point(field_add:raltservice.UpdateRuleReq.rule)
+  return rule_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::raltservice::Rule >&
+UpdateRuleReq::rule() const {
+  // @@protoc_insertion_point(field_list:raltservice.UpdateRuleReq.rule)
+  return rule_;
+}
+
+// -------------------------------------------------------------------
+
+// UpdateRuleRsp
+
+// uint32 result = 1;
+inline void UpdateRuleRsp::clear_result() {
+  result_ = 0u;
+}
+inline ::google::protobuf::uint32 UpdateRuleRsp::result() const {
+  // @@protoc_insertion_point(field_get:raltservice.UpdateRuleRsp.result)
+  return result_;
+}
+inline void UpdateRuleRsp::set_result(::google::protobuf::uint32 value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.UpdateRuleRsp.result)
+}
+
+// -------------------------------------------------------------------
+
+// GetCacheUrlReq
+
+// string ip_addr = 1;
+inline void GetCacheUrlReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetCacheUrlReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetCacheUrlReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void GetCacheUrlReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.GetCacheUrlReq.ip_addr)
+}
+#if LANG_CXX11
+inline void GetCacheUrlReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetCacheUrlReq.ip_addr)
+}
+#endif
+inline void GetCacheUrlReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.GetCacheUrlReq.ip_addr)
+}
+inline void GetCacheUrlReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetCacheUrlReq.ip_addr)
+}
+inline ::std::string* GetCacheUrlReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.GetCacheUrlReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetCacheUrlReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.GetCacheUrlReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetCacheUrlReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetCacheUrlReq.ip_addr)
+}
+
+// -------------------------------------------------------------------
+
+// GetCacheUrlRsp
+
+// string all_url = 1;
+inline void GetCacheUrlRsp::clear_all_url() {
+  all_url_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetCacheUrlRsp::all_url() const {
+  // @@protoc_insertion_point(field_get:raltservice.GetCacheUrlRsp.all_url)
+  return all_url_.GetNoArena();
+}
+inline void GetCacheUrlRsp::set_all_url(const ::std::string& value) {
+  
+  all_url_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.GetCacheUrlRsp.all_url)
+}
+#if LANG_CXX11
+inline void GetCacheUrlRsp::set_all_url(::std::string&& value) {
+  
+  all_url_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.GetCacheUrlRsp.all_url)
+}
+#endif
+inline void GetCacheUrlRsp::set_all_url(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  all_url_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.GetCacheUrlRsp.all_url)
+}
+inline void GetCacheUrlRsp::set_all_url(const char* value, size_t size) {
+  
+  all_url_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.GetCacheUrlRsp.all_url)
+}
+inline ::std::string* GetCacheUrlRsp::mutable_all_url() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.GetCacheUrlRsp.all_url)
+  return all_url_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetCacheUrlRsp::release_all_url() {
+  // @@protoc_insertion_point(field_release:raltservice.GetCacheUrlRsp.all_url)
+  
+  return all_url_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetCacheUrlRsp::set_allocated_all_url(::std::string* all_url) {
+  if (all_url != NULL) {
+    
+  } else {
+    
+  }
+  all_url_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), all_url);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.GetCacheUrlRsp.all_url)
+}
+
+// -------------------------------------------------------------------
+
+// IsUrlInCacheReq
+
+// string ip_addr = 1;
+inline void IsUrlInCacheReq::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& IsUrlInCacheReq::ip_addr() const {
+  // @@protoc_insertion_point(field_get:raltservice.IsUrlInCacheReq.ip_addr)
+  return ip_addr_.GetNoArena();
+}
+inline void IsUrlInCacheReq::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.IsUrlInCacheReq.ip_addr)
+}
+#if LANG_CXX11
+inline void IsUrlInCacheReq::set_ip_addr(::std::string&& value) {
+  
+  ip_addr_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.IsUrlInCacheReq.ip_addr)
+}
+#endif
+inline void IsUrlInCacheReq::set_ip_addr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.IsUrlInCacheReq.ip_addr)
+}
+inline void IsUrlInCacheReq::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.IsUrlInCacheReq.ip_addr)
+}
+inline ::std::string* IsUrlInCacheReq::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.IsUrlInCacheReq.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* IsUrlInCacheReq::release_ip_addr() {
+  // @@protoc_insertion_point(field_release:raltservice.IsUrlInCacheReq.ip_addr)
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void IsUrlInCacheReq::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.IsUrlInCacheReq.ip_addr)
+}
+
+// string url = 2;
+inline void IsUrlInCacheReq::clear_url() {
+  url_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& IsUrlInCacheReq::url() const {
+  // @@protoc_insertion_point(field_get:raltservice.IsUrlInCacheReq.url)
+  return url_.GetNoArena();
+}
+inline void IsUrlInCacheReq::set_url(const ::std::string& value) {
+  
+  url_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:raltservice.IsUrlInCacheReq.url)
+}
+#if LANG_CXX11
+inline void IsUrlInCacheReq::set_url(::std::string&& value) {
+  
+  url_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:raltservice.IsUrlInCacheReq.url)
+}
+#endif
+inline void IsUrlInCacheReq::set_url(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  url_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:raltservice.IsUrlInCacheReq.url)
+}
+inline void IsUrlInCacheReq::set_url(const char* value, size_t size) {
+  
+  url_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:raltservice.IsUrlInCacheReq.url)
+}
+inline ::std::string* IsUrlInCacheReq::mutable_url() {
+  
+  // @@protoc_insertion_point(field_mutable:raltservice.IsUrlInCacheReq.url)
+  return url_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* IsUrlInCacheReq::release_url() {
+  // @@protoc_insertion_point(field_release:raltservice.IsUrlInCacheReq.url)
+  
+  return url_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void IsUrlInCacheReq::set_allocated_url(::std::string* url) {
+  if (url != NULL) {
+    
+  } else {
+    
+  }
+  url_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), url);
+  // @@protoc_insertion_point(field_set_allocated:raltservice.IsUrlInCacheReq.url)
+}
+
+// -------------------------------------------------------------------
+
+// IsUrlInCacheRsp
+
+// uint32 result = 1;
+inline void IsUrlInCacheRsp::clear_result() {
+  result_ = 0u;
+}
+inline ::google::protobuf::uint32 IsUrlInCacheRsp::result() const {
+  // @@protoc_insertion_point(field_get:raltservice.IsUrlInCacheRsp.result)
+  return result_;
+}
+inline void IsUrlInCacheRsp::set_result(::google::protobuf::uint32 value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:raltservice.IsUrlInCacheRsp.result)
+}
+
+// -------------------------------------------------------------------
+
 // RaltStatusReq
 
 // string ip_addr = 1;
@@ -8100,6 +9898,24 @@ inline void ExecCmdRsp::set_result(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -8122,6 +9938,11 @@ template <> struct is_proto_enum< ::raltservice::MiscSwitch> : ::std::true_type 
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::raltservice::MiscSwitch>() {
   return ::raltservice::MiscSwitch_descriptor();
+}
+template <> struct is_proto_enum< ::raltservice::RuleType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::raltservice::RuleType>() {
+  return ::raltservice::RuleType_descriptor();
 }
 template <> struct is_proto_enum< ::raltservice::CommandType> : ::std::true_type {};
 template <>

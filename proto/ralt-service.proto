@@ -3,18 +3,19 @@ syntax = "proto3";
 package raltservice;
 
 service RaltService {
-	//ats stats
+	//statistics
 	rpc getRaltStats (GetRaltStatsReq) returns (GetRaltStatsRsp) {}
 	rpc getStatsField (GetStatsFieldReq) returns (GetStatsFieldRsp) {}
 	rpc getHomePageData (HomePageReq) returns (HomePageRsp) {}
+	//cache
 	rpc showCacheData (CacheLookUpReq) returns (CacheResult) {}
-	//flow related
+	//flow
 	rpc showFlowStatData (FlowStatLookUpReq) returns (FlowResult) {}
-	//logs related
+	//logs
 	rpc showLogInfoData (LogInfoLookUpReq) returns (LogResult) {}
 	rpc getRaltLogs (GetRaltLogsReq) returns (stream RaltLogs) {}
 
-	//configure
+	//configuration
 	//basic config, main for record.config
 	rpc getBasicConfig (GetBasicConfigReq) returns (GetBasicConfigRsp) {}
 	rpc setBasicConfig (SetBasicConfigReq) returns (SetBasicConfigRsp) {}
@@ -27,8 +28,15 @@ service RaltService {
 	//ralt.miscellaneous.conf
 	rpc getMisc (GetMiscReq) returns (GetMiscRsp) {}
 	rpc modMisc (ModMiscOpReq) returns (ModMiscOpRsp) {}
+	//ralt.rule.conf
+	rpc getRule (GetRuleReq) returns (GetRuleRsp) {}
+	rpc updateRule (UpdateRuleReq) returns (UpdateRuleRsp) {}
+	
+	//cache operate
+	rpc getCacheUrl (GetCacheUrlReq) returns (GetCacheUrlRsp) {}
+	rpc isUrlInCache (IsUrlInCacheReq) returns (IsUrlInCacheRsp) {}
 
-	//ralt status: 
+	//command
 	rpc getRaltStatus (RaltStatusReq) returns (stream RaltStatus) {}
 	//exec cmd
 	rpc execCmd (ExecCmdReq) returns (ExecCmdRsp) {}
@@ -169,6 +177,8 @@ message SetBasicConfigRsp{
 enum DomainType{
 	enum_member_domain = 0;
 	enum_subs_domain = 1;
+	enum_subs_domain_6to4 = 2;
+	enum_subs_domain_4to6 = 3;
 }
 
 message Domain{
@@ -258,6 +268,67 @@ message ModMiscOpReq{
 }
 
 message ModMiscOpRsp{
+	uint32 result = 1;
+}
+
+//ralt rule
+enum RuleType{
+	enum_begin = 0;					//该字段没有用，因为proto3的enum必须从0开始，此处是为了保持与ralt的规则类型一直
+	enum_top_level_domain = 1;
+	enum_hex_domain = 2;
+	enum_js_buildin_var = 3;
+	enum_ipv4_addr = 4;
+	enum_email_atsign = 5;
+	enum_no_modify = 6;
+	enum_unhandle_protocol = 7;
+	enum_assist_char = 8;
+	enum_subs_string = 9;
+	enum_rsubs_string = 10;
+	enum_ipv6_addr = 11;
+	enum_just_replace = 12;
+	enum_just_restore = 13;
+}
+
+message Rule{
+	RuleType type = 1;
+	string search = 2;
+	string replace = 3;
+	string append = 4;
+	string ralt_domain = 5;
+}
+
+message GetRuleReq{
+	string ip_addr = 1;
+}
+
+message GetRuleRsp{
+	repeated Rule rule = 1;
+}
+
+message UpdateRuleReq{
+	string ip_addr = 1;
+	repeated Rule rule = 2;
+}
+
+message UpdateRuleRsp{
+	uint32 result = 1;
+}
+
+//cache operate
+message GetCacheUrlReq{
+	string ip_addr = 1;
+}
+
+message GetCacheUrlRsp{
+	string all_url = 1;
+}
+
+message IsUrlInCacheReq{
+	string ip_addr = 1;
+	string url = 2;
+}
+
+message IsUrlInCacheRsp{
 	uint32 result = 1;
 }
 

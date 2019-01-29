@@ -65,6 +65,18 @@ using raltservice::GetMiscReq;
 using raltservice::GetMiscRsp;
 using raltservice::ModMiscOpReq;
 using raltservice::ModMiscOpRsp;
+//ralt rule
+using raltservice::RuleType;
+using raltservice::Rule;
+using raltservice::GetRuleReq;
+using raltservice::GetRuleRsp;
+using raltservice::UpdateRuleReq;
+using raltservice::UpdateRuleRsp;
+//cache operate
+using raltservice::GetCacheUrlReq;
+using raltservice::GetCacheUrlRsp;
+using raltservice::IsUrlInCacheReq;
+using raltservice::IsUrlInCacheRsp;
 //ralt status
 using raltservice::RaltStatusReq;
 using raltservice::RaltStatus;
@@ -129,6 +141,18 @@ public:
 
     Status modMisc(ServerContext* context, const ModMiscOpReq* request,
                   ModMiscOpRsp* reply) override;
+
+    Status getRule(ServerContext* context, const GetRuleReq* request,
+        GetRuleRsp* reply) override;
+
+	Status updateRule(ServerContext* context, const UpdateRuleReq* request,
+        UpdateRuleRsp* reply) override;
+
+	Status getCacheUrl(ServerContext* context, const GetCacheUrlReq* request,
+        GetCacheUrlRsp* reply) override;
+
+	Status isUrlInCache(ServerContext* context, const IsUrlInCacheReq* request,
+        IsUrlInCacheRsp* reply) override;
 
     Status getRaltStatus(ServerContext* server_context, const RaltStatusReq* request,
                   ServerWriter<RaltStatus>* reply) override;

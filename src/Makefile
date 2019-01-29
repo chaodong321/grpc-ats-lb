@@ -11,7 +11,7 @@ AGENT := ralt-agent
 
 COMM_SRCS = sys-info.grpc.pb.o sys-info.pb.o ralt-service.grpc.pb.o ralt-service.pb.o util-log.o util-common.o util-pidfile.o util-daemon.o
 
-SERVER_SRCS = sys-info-impl.o ralt-service-impl.o ralt-domain.o misc-conf.o ralt-service-conf.o ralt-service-server.o
+SERVER_SRCS = sys-info-impl.o ralt-service-impl.o ralt-domain.o ralt-rule.o ralt-cache.o misc-conf.o ralt-service-conf.o ralt-service-server.o
 
 CLIENT_SRCS = ralt-service-client.o
 
