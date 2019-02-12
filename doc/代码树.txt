@@ -1,0 +1,50 @@
+
+ ----conf(配置文件)
+|      |
+|      |-----ralt-svr.json（RALT GRPC服务配置文件，主要为配置GRPC监听的IP地址与GRPC端口）
+|      |-----ralt-agent.json(GRPC代理配置文件，主要为代理监听地址与端口，RALT GRPC服务监听的地址与端口)
+|
+|----doc（说明文档）
+|
+|
+|----proto（grpc proto文件）
+|      |
+|      |-----ralt-service.proto（RALT程序对外的接口）
+|      |-----sys-info.proto（RALT所在机的系统监控接口）
+|
+|
+|----rpmbuild（生成rpm包）
+|
+|
+|----service（service服务脚本）
+|      |
+|      |-----ralt-svr.service（RALT GRPC服务的service服务（包含启动、停止和重启））
+|      |-----ralt-agent.service（GRPC代理程序的service服务（包含启动、停止和重启））
+|      |-----ralt-svr-centos7.service（centos7下RALT GRPC服务的service服务（包含启动、停止和重启）（已放弃使用））
+|      |-----ralt-agent-centos7.service（GRPC代理程序的service服务（包含启动、停止和重启）（已放弃使用））
+|
+|----Makefile（编译文件）
+|
+|
+|----src（RALT GRPC服务代码与GRPC代理代码）
+       |
+       |-----Makefile（编译文件）
+       |-----util-blockqueue.h util-log.h util-log.cc（日志相关接口）
+       |-----util-daemon.h util-daemon.cc（守护进程接口）
+       |-----util-pidfile.h util-pidfile.cc（程序唯一接口）
+       |-----util-common.h util-common.cc（程序通用接口）
+       |-----ralt-service.grpc.pb.h ralt-service.grpc.pb.cc（ralt-svr.proto生成程序接口）
+       |-----sys-info.grpc.pb.h sys-info.grpc.pb.cc（sys-info.proto生成程序接口）
+       |-----misc-conf.h misc-conf.cc（RALT杂项配置对外接口）
+       |-----ralt-cache.h ralt-cache.cc（RALT缓存对外接口）
+       |-----ralt-domain.h ralt-domain.cc（RALT会员配置接口）
+       |-----ralt-rule.h ralt-rule.cc（RALT规则接口）
+       |-----ralt-service-conf.h ralt-service-conf.cc（读取配置文件ralt-svr.json接口）
+       |-----ralt-agent-conf.h ralt-agent-conf.cc（读取配置文件ralt-agent.json接口）
+       |-----ralt-service-impl.h ralt-service-impl.cc（服务程序grpc与ralt相关接口的交互）
+       |-----sys-info-impl.h sys-info-impl.cc（服务程序grpc与系统监控参数接口的交互）
+       |-----ralt-agent-impl.h ralt-agent-impl.cc（代理程序grpc与ralt相关接口的交互）
+       |-----sys-agent-impl.h sys-agent-impl.cc（代理程序grpc与系统监控参数接口的交互）
+       |-----ralt-service-server.cc（服务程序入口）
+       |-----ralt-agent.cc(代理程序入口)
+       |-----ralt-service-client.cc（grpc测试客户端程序）
